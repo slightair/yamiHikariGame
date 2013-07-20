@@ -12,6 +12,15 @@
 #include "SimpleAudioEngine.h"
 #include "GameScene.h"
 
+#define kDefaultDesignResolutionWidth 320
+#define kDefaultDesignResolutionHeight 480
+
+#define kIPhone4inchHeight 568
+#define kIPhone3_5inchHeight 480
+#define kIPadHeight 1024
+
+#define kIPhone4inchScreenHeight 1136
+
 USING_NS_CC;
 using namespace CocosDenshion;
 
@@ -28,10 +37,41 @@ bool AppDelegate::applicationDidFinishLaunching()
 {
     // initialize director
     CCDirector *pDirector = CCDirector::sharedDirector();
-    pDirector->setOpenGLView(CCEGLView::sharedOpenGLView());
+    CCEGLView *openGLView = CCEGLView::sharedOpenGLView();
+    CCFileUtils *fileUtils = CCFileUtils::sharedFileUtils();
+
+    std::vector<std::string> searchResolutionsOrder;
+
+    pDirector->setOpenGLView(openGLView);
 
     // turn on display FPS
     pDirector->setDisplayStats(true);
+
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    CCSize screenSize = openGLView->getFrameSize();
+    if (screenSize.height == kIPhone4inchScreenHeight) {
+        openGLView->setDesignResolutionSize(kDefaultDesignResolutionWidth, kIPhone4inchHeight, kResolutionExactFit);
+    }
+    else {
+        openGLView->setDesignResolutionSize(kDefaultDesignResolutionWidth, kDefaultDesignResolutionHeight, kResolutionExactFit);
+    }
+
+    TargetPlatform platform = CCApplication::sharedApplication()->getTargetPlatform();
+    float retinaThreshold = platform == kTargetIphone ? kIPhone3_5inchHeight : kIPadHeight;
+    if (screenSize.height > retinaThreshold) {
+        searchResolutionsOrder.push_back("ios-hd");
+        pDirector->setContentScaleFactor(2.0f);
+    }
+    else {
+        searchResolutionsOrder.push_back("default");
+    }
+#else
+    // Android, etc...
+    openGLView->setDesignResolutionSize(defaultDesignResolutionSize.width, defaultDesignResolutionSize.height, kResolutionExactFit);
+    searchResolutionsOrder.push_back("default");
+#endif
+
+    fileUtils->setSearchResolutionsOrder(searchResolutionsOrder);
 
     // set FPS. the default value is 1.0/60 if you don't call this
     pDirector->setAnimationInterval(1.0 / 60);

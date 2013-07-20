@@ -13,6 +13,8 @@
 
 class GameScene : public cocos2d::CCLayer
 {
+protected:
+    cocos2d::CCSpriteBatchNode *backgroundNode;
 public:
     virtual bool init();
     static cocos2d::CCScene* scene();

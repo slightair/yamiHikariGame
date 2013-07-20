@@ -8,6 +8,8 @@
 
 #include "GameScene.h"
 
+#define chipSize 16
+
 using namespace cocos2d;
 
 CCScene* GameScene::scene()
@@ -28,7 +30,19 @@ bool GameScene::init()
 
     CCSize windowSize = CCDirector::sharedDirector()->getWinSize();
 
-    CCSprite *sprite = CCSprite::create("HelloWorld.png");
+    backgroundNode = CCSpriteBatchNode::create("chip.png");
+    this->addChild(backgroundNode);
+
+    for (int y = 0; y < windowSize.height * 1.0 / chipSize; y++) {
+        for (int x = 0; x < windowSize.width * 1.0 / chipSize; x++) {
+            CCSprite *tile = CCSprite::createWithTexture(backgroundNode->getTexture());
+            tile->setAnchorPoint(ccp(0, 0));
+            tile->setPosition(ccp(x * chipSize, y *chipSize));
+            backgroundNode->addChild(tile);
+        }
+    }
+
+    CCSprite *sprite = CCSprite::create("monster.png");
     sprite->setPosition( ccp(windowSize.width / 2, windowSize.height / 2) );
     this->addChild(sprite);
 
