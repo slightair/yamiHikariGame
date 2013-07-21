@@ -187,6 +187,7 @@
 		57FB9F961798B583005D882C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 57FB9F951798B583005D882C /* Default-568h@2x.png */; };
 		57FB9F9D179A5C2F005D882C /* default in Resources */ = {isa = PBXBuildFile; fileRef = 57FB9F9B179A5C2F005D882C /* default */; };
 		57FB9F9E179A5C2F005D882C /* ios-hd in Resources */ = {isa = PBXBuildFile; fileRef = 57FB9F9C179A5C2F005D882C /* ios-hd */; };
+		57FB9FA1179BE459005D882C /* Monster.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57FB9F9F179BE458005D882C /* Monster.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -595,6 +596,8 @@
 		57FB9F951798B583005D882C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		57FB9F9B179A5C2F005D882C /* default */ = {isa = PBXFileReference; lastKnownFileType = folder; name = default; path = Resources/default; sourceTree = "<group>"; };
 		57FB9F9C179A5C2F005D882C /* ios-hd */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "ios-hd"; path = "Resources/ios-hd"; sourceTree = "<group>"; };
+		57FB9F9F179BE458005D882C /* Monster.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Monster.cpp; path = Classes/Monster.cpp; sourceTree = "<group>"; };
+		57FB9FA0179BE459005D882C /* Monster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Monster.h; path = Classes/Monster.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1497,6 +1500,8 @@
 				5784110B1795895E005732EC /* HelloWorldScene.cpp */,
 				57FB9F8A17959390005D882C /* GameScene.cpp */,
 				57FB9F8B17959390005D882C /* GameScene.h */,
+				57FB9F9F179BE458005D882C /* Monster.cpp */,
+				57FB9FA0179BE459005D882C /* Monster.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1731,6 +1736,7 @@
 				578411091795895E005732EC /* AppDelegate.cpp in Sources */,
 				5784110C1795895E005732EC /* HelloWorldScene.cpp in Sources */,
 				57FB9F8C17959390005D882C /* GameScene.cpp in Sources */,
+				57FB9FA1179BE459005D882C /* Monster.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

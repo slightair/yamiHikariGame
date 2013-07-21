@@ -7,6 +7,7 @@
 //
 
 #include "GameScene.h"
+#include "Monster.h"
 
 #define chipSize 16
 
@@ -42,9 +43,11 @@ bool GameScene::init()
         }
     }
 
-    CCSprite *sprite = CCSprite::create("monster.png");
-    sprite->setPosition( ccp(windowSize.width / 2, windowSize.height / 2) );
-    this->addChild(sprite);
+    Monster *monster = (Monster *)Monster::create("monster.png");
+    monster->setPosition(ccp(windowSize.width / 2, windowSize.height - monster->getContentSize().height));
+    this->addChild(monster);
+
+    monster->startAnimation();
 
     return true;
 }
