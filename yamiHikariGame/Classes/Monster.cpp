@@ -16,8 +16,6 @@
 #define kSwingWidth 40
 #define kEasingRate 1.2
 
-using namespace cocos2d;
-
 void Monster::startAnimation()
 {
     this->setScale(kExpandScale);

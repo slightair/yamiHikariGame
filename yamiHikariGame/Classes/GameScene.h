@@ -10,14 +10,23 @@
 #define __yamiHikariGame__GameScene__
 
 #include "cocos2d.h"
+#include "Monster.h"
 
-class GameScene : public cocos2d::CCLayer
+using namespace cocos2d;
+
+class GameScene : public CCLayer
 {
 protected:
-    cocos2d::CCSpriteBatchNode *backgroundNode;
+    CCNode *_backgroundMainNode;
+    CCSpriteBatchNode *_backgroundNode1;
+    CCSpriteBatchNode *_backgroundNode2;
+    Monster *_monster;
+
+    CCSpriteBatchNode *createBackgroundNode();
 public:
     virtual bool init();
-    static cocos2d::CCScene* scene();
+    virtual void update(float delta);
+    static CCScene* scene();
     CREATE_FUNC(GameScene);
 };
 

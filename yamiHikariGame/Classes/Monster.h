@@ -11,7 +11,9 @@
 
 #include "cocos2d.h"
 
-class Monster : public cocos2d::CCSprite
+using namespace cocos2d;
+
+class Monster : public CCSprite
 {
 protected:
     void runSwingSequence();
