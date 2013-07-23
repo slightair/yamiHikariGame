@@ -11,6 +11,7 @@
 
 #include "cocos2d.h"
 #include "Monster.h"
+#include "Brave.h"
 
 using namespace cocos2d;
 
@@ -21,6 +22,7 @@ protected:
     CCSpriteBatchNode *_backgroundNode1;
     CCSpriteBatchNode *_backgroundNode2;
     Monster *_monster;
+    Brave *_brave;
 
     CCSpriteBatchNode *createBackgroundNode();
 public:

@@ -188,6 +188,7 @@
 		57FB9F9D179A5C2F005D882C /* default in Resources */ = {isa = PBXBuildFile; fileRef = 57FB9F9B179A5C2F005D882C /* default */; };
 		57FB9F9E179A5C2F005D882C /* ios-hd in Resources */ = {isa = PBXBuildFile; fileRef = 57FB9F9C179A5C2F005D882C /* ios-hd */; };
 		57FB9FA1179BE459005D882C /* Monster.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57FB9F9F179BE458005D882C /* Monster.cpp */; };
+		57FB9FA7179D720A005D882C /* Brave.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57FB9FA5179D720A005D882C /* Brave.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -598,6 +599,8 @@
 		57FB9F9C179A5C2F005D882C /* ios-hd */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "ios-hd"; path = "Resources/ios-hd"; sourceTree = "<group>"; };
 		57FB9F9F179BE458005D882C /* Monster.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Monster.cpp; path = Classes/Monster.cpp; sourceTree = "<group>"; };
 		57FB9FA0179BE459005D882C /* Monster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Monster.h; path = Classes/Monster.h; sourceTree = "<group>"; };
+		57FB9FA5179D720A005D882C /* Brave.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Brave.cpp; path = Classes/Brave.cpp; sourceTree = "<group>"; };
+		57FB9FA6179D720A005D882C /* Brave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Brave.h; path = Classes/Brave.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1502,6 +1505,8 @@
 				57FB9F8B17959390005D882C /* GameScene.h */,
 				57FB9F9F179BE458005D882C /* Monster.cpp */,
 				57FB9FA0179BE459005D882C /* Monster.h */,
+				57FB9FA5179D720A005D882C /* Brave.cpp */,
+				57FB9FA6179D720A005D882C /* Brave.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1737,6 +1742,7 @@
 				5784110C1795895E005732EC /* HelloWorldScene.cpp in Sources */,
 				57FB9F8C17959390005D882C /* GameScene.cpp in Sources */,
 				57FB9FA1179BE459005D882C /* Monster.cpp in Sources */,
+				57FB9FA7179D720A005D882C /* Brave.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

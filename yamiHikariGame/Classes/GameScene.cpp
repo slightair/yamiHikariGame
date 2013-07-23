@@ -43,7 +43,12 @@ bool GameScene::init()
     _monster->setPosition(ccp(windowSize.width / 2, windowSize.height - _monster->getContentSize().height));
     this->addChild(_monster);
 
+    _brave = Brave::create("brave.png");
+    _brave->setPosition(ccp(windowSize.width / 2, windowSize.height - _monster->getContentSize().height * 2 - _brave->getContentSize().height / 2));
+    this->addChild(_brave);
+
     _monster->startAnimation();
+    _brave->startAnimation();
 
     this->scheduleUpdate();
 
