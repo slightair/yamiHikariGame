@@ -75,6 +75,51 @@ void GameScene::update(float delta)
     }
 }
 
+void GameScene::onEnter()
+{
+    CCLayer::onEnter();
+
+    CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
+}
+
+void GameScene::onExit()
+{
+    CCDirector::sharedDirector()->getTouchDispatcher()->removeDelegate(this);
+
+    CCLayer::onExit();
+}
+
+bool GameScene::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
+{
+    _touchedLocation = pTouch->getLocationInView();
+
+    return true;
+}
+
+void GameScene::ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent)
+{
+    CCPoint location = pTouch->getLocationInView();
+    float distance = location.x - _touchedLocation.x;
+
+#warning debug
+    CCLog("%f, %f", location.x, location.y);
+    CCLog("dist => %f", distance);
+
+    _brave->moveX(distance);
+
+    _touchedLocation = location;
+}
+
+void GameScene::ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent)
+{
+
+}
+
+void GameScene::ccTouchCancelled(CCTouch *pTouch, CCEvent *pEvent)
+{
+
+}
+
 CCSpriteBatchNode *GameScene::createBackgroundNode()
 {
     CCSize windowSize = CCDirector::sharedDirector()->getWinSize();

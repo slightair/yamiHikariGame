@@ -59,3 +59,18 @@ void Brave::runRunningSequence()
                                             NULL);
     _characterSprite->runAction(action);
 }
+
+void Brave::moveX(float delta)
+{
+    CCSize windowSize = CCDirector::sharedDirector()->getWinSize();
+    CCPoint nextPosition = ccpAdd(this->getPosition(), ccp(delta, 0));
+
+    if (nextPosition.x < 0) {
+        nextPosition.x = 0;
+    }
+    else if (nextPosition.x > windowSize.width) {
+        nextPosition.x = windowSize.width;
+    }
+
+    this->setPosition(nextPosition);
+}

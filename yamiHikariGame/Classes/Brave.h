@@ -24,6 +24,7 @@ protected:
 public:
     static Brave *create(const char *pszFileName);
     void startAnimation();
+    void moveX(float delta);
 };
 
 #endif /* defined(__yamiHikariGame__Brave__) */

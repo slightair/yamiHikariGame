@@ -23,11 +23,18 @@ protected:
     CCSpriteBatchNode *_backgroundNode2;
     Monster *_monster;
     Brave *_brave;
+    CCPoint _touchedLocation;
 
     CCSpriteBatchNode *createBackgroundNode();
 public:
     virtual bool init();
     virtual void update(float delta);
+    virtual void onEnter();
+    virtual void onExit();
+    virtual bool ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent);
+    virtual void ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent);
+    virtual void ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent);
+    virtual void ccTouchCancelled(CCTouch *pTouch, CCEvent *pEvent);
     static CCScene* scene();
     CREATE_FUNC(GameScene);
 };
