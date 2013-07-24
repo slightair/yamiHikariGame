@@ -39,7 +39,7 @@ bool GameScene::init()
     _backgroundNode2->setPosition(ccp(0, windowSize.height));
     _backgroundMainNode->addChild(_backgroundNode2);
 
-    _monster = (Monster *)Monster::create("monster.png");
+    _monster = Monster::create("monster.png");
     _monster->setPosition(ccp(windowSize.width / 2, windowSize.height - _monster->getContentSize().height));
     this->addChild(_monster);
 
@@ -73,6 +73,8 @@ void GameScene::update(float delta)
     if (yPosition > windowSize.height) {
         _backgroundNode2->setPosition(ccpAdd(_backgroundNode2->getPosition(), ccp(0, -windowSize.height * 2)));
     }
+
+    _monster->followBrave(_brave->getPosition(), delta);
 }
 
 void GameScene::onEnter()

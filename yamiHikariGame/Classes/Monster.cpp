@@ -12,43 +12,73 @@
 #define kDefaultScale 1.0
 #define kWeakOpacity 0x99
 #define kDefaultOpacity 0xff
-#define kSwingDuration 0.5f
-#define kSwingWidth 40
-#define kEasingRate 1.2
+#define kEffectDuration 0.5f
+
+Monster *Monster::create(const char *pszFileName)
+{
+    Monster *monster = new Monster();
+    if (monster && monster->init(pszFileName))
+    {
+        monster->autorelease();
+        return monster;
+    }
+    CC_SAFE_DELETE(monster);
+    return NULL;
+}
+
+bool Monster::init(const char *pszFileName)
+{
+    _characterSprite = CCSprite::create(pszFileName);
+    this->setContentSize(_characterSprite->getContentSize());
+    this->addChild(_characterSprite);
+
+    return true;
+}
 
 void Monster::startAnimation()
 {
-    this->setScale(kExpandScale);
-    this->setOpacity(kWeakOpacity);
+    _characterSprite->setScale(kExpandScale);
+    _characterSprite->setOpacity(kWeakOpacity);
 
-    this->runSwingSequence();
+    this->runEffectSequence();
 }
 
-void Monster::runSwingSequence()
+void Monster::runEffectSequence()
 {
-    CCScaleTo *expandAction1   = CCScaleTo::create(kSwingDuration, kExpandScale);
-    CCScaleTo *contractAction1 = CCScaleTo::create(kSwingDuration, kDefaultScale);
-    CCScaleTo *expandAction2   = CCScaleTo::create(kSwingDuration, kExpandScale);
-    CCScaleTo *contractAction2 = CCScaleTo::create(kSwingDuration, kDefaultScale);
+    CCScaleTo *expandAction1   = CCScaleTo::create(kEffectDuration, kExpandScale);
+    CCScaleTo *contractAction1 = CCScaleTo::create(kEffectDuration, kDefaultScale);
+    CCScaleTo *expandAction2   = CCScaleTo::create(kEffectDuration, kExpandScale);
+    CCScaleTo *contractAction2 = CCScaleTo::create(kEffectDuration, kDefaultScale);
 
-    CCFadeTo *fadeToWeak1   = CCFadeTo::create(kSwingDuration, kWeakOpacity);
-    CCFadeTo *fadeToStrong1 = CCFadeTo::create(kSwingDuration, kDefaultOpacity);
-    CCFadeTo *fadeToWeak2   = CCFadeTo::create(kSwingDuration, kWeakOpacity);
-    CCFadeTo *fadeToStrong2 = CCFadeTo::create(kSwingDuration, kDefaultOpacity);
+    CCFadeTo *fadeToWeak1   = CCFadeTo::create(kEffectDuration, kWeakOpacity);
+    CCFadeTo *fadeToStrong1 = CCFadeTo::create(kEffectDuration, kDefaultOpacity);
+    CCFadeTo *fadeToWeak2   = CCFadeTo::create(kEffectDuration, kWeakOpacity);
+    CCFadeTo *fadeToStrong2 = CCFadeTo::create(kEffectDuration, kDefaultOpacity);
 
-    CCMoveBy *toRight   = CCMoveBy::create(kSwingDuration, ccp( kSwingWidth / 2, 0));
-    CCMoveBy *toCenter1 = CCMoveBy::create(kSwingDuration, ccp(-kSwingWidth / 2, 0));
-    CCMoveBy *toLeft    = CCMoveBy::create(kSwingDuration, ccp(-kSwingWidth / 2, 0));
-    CCMoveBy *toCenter2 = CCMoveBy::create(kSwingDuration, ccp( kSwingWidth / 2, 0));
-
-    CCCallFuncN *callNextSequence = CCCallFuncN::create(this, callfuncN_selector(Monster::runSwingSequence));
+    CCCallFuncN *callNextSequence = CCCallFuncN::create(this, callfuncN_selector(Monster::runEffectSequence));
 
     CCSequence *action = CCSequence::create(
-                                            CCSpawn::create(contractAction1, fadeToStrong1, CCEaseIn::create(toRight, kEasingRate),    NULL),
-                                            CCSpawn::create(expandAction1,   fadeToWeak1,   CCEaseOut::create(toCenter1, kEasingRate), NULL),
-                                            CCSpawn::create(contractAction2, fadeToStrong2, CCEaseIn::create(toLeft, kEasingRate),     NULL),
-                                            CCSpawn::create(expandAction2,   fadeToWeak2,   CCEaseOut::create(toCenter2, kEasingRate), NULL),
+                                            CCSpawn::create(contractAction1, fadeToStrong1, NULL),
+                                            CCSpawn::create(expandAction1,   fadeToWeak1,   NULL),
+                                            CCSpawn::create(contractAction2, fadeToStrong2, NULL),
+                                            CCSpawn::create(expandAction2,   fadeToWeak2,   NULL),
                                             callNextSequence,
                                             NULL);
-    this->runAction(action);
+    _characterSprite->runAction(action);
+}
+
+void Monster::followBrave(CCPoint bravePosition, float delta)
+{
+    CCSize windowSize = CCDirector::sharedDirector()->getWinSize();
+    float monsterSpeedHorizontal = windowSize.width / 2 * (bravePosition.x < this->getPosition().x ? -1 : 1);
+    CCPoint nextPosition = ccpAdd(this->getPosition(), ccpMult(ccp(monsterSpeedHorizontal, 0), delta));
+
+    if (monsterSpeedHorizontal < 0 && nextPosition.x < bravePosition.x) {
+        nextPosition.x = bravePosition.x;
+    }
+    else if (monsterSpeedHorizontal > 0 && nextPosition.x > bravePosition.x) {
+        nextPosition.x = bravePosition.x;
+    }
+
+    this->setPosition(nextPosition);
 }

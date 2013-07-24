@@ -13,12 +13,17 @@
 
 using namespace cocos2d;
 
-class Monster : public CCSprite
+class Monster : public CCNodeRGBA
 {
 protected:
-    void runSwingSequence();
+    CCSprite *_characterSprite;
+
+    bool init(const char *pszFileName);
+    void runEffectSequence();
 public:
+    static Monster *create(const char *pszFileName);
     void startAnimation();
+    void followBrave(CCPoint bravePosition, float delta);
 };
 
 #endif /* defined(__yamiHikariGame__Monster__) */
