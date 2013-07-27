@@ -1,0 +1,10 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    plist (3.1.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  plist

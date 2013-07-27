@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>desc_ja</key>
+		<string>ちょっとひかっている。まだがんばれそうなきがする。</string>
+		<key>image</key>
+		<string>tikuwa.png</string>
+		<key>name_ja</key>
+		<string>いいちくわ</string>
+		<key>score</key>
+		<integer>100</integer>
+		<key>stamina</key>
+		<integer>10</integer>
+	</dict>
+</array>
+</plist>

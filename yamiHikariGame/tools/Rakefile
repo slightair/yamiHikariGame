@@ -1,0 +1,32 @@
+# encoding: utf-8
+
+require 'yaml'
+require 'json'
+require 'plist'
+
+RESOURCES_DIR = '../Resources'
+
+task :default => "settings:dropItemSettings"
+
+namespace "settings" do
+  DROP_ITEM_SETTINGS_FILENAME = 'dropItems.plist'
+  
+  desc "generate #{DROP_ITEM_SETTINGS_FILENAME}"
+  task :dropItemSettings do
+    File.open(File.join(RESOURCES_DIR, DROP_ITEM_SETTINGS_FILENAME), "w") do |file|
+      file << items.to_plist
+    end
+  end
+  
+  def items
+    [
+      {
+        name_ja: 'いいちくわ',
+        desc_ja: 'ちょっとひかっている。まだがんばれそうなきがする。',
+        image: "tikuwa.png",
+        stamina: 10,
+        score: 100
+      }
+    ]
+  end
+end
