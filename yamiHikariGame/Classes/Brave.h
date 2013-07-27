@@ -19,10 +19,10 @@ protected:
     CCSprite *_characterSprite;
     CCParticleSystem *_dustParticleSystem;
 
-    bool init(const char *pszFileName);
+    bool initWithSpriteFrameName(const char *pszSpriteFrameName);
     void runRunningSequence();
 public:
-    static Brave *create(const char *pszFileName);
+    static Brave *createWithSpriteFrameName(const char *pszSpriteFrameName);
     void startAnimation();
     void moveX(float delta);
 };

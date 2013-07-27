@@ -11,10 +11,10 @@
 #define kShakeDuration 0.05
 #define kShakeAngle 5
 
-Brave *Brave::create(const char *pszFileName)
+Brave *Brave::createWithSpriteFrameName(const char *pszSpriteFrameName)
 {
     Brave *brave = new Brave();
-    if (brave && brave->init(pszFileName))
+    if (brave && brave->initWithSpriteFrameName(pszSpriteFrameName))
     {
         brave->autorelease();
         return brave;
@@ -23,13 +23,13 @@ Brave *Brave::create(const char *pszFileName)
     return NULL;
 }
 
-bool Brave::init(const char *pszFileName)
+bool Brave::initWithSpriteFrameName(const char *pszSpriteFrameName)
 {
     _dustParticleSystem = CCParticleSystemQuad::create("dust.plist");
     _dustParticleSystem->setPosition(ccp(0, 0));
     this->addChild(_dustParticleSystem);
 
-    _characterSprite = CCSprite::create(pszFileName);
+    _characterSprite = CCSprite::createWithSpriteFrameName(pszSpriteFrameName);
     this->setContentSize(_characterSprite->getContentSize());
 
     this->addChild(_characterSprite);

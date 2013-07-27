@@ -10,6 +10,7 @@
 
 #define kChipSize 16
 #define kChipColorLevel 32
+#define kSpriteSheetImageFileName "spriteSheet.pvr.ccz"
 
 CCScene* GameScene::scene()
 {
@@ -31,7 +32,7 @@ bool GameScene::init()
 
     _worldNode = CCNode::create();
 
-    _backgroundMainNode = CCNode::create();
+    _backgroundMainNode = CCLayerColor::create();
 
     _backgroundNode1 = this->createBackgroundNode();
     _backgroundMainNode->addChild(_backgroundNode1);
@@ -40,13 +41,11 @@ bool GameScene::init()
     _backgroundNode2->setPosition(ccp(0, windowSize.height));
     _backgroundMainNode->addChild(_backgroundNode2);
 
-    _worldNode->addChild(_backgroundMainNode);
-
-    _monster = Monster::create("monster.png");
+    _monster = Monster::createWithSpriteFrameName("monster.png");
     _monster->setPosition(ccp(windowSize.width / 2, windowSize.height - _monster->getContentSize().height));
     _worldNode->addChild(_monster);
 
-    _brave = Brave::create("brave.png");
+    _brave = Brave::createWithSpriteFrameName("brave.png");
     _brave->setPosition(ccp(windowSize.width / 2, windowSize.height - _monster->getContentSize().height * 2 - _brave->getContentSize().height / 2));
     _worldNode->addChild(_brave);
 
@@ -55,6 +54,7 @@ bool GameScene::init()
     _monster->startAnimation();
     _brave->startAnimation();
 
+    this->addChild(_backgroundMainNode);
     this->addChild(_worldNode);
     this->addChild(_darknessNode);
 
@@ -134,12 +134,12 @@ void GameScene::ccTouchCancelled(CCTouch *pTouch, CCEvent *pEvent)
 CCSpriteBatchNode *GameScene::createBackgroundNode()
 {
     CCSize windowSize = CCDirector::sharedDirector()->getWinSize();
-    CCSpriteBatchNode *backgroundNode = CCSpriteBatchNode::create("chip.png");
+    CCSpriteBatchNode *backgroundNode = CCSpriteBatchNode::create(kSpriteSheetImageFileName);
 
     for (int y = 0; y < windowSize.height * 1.0 / kChipSize; y++) {
         for (int x = 0; x < windowSize.width * 1.0 / kChipSize; x++) {
-            CCSprite *tile = CCSprite::createWithTexture(backgroundNode->getTexture());
-            GLubyte chipColorOffset = 255 - rand() % kChipColorLevel;
+            CCSprite *tile = CCSprite::createWithSpriteFrameName("chip.png");
+            GLubyte chipColorOffset = 0xff - rand() % kChipColorLevel;
             tile->setColor((ccColor3B){chipColorOffset, chipColorOffset, chipColorOffset});
             tile->setAnchorPoint(ccp(0, 0));
             tile->setPosition(ccp(x * kChipSize, y * kChipSize));

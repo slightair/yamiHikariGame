@@ -22,7 +22,7 @@ protected:
     Darkness *_darknessNode;
     CCNode *_worldNode;
 
-    CCNode *_backgroundMainNode;
+    CCLayerColor *_backgroundMainNode;
     CCSpriteBatchNode *_backgroundNode1;
     CCSpriteBatchNode *_backgroundNode2;
 

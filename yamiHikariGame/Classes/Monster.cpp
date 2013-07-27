@@ -14,10 +14,10 @@
 #define kDefaultOpacity 0xff
 #define kEffectDuration 0.5f
 
-Monster *Monster::create(const char *pszFileName)
+Monster *Monster::createWithSpriteFrameName(const char *pszSpriteFrameName)
 {
     Monster *monster = new Monster();
-    if (monster && monster->init(pszFileName))
+    if (monster && monster->initWithSpriteFrameName(pszSpriteFrameName))
     {
         monster->autorelease();
         return monster;
@@ -26,9 +26,9 @@ Monster *Monster::create(const char *pszFileName)
     return NULL;
 }
 
-bool Monster::init(const char *pszFileName)
+bool Monster::initWithSpriteFrameName(const char *pszSpriteFrameName)
 {
-    _characterSprite = CCSprite::create(pszFileName);
+    _characterSprite = CCSprite::createWithSpriteFrameName(pszSpriteFrameName);
     this->setContentSize(_characterSprite->getContentSize());
     this->addChild(_characterSprite);
 

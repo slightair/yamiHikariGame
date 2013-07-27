@@ -18,10 +18,10 @@ class Monster : public CCNodeRGBA
 protected:
     CCSprite *_characterSprite;
 
-    bool init(const char *pszFileName);
+    bool initWithSpriteFrameName(const char *pszSpriteFrameName);
     void runEffectSequence();
 public:
-    static Monster *create(const char *pszFileName);
+    static Monster *createWithSpriteFrameName(const char *pszSpriteFrameName);
     void startAnimation();
     void followBrave(CCPoint bravePosition, float delta);
 };
