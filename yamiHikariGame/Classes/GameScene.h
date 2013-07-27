@@ -21,6 +21,7 @@ class GameScene : public CCLayer
 protected:
     Darkness *_darknessNode;
     CCNode *_worldNode;
+    CCSpriteBatchNode *_itemsNode;
 
     CCLayerColor *_backgroundMainNode;
     CCSpriteBatchNode *_backgroundNode1;
@@ -32,6 +33,7 @@ protected:
     CCPoint _touchedLocation;
 
     CCSpriteBatchNode *createBackgroundNode();
+    void dropItem();
 public:
     virtual void update(float delta);
     virtual void onEnter();

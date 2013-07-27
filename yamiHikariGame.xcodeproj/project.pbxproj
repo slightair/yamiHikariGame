@@ -183,6 +183,8 @@
 		578410431795895C005732EC /* CCTableView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 578410421795895C005732EC /* CCTableView.cpp */; };
 		578410461795895C005732EC /* CCTableViewCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 578410451795895C005732EC /* CCTableViewCell.cpp */; };
 		578411091795895E005732EC /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 578411081795895E005732EC /* AppDelegate.cpp */; };
+		5790434F17A41A7A004A2208 /* DropItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5790434D17A41A7A004A2208 /* DropItem.cpp */; };
+		5790435117A425D2004A2208 /* dropItems.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5790435017A425D2004A2208 /* dropItems.plist */; };
 		57FB9F8C17959390005D882C /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57FB9F8A17959390005D882C /* GameScene.cpp */; };
 		57FB9F961798B583005D882C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 57FB9F951798B583005D882C /* Default-568h@2x.png */; };
 		57FB9F9D179A5C2F005D882C /* default in Resources */ = {isa = PBXBuildFile; fileRef = 57FB9F9B179A5C2F005D882C /* default */; };
@@ -592,6 +594,9 @@
 		578411051795895E005732EC /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		578411071795895E005732EC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = "<group>"; };
 		578411081795895E005732EC /* AppDelegate.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AppDelegate.cpp; path = Classes/AppDelegate.cpp; sourceTree = "<group>"; };
+		5790434D17A41A7A004A2208 /* DropItem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DropItem.cpp; path = Classes/DropItem.cpp; sourceTree = "<group>"; };
+		5790434E17A41A7A004A2208 /* DropItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DropItem.h; path = Classes/DropItem.h; sourceTree = "<group>"; };
+		5790435017A425D2004A2208 /* dropItems.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = dropItems.plist; path = Resources/dropItems.plist; sourceTree = "<group>"; };
 		57FB9F8A17959390005D882C /* GameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameScene.cpp; path = Classes/GameScene.cpp; sourceTree = "<group>"; };
 		57FB9F8B17959390005D882C /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameScene.h; path = Classes/GameScene.h; sourceTree = "<group>"; };
 		57FB9F951798B583005D882C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -673,6 +678,7 @@
 			children = (
 				57FB9F951798B583005D882C /* Default-568h@2x.png */,
 				57840D8D17958956005732EC /* Info.plist */,
+				5790435017A425D2004A2208 /* dropItems.plist */,
 				57FB9F9B179A5C2F005D882C /* default */,
 				57FB9F9C179A5C2F005D882C /* ios-hd */,
 			);
@@ -1507,6 +1513,8 @@
 				57FB9FA6179D720A005D882C /* Brave.h */,
 				5706B3FD17A0AC3C00BD1015 /* Darkness.cpp */,
 				5706B3FE17A0AC3C00BD1015 /* Darkness.h */,
+				5790434D17A41A7A004A2208 /* DropItem.cpp */,
+				5790434E17A41A7A004A2208 /* DropItem.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1566,6 +1574,7 @@
 				57FB9F961798B583005D882C /* Default-568h@2x.png in Resources */,
 				57FB9F9D179A5C2F005D882C /* default in Resources */,
 				57FB9F9E179A5C2F005D882C /* ios-hd in Resources */,
+				5790435117A425D2004A2208 /* dropItems.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1743,6 +1752,7 @@
 				57FB9FA1179BE459005D882C /* Monster.cpp in Sources */,
 				57FB9FA7179D720A005D882C /* Brave.cpp in Sources */,
 				5706B3FF17A0AC3C00BD1015 /* Darkness.cpp in Sources */,
+				5790434F17A41A7A004A2208 /* DropItem.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1819,21 +1829,25 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = yamiHikariGame/Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					DEBUG,
+					"COCOS2D_DEBUG=1",
+					USE_FILE32API,
+					CC_TARGET_OS_IPHONE,
+				);
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				INFOPLIST_FILE = yamiHikariGame/Resources/Info.plist;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/yamiHikariGame/libs/cocos2dx/platform/third_party/ios/libraries\"",
-					"\"$(SRCROOT)/yamiHikariGame/libs/libwebsockets/ios/lib\"",
 				);
 				OTHER_LDFLAGS = (
 					"-lxml2",
 					"-lz",
 					"-lsqlite3",
-					"-websockets",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "\"yamiHikariGame/libs/Chipmunk/include/chipmunk\"";
+				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1845,21 +1859,24 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = yamiHikariGame/Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					NDEBUG,
+					USE_FILE32API,
+					CC_TARGET_OS_IPHONE,
+				);
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				INFOPLIST_FILE = yamiHikariGame/Resources/Info.plist;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/yamiHikariGame/libs/cocos2dx/platform/third_party/ios/libraries\"",
-					"\"$(SRCROOT)/yamiHikariGame/libs/libwebsockets/ios/lib\"",
 				);
 				OTHER_LDFLAGS = (
 					"-lxml2",
 					"-lz",
 					"-lsqlite3",
-					"-websockets",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "\"yamiHikariGame/libs/Chipmunk/include/chipmunk\"";
+				USER_HEADER_SEARCH_PATHS = "";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};

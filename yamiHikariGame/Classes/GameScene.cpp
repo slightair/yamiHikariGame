@@ -7,10 +7,13 @@
 //
 
 #include "GameScene.h"
+#include "DropItem.h"
 
 #define kChipSize 16
 #define kChipColorLevel 32
 #define kSpriteSheetImageFileName "spriteSheet.pvr.ccz"
+#define kDropItemInterval 0.2
+#define kEmergedAreaHorizontalMarginRate 0.1
 
 CCScene* GameScene::scene()
 {
@@ -50,8 +53,6 @@ void GameScene::onEnter()
 
     CCSize windowSize = CCDirector::sharedDirector()->getWinSize();
 
-    _worldNode = CCNode::create();
-
     _backgroundMainNode = CCLayerColor::create();
 
     _backgroundNode1 = this->createBackgroundNode();
@@ -60,6 +61,11 @@ void GameScene::onEnter()
     _backgroundNode2 = this->createBackgroundNode();
     _backgroundNode2->setPosition(ccp(0, windowSize.height));
     _backgroundMainNode->addChild(_backgroundNode2);
+
+    _worldNode = CCNode::create();
+
+    _itemsNode = CCSpriteBatchNode::create(kSpriteSheetImageFileName);
+    _worldNode->addChild(_itemsNode);
 
     _monster = Monster::createWithSpriteFrameName("monster.png");
     _monster->setPosition(ccp(windowSize.width / 2, windowSize.height - _monster->getContentSize().height));
@@ -86,6 +92,8 @@ void GameScene::onEnterTransitionDidFinish()
 
     _monster->startAnimation();
     _brave->startAnimation();
+
+    this->schedule(schedule_selector(GameScene::dropItem), kDropItemInterval);
 }
 
 void GameScene::onExit()
@@ -144,4 +152,17 @@ CCSpriteBatchNode *GameScene::createBackgroundNode()
     }
 
     return backgroundNode;
+}
+
+void GameScene::dropItem()
+{
+    CCSize windowSize = CCDirector::sharedDirector()->getWinSize();
+    float horizontalMargin = windowSize.width * kEmergedAreaHorizontalMarginRate;
+    int emergedAreaWidth = windowSize.width - horizontalMargin * 2;
+    float positionX = arc4random() % emergedAreaWidth + horizontalMargin;
+
+    DropItem *item = DropItem::create();
+    item->setPosition(ccp(positionX, -item->getContentSize().height / 2));
+    _itemsNode->addChild(item);
+    item->drop();
 }
