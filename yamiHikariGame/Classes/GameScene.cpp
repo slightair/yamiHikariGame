@@ -29,8 +29,9 @@ bool GameScene::init()
 
     CCSize windowSize = CCDirector::sharedDirector()->getWinSize();
 
+    _worldNode = CCNode::create();
+
     _backgroundMainNode = CCNode::create();
-    this->addChild(_backgroundMainNode);
 
     _backgroundNode1 = this->createBackgroundNode();
     _backgroundMainNode->addChild(_backgroundNode1);
@@ -39,16 +40,23 @@ bool GameScene::init()
     _backgroundNode2->setPosition(ccp(0, windowSize.height));
     _backgroundMainNode->addChild(_backgroundNode2);
 
+    _worldNode->addChild(_backgroundMainNode);
+
     _monster = Monster::create("monster.png");
     _monster->setPosition(ccp(windowSize.width / 2, windowSize.height - _monster->getContentSize().height));
-    this->addChild(_monster);
+    _worldNode->addChild(_monster);
 
     _brave = Brave::create("brave.png");
     _brave->setPosition(ccp(windowSize.width / 2, windowSize.height - _monster->getContentSize().height * 2 - _brave->getContentSize().height / 2));
-    this->addChild(_brave);
+    _worldNode->addChild(_brave);
+
+    _darknessNode = Darkness::create(_brave->getPosition());
 
     _monster->startAnimation();
     _brave->startAnimation();
+
+    this->addChild(_worldNode);
+    this->addChild(_darknessNode);
 
     this->scheduleUpdate();
 
@@ -108,6 +116,7 @@ void GameScene::ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent)
     CCLog("dist => %f", distance);
 
     _brave->moveX(distance);
+    _darknessNode->setLightPosition(_brave->getPosition());
 
     _touchedLocation = location;
 }

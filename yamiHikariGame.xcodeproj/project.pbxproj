@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5706B3FF17A0AC3C00BD1015 /* Darkness.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5706B3FD17A0AC3C00BD1015 /* Darkness.cpp */; };
 		57840D6617958956005732EC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57840D6517958956005732EC /* QuartzCore.framework */; };
 		57840D6817958956005732EC /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57840D6717958956005732EC /* OpenGLES.framework */; };
 		57840D6A17958956005732EC /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57840D6917958956005732EC /* OpenAL.framework */; };
@@ -192,6 +193,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5706B3FD17A0AC3C00BD1015 /* Darkness.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Darkness.cpp; path = Classes/Darkness.cpp; sourceTree = "<group>"; };
+		5706B3FE17A0AC3C00BD1015 /* Darkness.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Darkness.h; path = Classes/Darkness.h; sourceTree = "<group>"; };
 		57840D6217958956005732EC /* yamiHikariGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = yamiHikariGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57840D6517958956005732EC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		57840D6717958956005732EC /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -1507,6 +1510,8 @@
 				57FB9FA0179BE459005D882C /* Monster.h */,
 				57FB9FA5179D720A005D882C /* Brave.cpp */,
 				57FB9FA6179D720A005D882C /* Brave.h */,
+				5706B3FD17A0AC3C00BD1015 /* Darkness.cpp */,
+				5706B3FE17A0AC3C00BD1015 /* Darkness.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1743,6 +1748,7 @@
 				57FB9F8C17959390005D882C /* GameScene.cpp in Sources */,
 				57FB9FA1179BE459005D882C /* Monster.cpp in Sources */,
 				57FB9FA7179D720A005D882C /* Brave.cpp in Sources */,
+				5706B3FF17A0AC3C00BD1015 /* Darkness.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

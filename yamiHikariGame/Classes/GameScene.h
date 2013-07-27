@@ -12,17 +12,23 @@
 #include "cocos2d.h"
 #include "Monster.h"
 #include "Brave.h"
+#include "Darkness.h"
 
 using namespace cocos2d;
 
 class GameScene : public CCLayer
 {
 protected:
+    Darkness *_darknessNode;
+    CCNode *_worldNode;
+
     CCNode *_backgroundMainNode;
     CCSpriteBatchNode *_backgroundNode1;
     CCSpriteBatchNode *_backgroundNode2;
+
     Monster *_monster;
     Brave *_brave;
+
     CCPoint _touchedLocation;
 
     CCSpriteBatchNode *createBackgroundNode();
