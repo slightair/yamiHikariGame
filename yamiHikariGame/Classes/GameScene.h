@@ -33,9 +33,9 @@ protected:
 
     CCSpriteBatchNode *createBackgroundNode();
 public:
-    virtual bool init();
     virtual void update(float delta);
     virtual void onEnter();
+    virtual void onEnterTransitionDidFinish();
     virtual void onExit();
     virtual bool ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent);
     virtual void ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent);

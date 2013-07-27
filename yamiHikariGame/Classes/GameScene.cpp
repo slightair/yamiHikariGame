@@ -22,47 +22,6 @@ CCScene* GameScene::scene()
     return scene;
 }
 
-bool GameScene::init()
-{
-    if ( !CCLayer::init() ) {
-        return false;
-    }
-
-    CCSize windowSize = CCDirector::sharedDirector()->getWinSize();
-
-    _worldNode = CCNode::create();
-
-    _backgroundMainNode = CCLayerColor::create();
-
-    _backgroundNode1 = this->createBackgroundNode();
-    _backgroundMainNode->addChild(_backgroundNode1);
-
-    _backgroundNode2 = this->createBackgroundNode();
-    _backgroundNode2->setPosition(ccp(0, windowSize.height));
-    _backgroundMainNode->addChild(_backgroundNode2);
-
-    _monster = Monster::createWithSpriteFrameName("monster.png");
-    _monster->setPosition(ccp(windowSize.width / 2, windowSize.height - _monster->getContentSize().height));
-    _worldNode->addChild(_monster);
-
-    _brave = Brave::createWithSpriteFrameName("brave.png");
-    _brave->setPosition(ccp(windowSize.width / 2, windowSize.height - _monster->getContentSize().height * 2 - _brave->getContentSize().height / 2));
-    _worldNode->addChild(_brave);
-
-    _darknessNode = Darkness::create(_brave->getPosition());
-
-    _monster->startAnimation();
-    _brave->startAnimation();
-
-    this->addChild(_backgroundMainNode);
-    this->addChild(_worldNode);
-    this->addChild(_darknessNode);
-
-    this->scheduleUpdate();
-
-    return true;
-}
-
 void GameScene::update(float delta)
 {
     CCSize windowSize = CCDirector::sharedDirector()->getWinSize();
@@ -89,7 +48,44 @@ void GameScene::onEnter()
 {
     CCLayer::onEnter();
 
+    CCSize windowSize = CCDirector::sharedDirector()->getWinSize();
+
+    _worldNode = CCNode::create();
+
+    _backgroundMainNode = CCLayerColor::create();
+
+    _backgroundNode1 = this->createBackgroundNode();
+    _backgroundMainNode->addChild(_backgroundNode1);
+
+    _backgroundNode2 = this->createBackgroundNode();
+    _backgroundNode2->setPosition(ccp(0, windowSize.height));
+    _backgroundMainNode->addChild(_backgroundNode2);
+
+    _monster = Monster::createWithSpriteFrameName("monster.png");
+    _monster->setPosition(ccp(windowSize.width / 2, windowSize.height - _monster->getContentSize().height));
+    _worldNode->addChild(_monster);
+
+    _brave = Brave::createWithSpriteFrameName("brave.png");
+    _brave->setPosition(ccp(windowSize.width / 2, windowSize.height - _monster->getContentSize().height * 2 - _brave->getContentSize().height / 2));
+    _worldNode->addChild(_brave);
+
+    _darknessNode = Darkness::create(_brave->getPosition());
+
+    this->addChild(_backgroundMainNode);
+    this->addChild(_worldNode);
+    this->addChild(_darknessNode);
+
     CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
+
+    this->scheduleUpdate();
+}
+
+void GameScene::onEnterTransitionDidFinish()
+{
+    CCLayer::onEnterTransitionDidFinish();
+
+    _monster->startAnimation();
+    _brave->startAnimation();
 }
 
 void GameScene::onExit()
