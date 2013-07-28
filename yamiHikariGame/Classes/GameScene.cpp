@@ -17,6 +17,7 @@
 #define kEmergedAreaHorizontalMarginRate 0.1
 #define kCollisionAreaPadding 8
 #define kSEItemGet "SE001.mp3"
+#define kSoundEffectVolume 0.15
 
 CCScene* GameScene::scene()
 {
@@ -70,7 +71,7 @@ void GameScene::onEnter()
 
     CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
     
-    CocosDenshion::SimpleAudioEngine::sharedEngine()->setEffectsVolume(0.15);
+    CocosDenshion::SimpleAudioEngine::sharedEngine()->setEffectsVolume(kSoundEffectVolume);
     CocosDenshion::SimpleAudioEngine::sharedEngine()->preloadEffect(kSEItemGet);
 
     this->scheduleUpdate();
