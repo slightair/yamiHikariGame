@@ -188,6 +188,7 @@
 		578DE66F17A4DE040050CDE4 /* Ground.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 578DE66D17A4DE040050CDE4 /* Ground.cpp */; };
 		5790434F17A41A7A004A2208 /* DropItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5790434D17A41A7A004A2208 /* DropItem.cpp */; };
 		5790435117A425D2004A2208 /* dropItems.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5790435017A425D2004A2208 /* dropItems.plist */; };
+		5793860E17A4F51A008A5BBE /* mosamosa.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5793860D17A4F32F008A5BBE /* mosamosa.ttf */; };
 		57FB9F8C17959390005D882C /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57FB9F8A17959390005D882C /* GameScene.cpp */; };
 		57FB9F961798B583005D882C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 57FB9F951798B583005D882C /* Default-568h@2x.png */; };
 		57FB9F9D179A5C2F005D882C /* default in Resources */ = {isa = PBXBuildFile; fileRef = 57FB9F9B179A5C2F005D882C /* default */; };
@@ -607,6 +608,7 @@
 		5790434D17A41A7A004A2208 /* DropItem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DropItem.cpp; path = Classes/DropItem.cpp; sourceTree = "<group>"; };
 		5790434E17A41A7A004A2208 /* DropItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DropItem.h; path = Classes/DropItem.h; sourceTree = "<group>"; };
 		5790435017A425D2004A2208 /* dropItems.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = dropItems.plist; path = Resources/dropItems.plist; sourceTree = "<group>"; };
+		5793860D17A4F32F008A5BBE /* mosamosa.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = mosamosa.ttf; path = Resources/mosamosa.ttf; sourceTree = "<group>"; };
 		57FB9F8A17959390005D882C /* GameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameScene.cpp; path = Classes/GameScene.cpp; sourceTree = "<group>"; };
 		57FB9F8B17959390005D882C /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameScene.h; path = Classes/GameScene.h; sourceTree = "<group>"; };
 		57FB9F951798B583005D882C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -689,6 +691,7 @@
 				57FB9F951798B583005D882C /* Default-568h@2x.png */,
 				57840D8D17958956005732EC /* Info.plist */,
 				5790435017A425D2004A2208 /* dropItems.plist */,
+				5793860D17A4F32F008A5BBE /* mosamosa.ttf */,
 				57FB9F9B179A5C2F005D882C /* default */,
 				57FB9F9C179A5C2F005D882C /* ios-hd */,
 			);
@@ -1602,6 +1605,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5793860E17A4F51A008A5BBE /* mosamosa.ttf in Resources */,
 				57840E2B17958958005732EC /* ChangeLog in Resources */,
 				57840F9F1795895B005732EC /* project.pbxproj in Resources */,
 				57FB9F961798B583005D882C /* Default-568h@2x.png in Resources */,

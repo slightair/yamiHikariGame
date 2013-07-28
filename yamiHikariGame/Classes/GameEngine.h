@@ -13,7 +13,7 @@
 
 using namespace cocos2d;
 
-class GameEngine
+class GameEngine : public CCObject
 {
 protected:
     bool init();
@@ -23,6 +23,7 @@ protected:
 
 public:
     static GameEngine *sharedEngine();
+    void startNewGame();
 };
 
 #endif /* defined(__yamiHikariGame__GameEngine__) */

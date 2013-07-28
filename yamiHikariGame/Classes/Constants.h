@@ -10,5 +10,7 @@
 #define yamiHikariGame_Constants_h
 
 #define SpriteSheetImageFileName "spriteSheet.pvr.ccz"
+#define DefaultFontName "mosamosa"
+#define DefaultFontSize 24
 
 #endif
