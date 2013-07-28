@@ -13,4 +13,6 @@
 #define DefaultFontName "mosamosa"
 #define DefaultFontSize 24
 
+#define StaminaMax 1000
+
 #endif
