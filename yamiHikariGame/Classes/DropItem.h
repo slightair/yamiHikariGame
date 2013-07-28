@@ -25,6 +25,11 @@ protected:
     int _score;
 public:
     static DropItem *create();
+    const char *getName();
+    const char *getDesc();
+    const char *getImageFileName();
+    int getStamina();
+    int getScore();
     void drop();
 };
 

@@ -13,6 +13,7 @@
 
 #define kDropItemInterval 0.2
 #define kEmergedAreaHorizontalMarginRate 0.1
+#define kCollisionAreaPadding 8
 
 CCScene* GameScene::scene()
 {
@@ -27,6 +28,13 @@ CCScene* GameScene::scene()
 void GameScene::update(float delta)
 {
     _monster->followBrave(_brave->getPosition(), delta);
+
+    CCSize braveSize = _brave->getContentSize();
+    _braveRect = CCRectMake(_brave->getPosition().x - braveSize.width / 2 + kCollisionAreaPadding,
+                            _brave->getPosition().y - braveSize.height / 2 + kCollisionAreaPadding,
+                            braveSize.width - kCollisionAreaPadding * 2,
+                            braveSize.height - kCollisionAreaPadding * 2);
+    collisionCheck();
 }
 
 void GameScene::onEnter()
@@ -120,4 +128,22 @@ void GameScene::dropItem()
     item->setPosition(ccp(positionX, -item->getContentSize().height / 2));
     _itemsNode->addChild(item);
     item->drop();
+}
+
+void GameScene::collisionCheck()
+{
+    DropItem *dropItem = NULL;
+    CCObject *child = NULL;
+    CCARRAY_FOREACH(_itemsNode->getChildren(), child) {
+        dropItem = (DropItem *)child;
+        if (_braveRect.intersectsRect(dropItem->boundingBox())) {
+            CCParticleSystem *starParticle = CCParticleSystemQuad::create("stars.plist");
+            starParticle->setPosition(dropItem->getPosition());
+            starParticle->setAutoRemoveOnFinish(true);
+            this->addChild(starParticle);
+
+            dropItem->stopAllActions();
+            dropItem->removeFromParentAndCleanup(true);
+        }
+    }
 }

@@ -189,6 +189,8 @@
 		5790434F17A41A7A004A2208 /* DropItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5790434D17A41A7A004A2208 /* DropItem.cpp */; };
 		5790435117A425D2004A2208 /* dropItems.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5790435017A425D2004A2208 /* dropItems.plist */; };
 		5793860E17A4F51A008A5BBE /* mosamosa.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5793860D17A4F32F008A5BBE /* mosamosa.ttf */; };
+		5793861117A50CDB008A5BBE /* dust.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5793860F17A50CDB008A5BBE /* dust.plist */; };
+		5793861217A50CDB008A5BBE /* stars.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5793861017A50CDB008A5BBE /* stars.plist */; };
 		57FB9F8C17959390005D882C /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57FB9F8A17959390005D882C /* GameScene.cpp */; };
 		57FB9F961798B583005D882C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 57FB9F951798B583005D882C /* Default-568h@2x.png */; };
 		57FB9F9D179A5C2F005D882C /* default in Resources */ = {isa = PBXBuildFile; fileRef = 57FB9F9B179A5C2F005D882C /* default */; };
@@ -609,6 +611,8 @@
 		5790434E17A41A7A004A2208 /* DropItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DropItem.h; path = Classes/DropItem.h; sourceTree = "<group>"; };
 		5790435017A425D2004A2208 /* dropItems.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = dropItems.plist; path = Resources/dropItems.plist; sourceTree = "<group>"; };
 		5793860D17A4F32F008A5BBE /* mosamosa.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = mosamosa.ttf; path = Resources/mosamosa.ttf; sourceTree = "<group>"; };
+		5793860F17A50CDB008A5BBE /* dust.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = dust.plist; path = Resources/dust.plist; sourceTree = "<group>"; };
+		5793861017A50CDB008A5BBE /* stars.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = stars.plist; path = Resources/stars.plist; sourceTree = "<group>"; };
 		57FB9F8A17959390005D882C /* GameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameScene.cpp; path = Classes/GameScene.cpp; sourceTree = "<group>"; };
 		57FB9F8B17959390005D882C /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameScene.h; path = Classes/GameScene.h; sourceTree = "<group>"; };
 		57FB9F951798B583005D882C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -688,10 +692,11 @@
 		57840D7617958956005732EC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5793861417A50E9C008A5BBE /* Fonts */,
+				5793861317A50E94008A5BBE /* Particles */,
 				57FB9F951798B583005D882C /* Default-568h@2x.png */,
 				57840D8D17958956005732EC /* Info.plist */,
 				5790435017A425D2004A2208 /* dropItems.plist */,
-				5793860D17A4F32F008A5BBE /* mosamosa.ttf */,
 				57FB9F9B179A5C2F005D882C /* default */,
 				57FB9F9C179A5C2F005D882C /* ios-hd */,
 			);
@@ -1555,6 +1560,23 @@
 			name = Objects;
 			sourceTree = "<group>";
 		};
+		5793861317A50E94008A5BBE /* Particles */ = {
+			isa = PBXGroup;
+			children = (
+				5793860F17A50CDB008A5BBE /* dust.plist */,
+				5793861017A50CDB008A5BBE /* stars.plist */,
+			);
+			name = Particles;
+			sourceTree = "<group>";
+		};
+		5793861417A50E9C008A5BBE /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				5793860D17A4F32F008A5BBE /* mosamosa.ttf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1612,6 +1634,8 @@
 				57FB9F9D179A5C2F005D882C /* default in Resources */,
 				57FB9F9E179A5C2F005D882C /* ios-hd in Resources */,
 				5790435117A425D2004A2208 /* dropItems.plist in Resources */,
+				5793861117A50CDB008A5BBE /* dust.plist in Resources */,
+				5793861217A50CDB008A5BBE /* stars.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

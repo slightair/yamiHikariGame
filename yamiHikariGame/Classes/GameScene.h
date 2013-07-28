@@ -29,7 +29,9 @@ protected:
     Brave *_brave;
 
     CCPoint _touchedLocation;
+    CCRect _braveRect;
 
+    void collisionCheck();
     void dropItem();
 public:
     virtual void update(float delta);

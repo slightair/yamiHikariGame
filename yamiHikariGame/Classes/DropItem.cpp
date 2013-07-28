@@ -44,6 +44,31 @@ bool DropItem::init()
     return true;
 }
 
+const char *DropItem::getName()
+{
+    return _nameJa;
+}
+
+const char *DropItem::getDesc()
+{
+    return _descJa;
+}
+
+const char *DropItem::getImageFileName()
+{
+    return _imageFileName;
+}
+
+int DropItem::getStamina()
+{
+    return _stamina;
+}
+
+int DropItem::getScore()
+{
+    return _score;
+}
+
 void DropItem::drop()
 {
     CCSize windowSize = CCDirector::sharedDirector()->getWinSize();
