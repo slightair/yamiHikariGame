@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>3E531CDF-D430-45C9-ACA3-36FB30FC50DF</string>
+	<key>IDESourceControlProjectName</key>
+	<string>yamiHikariGame</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>8D106C33-7B6C-4D60-89FF-6048CFD5FCC2</key>
+		<string>ssh://github.com/slightair/yamiHikariGame.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>yamiHikariGame.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>8D106C33-7B6C-4D60-89FF-6048CFD5FCC2</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/slightair/yamiHikariGame.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>8D106C33-7B6C-4D60-89FF-6048CFD5FCC2</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>8D106C33-7B6C-4D60-89FF-6048CFD5FCC2</string>
+			<key>IDESourceControlWCCName</key>
+			<string>yamiHikariGame</string>
+		</dict>
+	</array>
+</dict>
+</plist>

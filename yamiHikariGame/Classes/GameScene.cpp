@@ -8,7 +8,7 @@
 
 #include "GameScene.h"
 #include "Constants.h"
-
+#include "GameEngine.h"
 #include "DropItem.h"
 
 #define kDropItemInterval 0.2
@@ -46,6 +46,7 @@ void GameScene::onEnter()
     _worldNode = CCNode::create();
     _groundNode = Ground::create();
     _itemsNode = CCSpriteBatchNode::create(SpriteSheetImageFileName);
+    _scoreBoardNode = ScoreBoard::create();
 
     _worldNode->addChild(_groundNode);
     _worldNode->addChild(_itemsNode);
@@ -62,6 +63,7 @@ void GameScene::onEnter()
 
     this->addChild(_worldNode);
     this->addChild(_darknessNode);
+    this->addChild(_scoreBoardNode);
 
     CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
 
@@ -132,6 +134,7 @@ void GameScene::dropItem()
 
 void GameScene::collisionCheck()
 {
+    GameEngine *engine = GameEngine::sharedEngine();
     DropItem *dropItem = NULL;
     CCObject *child = NULL;
     CCARRAY_FOREACH(_itemsNode->getChildren(), child) {
@@ -141,6 +144,8 @@ void GameScene::collisionCheck()
             starParticle->setPosition(dropItem->getPosition());
             starParticle->setAutoRemoveOnFinish(true);
             this->addChild(starParticle);
+
+            engine->addScore(dropItem->getScore());
 
             dropItem->stopAllActions();
             dropItem->removeFromParentAndCleanup(true);

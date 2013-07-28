@@ -14,6 +14,7 @@
 #include "Brave.h"
 #include "Darkness.h"
 #include "Ground.h"
+#include "ScoreBoard.h"
 
 using namespace cocos2d;
 
@@ -24,6 +25,7 @@ protected:
     Ground *_groundNode;
     CCSpriteBatchNode *_itemsNode;
     Darkness *_darknessNode;
+    ScoreBoard *_scoreBoardNode;
 
     Monster *_monster;
     Brave *_brave;

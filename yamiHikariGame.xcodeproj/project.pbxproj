@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5706B3FF17A0AC3C00BD1015 /* Darkness.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5706B3FD17A0AC3C00BD1015 /* Darkness.cpp */; };
+		57206AD917A547F100DB1365 /* ScoreBoard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57206AD717A547F100DB1365 /* ScoreBoard.cpp */; };
 		57840D6617958956005732EC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57840D6517958956005732EC /* QuartzCore.framework */; };
 		57840D6817958956005732EC /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57840D6717958956005732EC /* OpenGLES.framework */; };
 		57840D6A17958956005732EC /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57840D6917958956005732EC /* OpenAL.framework */; };
@@ -202,6 +203,8 @@
 /* Begin PBXFileReference section */
 		5706B3FD17A0AC3C00BD1015 /* Darkness.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Darkness.cpp; path = Classes/Darkness.cpp; sourceTree = "<group>"; };
 		5706B3FE17A0AC3C00BD1015 /* Darkness.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Darkness.h; path = Classes/Darkness.h; sourceTree = "<group>"; };
+		57206AD717A547F100DB1365 /* ScoreBoard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ScoreBoard.cpp; path = Classes/ScoreBoard.cpp; sourceTree = "<group>"; };
+		57206AD817A547F100DB1365 /* ScoreBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScoreBoard.h; path = Classes/ScoreBoard.h; sourceTree = "<group>"; };
 		57840D6217958956005732EC /* yamiHikariGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = yamiHikariGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57840D6517958956005732EC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		57840D6717958956005732EC /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -1556,6 +1559,8 @@
 				5790434E17A41A7A004A2208 /* DropItem.h */,
 				578DE66D17A4DE040050CDE4 /* Ground.cpp */,
 				578DE66E17A4DE040050CDE4 /* Ground.h */,
+				57206AD717A547F100DB1365 /* ScoreBoard.cpp */,
+				57206AD817A547F100DB1365 /* ScoreBoard.h */,
 			);
 			name = Objects;
 			sourceTree = "<group>";
@@ -1801,6 +1806,7 @@
 				5784102A1795895C005732EC /* CCEditBox.cpp in Sources */,
 				5784102F1795895C005732EC /* CCEditBoxImplIOS.mm in Sources */,
 				578410321795895C005732EC /* CCEditBoxImplMac.mm in Sources */,
+				57206AD917A547F100DB1365 /* ScoreBoard.cpp in Sources */,
 				578410341795895C005732EC /* CCEditBoxImplNone.cpp in Sources */,
 				578410361795895C005732EC /* CCEditBoxImplTizen.cpp in Sources */,
 				578410391795895C005732EC /* CCEditBoxImplWin.cpp in Sources */,

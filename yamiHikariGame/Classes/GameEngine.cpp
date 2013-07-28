@@ -30,6 +30,29 @@ bool GameEngine::init()
 
 void GameEngine::startNewGame()
 {
+    _score = 0;
+    _stamina = 0;
+
     CCTransitionFade *transition = CCTransitionFade::create(kTransitionDuration, GameScene::scene());
     CCDirector::sharedDirector()->replaceScene(transition);
+}
+
+int GameEngine::getScore()
+{
+    return _score;
+}
+
+int GameEngine::getStamina()
+{
+    return _stamina;
+}
+
+void GameEngine::addScore(int score)
+{
+    _score += score;
+}
+
+void GameEngine::addStamina(int stamina)
+{
+    _stamina += stamina;
 }

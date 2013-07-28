@@ -16,6 +16,9 @@ using namespace cocos2d;
 class GameEngine : public CCObject
 {
 protected:
+    int _score;
+    int _stamina;
+
     bool init();
     GameEngine(){};
     GameEngine(const GameEngine& rhs);
@@ -24,6 +27,10 @@ protected:
 public:
     static GameEngine *sharedEngine();
     void startNewGame();
+    int getScore();
+    int getStamina();
+    void addScore(int score);
+    void addStamina(int stamina);
 };
 
 #endif /* defined(__yamiHikariGame__GameEngine__) */
