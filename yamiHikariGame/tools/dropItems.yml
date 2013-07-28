@@ -1,0 +1,18 @@
+-
+  name_ja: 'いいちくわ'
+  desc_ja: 'ちょっとひかっている。まだがんばれそうなきがする。'
+  image: "tikuwa.png"
+  stamina: 10
+  score: 100
+-
+  name_ja: 'たからばこ'
+  desc_ja: 'なにかよいものがはいってそうなハコ。'
+  image: "treasurebox01.png"
+  stamina: 10
+  score: 100
+-
+  name_ja: 'マホウセキ'
+  desc_ja: 'スタミナをかいふくしたりガチャをひけるふしぎなアイテム。コンティニューはできない。'
+  image: "magicstone01.png"
+  stamina: 10
+  score: 100
