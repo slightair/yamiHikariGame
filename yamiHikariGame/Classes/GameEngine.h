@@ -24,9 +24,12 @@ protected:
     GameEngine(const GameEngine& rhs);
     GameEngine& operator=(const GameEngine& rhs);
 
+    void tick();
+
 public:
     static GameEngine *sharedEngine();
     void startNewGame();
+    void finishGame();
     int getScore();
     int getStamina();
     void addScore(int score);
