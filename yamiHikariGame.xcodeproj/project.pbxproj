@@ -198,6 +198,7 @@
 		57FB9F9E179A5C2F005D882C /* ios-hd in Resources */ = {isa = PBXBuildFile; fileRef = 57FB9F9C179A5C2F005D882C /* ios-hd */; };
 		57FB9FA1179BE459005D882C /* Monster.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57FB9F9F179BE458005D882C /* Monster.cpp */; };
 		57FB9FA7179D720A005D882C /* Brave.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57FB9FA5179D720A005D882C /* Brave.cpp */; };
+		ECE80D0217A55D2A0038C49D /* SE001.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ECE80D0117A55D2A0038C49D /* SE001.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -625,6 +626,7 @@
 		57FB9FA0179BE459005D882C /* Monster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Monster.h; path = Classes/Monster.h; sourceTree = "<group>"; };
 		57FB9FA5179D720A005D882C /* Brave.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Brave.cpp; path = Classes/Brave.cpp; sourceTree = "<group>"; };
 		57FB9FA6179D720A005D882C /* Brave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Brave.h; path = Classes/Brave.h; sourceTree = "<group>"; };
+		ECE80D0117A55D2A0038C49D /* SE001.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = SE001.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -695,6 +697,7 @@
 		57840D7617958956005732EC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				ECE80D0117A55D2A0038C49D /* SE001.mp3 */,
 				5793861417A50E9C008A5BBE /* Fonts */,
 				5793861317A50E94008A5BBE /* Particles */,
 				57FB9F951798B583005D882C /* Default-568h@2x.png */,
@@ -1641,6 +1644,7 @@
 				5790435117A425D2004A2208 /* dropItems.plist in Resources */,
 				5793861117A50CDB008A5BBE /* dust.plist in Resources */,
 				5793861217A50CDB008A5BBE /* stars.plist in Resources */,
+				ECE80D0217A55D2A0038C49D /* SE001.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
