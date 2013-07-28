@@ -33,6 +33,10 @@ void TitleScene::onEnter()
     monster->setPosition(ccp(windowSize.width / 2, windowSize.height / 2));
     this->addChild(monster);
 
+    CCLabelTTF *titleLabel = CCLabelTTF::create("ヤミからのトウソウ", DefaultFontName, DefaultFontSize);
+    titleLabel->setPosition(ccp(windowSize.width / 2, windowSize.height * 0.8));
+    this->addChild(titleLabel);
+
     CCMenuItem *startGameItem = CCMenuItemLabel::create(CCLabelTTF::create("スタート", DefaultFontName, DefaultFontSize),
                                                         GameEngine::sharedEngine(),
                                                         menu_selector(GameEngine::startNewGame));
