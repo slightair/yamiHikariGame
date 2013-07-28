@@ -10,7 +10,10 @@
 
 #include "cocos2d.h"
 #include "SimpleAudioEngine.h"
+
+#warning debug
 #include "GameScene.h"
+#include "TitleScene.h"
 
 #define kDefaultDesignResolutionWidth 320
 #define kDefaultDesignResolutionHeight 480
@@ -87,7 +90,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("spriteSheet.plist");
 
     // create a scene. it's an autorelease object
-    CCScene *pScene = GameScene::scene();
+    CCScene *pScene = TitleScene::scene();
 
     // run
     pDirector->runWithScene(pScene);

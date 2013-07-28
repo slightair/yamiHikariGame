@@ -7,11 +7,10 @@
 //
 
 #include "GameScene.h"
+#include "Constants.h"
+
 #include "DropItem.h"
 
-#define kChipSize 16
-#define kChipColorLevel 32
-#define kSpriteSheetImageFileName "spriteSheet.pvr.ccz"
 #define kDropItemInterval 0.2
 #define kEmergedAreaHorizontalMarginRate 0.1
 
@@ -27,23 +26,6 @@ CCScene* GameScene::scene()
 
 void GameScene::update(float delta)
 {
-    CCSize windowSize = CCDirector::sharedDirector()->getWinSize();
-    CCPoint backgroundScrollVert = ccp(0, windowSize.height / 2);
-    float yPosition;
-
-    _backgroundNode1->setPosition(ccpAdd(_backgroundNode1->getPosition(), ccpMult(backgroundScrollVert, delta)));
-    _backgroundNode2->setPosition(ccpAdd(_backgroundNode2->getPosition(), ccpMult(backgroundScrollVert, delta)));
-
-    yPosition = _backgroundMainNode->convertToWorldSpace(_backgroundNode1->getPosition()).y;
-    if (yPosition > windowSize.height) {
-        _backgroundNode1->setPosition(ccpAdd(_backgroundNode1->getPosition(), ccp(0, -windowSize.height * 2)));
-    }
-
-    yPosition = _backgroundMainNode->convertToWorldSpace(_backgroundNode2->getPosition()).y;
-    if (yPosition > windowSize.height) {
-        _backgroundNode2->setPosition(ccpAdd(_backgroundNode2->getPosition(), ccp(0, -windowSize.height * 2)));
-    }
-
     _monster->followBrave(_brave->getPosition(), delta);
 }
 
@@ -53,18 +35,11 @@ void GameScene::onEnter()
 
     CCSize windowSize = CCDirector::sharedDirector()->getWinSize();
 
-    _backgroundMainNode = CCLayerColor::create();
-
-    _backgroundNode1 = this->createBackgroundNode();
-    _backgroundMainNode->addChild(_backgroundNode1);
-
-    _backgroundNode2 = this->createBackgroundNode();
-    _backgroundNode2->setPosition(ccp(0, windowSize.height));
-    _backgroundMainNode->addChild(_backgroundNode2);
-
     _worldNode = CCNode::create();
+    _groundNode = Ground::create();
+    _itemsNode = CCSpriteBatchNode::create(SpriteSheetImageFileName);
 
-    _itemsNode = CCSpriteBatchNode::create(kSpriteSheetImageFileName);
+    _worldNode->addChild(_groundNode);
     _worldNode->addChild(_itemsNode);
 
     _monster = Monster::createWithSpriteFrameName("monster.png");
@@ -77,7 +52,6 @@ void GameScene::onEnter()
 
     _darknessNode = Darkness::create(_brave->getPosition());
 
-    this->addChild(_backgroundMainNode);
     this->addChild(_worldNode);
     this->addChild(_darknessNode);
 
@@ -133,25 +107,6 @@ void GameScene::ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent)
 void GameScene::ccTouchCancelled(CCTouch *pTouch, CCEvent *pEvent)
 {
 
-}
-
-CCSpriteBatchNode *GameScene::createBackgroundNode()
-{
-    CCSize windowSize = CCDirector::sharedDirector()->getWinSize();
-    CCSpriteBatchNode *backgroundNode = CCSpriteBatchNode::create(kSpriteSheetImageFileName);
-
-    for (int y = 0; y < windowSize.height * 1.0 / kChipSize; y++) {
-        for (int x = 0; x < windowSize.width * 1.0 / kChipSize; x++) {
-            CCSprite *tile = CCSprite::createWithSpriteFrameName("chip.png");
-            GLubyte chipColorOffset = 0xff - rand() % kChipColorLevel;
-            tile->setColor((ccColor3B){chipColorOffset, chipColorOffset, chipColorOffset});
-            tile->setAnchorPoint(ccp(0, 0));
-            tile->setPosition(ccp(x * kChipSize, y * kChipSize));
-            backgroundNode->addChild(tile);
-        }
-    }
-
-    return backgroundNode;
 }
 
 void GameScene::dropItem()

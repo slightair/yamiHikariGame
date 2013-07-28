@@ -17,8 +17,9 @@ class Darkness : public CCLayerColor
 {
 protected:
     CCDrawNode *_lightNode;
-public:
+
     bool init(CCPoint initialLightPosition);
+public:
     static Darkness *create(CCPoint initialLightPosition);
     void setLightPosition(CCPoint position);
 };

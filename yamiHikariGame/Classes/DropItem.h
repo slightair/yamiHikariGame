@@ -16,8 +16,6 @@ using namespace cocos2d;
 class DropItem : public CCSprite
 {
 protected:
-    static CCArray *itemInfoList;
-
     bool init();
 
     const char *_nameJa;

@@ -8,12 +8,12 @@
 
 #include "DropItem.h"
 
-CCArray *DropItem::itemInfoList = NULL;
+static CCArray *__itemInfoList = NULL;
 
 DropItem *DropItem::create()
 {
-    if (!DropItem::itemInfoList) {
-        DropItem::itemInfoList = CCArray::createWithContentsOfFileThreadSafe("dropItems.plist");
+    if (!__itemInfoList) {
+        __itemInfoList = CCArray::createWithContentsOfFileThreadSafe("dropItems.plist");
     }
 
     DropItem *dropItem = new DropItem();
@@ -28,11 +28,11 @@ DropItem *DropItem::create()
 
 bool DropItem::init()
 {
-    if (!DropItem::itemInfoList) {
+    if (!__itemInfoList) {
         return false;
     }
 
-    CCDictionary *itemInfo = (CCDictionary *)DropItem::itemInfoList->randomObject();
+    CCDictionary *itemInfo = (CCDictionary *)__itemInfoList->randomObject();
     _nameJa = ((CCString *)itemInfo->objectForKey("name_ja"))->getCString();
     _descJa = ((CCString *)itemInfo->objectForKey("desc_ja"))->getCString();
     _imageFileName = ((CCString *)itemInfo->objectForKey("image"))->getCString();

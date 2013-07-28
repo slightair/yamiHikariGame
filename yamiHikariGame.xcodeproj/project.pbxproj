@@ -183,6 +183,9 @@
 		578410431795895C005732EC /* CCTableView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 578410421795895C005732EC /* CCTableView.cpp */; };
 		578410461795895C005732EC /* CCTableViewCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 578410451795895C005732EC /* CCTableViewCell.cpp */; };
 		578411091795895E005732EC /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 578411081795895E005732EC /* AppDelegate.cpp */; };
+		578DE66717A4D7F50050CDE4 /* TitleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 578DE66517A4D7F50050CDE4 /* TitleScene.cpp */; };
+		578DE66C17A4D8E90050CDE4 /* GameEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 578DE66A17A4D8E90050CDE4 /* GameEngine.cpp */; };
+		578DE66F17A4DE040050CDE4 /* Ground.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 578DE66D17A4DE040050CDE4 /* Ground.cpp */; };
 		5790434F17A41A7A004A2208 /* DropItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5790434D17A41A7A004A2208 /* DropItem.cpp */; };
 		5790435117A425D2004A2208 /* dropItems.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5790435017A425D2004A2208 /* dropItems.plist */; };
 		57FB9F8C17959390005D882C /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57FB9F8A17959390005D882C /* GameScene.cpp */; };
@@ -594,6 +597,13 @@
 		578411051795895E005732EC /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		578411071795895E005732EC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = "<group>"; };
 		578411081795895E005732EC /* AppDelegate.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AppDelegate.cpp; path = Classes/AppDelegate.cpp; sourceTree = "<group>"; };
+		578DE66517A4D7F50050CDE4 /* TitleScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TitleScene.cpp; path = Classes/TitleScene.cpp; sourceTree = "<group>"; };
+		578DE66617A4D7F50050CDE4 /* TitleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TitleScene.h; path = Classes/TitleScene.h; sourceTree = "<group>"; };
+		578DE66A17A4D8E90050CDE4 /* GameEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameEngine.cpp; path = Classes/GameEngine.cpp; sourceTree = "<group>"; };
+		578DE66B17A4D8E90050CDE4 /* GameEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameEngine.h; path = Classes/GameEngine.h; sourceTree = "<group>"; };
+		578DE66D17A4DE040050CDE4 /* Ground.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Ground.cpp; path = Classes/Ground.cpp; sourceTree = "<group>"; };
+		578DE66E17A4DE040050CDE4 /* Ground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Ground.h; path = Classes/Ground.h; sourceTree = "<group>"; };
+		578DE67017A4E0A40050CDE4 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = Classes/Constants.h; sourceTree = "<group>"; };
 		5790434D17A41A7A004A2208 /* DropItem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DropItem.cpp; path = Classes/DropItem.cpp; sourceTree = "<group>"; };
 		5790434E17A41A7A004A2208 /* DropItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DropItem.h; path = Classes/DropItem.h; sourceTree = "<group>"; };
 		5790435017A425D2004A2208 /* dropItems.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = dropItems.plist; path = Resources/dropItems.plist; sourceTree = "<group>"; };
@@ -1505,8 +1515,29 @@
 			children = (
 				578411071795895E005732EC /* AppDelegate.h */,
 				578411081795895E005732EC /* AppDelegate.cpp */,
+				578DE67017A4E0A40050CDE4 /* Constants.h */,
+				578DE66A17A4D8E90050CDE4 /* GameEngine.cpp */,
+				578DE66B17A4D8E90050CDE4 /* GameEngine.h */,
+				578DE66917A4D81C0050CDE4 /* Objects */,
+				578DE66817A4D8040050CDE4 /* Scenes */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		578DE66817A4D8040050CDE4 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
 				57FB9F8A17959390005D882C /* GameScene.cpp */,
 				57FB9F8B17959390005D882C /* GameScene.h */,
+				578DE66517A4D7F50050CDE4 /* TitleScene.cpp */,
+				578DE66617A4D7F50050CDE4 /* TitleScene.h */,
+			);
+			name = Scenes;
+			sourceTree = "<group>";
+		};
+		578DE66917A4D81C0050CDE4 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
 				57FB9F9F179BE458005D882C /* Monster.cpp */,
 				57FB9FA0179BE459005D882C /* Monster.h */,
 				57FB9FA5179D720A005D882C /* Brave.cpp */,
@@ -1515,8 +1546,10 @@
 				5706B3FE17A0AC3C00BD1015 /* Darkness.h */,
 				5790434D17A41A7A004A2208 /* DropItem.cpp */,
 				5790434E17A41A7A004A2208 /* DropItem.h */,
+				578DE66D17A4DE040050CDE4 /* Ground.cpp */,
+				578DE66E17A4DE040050CDE4 /* Ground.h */,
 			);
-			name = Classes;
+			name = Objects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1753,6 +1786,9 @@
 				57FB9FA7179D720A005D882C /* Brave.cpp in Sources */,
 				5706B3FF17A0AC3C00BD1015 /* Darkness.cpp in Sources */,
 				5790434F17A41A7A004A2208 /* DropItem.cpp in Sources */,
+				578DE66717A4D7F50050CDE4 /* TitleScene.cpp in Sources */,
+				578DE66C17A4D8E90050CDE4 /* GameEngine.cpp in Sources */,
+				578DE66F17A4DE040050CDE4 /* Ground.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
