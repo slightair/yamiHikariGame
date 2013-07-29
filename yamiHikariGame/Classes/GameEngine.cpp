@@ -12,6 +12,8 @@
 
 #define kTransitionDuration 1.0
 #define kGameTickInterval 0.1
+#define kSurvivePoint 1
+#define kStaminaConsumption 3
 
 static GameEngine *__sharedEngine = NULL;
 
@@ -49,8 +51,8 @@ void GameEngine::finishGame()
 
 void GameEngine::tick()
 {
-    _stamina -= 1;
-    _score += 1;
+    _stamina -= kStaminaConsumption;
+    _score += kSurvivePoint;
 
     if (_stamina <= 0) {
         this->finishGame();

@@ -149,6 +149,7 @@ void GameScene::collisionCheck()
             CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(SEItemGet);
 
             engine->addScore(dropItem->getScore());
+            engine->addStamina(dropItem->getStamina());
 
             dropItem->stopAllActions();
             dropItem->removeFromParentAndCleanup(true);
