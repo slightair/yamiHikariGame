@@ -22,9 +22,9 @@
 		<key>name_ja</key>
 		<string>たからばこ</string>
 		<key>score</key>
-		<integer>100</integer>
+		<integer>500</integer>
 		<key>stamina</key>
-		<integer>10</integer>
+		<integer>0</integer>
 	</dict>
 	<dict>
 		<key>desc_ja</key>
@@ -34,9 +34,21 @@
 		<key>name_ja</key>
 		<string>マホウセキ</string>
 		<key>score</key>
+		<integer>300</integer>
+		<key>stamina</key>
+		<integer>30</integer>
+	</dict>
+	<dict>
+		<key>desc_ja</key>
+		<string>ふだんはムガイだが、ふむとあぶない</string>
+		<key>image</key>
+		<string>snake01.png</string>
+		<key>name_ja</key>
+		<string>ヘビ</string>
+		<key>score</key>
 		<integer>100</integer>
 		<key>stamina</key>
-		<integer>10</integer>
+		<integer>-50</integer>
 	</dict>
 </array>
 </plist>

@@ -8,11 +8,17 @@
   name_ja: 'たからばこ'
   desc_ja: 'なにかよいものがはいってそうなハコ。'
   image: "treasurebox01.png"
-  stamina: 10
-  score: 100
+  stamina: 0
+  score: 500
 -
   name_ja: 'マホウセキ'
   desc_ja: 'スタミナをかいふくしたりガチャをひけるふしぎなアイテム。コンティニューはできない。'
   image: "magicstone01.png"
-  stamina: 10
+  stamina: 30
+  score: 300
+-
+  name_ja: 'ヘビ'
+  desc_ja: 'ふだんはムガイだが、ふむとあぶない'
+  image: "snake01.png"
+  stamina: -50
   score: 100
