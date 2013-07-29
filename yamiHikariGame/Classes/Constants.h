@@ -15,4 +15,7 @@
 
 #define StaminaMax 1000
 
+#define SEItemGet "SE001.mp3"
+#define SoundEffectVolume 0.15
+
 #endif

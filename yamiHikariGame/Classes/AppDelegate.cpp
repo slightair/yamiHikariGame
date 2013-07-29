@@ -10,9 +10,7 @@
 
 #include "cocos2d.h"
 #include "SimpleAudioEngine.h"
-
-#warning debug
-#include "GameScene.h"
+#include "Constants.h"
 #include "TitleScene.h"
 
 #define kDefaultDesignResolutionWidth 320
@@ -88,6 +86,9 @@ bool AppDelegate::applicationDidFinishLaunching()
     pDirector->setAnimationInterval(1.0 / 60);
 
     CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("spriteSheet.plist");
+
+    CocosDenshion::SimpleAudioEngine::sharedEngine()->setEffectsVolume(SoundEffectVolume);
+    CocosDenshion::SimpleAudioEngine::sharedEngine()->preloadEffect(SEItemGet);
 
     // create a scene. it's an autorelease object
     CCScene *pScene = TitleScene::scene();

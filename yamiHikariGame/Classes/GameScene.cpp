@@ -7,17 +7,14 @@
 //
 
 #include "GameScene.h"
+#include "SimpleAudioEngine.h"
 #include "Constants.h"
 #include "GameEngine.h"
-#include "SimpleAudioEngine.h"
-
 #include "DropItem.h"
 
 #define kDropItemInterval 0.2
 #define kEmergedAreaHorizontalMarginRate 0.1
 #define kCollisionAreaPadding 8
-#define kSEItemGet "SE001.mp3"
-#define kSoundEffectVolume 0.15
 
 CCScene* GameScene::scene()
 {
@@ -71,9 +68,6 @@ void GameScene::onEnter()
 
     CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
     
-    CocosDenshion::SimpleAudioEngine::sharedEngine()->setEffectsVolume(kSoundEffectVolume);
-    CocosDenshion::SimpleAudioEngine::sharedEngine()->preloadEffect(kSEItemGet);
-
     this->scheduleUpdate();
 }
 
@@ -90,7 +84,6 @@ void GameScene::onEnterTransitionDidFinish()
 void GameScene::onExit()
 {
     CCDirector::sharedDirector()->getTouchDispatcher()->removeDelegate(this);
-    CocosDenshion::SimpleAudioEngine::sharedEngine()->unloadEffect(kSEItemGet);
 
     CCLayer::onExit();
 }
@@ -153,7 +146,7 @@ void GameScene::collisionCheck()
             starParticle->setAutoRemoveOnFinish(true);
             this->addChild(starParticle);
             
-            CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(kSEItemGet);
+            CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(SEItemGet);
 
             engine->addScore(dropItem->getScore());
 
