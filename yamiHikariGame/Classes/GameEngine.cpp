@@ -7,6 +7,7 @@
 //
 
 #include "GameEngine.h"
+#include "SimpleAudioEngine.h"
 #include "Constants.h"
 #include "TitleScene.h"
 #include "GameScene.h"
@@ -54,6 +55,8 @@ void GameEngine::finishGame()
 
     GameScene *gameScene = (GameScene *)director->getRunningScene()->getChildren()->objectAtIndex(0);
     gameScene->finishAnimations();
+
+    CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(SEGameOver);
 
     director->getScheduler()->scheduleSelector(schedule_selector(GameEngine::showResult), this, 0, 0, kWaitForResultDuration, false);
 }

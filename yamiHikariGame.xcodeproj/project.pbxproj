@@ -192,13 +192,15 @@
 		5793860E17A4F51A008A5BBE /* mosamosa.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5793860D17A4F32F008A5BBE /* mosamosa.ttf */; };
 		5793861117A50CDB008A5BBE /* dust.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5793860F17A50CDB008A5BBE /* dust.plist */; };
 		5793861217A50CDB008A5BBE /* stars.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5793861017A50CDB008A5BBE /* stars.plist */; };
+		579EDCBD17A6C2EC0039560A /* SE001.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 579EDCBA17A6C2EC0039560A /* SE001.mp3 */; };
+		579EDCBE17A6C2EC0039560A /* SE002.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 579EDCBB17A6C2EC0039560A /* SE002.mp3 */; };
+		579EDCBF17A6C2EC0039560A /* SE004.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 579EDCBC17A6C2EC0039560A /* SE004.mp3 */; };
 		57FB9F8C17959390005D882C /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57FB9F8A17959390005D882C /* GameScene.cpp */; };
 		57FB9F961798B583005D882C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 57FB9F951798B583005D882C /* Default-568h@2x.png */; };
 		57FB9F9D179A5C2F005D882C /* default in Resources */ = {isa = PBXBuildFile; fileRef = 57FB9F9B179A5C2F005D882C /* default */; };
 		57FB9F9E179A5C2F005D882C /* ios-hd in Resources */ = {isa = PBXBuildFile; fileRef = 57FB9F9C179A5C2F005D882C /* ios-hd */; };
 		57FB9FA1179BE459005D882C /* Monster.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57FB9F9F179BE458005D882C /* Monster.cpp */; };
 		57FB9FA7179D720A005D882C /* Brave.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57FB9FA5179D720A005D882C /* Brave.cpp */; };
-		ECE80D0217A55D2A0038C49D /* SE001.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ECE80D0117A55D2A0038C49D /* SE001.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -617,6 +619,9 @@
 		5793860D17A4F32F008A5BBE /* mosamosa.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = mosamosa.ttf; path = Resources/mosamosa.ttf; sourceTree = "<group>"; };
 		5793860F17A50CDB008A5BBE /* dust.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = dust.plist; path = Resources/dust.plist; sourceTree = "<group>"; };
 		5793861017A50CDB008A5BBE /* stars.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = stars.plist; path = Resources/stars.plist; sourceTree = "<group>"; };
+		579EDCBA17A6C2EC0039560A /* SE001.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = SE001.mp3; path = Resources/SE001.mp3; sourceTree = "<group>"; };
+		579EDCBB17A6C2EC0039560A /* SE002.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = SE002.mp3; path = Resources/SE002.mp3; sourceTree = "<group>"; };
+		579EDCBC17A6C2EC0039560A /* SE004.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = SE004.mp3; path = Resources/SE004.mp3; sourceTree = "<group>"; };
 		57FB9F8A17959390005D882C /* GameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameScene.cpp; path = Classes/GameScene.cpp; sourceTree = "<group>"; };
 		57FB9F8B17959390005D882C /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameScene.h; path = Classes/GameScene.h; sourceTree = "<group>"; };
 		57FB9F951798B583005D882C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -626,7 +631,6 @@
 		57FB9FA0179BE459005D882C /* Monster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Monster.h; path = Classes/Monster.h; sourceTree = "<group>"; };
 		57FB9FA5179D720A005D882C /* Brave.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Brave.cpp; path = Classes/Brave.cpp; sourceTree = "<group>"; };
 		57FB9FA6179D720A005D882C /* Brave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Brave.h; path = Classes/Brave.h; sourceTree = "<group>"; };
-		ECE80D0117A55D2A0038C49D /* SE001.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = SE001.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -697,7 +701,7 @@
 		57840D7617958956005732EC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				ECE80D0117A55D2A0038C49D /* SE001.mp3 */,
+				579EDCC017A6C2EF0039560A /* Sounds */,
 				5793861417A50E9C008A5BBE /* Fonts */,
 				5793861317A50E94008A5BBE /* Particles */,
 				57FB9F951798B583005D882C /* Default-568h@2x.png */,
@@ -1585,6 +1589,16 @@
 			name = Fonts;
 			sourceTree = "<group>";
 		};
+		579EDCC017A6C2EF0039560A /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				579EDCBA17A6C2EC0039560A /* SE001.mp3 */,
+				579EDCBB17A6C2EC0039560A /* SE002.mp3 */,
+				579EDCBC17A6C2EC0039560A /* SE004.mp3 */,
+			);
+			name = Sounds;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1638,13 +1652,15 @@
 				5793860E17A4F51A008A5BBE /* mosamosa.ttf in Resources */,
 				57840E2B17958958005732EC /* ChangeLog in Resources */,
 				57840F9F1795895B005732EC /* project.pbxproj in Resources */,
+				579EDCBF17A6C2EC0039560A /* SE004.mp3 in Resources */,
 				57FB9F961798B583005D882C /* Default-568h@2x.png in Resources */,
+				579EDCBD17A6C2EC0039560A /* SE001.mp3 in Resources */,
+				579EDCBE17A6C2EC0039560A /* SE002.mp3 in Resources */,
 				57FB9F9D179A5C2F005D882C /* default in Resources */,
 				57FB9F9E179A5C2F005D882C /* ios-hd in Resources */,
 				5790435117A425D2004A2208 /* dropItems.plist in Resources */,
 				5793861117A50CDB008A5BBE /* dust.plist in Resources */,
 				5793861217A50CDB008A5BBE /* stars.plist in Resources */,
-				ECE80D0217A55D2A0038C49D /* SE001.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

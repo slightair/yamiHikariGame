@@ -89,6 +89,8 @@ bool AppDelegate::applicationDidFinishLaunching()
 
     CocosDenshion::SimpleAudioEngine::sharedEngine()->setEffectsVolume(SoundEffectVolume);
     CocosDenshion::SimpleAudioEngine::sharedEngine()->preloadEffect(SEItemGet);
+    CocosDenshion::SimpleAudioEngine::sharedEngine()->preloadEffect(SEBadItemGet);
+    CocosDenshion::SimpleAudioEngine::sharedEngine()->preloadEffect(SEGameOver);
 
     // create a scene. it's an autorelease object
     CCScene *pScene = TitleScene::scene();

@@ -155,11 +155,17 @@ void GameScene::collisionCheck()
             starParticle->setPosition(dropItem->getPosition());
             starParticle->setAutoRemoveOnFinish(true);
             this->addChild(starParticle);
-            
-            CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(SEItemGet);
+
+            int obtainedStamina = dropItem->getStamina();
+            if (obtainedStamina < 0) {
+                CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(SEBadItemGet);
+            }
+            else {
+                CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(SEItemGet);
+            }
 
             engine->addScore(dropItem->getScore());
-            engine->addStamina(dropItem->getStamina());
+            engine->addStamina(obtainedStamina);
 
             dropItem->stopAllActions();
             dropItem->removeFromParentAndCleanup(true);
