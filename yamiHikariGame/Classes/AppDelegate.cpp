@@ -48,7 +48,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     pDirector->setOpenGLView(openGLView);
 
     // turn on display FPS
-    pDirector->setDisplayStats(true);
+    pDirector->setDisplayStats(false);
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     CCSize screenSize = openGLView->getFrameSize();
