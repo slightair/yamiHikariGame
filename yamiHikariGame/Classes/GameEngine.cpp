@@ -8,12 +8,14 @@
 
 #include "GameEngine.h"
 #include "Constants.h"
+#include "TitleScene.h"
 #include "GameScene.h"
 
 #define kTransitionDuration 1.0
 #define kGameTickInterval 0.1
 #define kSurvivePoint 1
 #define kStaminaConsumption 3
+#define kWaitForResultDuration 3
 
 static GameEngine *__sharedEngine = NULL;
 
@@ -52,6 +54,8 @@ void GameEngine::finishGame()
 
     GameScene *gameScene = (GameScene *)director->getRunningScene()->getChildren()->objectAtIndex(0);
     gameScene->finishAnimations();
+
+    director->getScheduler()->scheduleSelector(schedule_selector(GameEngine::showResult), this, 0, 0, kWaitForResultDuration, false);
 }
 
 void GameEngine::tick()
@@ -62,6 +66,12 @@ void GameEngine::tick()
     if (_stamina <= 0) {
         this->finishGame();
     }
+}
+
+void GameEngine::showResult()
+{
+    CCTransitionFade *transition = CCTransitionFade::create(kTransitionDuration, TitleScene::scene());
+    CCDirector::sharedDirector()->replaceScene(transition);
 }
 
 int GameEngine::getScore()

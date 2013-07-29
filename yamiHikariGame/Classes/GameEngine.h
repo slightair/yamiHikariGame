@@ -30,6 +30,7 @@ public:
     static GameEngine *sharedEngine();
     void startNewGame();
     void finishGame();
+    void showResult();
     int getScore();
     int getStamina();
     void addScore(int score);
