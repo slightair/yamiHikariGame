@@ -80,5 +80,8 @@ void ScoreBoard::setScore(int score)
 void ScoreBoard::setStamina(int stamina)
 {
     float rate = stamina * 1.0 / StaminaMax;
+    if (rate < 0) {
+        rate = 0;
+    }
     _staminaGauge->setScaleX(rate);
 }

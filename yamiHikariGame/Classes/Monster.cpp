@@ -82,3 +82,8 @@ void Monster::followBrave(CCPoint bravePosition, float delta)
 
     this->setPosition(nextPosition);
 }
+
+void Monster::finishAnimation()
+{
+    _characterSprite->stopAllActions();
+}

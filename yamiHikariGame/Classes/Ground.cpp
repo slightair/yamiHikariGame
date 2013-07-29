@@ -67,6 +67,13 @@ void Ground::onEnter()
     this->scheduleUpdate();
 }
 
+void Ground::onExit()
+{
+    this->unscheduleUpdate();
+
+    CCLayer::onExit();
+}
+
 CCSpriteBatchNode *Ground::createBackgroundNode()
 {
     CCSize windowSize = CCDirector::sharedDirector()->getWinSize();
@@ -84,4 +91,9 @@ CCSpriteBatchNode *Ground::createBackgroundNode()
     }
 
     return backgroundNode;
+}
+
+void Ground::finishAnimations()
+{
+    this->unscheduleUpdate();
 }

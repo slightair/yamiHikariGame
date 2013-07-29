@@ -24,7 +24,9 @@ protected:
 public:
     virtual void update(float delta);
     virtual void onEnter();
+    virtual void onExit();
     static Ground *create();
+    void finishAnimations();
 };
 
 #endif /* defined(__yamiHikariGame__Ground__) */

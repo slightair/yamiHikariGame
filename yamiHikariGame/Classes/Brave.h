@@ -25,6 +25,7 @@ public:
     static Brave *createWithSpriteFrameName(const char *pszSpriteFrameName);
     void startAnimation();
     void moveX(float delta);
+    void finishAnimation();
 };
 
 #endif /* defined(__yamiHikariGame__Brave__) */

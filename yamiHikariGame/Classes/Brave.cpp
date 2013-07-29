@@ -74,3 +74,11 @@ void Brave::moveX(float delta)
 
     this->setPosition(nextPosition);
 }
+
+void Brave::finishAnimation()
+{
+    _dustParticleSystem->stopSystem();
+    _characterSprite->stopAllActions();
+
+    _characterSprite->runAction(CCRotateTo::create(0.0, 90));
+}

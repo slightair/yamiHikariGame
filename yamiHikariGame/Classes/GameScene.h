@@ -33,6 +33,8 @@ protected:
     CCPoint _touchedLocation;
     CCRect _braveRect;
 
+    bool _finished;
+
     void collisionCheck();
     void dropItem();
 public:
@@ -46,6 +48,8 @@ public:
     virtual void ccTouchCancelled(CCTouch *pTouch, CCEvent *pEvent);
     static CCScene* scene();
     CREATE_FUNC(GameScene);
+
+    void finishAnimations();
 };
 
 #endif /* defined(__yamiHikariGame__GameScene__) */

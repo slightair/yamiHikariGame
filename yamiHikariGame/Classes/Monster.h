@@ -24,6 +24,7 @@ public:
     static Monster *createWithSpriteFrameName(const char *pszSpriteFrameName);
     void startAnimation();
     void followBrave(CCPoint bravePosition, float delta);
+    void finishAnimation();
 };
 
 #endif /* defined(__yamiHikariGame__Monster__) */

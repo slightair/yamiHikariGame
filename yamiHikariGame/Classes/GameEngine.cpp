@@ -46,7 +46,12 @@ void GameEngine::startNewGame()
 
 void GameEngine::finishGame()
 {
-    CCDirector::sharedDirector()->getScheduler()->unscheduleSelector(schedule_selector(GameEngine::tick), this);
+    CCDirector *director = CCDirector::sharedDirector();
+
+    director->getScheduler()->unscheduleSelector(schedule_selector(GameEngine::tick), this);
+
+    GameScene *gameScene = (GameScene *)director->getRunningScene()->getChildren()->objectAtIndex(0);
+    gameScene->finishAnimations();
 }
 
 void GameEngine::tick()

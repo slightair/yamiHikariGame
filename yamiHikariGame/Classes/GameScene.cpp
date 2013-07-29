@@ -44,6 +44,8 @@ void GameScene::onEnter()
 
     CCSize windowSize = CCDirector::sharedDirector()->getWinSize();
 
+    _finished = false;
+
     _worldNode = CCNode::create();
     _groundNode = Ground::create();
     _itemsNode = CCSpriteBatchNode::create(SpriteSheetImageFileName);
@@ -90,6 +92,10 @@ void GameScene::onExit()
 
 bool GameScene::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
 {
+    if (_finished) {
+        return false;
+    }
+
     _touchedLocation = pTouch->getLocationInView();
 
     return true;
@@ -97,6 +103,10 @@ bool GameScene::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
 
 void GameScene::ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent)
 {
+    if (_finished) {
+        return;
+    }
+
     CCPoint location = pTouch->getLocationInView();
     float distance = location.x - _touchedLocation.x;
 
@@ -155,4 +165,20 @@ void GameScene::collisionCheck()
             dropItem->removeFromParentAndCleanup(true);
         }
     }
+}
+
+void GameScene::finishAnimations()
+{
+    _groundNode->finishAnimations();
+    _brave->finishAnimation();
+    _monster->finishAnimation();
+
+    this->unscheduleAllSelectors();
+
+    CCObject *child = NULL;
+    CCARRAY_FOREACH(_itemsNode->getChildren(), child) {
+        ((DropItem *)child)->stopAllActions();
+    }
+
+    _finished = true;
 }
