@@ -6,11 +6,13 @@ LOCAL_MODULE := game_shared
 
 LOCAL_MODULE_FILENAME := libgame
 
-LOCAL_SRC_FILES := hellocpp/main.cpp \
-                   ../../Classes/AppDelegate.cpp \
-                   ../../Classes/HelloWorldScene.cpp
+CPP_FILES := $(shell find $(LOCAL_PATH)/../../Classes -name *.cpp)
+
+LOCAL_SRC_FILES := hellocpp/main.cpp
+LOCAL_SRC_FILES += $(CPP_FILES:$(LOCAL_PATH)/%=%)
                    
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes                   
+LOCAL_CFLAGS := -w
 
 LOCAL_WHOLE_STATIC_LIBRARIES := cocos2dx_static cocosdenshion_static cocos_extension_static
             

@@ -76,7 +76,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     }
 #else
     // Android, etc...
-    openGLView->setDesignResolutionSize(defaultDesignResolutionSize.width, defaultDesignResolutionSize.height, kResolutionExactFit);
+    openGLView->setDesignResolutionSize(kDefaultDesignResolutionWidth, kDefaultDesignResolutionHeight, kResolutionExactFit);
     searchResolutionsOrder.push_back("default");
 #endif
 
