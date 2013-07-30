@@ -1,0 +1,15 @@
+# このファイルは、local.properties のテンプレートです。
+# local.properties へコピーし、
+# 環境依存のパスを設定するために使用してください。
+#
+# local.properties は、Eclipseを使用している場合に
+# Android Toolsにより再作成されることがあります。
+# 
+
+# 以下の設定は、Antにより使用されます。
+# - Android SDK Root
+sdk.dir=
+# - Android NDK Root
+ndk.dir=
+# - Cocos2dx Root
+cocos2dx.dir=

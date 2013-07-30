@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="custom_rules" default="help">
+    
+    <property name="build_native_sh" value="build_native.sh" />
+    
+    <target name="-pre-compile" >
+        <if>
+            <condition><not><isset property="dont.do.deps" /></not></condition>
+            <then>
+		        <echo message="custom compile for JNI."/>
+        		<exec executable="sh" >
+		            <env key="NDK_ROOT" value="${ndk.dir}" />
+		            <env key="COCOS2DX_ROOT" value="${cocos2dx.dir}" />
+		            <arg value="${build_native_sh}" />
+		        </exec>
+		   	</then>
+		</if>
+    </target>
+    
+</project>

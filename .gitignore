@@ -15,5 +15,14 @@ profile
 DerivedData
 .idea/
 
+# Android and Eclipse
 yamiHikariGame/proj.android/assets/
 yamiHikariGame/proj.android/obj/
+yamiHikariGame/proj.android/*.properties
+yamiHikariGame/proj.android/.classpath
+yamiHikariGame/proj.android/.cproject
+yamiHikariGame/proj.android/.project
+yamiHikariGame/proj.android/.settings/
+yamiHikariGame/proj.android/bin/
+yamiHikariGame/proj.android/gen/
+yamiHikariGame/proj.android/libs/
