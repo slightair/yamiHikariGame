@@ -10,6 +10,7 @@
 
 #define kShakeDuration 0.05
 #define kShakeAngle 5
+#define kEffectDuration 0.1
 
 Brave *Brave::createWithSpriteFrameName(const char *pszSpriteFrameName)
 {
@@ -81,4 +82,22 @@ void Brave::finishAnimation()
     _characterSprite->stopAllActions();
 
     _characterSprite->runAction(CCRotateTo::create(0.0, 90));
+}
+
+void Brave::recoverEffect()
+{
+    CCSequence *action = CCSequence::create(
+                                            CCTintTo::create(kEffectDuration, 0x66, 0xff, 0x66),
+                                            CCTintTo::create(kEffectDuration, 0xff, 0xff, 0xff),
+                                            NULL);
+    _characterSprite->runAction(action);
+}
+
+void Brave::damageEffect()
+{
+    CCSequence *action = CCSequence::create(
+                                            CCTintTo::create(kEffectDuration, 0xff, 0x66, 0x66),
+                                            CCTintTo::create(kEffectDuration, 0xff, 0xff, 0xff),
+                                            NULL);
+    _characterSprite->runAction(action);
 }

@@ -26,6 +26,8 @@ public:
     void startAnimation();
     void moveX(float delta);
     void finishAnimation();
+    void recoverEffect();
+    void damageEffect();
 };
 
 #endif /* defined(__yamiHikariGame__Brave__) */

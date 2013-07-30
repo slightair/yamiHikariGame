@@ -158,9 +158,13 @@ void GameScene::collisionCheck()
 
             int obtainedStamina = dropItem->getStamina();
             if (obtainedStamina < 0) {
+                _brave->damageEffect();
                 CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(SEBadItemGet);
             }
             else {
+                if (obtainedStamina != 0) {
+                    _brave->recoverEffect();
+                }
                 CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(SEItemGet);
             }
 
