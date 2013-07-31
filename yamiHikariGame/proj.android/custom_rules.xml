@@ -7,14 +7,13 @@
         <if>
             <condition><not><isset property="dont.do.deps" /></not></condition>
             <then>
-		        <echo message="custom compile for JNI."/>
-        		<exec executable="sh" >
-		            <env key="NDK_ROOT" value="${ndk.dir}" />
-		            <env key="COCOS2DX_ROOT" value="${cocos2dx.dir}" />
-		            <arg value="${build_native_sh}" />
-		        </exec>
-		   	</then>
-		</if>
+                <echo message="custom compile for JNI."/>
+                <exec executable="sh" >
+                    <env key="NDK_ROOT" value="${ndk.dir}" />
+                    <env key="COCOS2DX_ROOT" value="${cocos2dx.dir}" />
+                    <arg value="${build_native_sh}" />
+                </exec>
+            </then>
+        </if>
     </target>
-    
 </project>

@@ -7,9 +7,6 @@
 # 
 
 # 以下の設定は、Antにより使用されます。
-# - Android SDK Root
 sdk.dir=
-# - Android NDK Root
 ndk.dir=
-# - Cocos2dx Root
 cocos2dx.dir=
