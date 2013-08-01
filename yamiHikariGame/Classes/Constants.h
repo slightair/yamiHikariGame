@@ -10,7 +10,7 @@
 #define yamiHikariGame_Constants_h
 
 #define SpriteSheetImageFileName "spriteSheet.pvr.ccz"
-#define DefaultFontName "mosamosa"
+#define DefaultFontName "mosamosa.ttf"
 #define DefaultFontSize 24
 
 #define StaminaMax 1000
