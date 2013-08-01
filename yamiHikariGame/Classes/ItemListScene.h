@@ -11,19 +11,17 @@
 
 #include "cocos2d.h"
 #include "CCScrollView.h"
+#include "GradientLayer.h"
 
 using namespace cocos2d;
 using namespace cocos2d::extension;
 
-class ItemListScene : public CCLayer
+class ItemListScene : public GradientLayer
 {
 protected:
     CCArray *_items;
 
-    CCLayerGradient *_underlayLayer;
-    CCScrollView *_itemListScrollView;
-
-    void layoutScrollView();
+    void setUpContent();
 public:
     virtual void onEnter();
 

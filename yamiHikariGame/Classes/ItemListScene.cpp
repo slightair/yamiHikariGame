@@ -23,6 +23,7 @@ CCScene* ItemListScene::scene()
     CCScene *scene = CCScene::create();
 
     ItemListScene *layer = ItemListScene::create();
+    layer->setTitle("アイテムずかん");
     scene->addChild(layer);
 
     return scene;
@@ -30,27 +31,13 @@ CCScene* ItemListScene::scene()
 
 void ItemListScene::onEnter()
 {
-    CCLayer::onEnter();
+    GradientLayer::onEnter();
 
     _items = DropItem::getItems();
 
+    this->setUpContent();
+
     CCSize windowSize = CCDirector::sharedDirector()->getWinSize();
-
-    _underlayLayer = CCLayerGradient::create((ccColor4B){0, 0, 0, 0xff}, (ccColor4B){0x66, 0x66, 0x66, 0xff});
-    CCDrawNode *lineNode = CCDrawNode::create();
-    lineNode->drawSegment(ccp(TitleBarSeparatorMarginHorizontal, windowSize.height - TitleBarHeight),
-                          ccp(windowSize.width - TitleBarSeparatorMarginHorizontal, windowSize.height - TitleBarHeight),
-                          TitleBarSeparatorRadius, (ccColor4F){1.0, 1.0, 1.0, 1.0});
-    _underlayLayer->addChild(lineNode);
-    this->addChild(_underlayLayer);
-
-    CCLabelTTF *titleLabel = CCLabelTTF::create("アイテムずかん", DefaultFontName, FontSizeNormal);
-    titleLabel->setAnchorPoint(ccp(0.5, 1));
-    titleLabel->setPosition(ccp(windowSize.width / 2, windowSize.height - TitleBarTitleMarginTop));
-    this->addChild(titleLabel);
-
-    this->layoutScrollView();
-
     CCMenuItem *backTitleItem = CCMenuItemLabel::create(CCLabelTTF::create("《もどる", DefaultFontName, FontSizeNormal),
                                                         GameEngine::sharedEngine(),
                                                         menu_selector(GameEngine::showTitle));
@@ -62,7 +49,7 @@ void ItemListScene::onEnter()
     this->addChild(menu);
 }
 
-void ItemListScene::layoutScrollView()
+void ItemListScene::setUpContent()
 {
     CCSize windowSize = CCDirector::sharedDirector()->getWinSize();
 
@@ -102,10 +89,10 @@ void ItemListScene::layoutScrollView()
         itemIndex++;
     }
 
-    _itemListScrollView = CCScrollView::create(CCSize(windowSize.width, windowSize.height - TitleBarHeight), contentLayer);
-    _itemListScrollView->setDirection(kCCScrollViewDirectionVertical);
-    _itemListScrollView->setContentOffset(_itemListScrollView->minContainerOffset());
-    _itemListScrollView->setBounceable(false);
+    CCScrollView *scrollView = CCScrollView::create(CCSize(windowSize.width, windowSize.height - TitleBarHeight), contentLayer);
+    scrollView->setDirection(kCCScrollViewDirectionVertical);
+    scrollView->setContentOffset(scrollView->minContainerOffset());
+    scrollView->setBounceable(false);
 
-    this->addChild(_itemListScrollView);
+    this->addChild(scrollView);
 }
