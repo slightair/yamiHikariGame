@@ -11,6 +11,7 @@
 
 #define SpriteSheetImageFileName "spriteSheet.pvr.ccz"
 #define DefaultFontName "mosamosa.ttf"
+
 #define FontSizeBig 24
 #define FontSizeNormal 16
 #define FontSizeSmall 8
