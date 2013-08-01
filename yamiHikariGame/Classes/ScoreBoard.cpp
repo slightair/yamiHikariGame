@@ -10,7 +10,6 @@
 #include "Constants.h"
 #include "GameEngine.h"
 
-#define kScoreLabelFontSize 8
 #define kScoreLabelMarginLeft 6
 #define kScoreLabelMarginTop 24
 
@@ -58,11 +57,11 @@ void ScoreBoard::onEnter()
     _staminaGauge->setOpacity(kStaminaGaugeAlpha);
     this->addChild(_staminaGauge);
 
-    _staminaLabel = CCLabelTTF::create("スタミナ", DefaultFontName, kScoreLabelFontSize);
+    _staminaLabel = CCLabelTTF::create("スタミナ", DefaultFontName, FontSizeSmall);
     _staminaLabel->setPosition(ccp(windowSize.width - kStaminaGaugeMarginRight - kStaminaGaugeWidth / 2, windowSize.height - kScoreLabelMarginTop));
     this->addChild(_staminaLabel);
 
-    _scoreLabel = CCLabelTTF::create("スコア 0", DefaultFontName, kScoreLabelFontSize);
+    _scoreLabel = CCLabelTTF::create("スコア 0", DefaultFontName, FontSizeSmall);
     _scoreLabel->setAnchorPoint(ccp(0, 0.5));
     _scoreLabel->setPosition(ccp(kScoreLabelMarginLeft, windowSize.height - kScoreLabelMarginTop));
     this->addChild(_scoreLabel);

@@ -11,13 +11,19 @@
 
 #define SpriteSheetImageFileName "spriteSheet.pvr.ccz"
 #define DefaultFontName "mosamosa.ttf"
-#define DefaultFontSize 24
-
-#define StaminaMax 1000
+#define FontSizeBig 24
+#define FontSizeNormal 16
+#define FontSizeSmall 8
+#define TitleBarHeight 44
+#define TitleBarTitleMarginTop 20
+#define TitleBarBackButtonMarginLeft 8
+#define TitleBarBackButtonMarginTop 20
 
 #define SEItemGet "SE001.mp3"
 #define SEGameOver "SE002.mp3"
 #define SEBadItemGet "SE004.mp3"
 #define SoundEffectVolume 0.15
+
+#define StaminaMax 1000
 
 #endif
