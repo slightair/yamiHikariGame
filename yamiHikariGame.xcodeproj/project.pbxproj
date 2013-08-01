@@ -185,6 +185,8 @@
 		578410431795895C005732EC /* CCTableView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 578410421795895C005732EC /* CCTableView.cpp */; };
 		578410461795895C005732EC /* CCTableViewCell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 578410451795895C005732EC /* CCTableViewCell.cpp */; };
 		578411091795895E005732EC /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 578411081795895E005732EC /* AppDelegate.cpp */; };
+		578DD40517AAA7300066DECE /* ItemDetailScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 578DD40317AAA72B0066DECE /* ItemDetailScene.cpp */; };
+		578DD40817AAA9320066DECE /* GradientLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 578DD40617AAA9320066DECE /* GradientLayer.cpp */; };
 		578DE66717A4D7F50050CDE4 /* TitleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 578DE66517A4D7F50050CDE4 /* TitleScene.cpp */; };
 		578DE66C17A4D8E90050CDE4 /* GameEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 578DE66A17A4D8E90050CDE4 /* GameEngine.cpp */; };
 		578DE66F17A4DE040050CDE4 /* Ground.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 578DE66D17A4DE040050CDE4 /* Ground.cpp */; };
@@ -609,6 +611,10 @@
 		578411051795895E005732EC /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		578411071795895E005732EC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = "<group>"; };
 		578411081795895E005732EC /* AppDelegate.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AppDelegate.cpp; path = Classes/AppDelegate.cpp; sourceTree = "<group>"; };
+		578DD40317AAA72B0066DECE /* ItemDetailScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ItemDetailScene.cpp; path = Classes/ItemDetailScene.cpp; sourceTree = "<group>"; };
+		578DD40417AAA72B0066DECE /* ItemDetailScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ItemDetailScene.h; path = Classes/ItemDetailScene.h; sourceTree = "<group>"; };
+		578DD40617AAA9320066DECE /* GradientLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GradientLayer.cpp; path = Classes/GradientLayer.cpp; sourceTree = "<group>"; };
+		578DD40717AAA9320066DECE /* GradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GradientLayer.h; path = Classes/GradientLayer.h; sourceTree = "<group>"; };
 		578DE66517A4D7F50050CDE4 /* TitleScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TitleScene.cpp; path = Classes/TitleScene.cpp; sourceTree = "<group>"; };
 		578DE66617A4D7F50050CDE4 /* TitleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TitleScene.h; path = Classes/TitleScene.h; sourceTree = "<group>"; };
 		578DE66A17A4D8E90050CDE4 /* GameEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameEngine.cpp; path = Classes/GameEngine.cpp; sourceTree = "<group>"; };
@@ -1554,6 +1560,10 @@
 				578DE66617A4D7F50050CDE4 /* TitleScene.h */,
 				57668FA117A8CF9E00A9498C /* ItemListScene.cpp */,
 				57668FA217A8CF9E00A9498C /* ItemListScene.h */,
+				578DD40317AAA72B0066DECE /* ItemDetailScene.cpp */,
+				578DD40417AAA72B0066DECE /* ItemDetailScene.h */,
+				578DD40617AAA9320066DECE /* GradientLayer.cpp */,
+				578DD40717AAA9320066DECE /* GradientLayer.h */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -1708,7 +1718,9 @@
 				57840DEF17958957005732EC /* CCNS.cpp in Sources */,
 				57840DF217958957005732EC /* CCObject.cpp in Sources */,
 				57840DF517958957005732EC /* CCSet.cpp in Sources */,
+				578DD40517AAA7300066DECE /* ItemDetailScene.cpp in Sources */,
 				57840DF817958957005732EC /* CCString.cpp in Sources */,
+				578DD40817AAA9320066DECE /* GradientLayer.cpp in Sources */,
 				57840DFB17958957005732EC /* CCZone.cpp in Sources */,
 				57840DFE17958957005732EC /* cocos2d.cpp in Sources */,
 				57840E0117958957005732EC /* CCDrawingPrimitives.cpp in Sources */,
