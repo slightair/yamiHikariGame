@@ -49,10 +49,10 @@ bool AppDelegate::applicationDidFinishLaunching()
 
     // turn on display FPS
     pDirector->setDisplayStats(false);
-
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    
     CCSize screenSize = openGLView->getFrameSize();
-
+    
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     TargetPlatform platform = CCApplication::sharedApplication()->getTargetPlatform();
     if (platform == kTargetIphone) {
         if (screenSize.height == kIPhone4inchScreenHeight) {
@@ -76,7 +76,12 @@ bool AppDelegate::applicationDidFinishLaunching()
     }
 #else
     // Android, etc...
-    openGLView->setDesignResolutionSize(kDefaultDesignResolutionWidth, kDefaultDesignResolutionHeight, kResolutionExactFit);
+    if (screenSize.height < kIPadDesignResolutionHeight) {
+        openGLView->setDesignResolutionSize(kDefaultDesignResolutionWidth, kDefaultDesignResolutionHeight, kResolutionShowAll);
+    }
+    else {
+        openGLView->setDesignResolutionSize(kIPadDesignResolutionWidth, kIPadDesignResolutionHeight, kResolutionShowAll);
+    }
     searchResolutionsOrder.push_back("default");
 #endif
 
