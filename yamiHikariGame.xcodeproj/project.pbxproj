@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5706B3FF17A0AC3C00BD1015 /* Darkness.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5706B3FD17A0AC3C00BD1015 /* Darkness.cpp */; };
 		57206AD917A547F100DB1365 /* ScoreBoard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57206AD717A547F100DB1365 /* ScoreBoard.cpp */; };
+		57668FA317A8CF9E00A9498C /* ItemListScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57668FA117A8CF9E00A9498C /* ItemListScene.cpp */; };
 		57840D6617958956005732EC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57840D6517958956005732EC /* QuartzCore.framework */; };
 		57840D6817958956005732EC /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57840D6717958956005732EC /* OpenGLES.framework */; };
 		57840D6A17958956005732EC /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57840D6917958956005732EC /* OpenAL.framework */; };
@@ -208,6 +209,8 @@
 		5706B3FE17A0AC3C00BD1015 /* Darkness.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Darkness.h; path = Classes/Darkness.h; sourceTree = "<group>"; };
 		57206AD717A547F100DB1365 /* ScoreBoard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ScoreBoard.cpp; path = Classes/ScoreBoard.cpp; sourceTree = "<group>"; };
 		57206AD817A547F100DB1365 /* ScoreBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScoreBoard.h; path = Classes/ScoreBoard.h; sourceTree = "<group>"; };
+		57668FA117A8CF9E00A9498C /* ItemListScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ItemListScene.cpp; path = Classes/ItemListScene.cpp; sourceTree = "<group>"; };
+		57668FA217A8CF9E00A9498C /* ItemListScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ItemListScene.h; path = Classes/ItemListScene.h; sourceTree = "<group>"; };
 		57840D6217958956005732EC /* yamiHikariGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = yamiHikariGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57840D6517958956005732EC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		57840D6717958956005732EC /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -1549,6 +1552,8 @@
 				57FB9F8B17959390005D882C /* GameScene.h */,
 				578DE66517A4D7F50050CDE4 /* TitleScene.cpp */,
 				578DE66617A4D7F50050CDE4 /* TitleScene.h */,
+				57668FA117A8CF9E00A9498C /* ItemListScene.cpp */,
+				57668FA217A8CF9E00A9498C /* ItemListScene.h */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -1806,6 +1811,7 @@
 				57840F7F1795895B005732EC /* CCTouch.cpp in Sources */,
 				57840F831795895B005732EC /* CCTouchDispatcher.cpp in Sources */,
 				57840F861795895B005732EC /* CCTouchHandler.cpp in Sources */,
+				57668FA317A8CF9E00A9498C /* ItemListScene.cpp in Sources */,
 				57840F8F1795895B005732EC /* CDAudioManager.m in Sources */,
 				57840F931795895B005732EC /* CDOpenALSupport.m in Sources */,
 				57840F961795895B005732EC /* CocosDenshion.m in Sources */,

@@ -18,6 +18,8 @@
 #define TitleBarTitleMarginTop 20
 #define TitleBarBackButtonMarginLeft 8
 #define TitleBarBackButtonMarginTop 20
+#define TitleBarSeparatorMarginHorizontal 8
+#define TitleBarSeparatorRadius 1
 
 #define SEItemGet "SE001.mp3"
 #define SEGameOver "SE002.mp3"
