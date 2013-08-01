@@ -13,7 +13,7 @@ static CCArray *__itemInfoList = NULL;
 DropItem *DropItem::create()
 {
     if (!__itemInfoList) {
-        __itemInfoList = CCArray::createWithContentsOfFileThreadSafe("dropItems.plist");
+        DropItem::loadDropItemsInfo();
     }
 
     DropItem *dropItem = new DropItem();
@@ -42,6 +42,11 @@ bool DropItem::init()
     CCSprite::initWithSpriteFrameName(_imageFileName);
 
     return true;
+}
+
+void DropItem::loadDropItemsInfo()
+{
+    __itemInfoList = CCArray::createWithContentsOfFileThreadSafe("dropItems.plist");
 }
 
 const char *DropItem::getName()
@@ -82,4 +87,14 @@ void DropItem::drop()
                                             NULL);
 
     this->runAction(action);
+}
+
+// tentative
+CCArray *DropItem::getItems()
+{
+    if (!__itemInfoList) {
+        DropItem::loadDropItemsInfo();
+    }
+
+    return __itemInfoList;
 }

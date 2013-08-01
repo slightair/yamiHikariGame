@@ -17,6 +17,7 @@ class DropItem : public CCSprite
 {
 protected:
     bool init();
+    static void loadDropItemsInfo();
 
     const char *_nameJa;
     const char *_descJa;
@@ -31,6 +32,9 @@ public:
     int getStamina();
     int getScore();
     void drop();
+
+#warning tentative
+    static CCArray *getItems();
 };
 
 #endif /* defined(__yamiHikariGame__DropItem__) */

@@ -31,6 +31,8 @@ public:
     void startNewGame();
     void finishGame();
     void showResult();
+    void showItemList();
+    void showTitle();
     int getScore();
     int getStamina();
     void addScore(int score);

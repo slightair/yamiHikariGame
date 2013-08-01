@@ -10,6 +10,8 @@
 #include "Constants.h"
 #include "GameEngine.h"
 
+#define kMenuItemPadding 8
+
 CCScene* TitleScene::scene()
 {
     CCScene *scene = CCScene::create();
@@ -41,8 +43,12 @@ void TitleScene::onEnter()
                                                         GameEngine::sharedEngine(),
                                                         menu_selector(GameEngine::startNewGame));
 
-    CCMenu *menu = CCMenu::create(startGameItem, NULL);
-    menu->alignItemsVertically();
+    CCMenuItem *showItemListItem = CCMenuItemLabel::create(CCLabelTTF::create("アイテムずかん", DefaultFontName, FontSizeBig),
+                                                           GameEngine::sharedEngine(),
+                                                           menu_selector(GameEngine::showItemList));
+
+    CCMenu *menu = CCMenu::create(startGameItem, showItemListItem, NULL);
+    menu->alignItemsVerticallyWithPadding(kMenuItemPadding);
     menu->setPosition(ccp(windowSize.width / 2, windowSize.height * 0.2));
     this->addChild(menu);
 }

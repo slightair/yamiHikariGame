@@ -11,6 +11,7 @@
 #include "Constants.h"
 #include "TitleScene.h"
 #include "GameScene.h"
+#include "ItemListScene.h"
 
 #define kTransitionDuration 1.0
 #define kGameTickInterval 0.1
@@ -72,6 +73,18 @@ void GameEngine::tick()
 }
 
 void GameEngine::showResult()
+{
+    CCTransitionFade *transition = CCTransitionFade::create(kTransitionDuration, TitleScene::scene());
+    CCDirector::sharedDirector()->replaceScene(transition);
+}
+
+void GameEngine::showItemList()
+{
+    CCTransitionFade *transition = CCTransitionFade::create(kTransitionDuration, ItemListScene::scene());
+    CCDirector::sharedDirector()->replaceScene(transition);
+}
+
+void GameEngine::showTitle()
 {
     CCTransitionFade *transition = CCTransitionFade::create(kTransitionDuration, TitleScene::scene());
     CCDirector::sharedDirector()->replaceScene(transition);
