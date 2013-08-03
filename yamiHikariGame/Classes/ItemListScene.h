@@ -10,20 +10,27 @@
 #define __yamiHikariGame__ItemListScene__
 
 #include "cocos2d.h"
-#include "CCScrollView.h"
+#include "CCTableView.h"
 #include "GradientLayer.h"
 
 using namespace cocos2d;
 using namespace cocos2d::extension;
 
-class ItemListScene : public GradientLayer
+class ItemListScene : public GradientLayer, public CCTableViewDelegate, public CCTableViewDataSource
 {
 protected:
     CCArray *_items;
-
-    void setUpContent();
 public:
     virtual void onEnter();
+
+    virtual void scrollViewDidScroll(CCScrollView* view){};
+    virtual void scrollViewDidZoom(CCScrollView* view){};
+
+    virtual void tableCellTouched(CCTableView* table, CCTableViewCell* cell);
+
+    virtual CCSize cellSizeForTable(CCTableView *table);
+    virtual CCTableViewCell* tableCellAtIndex(CCTableView *table, unsigned int idx);
+    virtual unsigned int numberOfCellsInTableView(CCTableView *table);
 
     static CCScene* scene();
     CREATE_FUNC(ItemListScene);
