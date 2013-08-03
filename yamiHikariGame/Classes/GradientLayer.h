@@ -18,6 +18,7 @@ class GradientLayer : public CCLayer
 protected:
     const char *_title;
     CCLayerGradient *_underlayLayer;
+    bool _isContentsPrepared;
 public:
     virtual void onEnter();
     void setTitle(const char *);

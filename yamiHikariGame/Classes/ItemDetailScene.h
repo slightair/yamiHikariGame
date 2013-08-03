@@ -18,9 +18,13 @@ class ItemDetailScene : public GradientLayer
 {
 protected:
 public:
+    CCDictionary *_itemInfo;
+
+    void setItemInfo(CCDictionary *itemInfo);
+
     virtual void onEnter();
 
-    static CCScene* scene();
+    static CCScene* sceneWithItemInfo(CCDictionary *itemInfo);
     CREATE_FUNC(ItemDetailScene);
 };
 
