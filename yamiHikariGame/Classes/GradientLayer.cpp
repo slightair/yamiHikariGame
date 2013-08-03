@@ -13,6 +13,10 @@ void GradientLayer::onEnter()
 {
     CCLayer::onEnter();
 
+    if (_isContentsPrepared) {
+        return;
+    }
+
     CCSize windowSize = CCDirector::sharedDirector()->getWinSize();
 
     _underlayLayer = CCLayerGradient::create((ccColor4B){0, 0, 0, 0xff}, (ccColor4B){0x66, 0x66, 0x66, 0xff});

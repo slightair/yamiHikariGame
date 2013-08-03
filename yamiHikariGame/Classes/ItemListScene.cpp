@@ -9,6 +9,7 @@
 #include "ItemListScene.h"
 #include "Constants.h"
 #include "GameEngine.h"
+#include "ItemDetailScene.h"
 
 #include "DropItem.h"
 
@@ -41,27 +42,30 @@ void ItemListScene::onEnter()
 {
     GradientLayer::onEnter();
 
-    _items = DropItem::getItems();
+    if (!_isContentsPrepared) {
+        _items = DropItem::getItems();
 
-    CCSize windowSize = CCDirector::sharedDirector()->getWinSize();
+        CCSize windowSize = CCDirector::sharedDirector()->getWinSize();
 
-    CCTableView *tableView = CCTableView::create(this, CCSize(windowSize.width, windowSize.height - TitleBarHeight));
-    tableView->setDirection(kCCScrollViewDirectionVertical);
-    tableView->setDelegate(this);
-    tableView->setBounceable(false);
-    tableView->reloadData();
-    this->addChild(tableView);
+        CCTableView *tableView = CCTableView::create(this, CCSize(windowSize.width, windowSize.height - TitleBarHeight));
+        tableView->setDirection(kCCScrollViewDirectionVertical);
+        tableView->setDelegate(this);
+        tableView->setBounceable(false);
+        tableView->reloadData();
+        this->addChild(tableView);
 
+        CCMenuItem *backTitleItem = CCMenuItemLabel::create(CCLabelTTF::create("《もどる", DefaultFontName, FontSizeNormal),
+                                                            GameEngine::sharedEngine(),
+                                                            menu_selector(GameEngine::showTitle));
+        backTitleItem->setAnchorPoint(ccp(0, 1));
 
-    CCMenuItem *backTitleItem = CCMenuItemLabel::create(CCLabelTTF::create("《もどる", DefaultFontName, FontSizeNormal),
-                                                        GameEngine::sharedEngine(),
-                                                        menu_selector(GameEngine::showTitle));
-    backTitleItem->setAnchorPoint(ccp(0, 1));
+        CCMenu *menu = CCMenu::create(backTitleItem, NULL);
+        menu->alignItemsVertically();
+        menu->setPosition(ccp(TitleBarBackButtonMarginLeft, windowSize.height - TitleBarBackButtonMarginTop));
+        this->addChild(menu);
 
-    CCMenu *menu = CCMenu::create(backTitleItem, NULL);
-    menu->alignItemsVertically();
-    menu->setPosition(ccp(TitleBarBackButtonMarginLeft, windowSize.height - TitleBarBackButtonMarginTop));
-    this->addChild(menu);
+        _isContentsPrepared = true;
+    }
 }
 
 void ItemListScene::tableCellTouched(CCTableView* table, CCTableViewCell* cell)
@@ -69,7 +73,9 @@ void ItemListScene::tableCellTouched(CCTableView* table, CCTableViewCell* cell)
     int selectedItemIndex = cell->getIdx();
 
     CCDictionary *itemInfo = (CCDictionary *)_items->objectAtIndex(selectedItemIndex);
-    CCLog("%s", ((CCString *)itemInfo->objectForKey("name_ja"))->getCString());
+    CCScene *scene = ItemDetailScene::sceneWithItemInfo(itemInfo);
+
+    CCDirector::sharedDirector()->pushScene(scene);
 }
 
 CCSize ItemListScene::cellSizeForTable(CCTableView *table)
