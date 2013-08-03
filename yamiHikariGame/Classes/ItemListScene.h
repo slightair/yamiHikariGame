@@ -21,7 +21,7 @@ class ItemListScene : public GradientLayer, public CCTableViewDelegate, public C
 protected:
     CCArray *_items;
 public:
-    virtual void onEnter();
+    virtual bool init();
 
     virtual void scrollViewDidScroll(CCScrollView* view){};
     virtual void scrollViewDidZoom(CCScrollView* view){};

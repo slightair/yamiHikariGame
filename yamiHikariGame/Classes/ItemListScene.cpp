@@ -32,17 +32,17 @@ CCScene* ItemListScene::scene()
     CCScene *scene = CCScene::create();
 
     ItemListScene *layer = ItemListScene::create();
-    layer->setTitle("アイテムずかん");
     scene->addChild(layer);
 
     return scene;
 }
 
-void ItemListScene::onEnter()
+bool ItemListScene::init()
 {
-    GradientLayer::onEnter();
+    bool result = GradientLayer::init();
 
-    if (!_isContentsPrepared) {
+    if (result) {
+        setTitle("アイテムずかん");
         _items = DropItem::getItems();
 
         CCSize windowSize = CCDirector::sharedDirector()->getWinSize();
@@ -63,9 +63,9 @@ void ItemListScene::onEnter()
         menu->alignItemsVertically();
         menu->setPosition(ccp(TitleBarBackButtonMarginLeft, windowSize.height - TitleBarBackButtonMarginTop));
         this->addChild(menu);
-
-        _isContentsPrepared = true;
     }
+
+    return result;
 }
 
 void ItemListScene::tableCellTouched(CCTableView* table, CCTableViewCell* cell)
