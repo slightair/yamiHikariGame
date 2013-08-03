@@ -22,7 +22,7 @@ public:
 
     void setItemInfo(CCDictionary *itemInfo);
 
-    virtual void onEnter();
+    virtual bool init();
 
     static CCScene* sceneWithItemInfo(CCDictionary *itemInfo);
     CREATE_FUNC(ItemDetailScene);

@@ -27,11 +27,11 @@ void ItemDetailScene::setItemInfo(CCDictionary *itemInfo)
     setTitle(((CCString *)itemInfo->objectForKey("name_ja"))->getCString());
 }
 
-void ItemDetailScene::onEnter()
+bool ItemDetailScene::init()
 {
-    GradientLayer::onEnter();
+    bool result = GradientLayer::init();
 
-    if (!_isContentsPrepared) {
+    if (result) {
         CCSize windowSize = CCDirector::sharedDirector()->getWinSize();
 
         CCMenuItem *backTitleItem = CCMenuItemLabel::create(CCLabelTTF::create("《もどる", DefaultFontName, FontSizeNormal),
@@ -43,7 +43,7 @@ void ItemDetailScene::onEnter()
         menu->alignItemsVertically();
         menu->setPosition(ccp(TitleBarBackButtonMarginLeft, windowSize.height - TitleBarBackButtonMarginTop));
         this->addChild(menu);
-
-        _isContentsPrepared = true;
     }
+
+    return result;
 }

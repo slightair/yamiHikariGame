@@ -16,11 +16,10 @@ using namespace cocos2d;
 class GradientLayer : public CCLayer
 {
 protected:
-    const char *_title;
+    CCLabelTTF *_titleLabel;
     CCLayerGradient *_underlayLayer;
-    bool _isContentsPrepared;
 public:
-    virtual void onEnter();
+    virtual bool init();
     void setTitle(const char *);
 
     CREATE_FUNC(GradientLayer);
