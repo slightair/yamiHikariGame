@@ -12,11 +12,19 @@
 
 #include "DropItem.h"
 
-#define kItemImageMarginLeft 24
-#define kItemNameLabelMarginLeft 64
+#define kItemNumberLabelMarginLeft 16
+#define kItemImageMarginLeft 60
+#define kItemNameLabelMarginLeft 100
+
 #define kItemCellHeight 44
 #define kItemCellSeparatorMarginHorizontal 16
 #define kItemCellSeparatorRadius 0.5
+
+enum ItemCellTag {
+    kItemCellTagNumberLabel = 100,
+    kItemCellTagImage,
+    kItemCellTagNameLabel,
+};
 
 CCScene* ItemListScene::scene()
 {
@@ -35,9 +43,16 @@ void ItemListScene::onEnter()
 
     _items = DropItem::getItems();
 
-    this->setUpContent();
-
     CCSize windowSize = CCDirector::sharedDirector()->getWinSize();
+
+    CCTableView *tableView = CCTableView::create(this, CCSize(windowSize.width, windowSize.height - TitleBarHeight));
+    tableView->setDirection(kCCScrollViewDirectionVertical);
+    tableView->setDelegate(this);
+    tableView->setBounceable(false);
+    tableView->reloadData();
+    this->addChild(tableView);
+
+
     CCMenuItem *backTitleItem = CCMenuItemLabel::create(CCLabelTTF::create("《もどる", DefaultFontName, FontSizeNormal),
                                                         GameEngine::sharedEngine(),
                                                         menu_selector(GameEngine::showTitle));
@@ -49,50 +64,65 @@ void ItemListScene::onEnter()
     this->addChild(menu);
 }
 
-void ItemListScene::setUpContent()
+void ItemListScene::tableCellTouched(CCTableView* table, CCTableViewCell* cell)
 {
-    CCSize windowSize = CCDirector::sharedDirector()->getWinSize();
+    int selectedItemIndex = cell->getIdx();
 
-    CCDrawNode *contentLayer = CCDrawNode::create();
-    float contentLayerHeight = kItemCellHeight * _items->count();
-    if (contentLayerHeight < windowSize.height - TitleBarHeight) {
-        contentLayerHeight = windowSize.height - TitleBarHeight;
-    }
-    contentLayer->setContentSize(CCSize(windowSize.width, contentLayerHeight));
+    CCDictionary *itemInfo = (CCDictionary *)_items->objectAtIndex(selectedItemIndex);
+    CCLog("%s", ((CCString *)itemInfo->objectForKey("name_ja"))->getCString());
+}
 
-    CCObject *object = NULL;
-    int itemIndex = 0;
-    CCARRAY_FOREACH(_items, object) {
-        CCDictionary *itemInfo = (CCDictionary *)object;
+CCSize ItemListScene::cellSizeForTable(CCTableView *table)
+{
+    return CCSize(CCDirector::sharedDirector()->getWinSize().width, kItemCellHeight);
+}
 
-        if (itemIndex > 0) {
-            contentLayer->drawSegment(ccp(kItemCellSeparatorMarginHorizontal, contentLayerHeight - kItemCellHeight * itemIndex),
-                                      ccp(windowSize.width - kItemCellSeparatorMarginHorizontal, contentLayerHeight - kItemCellHeight * itemIndex),
-                                      kItemCellSeparatorRadius, (ccColor4F){1.0, 1.0, 1.0, 1.0});
-        }
+CCTableViewCell* ItemListScene::tableCellAtIndex(CCTableView *table, unsigned int idx)
+{
+    CCTableViewCell *cell = table->dequeueCell();
 
-        float itemCellMidY = contentLayerHeight - kItemCellHeight * itemIndex - kItemCellHeight / 2;
+    CCLabelTTF *itemNumberLabel = NULL;
+    CCLabelTTF *itemNameLabel = NULL;
 
-        CCString *itemName = (CCString *)itemInfo->objectForKey("name_ja");
-        CCString *itemImageName = (CCString *)itemInfo->objectForKey("image");
+    if (!cell) {
+        cell = new CCTableViewCell();
+        cell->autorelease();
 
-        CCSprite *itemImage = CCSprite::createWithSpriteFrameName(itemImageName->getCString());
-        itemImage->setAnchorPoint(ccp(0.0, 0.5));
-        itemImage->setPosition(ccp(kItemImageMarginLeft, itemCellMidY));
-        contentLayer->addChild(itemImage);
+        itemNumberLabel = CCLabelTTF::create("", DefaultFontName, FontSizeNormal);
+        itemNumberLabel->setAnchorPoint(ccp(0.0, 0.5));
+        itemNumberLabel->setPosition(ccp(kItemNumberLabelMarginLeft, kItemCellHeight / 2));
+        itemNumberLabel->setTag(kItemCellTagNumberLabel);
+        cell->addChild(itemNumberLabel);
 
-        CCLabelTTF *itemNameLabel = CCLabelTTF::create(itemName->getCString(), DefaultFontName, FontSizeNormal);
+        itemNameLabel = CCLabelTTF::create("", DefaultFontName, FontSizeNormal);
         itemNameLabel->setAnchorPoint(ccp(0.0, 0.5));
-        itemNameLabel->setPosition(ccp(kItemNameLabelMarginLeft, itemCellMidY));
-        contentLayer->addChild(itemNameLabel);
-
-        itemIndex++;
+        itemNameLabel->setPosition(ccp(kItemNameLabelMarginLeft, kItemCellHeight / 2));
+        itemNameLabel->setTag(kItemCellTagNameLabel);
+        cell->addChild(itemNameLabel);
     }
 
-    CCScrollView *scrollView = CCScrollView::create(CCSize(windowSize.width, windowSize.height - TitleBarHeight), contentLayer);
-    scrollView->setDirection(kCCScrollViewDirectionVertical);
-    scrollView->setContentOffset(scrollView->minContainerOffset());
-    scrollView->setBounceable(false);
+    CCDictionary *itemInfo = (CCDictionary *)_items->objectAtIndex(idx);
+    CCString *itemName = (CCString *)itemInfo->objectForKey("name_ja");
+    CCString *itemImageName = (CCString *)itemInfo->objectForKey("image");
 
-    this->addChild(scrollView);
+    cell->removeChildByTag(kItemCellTagImage);
+
+    itemNumberLabel = (CCLabelTTF *)cell->getChildByTag(kItemCellTagNumberLabel);
+    itemNumberLabel->setString(CCString::createWithFormat("%02d", idx + 1)->getCString());
+
+    CCSprite *itemImage = CCSprite::createWithSpriteFrameName(itemImageName->getCString());
+    itemImage->setAnchorPoint(ccp(0.0, 0.5));
+    itemImage->setPosition(ccp(kItemImageMarginLeft, kItemCellHeight / 2));
+    itemImage->setTag(kItemCellTagImage);
+    cell->addChild(itemImage);
+
+    itemNameLabel = (CCLabelTTF *)cell->getChildByTag(kItemCellTagNameLabel);
+    itemNameLabel->setString(itemName->getCString());
+
+    return cell;
+}
+
+unsigned int ItemListScene::numberOfCellsInTableView(CCTableView *table)
+{
+    return _items->count();
 }
