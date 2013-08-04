@@ -11,6 +11,7 @@
 
 #include "cocos2d.h"
 
+using namespace std;
 using namespace cocos2d;
 
 class GameEngine : public CCObject
@@ -28,7 +29,7 @@ protected:
 
 public:
     static GameEngine *sharedEngine();
-    void loadSaveData();
+    void validateSaveData();
     void startNewGame();
     void finishGame();
     void showResult();

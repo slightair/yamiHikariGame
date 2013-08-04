@@ -120,15 +120,15 @@ void GameEngine::addStamina(int stamina)
     }
 }
 
-void GameEngine::loadSaveData()
+void GameEngine::validateSaveData()
 {
     CCFileUtils *fileUtils = CCFileUtils::sharedFileUtils();
     bool forceRebuildSaveData = false;
 
-    std::string saveFilePath = fileUtils->getWritablePath().append(kSavefileName);
+    string saveFilePath = fileUtils->getWritablePath().append(kSavefileName);
     if (forceRebuildSaveData || !fileUtils->isFileExist(saveFilePath)) {
         CCLog("rebuild save data!");
-        std::string initDBFilePath = fileUtils->fullPathForFilename("init.db");
+        string initDBFilePath = fileUtils->fullPathForFilename("init.db");
 
         FILE *src, *dest;
         char buffer[128];
@@ -147,6 +147,11 @@ void GameEngine::loadSaveData()
     hiberlite::Database db;
     db.open(saveFilePath);
 
-    hiberlite::bean_ptr<Item> item = db.loadBean<Item>(1);
-    CCLog("%s", item->name.c_str());
+    vector< hiberlite::bean_ptr<Item> > items = db.getAllBeans<Item>();
+    for (int i=0; i<items.size(); i++) {
+        if (!items.at(i)->validate()) {
+#warning not implemented
+            return;
+        }
+    }
 }
