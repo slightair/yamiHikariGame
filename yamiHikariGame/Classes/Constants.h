@@ -31,4 +31,6 @@
 #define MessageItemBookTitle "アイテムずかん"
 #define MessageBackButtonTitle "《もどる"
 
+#define SaveDataChecksumSalt "tikuwa"
+
 #endif
