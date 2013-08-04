@@ -676,6 +676,7 @@
 		579BBAAB17AE14B90064F28A /* Visitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Visitor.h; sourceTree = "<group>"; };
 		579BBAAC17AE14B90064F28A /* Visitor_tmpl_impl.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Visitor_tmpl_impl.hpp; sourceTree = "<group>"; };
 		579BBAB717AE25FD0064F28A /* init.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = init.db; path = Resources/init.db; sourceTree = "<group>"; };
+		579BBABB17AE34C20064F28A /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Item.h; path = Classes/Item.h; sourceTree = "<group>"; };
 		579EDCBA17A6C2EC0039560A /* SE001.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = SE001.mp3; path = Resources/SE001.mp3; sourceTree = "<group>"; };
 		579EDCBB17A6C2EC0039560A /* SE002.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = SE002.mp3; path = Resources/SE002.mp3; sourceTree = "<group>"; };
 		579EDCBC17A6C2EC0039560A /* SE004.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = SE004.mp3; path = Resources/SE004.mp3; sourceTree = "<group>"; };
@@ -750,6 +751,7 @@
 				57840D8E17958956005732EC /* ios */,
 				57840D9717958956005732EC /* libs */,
 				578411061795895E005732EC /* Classes */,
+				579BBAB917AE34A60064F28A /* Model */,
 				578411041795895E005732EC /* Supporting Files */,
 			);
 			path = yamiHikariGame;
@@ -1696,6 +1698,14 @@
 			);
 			name = hiberlite;
 			path = libs/hiberlite;
+			sourceTree = "<group>";
+		};
+		579BBAB917AE34A60064F28A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				579BBABB17AE34C20064F28A /* Item.h */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		579EDCC017A6C2EF0039560A /* Sounds */ = {

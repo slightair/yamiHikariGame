@@ -3,6 +3,7 @@
 require 'yaml'
 require 'active_record'
 require 'digest/sha1'
+require 'pp'
 
 SALT = 'tikuwa'
 
@@ -24,12 +25,14 @@ namespace "settings" do
     YAML.load_file('dropItems.yml').each do |item|
       Item.create(item.merge(count: 0, checksum: Digest::SHA1.hexdigest(%w(name desc image stamina score).map{|k|item[k]}.join(':') + ":0:#{SALT}")[0...8]))
     end
+
+    pp Item.all
   end
 end
 
 class CreateTable < ActiveRecord::Migration
   def up
-    create_table :items do |t|
+    create_table :Item, primary_key: :hiberlite_id do |t|
       t.string  :name
       t.string  :desc
       t.string  :image
@@ -41,4 +44,7 @@ class CreateTable < ActiveRecord::Migration
   end
 end
 
-class Item < ActiveRecord::Base; end
+class Item < ActiveRecord::Base
+  self.primary_key = :hiberlite_id
+  self.table_name = :Item
+end
