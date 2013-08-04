@@ -12,6 +12,7 @@
 #include "SimpleAudioEngine.h"
 #include "Constants.h"
 #include "TitleScene.h"
+#include "GameEngine.h"
 
 #define kDefaultDesignResolutionWidth 320
 #define kDefaultDesignResolutionHeight 480
@@ -102,6 +103,8 @@ bool AppDelegate::applicationDidFinishLaunching()
 
     // run
     pDirector->runWithScene(pScene);
+
+    GameEngine::sharedEngine()->loadSaveData();
 
     return true;
 }

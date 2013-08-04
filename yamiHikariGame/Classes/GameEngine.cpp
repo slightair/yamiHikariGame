@@ -13,11 +13,16 @@
 #include "GameScene.h"
 #include "ItemListScene.h"
 
+#include "hiberlite.h"
+#include "Item.h"
+
 #define kTransitionDuration 1.0
 #define kGameTickInterval 0.1
 #define kSurvivePoint 1
 #define kStaminaConsumption 3
 #define kWaitForResultDuration 3
+
+#define kSavefileName "savedata.db"
 
 static GameEngine *__sharedEngine = NULL;
 
@@ -113,4 +118,35 @@ void GameEngine::addStamina(int stamina)
     else {
         _stamina += stamina;
     }
+}
+
+void GameEngine::loadSaveData()
+{
+    CCFileUtils *fileUtils = CCFileUtils::sharedFileUtils();
+    bool forceRebuildSaveData = false;
+
+    std::string saveFilePath = fileUtils->getWritablePath().append(kSavefileName);
+    if (forceRebuildSaveData || !fileUtils->isFileExist(saveFilePath)) {
+        CCLog("rebuild save data!");
+        std::string initDBFilePath = fileUtils->fullPathForFilename("init.db");
+
+        FILE *src, *dest;
+        char buffer[128];
+        src = fopen(initDBFilePath.c_str(), "rb");
+        dest = fopen(saveFilePath.c_str(), "wb");
+
+        while (feof(src) == 0) {
+            int read = fread(buffer, sizeof(char), 128, src);
+            fwrite(buffer, sizeof(char), read, dest);
+        }
+
+        fclose(src);
+        fclose(dest);
+    }
+
+    hiberlite::Database db;
+    db.open(saveFilePath);
+
+    hiberlite::bean_ptr<Item> item = db.loadBean<Item>(1);
+    CCLog("%s", item->name.c_str());
 }
