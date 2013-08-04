@@ -28,4 +28,7 @@
 
 #define StaminaMax 1000
 
+#define MessageItemBookTitle "アイテムずかん"
+#define MessageBackButtonTitle "《もどる"
+
 #endif
