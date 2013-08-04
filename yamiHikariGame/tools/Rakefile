@@ -1,20 +1,44 @@
 # encoding: utf-8
 
 require 'yaml'
-require 'json'
-require 'plist'
+require 'active_record'
+require 'digest/sha1'
+
+SALT = 'tikuwa'
 
 RESOURCES_DIR = '../Resources'
 
-task :default => "settings:dropItemSettings"
+task :default => "settings:initDatabase"
 
 namespace "settings" do
-  DROP_ITEM_SETTINGS_FILENAME = 'dropItems.plist'
-  
-  desc "generate #{DROP_ITEM_SETTINGS_FILENAME}"
-  task :dropItemSettings do
-    File.open(File.join(RESOURCES_DIR, DROP_ITEM_SETTINGS_FILENAME), "w") do |file|
-      file << YAML.load_file('dropItems.yml').to_plist
+  INIT_DB_FILENAME = 'init.db'
+
+  desc "generate #{INIT_DB_FILENAME}"
+  task :initDatabase do
+    path = File.join(RESOURCES_DIR, INIT_DB_FILENAME)
+
+    File.delete(path)
+    ActiveRecord::Base.establish_connection(adapter: 'sqlite3', database: path)
+    CreateTable.new.up
+
+    YAML.load_file('dropItems.yml').each do |item|
+      Item.create(item.merge(count: 0, checksum: Digest::SHA1.hexdigest(%w(name desc image stamina score).map{|k|item[k]}.join(':') + ":0:#{SALT}")[0...8]))
     end
   end
 end
+
+class CreateTable < ActiveRecord::Migration
+  def up
+    create_table :items do |t|
+      t.string  :name
+      t.string  :desc
+      t.string  :image
+      t.integer :stamina
+      t.integer :score
+      t.integer :count
+      t.string  :checksum
+    end
+  end
+end
+
+class Item < ActiveRecord::Base; end

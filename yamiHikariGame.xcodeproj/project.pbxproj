@@ -205,6 +205,7 @@
 		579BBAB417AE14B90064F28A /* shared_res.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 579BBAA417AE14B90064F28A /* shared_res.cpp */; };
 		579BBAB517AE14B90064F28A /* SQLiteStmt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 579BBAA717AE14B90064F28A /* SQLiteStmt.cpp */; };
 		579BBAB617AE14B90064F28A /* Visitor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 579BBAAA17AE14B90064F28A /* Visitor.cpp */; };
+		579BBAB817AE25FD0064F28A /* init.db in Resources */ = {isa = PBXBuildFile; fileRef = 579BBAB717AE25FD0064F28A /* init.db */; };
 		579EDCBD17A6C2EC0039560A /* SE001.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 579EDCBA17A6C2EC0039560A /* SE001.mp3 */; };
 		579EDCBE17A6C2EC0039560A /* SE002.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 579EDCBB17A6C2EC0039560A /* SE002.mp3 */; };
 		579EDCBF17A6C2EC0039560A /* SE004.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 579EDCBC17A6C2EC0039560A /* SE004.mp3 */; };
@@ -674,6 +675,7 @@
 		579BBAAA17AE14B90064F28A /* Visitor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Visitor.cpp; sourceTree = "<group>"; };
 		579BBAAB17AE14B90064F28A /* Visitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Visitor.h; sourceTree = "<group>"; };
 		579BBAAC17AE14B90064F28A /* Visitor_tmpl_impl.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Visitor_tmpl_impl.hpp; sourceTree = "<group>"; };
+		579BBAB717AE25FD0064F28A /* init.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = init.db; path = Resources/init.db; sourceTree = "<group>"; };
 		579EDCBA17A6C2EC0039560A /* SE001.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = SE001.mp3; path = Resources/SE001.mp3; sourceTree = "<group>"; };
 		579EDCBB17A6C2EC0039560A /* SE002.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = SE002.mp3; path = Resources/SE002.mp3; sourceTree = "<group>"; };
 		579EDCBC17A6C2EC0039560A /* SE004.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = SE004.mp3; path = Resources/SE004.mp3; sourceTree = "<group>"; };
@@ -762,6 +764,7 @@
 				57A4241B17A72E530035B5F2 /* Default-568h@2x.png */,
 				57840D8D17958956005732EC /* Info.plist */,
 				5790435017A425D2004A2208 /* dropItems.plist */,
+				579BBAB717AE25FD0064F28A /* init.db */,
 				57FB9F9B179A5C2F005D882C /* default */,
 				57FB9F9C179A5C2F005D882C /* ios-hd */,
 			);
@@ -1758,6 +1761,7 @@
 				5793860E17A4F51A008A5BBE /* mosamosa.ttf in Resources */,
 				57840E2B17958958005732EC /* ChangeLog in Resources */,
 				57840F9F1795895B005732EC /* project.pbxproj in Resources */,
+				579BBAB817AE25FD0064F28A /* init.db in Resources */,
 				579EDCBF17A6C2EC0039560A /* SE004.mp3 in Resources */,
 				579EDCBD17A6C2EC0039560A /* SE001.mp3 in Resources */,
 				57A4241C17A72E530035B5F2 /* Default-568h@2x.png in Resources */,
