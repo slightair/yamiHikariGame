@@ -10,6 +10,7 @@
 #define __yamiHikariGame__GameEngine__
 
 #include "cocos2d.h"
+#include "hiberlite.h"
 
 using namespace std;
 using namespace cocos2d;
@@ -17,6 +18,8 @@ using namespace cocos2d;
 class GameEngine : public CCObject
 {
 protected:
+    hiberlite::Database _db;
+
     int _score;
     int _stamina;
 
@@ -39,6 +42,8 @@ public:
     int getStamina();
     void addScore(int score);
     void addStamina(int stamina);
+
+    hiberlite::Database *savedataDB();
 };
 
 #endif /* defined(__yamiHikariGame__GameEngine__) */

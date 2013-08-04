@@ -11,8 +11,6 @@
 #include "GameEngine.h"
 #include "ItemDetailScene.h"
 
-#include "DropItem.h"
-
 #define kItemNumberLabelMarginLeft 16
 #define kItemImageMarginLeft 60
 #define kItemNameLabelMarginLeft 100
@@ -43,7 +41,9 @@ bool ItemListScene::init()
 
     if (result) {
         setTitle(MessageItemBookTitle);
-        _items = DropItem::getItems();
+
+        hiberlite::Database *db = GameEngine::sharedEngine()->savedataDB();
+        _items = db->getAllBeans<Item>();
 
         CCSize windowSize = CCDirector::sharedDirector()->getWinSize();
 
@@ -72,8 +72,8 @@ void ItemListScene::tableCellTouched(CCTableView* table, CCTableViewCell* cell)
 {
     int selectedItemIndex = cell->getIdx();
 
-    CCDictionary *itemInfo = (CCDictionary *)_items->objectAtIndex(selectedItemIndex);
-    CCScene *scene = ItemDetailScene::sceneWithItemInfo(itemInfo);
+    bean_ptr<Item> item = _items.at(selectedItemIndex);
+    CCScene *scene = ItemDetailScene::sceneWithItem(item);
 
     CCDirector::sharedDirector()->pushScene(scene);
 }
@@ -107,28 +107,26 @@ CCTableViewCell* ItemListScene::tableCellAtIndex(CCTableView *table, unsigned in
         cell->addChild(itemNameLabel);
     }
 
-    CCDictionary *itemInfo = (CCDictionary *)_items->objectAtIndex(idx);
-    CCString *itemName = (CCString *)itemInfo->objectForKey("name_ja");
-    CCString *itemImageName = (CCString *)itemInfo->objectForKey("image");
+    bean_ptr<Item> item = _items.at(idx);
 
     cell->removeChildByTag(kItemCellTagImage);
 
     itemNumberLabel = (CCLabelTTF *)cell->getChildByTag(kItemCellTagNumberLabel);
     itemNumberLabel->setString(CCString::createWithFormat("%02d", idx + 1)->getCString());
 
-    CCSprite *itemImage = CCSprite::createWithSpriteFrameName(itemImageName->getCString());
+    CCSprite *itemImage = CCSprite::createWithSpriteFrameName(item->image.c_str());
     itemImage->setAnchorPoint(ccp(0.0, 0.5));
     itemImage->setPosition(ccp(kItemImageMarginLeft, kItemCellHeight / 2));
     itemImage->setTag(kItemCellTagImage);
     cell->addChild(itemImage);
 
     itemNameLabel = (CCLabelTTF *)cell->getChildByTag(kItemCellTagNameLabel);
-    itemNameLabel->setString(itemName->getCString());
+    itemNameLabel->setString(item->name.c_str());
 
     return cell;
 }
 
 unsigned int ItemListScene::numberOfCellsInTableView(CCTableView *table)
 {
-    return _items->count();
+    return _items.size();
 }

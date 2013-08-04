@@ -12,14 +12,16 @@
 #include "cocos2d.h"
 #include "CCTableView.h"
 #include "GradientLayer.h"
+#include "Item.h"
 
+using namespace std;
 using namespace cocos2d;
 using namespace cocos2d::extension;
 
 class ItemListScene : public GradientLayer, public CCTableViewDelegate, public CCTableViewDataSource
 {
 protected:
-    CCArray *_items;
+    vector<hiberlite::bean_ptr<Item> > _items;
 public:
     virtual bool init();
 

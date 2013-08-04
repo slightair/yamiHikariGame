@@ -11,13 +11,16 @@
 
 #include "cocos2d.h"
 #include "GradientLayer.h"
+#include "Item.h"
 
+using namespace std;
 using namespace cocos2d;
+using namespace hiberlite;
 
 class ItemDetailScene : public GradientLayer
 {
 protected:
-    CCDictionary *_itemInfo;
+    bean_ptr<Item> _item;
 
     CCSprite *_itemImage;
     CCLabelTTF *_itemNameLabel;
@@ -25,11 +28,11 @@ protected:
     CCLabelTTF *_descriptionLabel;
 
 public:
-    void setItemInfo(CCDictionary *itemInfo);
+    void setItem(bean_ptr<Item> item);
 
     virtual bool init();
 
-    static CCScene* sceneWithItemInfo(CCDictionary *itemInfo);
+    static CCScene* sceneWithItem(bean_ptr<Item> item);
     CREATE_FUNC(ItemDetailScene);
 };
 

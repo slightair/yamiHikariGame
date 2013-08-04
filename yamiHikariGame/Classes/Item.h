@@ -12,6 +12,7 @@
 #include "hiberlite.h"
 #include "Constants.h"
 #include "sha1.h"
+#include <sstream>
 
 #define kChecksumLength 8
 #define kSHA1DigestLength 20
@@ -42,40 +43,9 @@ public:
     int count;
     string checksum;
 
-    void updateCount(int count)
-    {
-        this->count = count;
-        this->checksum = generateChecksum();
-    }
-
-    bool validate()
-    {
-        return this->checksum == generateChecksum();
-    }
-
-    string generateChecksum()
-    {
-        ostringstream os;
-        os << this->name << ':'
-           << this->desc << ':'
-           << this->image << ':'
-           << this->stamina << ':'
-           << this->score << ':'
-           << count << ':'
-           << SaveDataChecksumSalt;
-        const char *input = os.str().c_str();
-
-        unsigned char digest[kSHA1DigestLength];
-        char buf[kChecksumLength];
-
-        SHA1 sha1;
-        sha1.addBytes((unsigned char *)input, strlen(input));
-        sha1.getDigest(digest, kSHA1DigestLength);
-        sprintf(buf, "%02x%02x%02x%02x", digest[0], digest[1], digest[2], digest[3]);
-
-        return string(buf);
-    }
+    void updateCount(int count);
+    bool validate();
+    string generateChecksum();
 };
-HIBERLITE_EXPORT_CLASS(Item)
 
 #endif /* defined(__yamiHikariGame__Item__) */
