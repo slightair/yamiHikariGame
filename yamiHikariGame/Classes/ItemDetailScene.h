@@ -17,9 +17,14 @@ using namespace cocos2d;
 class ItemDetailScene : public GradientLayer
 {
 protected:
-public:
     CCDictionary *_itemInfo;
 
+    CCSprite *_itemImage;
+    CCLabelTTF *_itemNameLabel;
+    CCLabelTTF *_scoreLabel;
+    CCLabelTTF *_descriptionLabel;
+
+public:
     void setItemInfo(CCDictionary *itemInfo);
 
     virtual bool init();

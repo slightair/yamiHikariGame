@@ -42,7 +42,7 @@ bool ItemListScene::init()
     bool result = GradientLayer::init();
 
     if (result) {
-        setTitle("アイテムずかん");
+        setTitle(MessageItemBookTitle);
         _items = DropItem::getItems();
 
         CCSize windowSize = CCDirector::sharedDirector()->getWinSize();
@@ -54,7 +54,7 @@ bool ItemListScene::init()
         tableView->reloadData();
         this->addChild(tableView);
 
-        CCMenuItem *backTitleItem = CCMenuItemLabel::create(CCLabelTTF::create("《もどる", DefaultFontName, FontSizeNormal),
+        CCMenuItem *backTitleItem = CCMenuItemLabel::create(CCLabelTTF::create(MessageBackButtonTitle, DefaultFontName, FontSizeNormal),
                                                             GameEngine::sharedEngine(),
                                                             menu_selector(GameEngine::showTitle));
         backTitleItem->setAnchorPoint(ccp(0, 1));
