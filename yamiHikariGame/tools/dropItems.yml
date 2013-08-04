@@ -4,147 +4,197 @@
   image: 'tikuwa.png'
   stamina: 10
   score: 100
+  score_border: 0
+  drop_rage: 0.01
 -
   name_ja: 'たからばこ'
   desc_ja: 'なにか よいものが はいってそうな ハコ。'
   image: 'treasurebox01.png'
   stamina: 0
   score: 500
+  score_border: 0
+  drop_rage: 0.01
 - 
   name_ja: 'あかいたからばこ'
   desc_ja: 'ちょっと よいものが はいってそうな ハコ。'
   image: 'treasurebox02.png'
   stamina: 0
   score: 200
+  score_border: 3000
+  drop_rage: 0.003
 -
   name_ja: 'マホウセキ'
   desc_ja: 'スタミナを かいふくしたり、ガチャを ひける ふしぎな アイテム。コンティニューは できない。'
   image: 'magicstone01.png'
   stamina: 30
   score: 300
+  score_border: 4000
+  drop_rage: 0.003
 -
   name_ja: 'つかえないマホウセキ'
   desc_ja: 'スタミナを かいふくしたり、ガチャを ひいてしまった アイテム。'
   image: 'magicstone02.png'
   stamina: 0
   score: 100
+  score_border: 0
+  drop_rage: 0.02
 -
   name_ja: 'ヘビ'
   desc_ja: 'ふだんは ムガイだが、ふむと あぶない。'
   image: 'snake01.png'
   stamina: -50
   score: 100
+  score_border: 0
+  drop_rage: 0.02
 -
   name_ja: 'あかいヘビ'
   desc_ja: 'つよそうな ヘビ。ふむと あぶないのは、あおいのと おなじ。'
   image: 'snake02.png'
   stamina: -70
-  score: 100
+  score: 300
+  score_border: 1500
+  drop_rage: 0.01
 -
   name_ja: 'しゅうきんぶくろ'
   desc_ja: 'おかねが いっぱい つまった ふくろ。'
   image: 'bag01.png'
   stamina: 0
   score: 800
+  score_border: 0
+  drop_rage: 0.001
 -
   name_ja: 'ずたぶくろ'
   desc_ja: 'あけると あぶない ふくろ。'
   image: 'bag02.png'
   stamina: -20
   score: 100
+  score_border: 0
+  drop_rage: 0.01
 -
   name_ja: 'あおいとり'
-  desc_ja: 'とある ちほうの よびな。しあわせに なれる コウカは ない。'
+  desc_ja: 'とある ちほうの よびな。しあわせに なれるとは かぎらない。'
   image: 'bird01.png'
   stamina: 0
   score: 150
+  score_border: 0
+  drop_rage: 0.001
 -
   name_ja: 'あかいドリンク'
   desc_ja: 'のむと、からだが あたたまって ゲンキに なる。'
   image: 'bottle01.png'
   stamina: 30
   score: 100
+  score_border: 0
+  drop_rage: 0.002
 -
   name_ja: 'アオイジュース'
   desc_ja: 'のむと、あたまが さえて レイセイに なる。'
   image: 'bottle02.png'
   stamina: 40
-  score: 100
+  score: 70
+  score_border: 3000
+  drop_rage: 0.003
 -
   name_ja: 'からのびん'
   desc_ja: 'くうきを とじこめた びん。ジュースは すでに のまれた あと。'
   image: 'bottle03.png'
   stamina: 0
   score: 10
+  score_border: 0
+  drop_rage: 0.01
 -
   name_ja: 'アカアヤメ'
   desc_ja: 'するどい はっぱを もつ はな。かんしょうよう として にんきが ある。'
   image: 'flower01.png'
   stamina: 0
-  score: 100
+  score: 200
+  score_border: 0
+  drop_rage: 0.02
 -
   name_ja: 'アオアヤメ'
   desc_ja: 'するどい はっぱを もつ はな。どうくつの なかでだけ、あおく みえる。'
   image: 'flower02.png'
   stamina: 0
-  score: 100
+  score: 400
+  score_border: 8000
+  drop_rage: 0.005
 -
   name_ja: 'モモのはな'
   desc_ja: 'めったに みに ならない はな。みと おなじく、かわを ながれてくる。'
   image: 'flower03.png'
   stamina: 0
-  score: 100
+  score: 300
+  score_border: 2000
+  drop_rage: 0.002
 -
   name_ja: 'アオモモのはな'
   desc_ja: 'めったに みに ならない はな。おおきな みは、じめんの なかに かくれてる。'
   image: 'flower04.png'
   stamina: 0
   score: 100
+  score_border: 0
+  drop_rage: 0.01
 -
   name_ja: 'あかいキノコ'
   desc_ja: 'おいしそうに ツヤツヤと ひかっている キノコ。スタミナを かいふくする。'
   image: 'mushroom01.png'
   stamina: 10
   score: 100
+  score_border: 0
+  drop_rage: 0.03
 -
   name_ja: 'カサタケ'
   desc_ja: 'おおきな カサの ような キノコ。スタミナを かいふくする。'
   image: 'mushroom02.png'
   stamina: 10
   score: 100
+  score_border: 0
+  drop_rage: 0.01
 -
   name_ja: 'マルダケ'
   desc_ja: 'マルマル とした キノコ。スタミナを おおめに かいふくする。'
   image: 'mushroom03.png'
   stamina: 15
   score: 100
+  score_border: 3000
+  drop_rage: 0.005
 -
   name_ja: 'コシダケ'
   desc_ja: 'なまえは コシカケダケが なまったもの。スタミナを かいふくする。'
   image: 'mushroom04.png'
   stamina: 10
   score: 100
+  score_border: 5000
+  drop_rage: 0.02
 -
   name_ja: 'ハネタケ'
   desc_ja: 'もりの なかで はねまわる キノコ。スタミナを おおめに かいふくする。'
   image: 'mushroom05.png'
   stamina: 20
   score: 100
+  score_border: 10000
+  drop_rage: 0.0005
 -
   name_ja: 'むれキノコ'
   desc_ja: 'キノコが あつまって できた キノコ。スタミナを たくさん かいふくする。'
   image: 'mushroom06.png'
   stamina: 30
   score: 200
+  score_border: 8000
+  drop_rage: 0.005
 -
   name_ja: 'ポヨン'
   desc_ja: 'ふむと、グニャりと していて あぶない。'
   image: 'slime01.png'
   stamina: -50
-  score: 100
+  score: 150
+  score_border: 0
+  drop_rage: 0.003
 -
   name_ja: 'ボヨヨン'
   desc_ja: 'めつきが わるい。ふんづけると おこるので、ちゅうい。'
   image: 'slime02.png'
   stamina: -70
-  score: 100
+  score: 400
+  score_border: 4000
+  drop_rage: 0.003
