@@ -76,7 +76,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     }
 #else
     // Android, etc...
-    if (screenSize.height < kIPadDesignResolutionHeight) {
+    if (screenSize.height < kIPadHeight) {
         openGLView->setDesignResolutionSize(kDefaultDesignResolutionWidth, kDefaultDesignResolutionHeight, kResolutionShowAll);
     }
     else {
