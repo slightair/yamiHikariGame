@@ -4,7 +4,7 @@
 <array>
 	<dict>
 		<key>desc_ja</key>
-		<string>ちょっとひかっている。まだがんばれそうなきがする。</string>
+		<string>ちょっと ひかっている。まだ がんばれそうな きがする。</string>
 		<key>image</key>
 		<string>tikuwa.png</string>
 		<key>name_ja</key>
@@ -16,7 +16,7 @@
 	</dict>
 	<dict>
 		<key>desc_ja</key>
-		<string>なにかよいものがはいってそうなハコ。</string>
+		<string>なにか よいものが はいってそうな ハコ。</string>
 		<key>image</key>
 		<string>treasurebox01.png</string>
 		<key>name_ja</key>
@@ -28,7 +28,19 @@
 	</dict>
 	<dict>
 		<key>desc_ja</key>
-		<string>スタミナをかいふくしたりガチャをひけるふしぎなアイテム。コンティニューはできない。</string>
+		<string>ちょっと よいものが はいってそうな ハコ。</string>
+		<key>image</key>
+		<string>treasurebox02.png</string>
+		<key>name_ja</key>
+		<string>あかいたからばこ</string>
+		<key>score</key>
+		<integer>200</integer>
+		<key>stamina</key>
+		<integer>0</integer>
+	</dict>
+	<dict>
+		<key>desc_ja</key>
+		<string>スタミナを かいふくしたり、ガチャを ひける ふしぎな アイテム。コンティニューは できない。</string>
 		<key>image</key>
 		<string>magicstone01.png</string>
 		<key>name_ja</key>
@@ -40,7 +52,19 @@
 	</dict>
 	<dict>
 		<key>desc_ja</key>
-		<string>ふだんはムガイだが、ふむとあぶない</string>
+		<string>スタミナを かいふくしたり、ガチャを ひいてしまった アイテム。</string>
+		<key>image</key>
+		<string>magicstone02.png</string>
+		<key>name_ja</key>
+		<string>つかえないマホウセキ</string>
+		<key>score</key>
+		<integer>100</integer>
+		<key>stamina</key>
+		<integer>0</integer>
+	</dict>
+	<dict>
+		<key>desc_ja</key>
+		<string>ふだんは ムガイだが、ふむと あぶない。</string>
 		<key>image</key>
 		<string>snake01.png</string>
 		<key>name_ja</key>
@@ -49,6 +73,234 @@
 		<integer>100</integer>
 		<key>stamina</key>
 		<integer>-50</integer>
+	</dict>
+	<dict>
+		<key>desc_ja</key>
+		<string>つよそうな ヘビ。ふむと あぶないのは、あおいのと おなじ。</string>
+		<key>image</key>
+		<string>snake02.png</string>
+		<key>name_ja</key>
+		<string>あかいヘビ</string>
+		<key>score</key>
+		<integer>100</integer>
+		<key>stamina</key>
+		<integer>-70</integer>
+	</dict>
+	<dict>
+		<key>desc_ja</key>
+		<string>おかねが いっぱい つまった ふくろ。</string>
+		<key>image</key>
+		<string>bag01.png</string>
+		<key>name_ja</key>
+		<string>しゅうきんぶくろ</string>
+		<key>score</key>
+		<integer>800</integer>
+		<key>stamina</key>
+		<integer>0</integer>
+	</dict>
+	<dict>
+		<key>desc_ja</key>
+		<string>あけると あぶない ふくろ。</string>
+		<key>image</key>
+		<string>bag02.png</string>
+		<key>name_ja</key>
+		<string>ずたぶくろ</string>
+		<key>score</key>
+		<integer>100</integer>
+		<key>stamina</key>
+		<integer>-20</integer>
+	</dict>
+	<dict>
+		<key>desc_ja</key>
+		<string>とある ちほうの よびな。しあわせに なれる コウカは ない。</string>
+		<key>image</key>
+		<string>bird01.png</string>
+		<key>name_ja</key>
+		<string>あおいとり</string>
+		<key>score</key>
+		<integer>150</integer>
+		<key>stamina</key>
+		<integer>0</integer>
+	</dict>
+	<dict>
+		<key>desc_ja</key>
+		<string>のむと、からだが あたたまって ゲンキに なる。</string>
+		<key>image</key>
+		<string>bottle01.png</string>
+		<key>name_ja</key>
+		<string>あかいドリンク</string>
+		<key>score</key>
+		<integer>100</integer>
+		<key>stamina</key>
+		<integer>30</integer>
+	</dict>
+	<dict>
+		<key>desc_ja</key>
+		<string>のむと、あたまが さえて レイセイに なる。</string>
+		<key>image</key>
+		<string>bottle02.png</string>
+		<key>name_ja</key>
+		<string>アオイジュース</string>
+		<key>score</key>
+		<integer>100</integer>
+		<key>stamina</key>
+		<integer>40</integer>
+	</dict>
+	<dict>
+		<key>desc_ja</key>
+		<string>くうきを とじこめた びん。ジュースは すでに のまれた あと。</string>
+		<key>image</key>
+		<string>bottle03.png</string>
+		<key>name_ja</key>
+		<string>からのびん</string>
+		<key>score</key>
+		<integer>10</integer>
+		<key>stamina</key>
+		<integer>0</integer>
+	</dict>
+	<dict>
+		<key>desc_ja</key>
+		<string>するどい はっぱを もつ はな。かんしょうよう として にんきが ある。</string>
+		<key>image</key>
+		<string>flower01.png</string>
+		<key>name_ja</key>
+		<string>アカアヤメ</string>
+		<key>score</key>
+		<integer>100</integer>
+		<key>stamina</key>
+		<integer>0</integer>
+	</dict>
+	<dict>
+		<key>desc_ja</key>
+		<string>するどい はっぱを もつ はな。どうくつの なかでだけ、あおく みえる。</string>
+		<key>image</key>
+		<string>flower02.png</string>
+		<key>name_ja</key>
+		<string>アオアヤメ</string>
+		<key>score</key>
+		<integer>100</integer>
+		<key>stamina</key>
+		<integer>0</integer>
+	</dict>
+	<dict>
+		<key>desc_ja</key>
+		<string>めったに みに ならない はな。みと おなじく、かわを ながれてくる。</string>
+		<key>image</key>
+		<string>flower03.png</string>
+		<key>name_ja</key>
+		<string>モモのはな</string>
+		<key>score</key>
+		<integer>100</integer>
+		<key>stamina</key>
+		<integer>0</integer>
+	</dict>
+	<dict>
+		<key>desc_ja</key>
+		<string>めったに みに ならない はな。おおきな みは、じめんの なかに かくれてる。</string>
+		<key>image</key>
+		<string>flower04.png</string>
+		<key>name_ja</key>
+		<string>アオモモのはな</string>
+		<key>score</key>
+		<integer>100</integer>
+		<key>stamina</key>
+		<integer>0</integer>
+	</dict>
+	<dict>
+		<key>desc_ja</key>
+		<string>おいしそうに ツヤツヤと ひかっている キノコ。スタミナを かいふくする。</string>
+		<key>image</key>
+		<string>mushroom01.png</string>
+		<key>name_ja</key>
+		<string>あかいキノコ</string>
+		<key>score</key>
+		<integer>100</integer>
+		<key>stamina</key>
+		<integer>10</integer>
+	</dict>
+	<dict>
+		<key>desc_ja</key>
+		<string>おおきな カサの ような キノコ。スタミナを かいふくする。</string>
+		<key>image</key>
+		<string>mushroom02.png</string>
+		<key>name_ja</key>
+		<string>カサタケ</string>
+		<key>score</key>
+		<integer>100</integer>
+		<key>stamina</key>
+		<integer>10</integer>
+	</dict>
+	<dict>
+		<key>desc_ja</key>
+		<string>マルマル とした キノコ。スタミナを おおめに かいふくする。</string>
+		<key>image</key>
+		<string>mushroom03.png</string>
+		<key>name_ja</key>
+		<string>マルダケ</string>
+		<key>score</key>
+		<integer>100</integer>
+		<key>stamina</key>
+		<integer>15</integer>
+	</dict>
+	<dict>
+		<key>desc_ja</key>
+		<string>なまえは コシカケダケが なまったもの。スタミナを かいふくする。</string>
+		<key>image</key>
+		<string>mushroom04.png</string>
+		<key>name_ja</key>
+		<string>コシダケ</string>
+		<key>score</key>
+		<integer>100</integer>
+		<key>stamina</key>
+		<integer>10</integer>
+	</dict>
+	<dict>
+		<key>desc_ja</key>
+		<string>もりの なかで はねまわる キノコ。スタミナを おおめに かいふくする。</string>
+		<key>image</key>
+		<string>mushroom05.png</string>
+		<key>name_ja</key>
+		<string>ハネタケ</string>
+		<key>score</key>
+		<integer>100</integer>
+		<key>stamina</key>
+		<integer>20</integer>
+	</dict>
+	<dict>
+		<key>desc_ja</key>
+		<string>キノコが あつまって できた キノコ。スタミナを たくさん かいふくする。</string>
+		<key>image</key>
+		<string>mushroom06.png</string>
+		<key>name_ja</key>
+		<string>むれキノコ</string>
+		<key>score</key>
+		<integer>200</integer>
+		<key>stamina</key>
+		<integer>30</integer>
+	</dict>
+	<dict>
+		<key>desc_ja</key>
+		<string>ふむと、グニャりと していて あぶない。</string>
+		<key>image</key>
+		<string>slime01.png</string>
+		<key>name_ja</key>
+		<string>ポヨン</string>
+		<key>score</key>
+		<integer>100</integer>
+		<key>stamina</key>
+		<integer>-50</integer>
+	</dict>
+	<dict>
+		<key>desc_ja</key>
+		<string>めつきが わるい。ふんづけると おこるので、ちゅうい。</string>
+		<key>image</key>
+		<string>slime02.png</string>
+		<key>name_ja</key>
+		<string>ボヨヨン</string>
+		<key>score</key>
+		<integer>100</integer>
+		<key>stamina</key>
+		<integer>-70</integer>
 	</dict>
 </array>
 </plist>
