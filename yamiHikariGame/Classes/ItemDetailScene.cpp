@@ -30,32 +30,30 @@
 #define kPageSelectorHeight 32
 #define kPageSelectorMarginVertical 16
 
-CCScene* ItemDetailScene::sceneWithItemInfo(CCDictionary *itemInfo)
+CCScene* ItemDetailScene::sceneWithItem(bean_ptr<Item> item)
 {
     CCScene *scene = CCScene::create();
 
     ItemDetailScene *layer = ItemDetailScene::create();
-    layer->setItemInfo(itemInfo);
+    layer->setItem(item);
     scene->addChild(layer);
 
     return scene;
 }
 
-void ItemDetailScene::setItemInfo(CCDictionary *itemInfo)
+void ItemDetailScene::setItem(bean_ptr<Item> item)
 {
-    _itemInfo = itemInfo;
+    _item = item;
 
     CCSize windowSize = CCDirector::sharedDirector()->getWinSize();
 
-    CCString *itemName = CCString::createWithFormat("00 %s", ((CCString *)itemInfo->objectForKey("name_ja"))->getCString());
-    CCString *itemImageName = (CCString *)itemInfo->objectForKey("image");
-    CCString *itemScore = CCString::createWithFormat("スコア:%d スタミナ:%+d", ((CCString *)itemInfo->objectForKey("score"))->intValue(), ((CCString *)itemInfo->objectForKey("stamina"))->intValue());
-    CCString *itemDescription = (CCString *)itemInfo->objectForKey("desc_ja");
+    CCString *itemName = CCString::createWithFormat("%02lld %s", _item.get_id(), _item->name.c_str());
+    CCString *itemScore = CCString::createWithFormat("スコア:%d スタミナ:%+d", _item->score, _item->stamina);
 
     if (_itemImage) {
         _itemImage->removeFromParentAndCleanup(true);
     }
-    _itemImage = CCSprite::createWithSpriteFrameName(itemImageName->getCString());
+    _itemImage = CCSprite::createWithSpriteFrameName(_item->image.c_str());
     _itemImage->setAnchorPoint(ccp(0.5, 1));
     _itemImage->setPosition(ccp(windowSize.width / 2, windowSize.height - kItemImageMarginTop));
     _itemImage->setScale(2.0);
@@ -63,7 +61,7 @@ void ItemDetailScene::setItemInfo(CCDictionary *itemInfo)
 
     _itemNameLabel->setString(itemName->getCString());
     _scoreLabel->setString(itemScore->getCString());
-    _descriptionLabel->setString(itemDescription->getCString());
+    _descriptionLabel->setString(_item->desc.c_str());
 }
 
 bool ItemDetailScene::init()

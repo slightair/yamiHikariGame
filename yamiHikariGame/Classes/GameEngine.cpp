@@ -12,8 +12,6 @@
 #include "TitleScene.h"
 #include "GameScene.h"
 #include "ItemListScene.h"
-
-#include "hiberlite.h"
 #include "Item.h"
 
 #define kTransitionDuration 1.0
@@ -144,14 +142,18 @@ void GameEngine::validateSaveData()
         fclose(dest);
     }
 
-    hiberlite::Database db;
-    db.open(saveFilePath);
+    _db.open(saveFilePath);
 
-    vector< hiberlite::bean_ptr<Item> > items = db.getAllBeans<Item>();
+    vector< hiberlite::bean_ptr<Item> > items = _db.getAllBeans<Item>();
     for (int i=0; i<items.size(); i++) {
         if (!items.at(i)->validate()) {
 #warning not implemented
             return;
         }
     }
+}
+
+hiberlite::Database *GameEngine::savedataDB()
+{
+    return &_db;
 }

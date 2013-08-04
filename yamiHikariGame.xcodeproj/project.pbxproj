@@ -207,6 +207,7 @@
 		579BBAB617AE14B90064F28A /* Visitor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 579BBAAA17AE14B90064F28A /* Visitor.cpp */; };
 		579BBAB817AE25FD0064F28A /* init.db in Resources */ = {isa = PBXBuildFile; fileRef = 579BBAB717AE25FD0064F28A /* init.db */; };
 		579E94FC17AE77DC008B4276 /* sha1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 579E94F717AE77DC008B4276 /* sha1.cpp */; };
+		579E94FE17AEA8D0008B4276 /* Item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 579E94FD17AEA8D0008B4276 /* Item.cpp */; };
 		579EDCBD17A6C2EC0039560A /* SE001.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 579EDCBA17A6C2EC0039560A /* SE001.mp3 */; };
 		579EDCBE17A6C2EC0039560A /* SE002.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 579EDCBB17A6C2EC0039560A /* SE002.mp3 */; };
 		579EDCBF17A6C2EC0039560A /* SE004.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 579EDCBC17A6C2EC0039560A /* SE004.mp3 */; };
@@ -680,6 +681,7 @@
 		579BBABB17AE34C20064F28A /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Item.h; path = Classes/Item.h; sourceTree = "<group>"; };
 		579E94F717AE77DC008B4276 /* sha1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = sha1.cpp; path = libs/extensions/crypto/sha1/sha1.cpp; sourceTree = "<group>"; };
 		579E94F817AE77DC008B4276 /* sha1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sha1.h; path = libs/extensions/crypto/sha1/sha1.h; sourceTree = "<group>"; };
+		579E94FD17AEA8D0008B4276 /* Item.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Item.cpp; path = Classes/Item.cpp; sourceTree = "<group>"; };
 		579EDCBA17A6C2EC0039560A /* SE001.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = SE001.mp3; path = Resources/SE001.mp3; sourceTree = "<group>"; };
 		579EDCBB17A6C2EC0039560A /* SE002.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = SE002.mp3; path = Resources/SE002.mp3; sourceTree = "<group>"; };
 		579EDCBC17A6C2EC0039560A /* SE004.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = SE004.mp3; path = Resources/SE004.mp3; sourceTree = "<group>"; };
@@ -754,7 +756,6 @@
 				57840D8E17958956005732EC /* ios */,
 				57840D9717958956005732EC /* libs */,
 				578411061795895E005732EC /* Classes */,
-				579BBAB917AE34A60064F28A /* Model */,
 				578411041795895E005732EC /* Supporting Files */,
 			);
 			path = yamiHikariGame;
@@ -1597,6 +1598,7 @@
 		578411061795895E005732EC /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				579BBAB917AE34A60064F28A /* Model */,
 				578411071795895E005732EC /* AppDelegate.h */,
 				578411081795895E005732EC /* AppDelegate.cpp */,
 				578DE67017A4E0A40050CDE4 /* Constants.h */,
@@ -1709,6 +1711,7 @@
 			isa = PBXGroup;
 			children = (
 				579BBABB17AE34C20064F28A /* Item.h */,
+				579E94FD17AEA8D0008B4276 /* Item.cpp */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1887,6 +1890,7 @@
 				57840EAA17958959005732EC /* CCDevice.mm in Sources */,
 				57840EAD17958959005732EC /* CCDirectorCaller.mm in Sources */,
 				57840EB017958959005732EC /* CCEGLView.mm in Sources */,
+				579E94FE17AEA8D0008B4276 /* Item.cpp in Sources */,
 				57840EB317958959005732EC /* CCES2Renderer.m in Sources */,
 				57840EB717958959005732EC /* CCFileUtilsIOS.mm in Sources */,
 				57840EBA17958959005732EC /* CCImage.mm in Sources */,
