@@ -118,7 +118,7 @@ void GameEngine::addStamina(int stamina)
     }
 }
 
-void GameEngine::validateSaveData()
+void GameEngine::loadSaveData()
 {
     CCFileUtils *fileUtils = CCFileUtils::sharedFileUtils();
     bool forceRebuildSaveData = false;
@@ -144,16 +144,16 @@ void GameEngine::validateSaveData()
 
     _db.open(saveFilePath);
 
-    vector< hiberlite::bean_ptr<Item> > items = _db.getAllBeans<Item>();
-    for (int i=0; i<items.size(); i++) {
-        if (!items.at(i)->validate()) {
+    _items = _db.getAllBeans<_Item>();
+    for (int i=0; i<_items.size(); i++) {
+        if (!_items.at(i)->validate()) {
 #warning not implemented
             return;
         }
     }
 }
 
-hiberlite::Database *GameEngine::savedataDB()
+vector<Item> *GameEngine::getItems()
 {
-    return &_db;
+    return &_items;
 }

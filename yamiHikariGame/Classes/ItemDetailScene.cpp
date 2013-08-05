@@ -30,7 +30,7 @@
 #define kPageSelectorHeight 32
 #define kPageSelectorMarginVertical 16
 
-CCScene* ItemDetailScene::sceneWithItem(bean_ptr<Item> item)
+CCScene* ItemDetailScene::sceneWithItem(Item item)
 {
     CCScene *scene = CCScene::create();
 
@@ -41,7 +41,7 @@ CCScene* ItemDetailScene::sceneWithItem(bean_ptr<Item> item)
     return scene;
 }
 
-void ItemDetailScene::setItem(bean_ptr<Item> item)
+void ItemDetailScene::setItem(Item item)
 {
     _item = item;
 

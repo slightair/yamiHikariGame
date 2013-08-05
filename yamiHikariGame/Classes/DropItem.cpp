@@ -7,15 +7,10 @@
 //
 
 #include "DropItem.h"
-
-static CCArray *__itemInfoList = NULL;
+#include "GameEngine.h"
 
 DropItem *DropItem::create()
 {
-    if (!__itemInfoList) {
-        DropItem::loadDropItemsInfo();
-    }
-
     DropItem *dropItem = new DropItem();
     if (dropItem && dropItem->init())
     {
@@ -28,50 +23,18 @@ DropItem *DropItem::create()
 
 bool DropItem::init()
 {
-    if (!__itemInfoList) {
-        return false;
-    }
-
-    CCDictionary *itemInfo = (CCDictionary *)__itemInfoList->randomObject();
-    _nameJa = ((CCString *)itemInfo->objectForKey("name_ja"))->getCString();
-    _descJa = ((CCString *)itemInfo->objectForKey("desc_ja"))->getCString();
-    _imageFileName = ((CCString *)itemInfo->objectForKey("image"))->getCString();
-    _stamina = ((CCString *)itemInfo->objectForKey("stamina"))->intValue();
-    _score = ((CCString *)itemInfo->objectForKey("score"))->intValue();
-
-    CCSprite::initWithSpriteFrameName(_imageFileName);
-
-    return true;
+    _item = selectItem();
+    return CCSprite::initWithSpriteFrameName(_item->image.c_str());
 }
 
-void DropItem::loadDropItemsInfo()
+Item DropItem::selectItem()
 {
-    __itemInfoList = CCArray::createWithContentsOfFileThreadSafe("dropItems.plist");
-}
+    vector<Item> *items = GameEngine::sharedEngine()->getItems();
 
-const char *DropItem::getName()
-{
-    return _nameJa;
-}
+    int index = arc4random() % items->size();
+    Item item = items->at(index);
 
-const char *DropItem::getDesc()
-{
-    return _descJa;
-}
-
-const char *DropItem::getImageFileName()
-{
-    return _imageFileName;
-}
-
-int DropItem::getStamina()
-{
-    return _stamina;
-}
-
-int DropItem::getScore()
-{
-    return _score;
+    return item;
 }
 
 void DropItem::drop()
@@ -89,12 +52,22 @@ void DropItem::drop()
     this->runAction(action);
 }
 
-// tentative
-CCArray *DropItem::getItems()
+int DropItem::getItemID()
 {
-    if (!__itemInfoList) {
-        DropItem::loadDropItemsInfo();
-    }
+    return _item.get_id();
+}
 
-    return __itemInfoList;
+const char *DropItem::getImageFileName()
+{
+    return _item->image.c_str();
+}
+
+int DropItem::getStamina()
+{
+    return _item->stamina;
+}
+
+int DropItem::getScore()
+{
+    return _item->score;
 }

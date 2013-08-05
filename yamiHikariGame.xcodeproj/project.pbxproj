@@ -191,7 +191,6 @@
 		578DE66C17A4D8E90050CDE4 /* GameEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 578DE66A17A4D8E90050CDE4 /* GameEngine.cpp */; };
 		578DE66F17A4DE040050CDE4 /* Ground.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 578DE66D17A4DE040050CDE4 /* Ground.cpp */; };
 		5790434F17A41A7A004A2208 /* DropItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5790434D17A41A7A004A2208 /* DropItem.cpp */; };
-		5790435117A425D2004A2208 /* dropItems.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5790435017A425D2004A2208 /* dropItems.plist */; };
 		5793860E17A4F51A008A5BBE /* mosamosa.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5793860D17A4F32F008A5BBE /* mosamosa.ttf */; };
 		5793861117A50CDB008A5BBE /* dust.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5793860F17A50CDB008A5BBE /* dust.plist */; };
 		5793861217A50CDB008A5BBE /* stars.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5793861017A50CDB008A5BBE /* stars.plist */; };
@@ -637,7 +636,6 @@
 		578DE67017A4E0A40050CDE4 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = Classes/Constants.h; sourceTree = "<group>"; };
 		5790434D17A41A7A004A2208 /* DropItem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DropItem.cpp; path = Classes/DropItem.cpp; sourceTree = "<group>"; };
 		5790434E17A41A7A004A2208 /* DropItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DropItem.h; path = Classes/DropItem.h; sourceTree = "<group>"; };
-		5790435017A425D2004A2208 /* dropItems.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = dropItems.plist; path = Resources/dropItems.plist; sourceTree = "<group>"; };
 		5793860D17A4F32F008A5BBE /* mosamosa.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = mosamosa.ttf; path = Resources/mosamosa.ttf; sourceTree = "<group>"; };
 		5793860F17A50CDB008A5BBE /* dust.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = dust.plist; path = Resources/dust.plist; sourceTree = "<group>"; };
 		5793861017A50CDB008A5BBE /* stars.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = stars.plist; path = Resources/stars.plist; sourceTree = "<group>"; };
@@ -769,7 +767,6 @@
 				5793861317A50E94008A5BBE /* Particles */,
 				57A4241B17A72E530035B5F2 /* Default-568h@2x.png */,
 				57840D8D17958956005732EC /* Info.plist */,
-				5790435017A425D2004A2208 /* dropItems.plist */,
 				579BBAB717AE25FD0064F28A /* init.db */,
 				57FB9F9B179A5C2F005D882C /* default */,
 				57FB9F9C179A5C2F005D882C /* ios-hd */,
@@ -1786,7 +1783,6 @@
 				579EDCBE17A6C2EC0039560A /* SE002.mp3 in Resources */,
 				57FB9F9D179A5C2F005D882C /* default in Resources */,
 				57FB9F9E179A5C2F005D882C /* ios-hd in Resources */,
-				5790435117A425D2004A2208 /* dropItems.plist in Resources */,
 				5793861117A50CDB008A5BBE /* dust.plist in Resources */,
 				5793861217A50CDB008A5BBE /* stars.plist in Resources */,
 			);

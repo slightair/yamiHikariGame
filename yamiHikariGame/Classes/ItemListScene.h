@@ -21,7 +21,7 @@ using namespace cocos2d::extension;
 class ItemListScene : public GradientLayer, public CCTableViewDelegate, public CCTableViewDataSource
 {
 protected:
-    vector<hiberlite::bean_ptr<Item> > _items;
+    vector<Item> *_items;
 public:
     virtual bool init();
 

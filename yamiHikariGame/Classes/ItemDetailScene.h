@@ -20,7 +20,7 @@ using namespace hiberlite;
 class ItemDetailScene : public GradientLayer
 {
 protected:
-    bean_ptr<Item> _item;
+    Item _item;
 
     CCSprite *_itemImage;
     CCLabelTTF *_itemNameLabel;
@@ -28,11 +28,11 @@ protected:
     CCLabelTTF *_descriptionLabel;
 
 public:
-    void setItem(bean_ptr<Item> item);
+    void setItem(Item item);
 
     virtual bool init();
 
-    static CCScene* sceneWithItem(bean_ptr<Item> item);
+    static CCScene* sceneWithItem(Item item);
     CREATE_FUNC(ItemDetailScene);
 };
 

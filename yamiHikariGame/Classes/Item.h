@@ -19,7 +19,7 @@
 
 using namespace std;
 
-class Item
+class _Item
 {
     friend class hiberlite::access;
     template<class Archive>
@@ -47,5 +47,7 @@ public:
     bool validate();
     string generateChecksum();
 };
+
+typedef hiberlite::bean_ptr<_Item> Item;
 
 #endif /* defined(__yamiHikariGame__Item__) */

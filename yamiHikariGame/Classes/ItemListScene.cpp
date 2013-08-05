@@ -42,8 +42,7 @@ bool ItemListScene::init()
     if (result) {
         setTitle(MessageItemBookTitle);
 
-        hiberlite::Database *db = GameEngine::sharedEngine()->savedataDB();
-        _items = db->getAllBeans<Item>();
+        _items = GameEngine::sharedEngine()->getItems();
 
         CCSize windowSize = CCDirector::sharedDirector()->getWinSize();
 
@@ -72,7 +71,7 @@ void ItemListScene::tableCellTouched(CCTableView* table, CCTableViewCell* cell)
 {
     int selectedItemIndex = cell->getIdx();
 
-    bean_ptr<Item> item = _items.at(selectedItemIndex);
+    Item item = _items->at(selectedItemIndex);
     CCScene *scene = ItemDetailScene::sceneWithItem(item);
 
     CCDirector::sharedDirector()->pushScene(scene);
@@ -107,7 +106,7 @@ CCTableViewCell* ItemListScene::tableCellAtIndex(CCTableView *table, unsigned in
         cell->addChild(itemNameLabel);
     }
 
-    bean_ptr<Item> item = _items.at(idx);
+    Item item = _items->at(idx);
 
     cell->removeChildByTag(kItemCellTagImage);
 
@@ -128,5 +127,5 @@ CCTableViewCell* ItemListScene::tableCellAtIndex(CCTableView *table, unsigned in
 
 unsigned int ItemListScene::numberOfCellsInTableView(CCTableView *table)
 {
-    return _items.size();
+    return _items->size();
 }
