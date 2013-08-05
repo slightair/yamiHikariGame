@@ -8,18 +8,18 @@
 
 #include "Item.h"
 
-void Item::updateCount(int count)
+void _Item::updateCount(int count)
 {
     this->count = count;
     this->checksum = generateChecksum();
 }
 
-bool Item::validate()
+bool _Item::validate()
 {
     return this->checksum == generateChecksum();
 }
 
-string Item::generateChecksum()
+string _Item::generateChecksum()
 {
     ostringstream os;
     os << this->name << ':'
@@ -42,4 +42,10 @@ string Item::generateChecksum()
     return string(buf);
 }
 
-HIBERLITE_EXPORT_CLASS(Item)
+namespace hiberlite {
+    template<>
+    std::string Database::getClassName<_Item>()
+    {
+        return "Item";
+    }
+}

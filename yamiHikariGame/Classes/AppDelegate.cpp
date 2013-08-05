@@ -99,7 +99,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     // run
     pDirector->runWithScene(pScene);
 
-    GameEngine::sharedEngine()->validateSaveData();
+    GameEngine::sharedEngine()->loadSaveData();
 
     return true;
 }

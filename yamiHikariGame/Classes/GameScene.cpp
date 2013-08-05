@@ -110,10 +110,6 @@ void GameScene::ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent)
     CCPoint location = pTouch->getLocationInView();
     float distance = location.x - _touchedLocation.x;
 
-#warning debug
-    CCLog("%f, %f", location.x, location.y);
-    CCLog("dist => %f", distance);
-
     _brave->moveX(distance);
     _darknessNode->setLightPosition(_brave->getPosition());
 
