@@ -22,6 +22,8 @@ class ItemListScene : public GradientLayer, public CCTableViewDelegate, public C
 {
 protected:
     vector<Item> *_items;
+
+    Item selectedItem(unsigned int index);
 public:
     virtual bool init();
 

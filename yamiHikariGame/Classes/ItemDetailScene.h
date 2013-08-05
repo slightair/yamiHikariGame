@@ -26,6 +26,12 @@ protected:
     CCLabelTTF *_itemNameLabel;
     CCLabelTTF *_scoreLabel;
     CCLabelTTF *_descriptionLabel;
+    CCMenu *_pageSelectorPrev;
+    CCMenu *_pageSelectorNext;
+
+    void updatePageSelector();
+    void showPrevItem();
+    void showNextItem();
 
 public:
     void setItem(Item item);
