@@ -59,7 +59,6 @@ bool ItemListScene::init()
         backTitleItem->setAnchorPoint(ccp(0, 1));
 
         CCMenu *menu = CCMenu::create(backTitleItem, NULL);
-        menu->alignItemsVertically();
         menu->setPosition(ccp(TitleBarBackButtonMarginLeft, windowSize.height - TitleBarBackButtonMarginTop));
         this->addChild(menu);
     }
@@ -67,11 +66,14 @@ bool ItemListScene::init()
     return result;
 }
 
+Item ItemListScene::selectedItem(unsigned int index)
+{
+    return _items->at(_items->size() - index - 1);
+}
+
 void ItemListScene::tableCellTouched(CCTableView* table, CCTableViewCell* cell)
 {
-    int selectedItemIndex = cell->getIdx();
-
-    Item item = _items->at(selectedItemIndex);
+    Item item = selectedItem(cell->getIdx());
     CCScene *scene = ItemDetailScene::sceneWithItem(item);
 
     CCDirector::sharedDirector()->pushScene(scene);
@@ -106,12 +108,12 @@ CCTableViewCell* ItemListScene::tableCellAtIndex(CCTableView *table, unsigned in
         cell->addChild(itemNameLabel);
     }
 
-    Item item = _items->at(idx);
+    Item item = selectedItem(idx);
 
     cell->removeChildByTag(kItemCellTagImage);
 
     itemNumberLabel = (CCLabelTTF *)cell->getChildByTag(kItemCellTagNumberLabel);
-    itemNumberLabel->setString(CCString::createWithFormat("%02d", idx + 1)->getCString());
+    itemNumberLabel->setString(CCString::createWithFormat("%02lld", item.get_id())->getCString());
 
     CCSprite *itemImage = CCSprite::createWithSpriteFrameName(item->image.c_str());
     itemImage->setAnchorPoint(ccp(0.0, 0.5));

@@ -30,6 +30,8 @@
 
 #define MessageItemBookTitle "アイテムずかん"
 #define MessageBackButtonTitle "《もどる"
+#define MessagePrevButtonTitle "《まえ"
+#define MessageNextButtonTitle "つぎ》"
 
 #define SaveDataChecksumSalt "tikuwa"
 

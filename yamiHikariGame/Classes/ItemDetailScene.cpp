@@ -8,11 +8,12 @@
 
 #include "ItemDetailScene.h"
 #include "Constants.h"
+#include "GameEngine.h"
 
 #define kItemImageMarginTop (TitleBarHeight + 68)
 
 #define kItemNameLabelMarginLeft 16
-#define kItemNameLabelMarginTop (TitleBarHeight + 16)
+#define kItemNameLabelMarginTop (TitleBarHeight + 14)
 
 #define kBoxFillColor ((ccColor4F){0.0, 0.0, 0.0, 0.0})
 #define kBoxBorderColor ((ccColor4F){1.0, 1.0, 1.0, 1.0})
@@ -27,8 +28,9 @@
 #define kDescriptionLabelMarginHorizontal 22
 #define kDescriptionLabelMarginTop (TitleBarHeight + 206)
 
-#define kPageSelectorHeight 32
-#define kPageSelectorMarginVertical 16
+#define kPageSelectorHeight 64
+#define kPageSelectorMarginHorizontal 16
+#define kPageSelectorMarginVertical 8
 
 CCScene* ItemDetailScene::sceneWithItem(Item item)
 {
@@ -62,6 +64,8 @@ void ItemDetailScene::setItem(Item item)
     _itemNameLabel->setString(itemName->getCString());
     _scoreLabel->setString(itemScore->getCString());
     _descriptionLabel->setString(_item->desc.c_str());
+
+    updatePageSelector();
 }
 
 bool ItemDetailScene::init()
@@ -110,11 +114,71 @@ bool ItemDetailScene::init()
                                                             menu_selector(CCDirector::popScene));
         backTitleItem->setAnchorPoint(ccp(0, 1));
 
-        CCMenu *menu = CCMenu::create(backTitleItem, NULL);
-        menu->alignItemsVertically();
-        menu->setPosition(ccp(TitleBarBackButtonMarginLeft, windowSize.height - TitleBarBackButtonMarginTop));
-        this->addChild(menu);
+        CCMenu *backTitleMenu = CCMenu::create(backTitleItem, NULL);
+        backTitleMenu->setPosition(ccp(TitleBarBackButtonMarginLeft, windowSize.height - TitleBarBackButtonMarginTop));
+        this->addChild(backTitleMenu);
+
+        CCMenuItem *prevItem = CCMenuItemLabel::create(CCLabelTTF::create(MessagePrevButtonTitle, DefaultFontName, FontSizeNormal),
+                                                       this,
+                                                       menu_selector(ItemDetailScene::showPrevItem));
+        prevItem->setAnchorPoint(ccp(0, 1));
+
+        CCMenuItem *nextItem = CCMenuItemLabel::create(CCLabelTTF::create(MessageNextButtonTitle, DefaultFontName, FontSizeNormal),
+                                                       this,
+                                                       menu_selector(ItemDetailScene::showNextItem));
+        nextItem->setAnchorPoint(ccp(1, 1));
+
+        _pageSelectorPrev = CCMenu::create(prevItem, NULL);
+        _pageSelectorPrev->setPosition(ccp(kPageSelectorMarginHorizontal, kPageSelectorHeight + kPageSelectorMarginVertical));
+        this->addChild(_pageSelectorPrev);
+
+        _pageSelectorNext = CCMenu::create(nextItem, NULL);
+        _pageSelectorNext->setPosition(ccp(windowSize.width - kPageSelectorMarginHorizontal, kPageSelectorHeight + kPageSelectorMarginVertical));
+        this->addChild(_pageSelectorNext);
     }
 
     return result;
+}
+
+void ItemDetailScene::updatePageSelector()
+{
+    vector<Item> *items = GameEngine::sharedEngine()->getItems();
+
+    if (_item.get_id() == 1) {
+        _pageSelectorPrev->setEnabled(false);
+        _pageSelectorPrev->setOpacity(0);
+
+        _pageSelectorNext->setEnabled(true);
+        _pageSelectorNext->setOpacity(0xff);
+    }
+    else if (_item.get_id() == items->size()) {
+        _pageSelectorPrev->setEnabled(true);
+        _pageSelectorPrev->setOpacity(0xff);
+
+        _pageSelectorNext->setEnabled(false);
+        _pageSelectorNext->setOpacity(0);
+    }
+    else {
+        _pageSelectorPrev->setEnabled(true);
+        _pageSelectorPrev->setOpacity(0xff);
+
+        _pageSelectorNext->setEnabled(true);
+        _pageSelectorNext->setOpacity(0xff);
+    }
+}
+
+void ItemDetailScene::showPrevItem()
+{
+    vector<Item> *items = GameEngine::sharedEngine()->getItems();
+
+    Item prevItem = items->at(_item.get_id() - 2);
+    setItem(prevItem);
+}
+
+void ItemDetailScene::showNextItem()
+{
+    vector<Item> *items = GameEngine::sharedEngine()->getItems();
+
+    Item nextItem = items->at(_item.get_id());
+    setItem(nextItem);
 }
