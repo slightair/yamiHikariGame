@@ -10,27 +10,25 @@
 #define __yamiHikariGame__DropItem__
 
 #include "cocos2d.h"
+#include "Item.h"
 
 using namespace cocos2d;
 
 class DropItem : public CCSprite
 {
 protected:
-    bool init();
+    Item _item;
 
-    const char *_nameJa;
-    const char *_descJa;
-    const char *_imageFileName;
-    int _stamina;
-    int _score;
+    bool init();
+    Item selectItem();
 public:
     static DropItem *create();
-    const char *getName();
-    const char *getDesc();
+    void drop();
+
+    int getItemID();
     const char *getImageFileName();
     int getStamina();
     int getScore();
-    void drop();
 };
 
 #endif /* defined(__yamiHikariGame__DropItem__) */

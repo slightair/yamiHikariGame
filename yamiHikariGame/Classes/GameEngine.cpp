@@ -11,12 +11,16 @@
 #include "Constants.h"
 #include "TitleScene.h"
 #include "GameScene.h"
+#include "ItemListScene.h"
+#include "Item.h"
 
 #define kTransitionDuration 1.0
 #define kGameTickInterval 0.1
 #define kSurvivePoint 1
 #define kStaminaConsumption 3
 #define kWaitForResultDuration 3
+
+#define kSavefileName "savedata.db"
 
 static GameEngine *__sharedEngine = NULL;
 
@@ -77,6 +81,18 @@ void GameEngine::showResult()
     CCDirector::sharedDirector()->replaceScene(transition);
 }
 
+void GameEngine::showItemList()
+{
+    CCTransitionFade *transition = CCTransitionFade::create(kTransitionDuration, ItemListScene::scene());
+    CCDirector::sharedDirector()->replaceScene(transition);
+}
+
+void GameEngine::showTitle()
+{
+    CCTransitionFade *transition = CCTransitionFade::create(kTransitionDuration, TitleScene::scene());
+    CCDirector::sharedDirector()->replaceScene(transition);
+}
+
 int GameEngine::getScore()
 {
     return _score;
@@ -100,4 +116,44 @@ void GameEngine::addStamina(int stamina)
     else {
         _stamina += stamina;
     }
+}
+
+void GameEngine::loadSaveData()
+{
+    CCFileUtils *fileUtils = CCFileUtils::sharedFileUtils();
+    bool forceRebuildSaveData = false;
+
+    string saveFilePath = fileUtils->getWritablePath().append(kSavefileName);
+    if (forceRebuildSaveData || !fileUtils->isFileExist(saveFilePath)) {
+        CCLog("rebuild save data!");
+        string initDBFilePath = fileUtils->fullPathForFilename("init.db");
+
+        FILE *src, *dest;
+        char buffer[128];
+        src = fopen(initDBFilePath.c_str(), "rb");
+        dest = fopen(saveFilePath.c_str(), "wb");
+
+        while (feof(src) == 0) {
+            int read = fread(buffer, sizeof(char), 128, src);
+            fwrite(buffer, sizeof(char), read, dest);
+        }
+
+        fclose(src);
+        fclose(dest);
+    }
+
+    _db.open(saveFilePath);
+
+    _items = _db.getAllBeans<_Item>();
+    for (int i=0; i<_items.size(); i++) {
+        if (!_items.at(i)->validate()) {
+#warning not implemented
+            return;
+        }
+    }
+}
+
+vector<Item> *GameEngine::getItems()
+{
+    return &_items;
 }

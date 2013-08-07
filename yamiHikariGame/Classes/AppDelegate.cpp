@@ -12,6 +12,7 @@
 #include "SimpleAudioEngine.h"
 #include "Constants.h"
 #include "TitleScene.h"
+#include "GameEngine.h"
 
 #define kDefaultDesignResolutionWidth 320
 #define kDefaultDesignResolutionHeight 480
@@ -48,8 +49,8 @@ bool AppDelegate::applicationDidFinishLaunching()
     pDirector->setOpenGLView(openGLView);
 
     // turn on display FPS
-    pDirector->setDisplayStats(false);
-    
+    pDirector->setDisplayStats(true);
+
     CCSize screenSize = openGLView->getFrameSize();
     
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
@@ -102,6 +103,8 @@ bool AppDelegate::applicationDidFinishLaunching()
 
     // run
     pDirector->runWithScene(pScene);
+
+    GameEngine::sharedEngine()->loadSaveData();
 
     return true;
 }
