@@ -84,7 +84,7 @@ CCSpriteBatchNode *Ground::createBackgroundNode()
             CCSprite *tile = CCSprite::createWithSpriteFrameName("chip.png");
             GLubyte chipColorOffset = 0xff - rand() % kChipColorLevel;
             tile->setColor((ccColor3B){chipColorOffset, chipColorOffset, chipColorOffset});
-            tile->setAnchorPoint(ccp(0, 0));
+            tile->setAnchorPoint(ccp(0.0, 0.0));
             tile->setPosition(ccp(x * kChipSize, y * kChipSize));
             backgroundNode->addChild(tile);
         }

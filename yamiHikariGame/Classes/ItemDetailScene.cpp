@@ -56,7 +56,7 @@ void ItemDetailScene::setItem(Item item)
         _itemImage->removeFromParentAndCleanup(true);
     }
     _itemImage = CCSprite::createWithSpriteFrameName(_item->image.c_str());
-    _itemImage->setAnchorPoint(ccp(0.5, 1));
+    _itemImage->setAnchorPoint(ccp(0.5, 1.0));
     _itemImage->setPosition(ccp(windowSize.width / 2, windowSize.height - kItemImageMarginTop));
     _itemImage->setScale(2.0);
     this->addChild(_itemImage);
@@ -95,24 +95,24 @@ bool ItemDetailScene::init()
         this->addChild(frameBorderNode);
 
         _itemNameLabel = CCLabelTTF::create("", DefaultFontName, FontSizeNormal);
-        _itemNameLabel->setAnchorPoint(ccp(0, 1));
+        _itemNameLabel->setAnchorPoint(ccp(0.0, 1.0));
         _itemNameLabel->setPosition(ccp(kItemNameLabelMarginLeft, windowSize.height - kItemNameLabelMarginTop));
         this->addChild(_itemNameLabel);
 
         _scoreLabel = CCLabelTTF::create("", DefaultFontName, FontSizeNormal);
-        _scoreLabel->setAnchorPoint(ccp(0, 1));
+        _scoreLabel->setAnchorPoint(ccp(0.0, 1.0));
         _scoreLabel->setPosition(ccp(kScoreLabelMarginLeft, windowSize.height - kScoreLabelMarginTop));
         this->addChild(_scoreLabel);
 
         _descriptionLabel = CCLabelTTF::create("", DefaultFontName, FontSizeNormal, CCSize(windowSize.width - kDescriptionLabelMarginHorizontal * 2, windowSize.height - kDescriptionLabelMarginTop - descriptionBoxBottom), kCCTextAlignmentLeft);
-        _descriptionLabel->setAnchorPoint(ccp(0, 1));
+        _descriptionLabel->setAnchorPoint(ccp(0.0, 1.0));
         _descriptionLabel->setPosition(ccp(kDescriptionLabelMarginHorizontal, windowSize.height - kDescriptionLabelMarginTop));
         this->addChild(_descriptionLabel);
 
         CCMenuItem *backTitleItem = CCMenuItemLabel::create(CCLabelTTF::create(MessageBackButtonTitle, DefaultFontName, FontSizeNormal),
                                                             CCDirector::sharedDirector(),
                                                             menu_selector(CCDirector::popScene));
-        backTitleItem->setAnchorPoint(ccp(0, 1));
+        backTitleItem->setAnchorPoint(ccp(0.0, 1.0));
 
         CCMenu *backTitleMenu = CCMenu::create(backTitleItem, NULL);
         backTitleMenu->setPosition(ccp(TitleBarBackButtonMarginLeft, windowSize.height - TitleBarBackButtonMarginTop));
@@ -121,12 +121,12 @@ bool ItemDetailScene::init()
         CCMenuItem *prevItem = CCMenuItemLabel::create(CCLabelTTF::create(MessagePrevButtonTitle, DefaultFontName, FontSizeNormal),
                                                        this,
                                                        menu_selector(ItemDetailScene::showPrevItem));
-        prevItem->setAnchorPoint(ccp(0, 1));
+        prevItem->setAnchorPoint(ccp(0.0, 1.0));
 
         CCMenuItem *nextItem = CCMenuItemLabel::create(CCLabelTTF::create(MessageNextButtonTitle, DefaultFontName, FontSizeNormal),
                                                        this,
                                                        menu_selector(ItemDetailScene::showNextItem));
-        nextItem->setAnchorPoint(ccp(1, 1));
+        nextItem->setAnchorPoint(ccp(1.0, 1.0));
 
         _pageSelectorPrev = CCMenu::create(prevItem, NULL);
         _pageSelectorPrev->setPosition(ccp(kPageSelectorMarginHorizontal, kPageSelectorHeight + kPageSelectorMarginVertical));

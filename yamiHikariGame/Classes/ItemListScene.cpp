@@ -56,7 +56,7 @@ bool ItemListScene::init()
         CCMenuItem *backTitleItem = CCMenuItemLabel::create(CCLabelTTF::create(MessageBackButtonTitle, DefaultFontName, FontSizeNormal),
                                                             GameEngine::sharedEngine(),
                                                             menu_selector(GameEngine::showTitle));
-        backTitleItem->setAnchorPoint(ccp(0, 1));
+        backTitleItem->setAnchorPoint(ccp(0.0, 1.0));
 
         CCMenu *menu = CCMenu::create(backTitleItem, NULL);
         menu->setPosition(ccp(TitleBarBackButtonMarginLeft, windowSize.height - TitleBarBackButtonMarginTop));

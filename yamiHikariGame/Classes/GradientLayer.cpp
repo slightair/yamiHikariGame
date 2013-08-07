@@ -24,7 +24,7 @@ bool GradientLayer::init()
         this->addChild(_underlayLayer);
 
         _titleLabel = CCLabelTTF::create("", DefaultFontName, FontSizeNormal);
-        _titleLabel->setAnchorPoint(ccp(0.5, 1));
+        _titleLabel->setAnchorPoint(ccp(0.5, 1.0));
         _titleLabel->setPosition(ccp(windowSize.width / 2, windowSize.height - TitleBarTitleMarginTop));
         this->addChild(_titleLabel);
     }

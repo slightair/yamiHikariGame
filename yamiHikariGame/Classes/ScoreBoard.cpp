@@ -62,7 +62,7 @@ void ScoreBoard::onEnter()
     this->addChild(_staminaLabel);
 
     _scoreLabel = CCLabelTTF::create("スコア 0", DefaultFontName, FontSizeSmall);
-    _scoreLabel->setAnchorPoint(ccp(0, 0.5));
+    _scoreLabel->setAnchorPoint(ccp(0.0, 0.5));
     _scoreLabel->setPosition(ccp(kScoreLabelMarginLeft, windowSize.height - kScoreLabelMarginTop));
     this->addChild(_scoreLabel);
 
