@@ -1,24 +1,24 @@
 -
-  name_ja: 'いいちくわ'
-  desc_ja: 'ちょっとひかっている。まだがんばれそうなきがする。'
+  name: 'いいちくわ'
+  desc: 'ちょっとひかっている。まだがんばれそうなきがする。'
   image: "tikuwa.png"
   stamina: 10
   score: 100
 -
-  name_ja: 'たからばこ'
-  desc_ja: 'なにかよいものがはいってそうなハコ。'
+  name: 'たからばこ'
+  desc: 'なにかよいものがはいってそうなハコ。'
   image: "treasurebox01.png"
   stamina: 0
   score: 500
 -
-  name_ja: 'マホウセキ'
-  desc_ja: 'スタミナをかいふくしたりガチャをひけるふしぎなアイテム。コンティニューはできない。'
+  name: 'マホウセキ'
+  desc: 'スタミナをかいふくしたりガチャをひけるふしぎなアイテム。コンティニューはできない。'
   image: "magicstone01.png"
   stamina: 30
   score: 300
 -
-  name_ja: 'ヘビ'
-  desc_ja: 'ふだんはムガイだが、ふむとあぶない'
+  name: 'ヘビ'
+  desc: 'ふだんはムガイだが、ふむとあぶない'
   image: "snake01.png"
   stamina: -50
   score: 100
