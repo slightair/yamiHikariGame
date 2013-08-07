@@ -50,7 +50,7 @@ void ItemDetailScene::setItem(Item item)
     CCSize windowSize = CCDirector::sharedDirector()->getWinSize();
 
     CCString *itemName = CCString::createWithFormat("%02lld %s", _item.get_id(), _item->name.c_str());
-    CCString *itemScore = CCString::createWithFormat("スコア:%d スタミナ:%+d", _item->score, _item->stamina);
+    CCString *itemScore = CCString::createWithFormat("%s:%d %s:%+d", MessageScoreText, _item->score, MessageStaminaText, _item->stamina);
 
     if (_itemImage) {
         _itemImage->removeFromParentAndCleanup(true);

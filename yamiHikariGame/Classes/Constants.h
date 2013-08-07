@@ -32,6 +32,8 @@
 #define MessageBackButtonTitle "《もどる"
 #define MessagePrevButtonTitle "《まえ"
 #define MessageNextButtonTitle "つぎ》"
+#define MessageStaminaText "スタミナ"
+#define MessageScoreText "スコア"
 
 #define SaveDataChecksumSalt "tikuwa"
 
