@@ -109,14 +109,7 @@ bool ItemDetailScene::init()
         _descriptionLabel->setPosition(ccp(kDescriptionLabelMarginHorizontal, windowSize.height - kDescriptionLabelMarginTop));
         this->addChild(_descriptionLabel);
 
-        CCMenuItem *backTitleItem = CCMenuItemLabel::create(CCLabelTTF::create(MessageBackButtonTitle, DefaultFontName, FontSizeNormal),
-                                                            CCDirector::sharedDirector(),
-                                                            menu_selector(CCDirector::popScene));
-        backTitleItem->setAnchorPoint(ccp(0.0, 1.0));
-
-        CCMenu *backTitleMenu = CCMenu::create(backTitleItem, NULL);
-        backTitleMenu->setPosition(ccp(TitleBarBackButtonMarginLeft, windowSize.height - TitleBarBackButtonMarginTop));
-        this->addChild(backTitleMenu);
+        setTitleBarLeftButton(MessageBackButtonTitle, CCDirector::sharedDirector(), menu_selector(CCDirector::popScene));
 
         CCMenuItem *prevItem = CCMenuItemLabel::create(CCLabelTTF::create(MessagePrevButtonTitle, DefaultFontName, FontSizeNormal),
                                                        this,
