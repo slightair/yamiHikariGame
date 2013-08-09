@@ -18,16 +18,17 @@
 
 #define kMessageTextPadding 4
 
+#define kBoxFillColor ((ccColor4F){0.0, 0.0, 0.0, 0.0})
+#define kBoxBorderColor ((ccColor4F){1.0, 1.0, 1.0, 1.0})
+
 #define kSelectionButtonMarginTop (kMessageBoxMarginTop + kMessageBoxHeight + 12)
-#define kSelectionButtonMarginHorizon 12
+
 #define kSelectionButtonWidth 90
 #define kSelectionButtonHeight 36
 
-#define kSelectionButtonTextMargin 4
+#define kSelectionItemPadding 24
 
-#define kBoxFillColor ((ccColor4F){0.0, 0.0, 0.0, 0.0})
-#define kBoxBorderColor ((ccColor4F){1.0, 1.0, 1.0, 1.0})
-#define kButtonFillColor (ccc4(0.0, 0.0, 0.0, 0.0))
+#define kSelectionButtonFillColor (ccc4(0.0, 0.0, 0.0, 0.0))
 
 void NotificationLayer::setNoticeMessage(const char* message)
 {
@@ -37,6 +38,7 @@ void NotificationLayer::setNoticeMessage(const char* message)
 void NotificationLayer::setYesNoButtonAnable(bool anable)
 {
     _useYesNoButton = anable;
+#warning toggle visiblity of buttons
 }
 
 bool NotificationLayer::init()
@@ -78,38 +80,36 @@ bool NotificationLayer::init()
         };
         yesButtonNode->drawPolygon(buttonPoints, 4, kBoxFillColor, 1, kBoxBorderColor);
 
-        CCLabelTTF *yesButtonLabel = CCLabelTTF::create("いぇす", DefaultFontName, FontSizeNormal);
+        CCLabelTTF *yesButtonLabel = CCLabelTTF::create(MessageSelectionYes, DefaultFontName, FontSizeNormal);
         yesButtonLabel->setAnchorPoint(ccp(0.5, 0.5));
         yesButtonLabel->setPosition(ccp(kSelectionButtonWidth / 2, kSelectionButtonHeight / 2));
         yesButtonNode->addChild(yesButtonLabel);
 
-        CCLayerColor *yesButtonLayer = CCLayerColor::create(kButtonFillColor, kSelectionButtonWidth, kSelectionButtonHeight);
+        CCLayerColor *yesButtonLayer = CCLayerColor::create(kSelectionButtonFillColor, kSelectionButtonWidth, kSelectionButtonHeight);
         yesButtonLayer->addChild(yesButtonNode);
 
         CCMenuItem *yesItem = CCMenuItemLabel::create(yesButtonLayer, this, menu_selector(NotificationLayer::yesButtonSelected));
         yesItem->setAnchorPoint(ccp(0.5, 1.0));
 
-        _yesButton = CCMenu::create(yesItem, NULL);
-        _yesButton->setPosition(ccp((windowSize.width / 2) - (kSelectionButtonWidth / 2) - kSelectionButtonMarginHorizon, windowSize.height - kSelectionButtonMarginTop));
-        this->addChild(_yesButton);
-
         CCDrawNode *noButtonNode = CCDrawNode::create();
         noButtonNode->drawPolygon(buttonPoints, 4, kBoxFillColor, 1, kBoxBorderColor);
 
-        CCLabelTTF *noButtonLabel = CCLabelTTF::create("いいえ", DefaultFontName, FontSizeNormal);
+        CCLabelTTF *noButtonLabel = CCLabelTTF::create(MessageSelectionNo, DefaultFontName, FontSizeNormal);
         noButtonLabel->setAnchorPoint(ccp(0.5, 0.5));
         noButtonLabel->setPosition(ccp(kSelectionButtonWidth / 2, kSelectionButtonHeight / 2));
         noButtonNode->addChild(noButtonLabel);
 
-        CCLayerColor *noButtonLayer = CCLayerColor::create(kButtonFillColor, kSelectionButtonWidth, kSelectionButtonHeight);
+        CCLayerColor *noButtonLayer = CCLayerColor::create(kSelectionButtonFillColor, kSelectionButtonWidth, kSelectionButtonHeight);
         noButtonLayer->addChild(noButtonNode);
 
         CCMenuItem *noItem = CCMenuItemLabel::create(noButtonLayer, this, menu_selector(NotificationLayer::noButtonSelected));
         noItem->setAnchorPoint(ccp(0.5, 1.0));
-
-        _noButton = CCMenu::create(noItem, NULL);
-        _noButton->setPosition(ccp((windowSize.width / 2) + (kSelectionButtonWidth / 2) + kSelectionButtonMarginHorizon, windowSize.height - kSelectionButtonMarginTop));
-        this->addChild(_noButton);
+        
+        _yesNoMenu = CCMenu::create(yesItem, noItem, NULL);
+        _yesNoMenu->setAnchorPoint(ccp(0.5, 1.0));
+        _yesNoMenu->setPosition(ccp(windowSize.width / 2, windowSize.height - kSelectionButtonMarginTop));
+        _yesNoMenu->alignItemsHorizontallyWithPadding(kSelectionItemPadding);
+        this->addChild(_yesNoMenu);
     }
     
     return result;

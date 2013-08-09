@@ -35,6 +35,8 @@
 #define MessageNextButtonTitle "つぎ》"
 #define MessageStaminaText "スタミナ"
 #define MessageScoreText "スコア"
+#define MessageSelectionYes "はい"
+#define MessageSelectionNo "いいえ"
 
 #define SaveDataChecksumSalt "tikuwa"
 

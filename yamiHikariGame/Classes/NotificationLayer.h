@@ -20,8 +20,8 @@ class NotificationLayer : public GradientLayer
 protected:
     CCSprite *_speakerImage;
     CCLabelTTF *_messageLabel;
-    CCMenu *_yesButton;
-    CCMenu *_noButton;
+    CCMenu *_yesNoMenu;
+
     bool _useYesNoButton;
     
 public:
