@@ -38,7 +38,12 @@ void NotificationLayer::setNoticeMessage(const char* message)
 void NotificationLayer::setYesNoButtonAnable(bool anable)
 {
     _useYesNoButton = anable;
-#warning toggle visiblity of buttons
+
+    if (_useYesNoButton) {
+        _yesNoMenu->setVisible(true);
+    } else {
+        _yesNoMenu->setVisible(false);
+    }
 }
 
 bool NotificationLayer::init()
