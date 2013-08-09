@@ -6,8 +6,8 @@
 //
 //
 
-#ifndef yamiHikariGame_MessageScene_h
-#define yamiHikariGame_MessageScene_h
+#ifndef yamiHikariGame_NotificationLayer_h
+#define yamiHikariGame_NotificationLayer_h
 
 #include "cocos2d.h"
 #include "GradientLayer.h"
@@ -15,18 +15,22 @@
 using namespace std;
 using namespace cocos2d;
 
-class MessageScene : public GradientLayer
+class NotificationLayer : public GradientLayer
 {
 protected:
     CCSprite *_speakerImage;
     CCLabelTTF *_messageLabel;
+    CCMenu *_yesButton;
+    CCMenu *_noButton;
+    bool _useYesNoButton;
     
 public:
     void setNoticeMessage(const char*);
+    void setYesNoButtonAnable(bool);
+
     virtual bool init();
-    
-    static CCScene* scene();
-    CREATE_FUNC(MessageScene);
+    virtual void yesButtonSelected();
+    virtual void noButtonSelected();
 };
 
-#endif
+#endif 
