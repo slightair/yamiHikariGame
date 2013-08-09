@@ -1,5 +1,5 @@
 //
-//  MessageScene.h
+// NotificationLayer.h
 //  yamiHikariGame
 //
 //  Created by ichiko on 13/08/06.

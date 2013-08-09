@@ -1,5 +1,5 @@
 //
-//  MessageScene.cpp
+//  NotificationLayer.cpp
 //  yamiHikariGame
 //
 //  Created by ichiko on 13/08/06.
