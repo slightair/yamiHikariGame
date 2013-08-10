@@ -29,8 +29,10 @@
 #define kDescriptionLabelMarginTop (TitleBarHeight + 206)
 
 #define kPageSelectorHeight 64
-#define kPageSelectorMarginHorizontal 16
+#define kPageSelectorMarginHorizontal 0
 #define kPageSelectorMarginVertical 8
+#define kPageSelectorButtonWidth 88
+#define kPageSelectorButtonHeight 44
 
 CCScene* ItemDetailScene::sceneWithItem(Item item)
 {
@@ -111,12 +113,20 @@ bool ItemDetailScene::init()
 
         setTitleBarLeftButton(MessageBackButtonTitle, CCDirector::sharedDirector(), menu_selector(CCDirector::popScene));
 
-        CCMenuItem *prevItem = CCMenuItemLabel::create(CCLabelTTF::create(MessagePrevButtonTitle, DefaultFontName, FontSizeNormal),
+        CCLayerColor *prevLayer = CCLayerColor::create((ccColor4B){0x00, 0x00, 0x00, 0x00}, kPageSelectorButtonWidth, kPageSelectorButtonHeight);
+        CCLabelTTF *prevLabel = CCLabelTTF::create(MessagePrevButtonTitle, DefaultFontName, FontSizeNormal);
+        prevLabel->setPosition(ccp(kPageSelectorButtonWidth / 2, kPageSelectorButtonHeight / 2));
+        prevLayer->addChild(prevLabel);
+        CCMenuItem *prevItem = CCMenuItemLabel::create(prevLayer,
                                                        this,
                                                        menu_selector(ItemDetailScene::showPrevItem));
         prevItem->setAnchorPoint(ccp(0.0, 1.0));
 
-        CCMenuItem *nextItem = CCMenuItemLabel::create(CCLabelTTF::create(MessageNextButtonTitle, DefaultFontName, FontSizeNormal),
+        CCLayerColor *nextLayer = CCLayerColor::create((ccColor4B){0x00, 0x00, 0x00, 0x00}, kPageSelectorButtonWidth, kPageSelectorButtonHeight);
+        CCLabelTTF *nextLabel = CCLabelTTF::create(MessageNextButtonTitle, DefaultFontName, FontSizeNormal);
+        nextLabel->setPosition(ccp(kPageSelectorButtonWidth / 2, kPageSelectorButtonHeight / 2));
+        nextLayer->addChild(nextLabel);
+        CCMenuItem *nextItem = CCMenuItemLabel::create(nextLayer,
                                                        this,
                                                        menu_selector(ItemDetailScene::showNextItem));
         nextItem->setAnchorPoint(ccp(1.0, 1.0));
@@ -138,25 +148,16 @@ void ItemDetailScene::updatePageSelector()
     vector<Item> *items = GameEngine::sharedEngine()->getItems();
 
     if (_item.get_id() == 1) {
-        _pageSelectorPrev->setEnabled(false);
-        _pageSelectorPrev->setOpacity(0);
-
-        _pageSelectorNext->setEnabled(true);
-        _pageSelectorNext->setOpacity(0xff);
+        _pageSelectorPrev->setVisible(false);
+        _pageSelectorNext->setVisible(true);
     }
     else if (_item.get_id() == items->size()) {
-        _pageSelectorPrev->setEnabled(true);
-        _pageSelectorPrev->setOpacity(0xff);
-
-        _pageSelectorNext->setEnabled(false);
-        _pageSelectorNext->setOpacity(0);
+        _pageSelectorPrev->setVisible(true);
+        _pageSelectorNext->setVisible(false);
     }
     else {
-        _pageSelectorPrev->setEnabled(true);
-        _pageSelectorPrev->setOpacity(0xff);
-
-        _pageSelectorNext->setEnabled(true);
-        _pageSelectorNext->setOpacity(0xff);
+        _pageSelectorPrev->setVisible(true);
+        _pageSelectorNext->setVisible(true);
     }
 }
 
