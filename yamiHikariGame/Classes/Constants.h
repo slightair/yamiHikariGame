@@ -31,11 +31,16 @@
 #define StaminaMax 1000
 
 #define MessageItemBookTitle "アイテムずかん"
+#define MessageResultTitle "リザルト"
+
+#define MessageStaminaText "スタミナ"
+#define MessageScoreText "スコア"
+
 #define MessageBackButtonTitle "《もどる"
 #define MessagePrevButtonTitle "《まえ"
 #define MessageNextButtonTitle "つぎ》"
-#define MessageStaminaText "スタミナ"
-#define MessageScoreText "スコア"
+#define MessageRetryButtonTitle "リトライ!"
+#define MessageBackTitleButtonTitle "タイトル"
 
 #define SaveDataChecksumSalt "tikuwa"
 

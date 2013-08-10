@@ -11,6 +11,7 @@
 #include "Constants.h"
 #include "TitleScene.h"
 #include "GameScene.h"
+#include "ResultScene.h"
 #include "ItemListScene.h"
 #include "Item.h"
 
@@ -77,7 +78,7 @@ void GameEngine::tick()
 
 void GameEngine::showResult()
 {
-    CCTransitionFade *transition = CCTransitionFade::create(kTransitionDuration, TitleScene::scene());
+    CCTransitionFade *transition = CCTransitionFade::create(kTransitionDuration, ResultScene::scene());
     CCDirector::sharedDirector()->replaceScene(transition);
 }
 
