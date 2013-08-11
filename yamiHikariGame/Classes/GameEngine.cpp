@@ -64,6 +64,8 @@ void GameEngine::finishGame()
 
     CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(SEGameOver);
 
+    registerFoundItemCount();
+
     director->getScheduler()->scheduleSelector(schedule_selector(GameEngine::showResult), this, 0, 0, kWaitForResultDuration, false);
 }
 
@@ -74,6 +76,22 @@ void GameEngine::tick()
 
     if (_stamina <= 0) {
         this->finishGame();
+    }
+}
+
+void GameEngine::registerFoundItemCount()
+{
+    map<hiberlite::sqlid_t, int>::iterator iterator = _foundItems.begin();
+
+    while (iterator != _foundItems.end()) {
+        hiberlite::sqlid_t itemID = (*iterator).first;
+        Item item = _items.at(itemID - 1);
+        int count = (*iterator).second;
+
+        item->updateCount(item->count + count);
+        item.save();
+
+        iterator++;
     }
 }
 
@@ -150,6 +168,7 @@ void GameEngine::loadSaveData()
     for (int i=0; i<_items.size(); i++) {
         if (!_items.at(i)->validate()) {
 #warning not implemented
+            CCLog("validation error!!");
             return;
         }
     }

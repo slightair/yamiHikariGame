@@ -32,6 +32,7 @@ protected:
     void tick();
     void addScore(int score);
     void addStamina(int stamina);
+    void registerFoundItemCount();
 
 public:
     static GameEngine *sharedEngine();
