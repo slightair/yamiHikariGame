@@ -9,6 +9,9 @@
 #include "ResultScene.h"
 #include "Constants.h"
 #include "GameEngine.h"
+#include "Item.h"
+
+#define kItemCountMax 999
 
 #define kBraveImageMarginTop (TitleBarHeight + 48)
 
@@ -53,6 +56,7 @@ bool ResultScene::init()
         setTitle(MessageResultTitle);
 
         CCSize windowSize = CCDirector::sharedDirector()->getWinSize();
+        GameEngine *engine = GameEngine::sharedEngine();
 
         CCSprite *braveImage = CCSprite::createWithSpriteFrameName("brave.png");
         braveImage->setRotation(90);
@@ -69,29 +73,53 @@ bool ResultScene::init()
         boxNode->drawPolygon(contentBox, 4, kBoxFillColor, 1, kBoxBorderColor);
         this->addChild(boxNode);
 
-        CCLabelTTF *scoreLabel = CCLabelTTF::create("スコア:1000000", DefaultFontName, FontSizeNormal);
+        CCString *scoreText = CCString::createWithFormat("%s:%d", MessageScoreText, engine->getScore());
+        CCLabelTTF *scoreLabel = CCLabelTTF::create(scoreText->getCString(), DefaultFontName, FontSizeNormal);
         scoreLabel->setPosition(ccp(windowSize.width / 2, windowSize.height - kScoreLabelMarginTop));
         this->addChild(scoreLabel);
 
-        CCLabelTTF *itemCountLabel = CCLabelTTF::create("ひろったかず:1234", DefaultFontName, FontSizeNormal);
-        itemCountLabel->setPosition(ccp(windowSize.width / 2, windowSize.height - kItemCountLabelMarginTop));
-        this->addChild(itemCountLabel);
+        map<hiberlite::sqlid_t, int> *foundItems = engine->getFoundItems();
+        map<hiberlite::sqlid_t, int>::iterator foundItemsIterator = foundItems->begin();
+        vector<Item> *items = engine->getItems();
 
         float itemImageAreaMarginLeft = windowSize.width / 2 - ((kNumberOfLineItems / 2 - 1) * (kItemImageSize + kItemImageMarginHorizontal)) - kItemImageMarginHorizontal / 2 - kItemImageSize / 2;
-        for (int i=0; i < 24; i++) {
-            int posX = i % kNumberOfLineItems;
-            int posY = i / kNumberOfLineItems;
+
+        int sumFoundItems = 0;
+        int index = 0;
+        while (foundItemsIterator != foundItems->end()) {
+            hiberlite::sqlid_t itemID = (*foundItemsIterator).first;
+            Item item = items->at(itemID - 1);
+            int count = (*foundItemsIterator).second;
+
+            const char *imageFileName = item->image.c_str();
+
+            int posX = index % kNumberOfLineItems;
+            int posY = index / kNumberOfLineItems;
 
             CCPoint imagePosition = ccp(itemImageAreaMarginLeft + (kItemImageSize + kItemImageMarginHorizontal) * posX,
                                         windowSize.height - kItemImageAreaMarginTop - (kItemImageSize + kItemImageMarginVertical) * posY);
-            CCSprite *itemImage = CCSprite::createWithSpriteFrameName("bag01.png");
+            CCSprite *itemImage = CCSprite::createWithSpriteFrameName(imageFileName);
             itemImage->setPosition(imagePosition);
             this->addChild(itemImage);
 
-            CCLabelTTF *countLabel = CCLabelTTF::create("999", DefaultFontName, FontSizeSmall);
+            sumFoundItems += count;
+            if (count > kItemCountMax) {
+                count = kItemCountMax;
+            }
+
+            CCString *countText = CCString::createWithFormat("%d", count);
+            CCLabelTTF *countLabel = CCLabelTTF::create(countText->getCString(), DefaultFontName, FontSizeSmall);
             countLabel->setPosition(ccpAdd(imagePosition, ccp(0, -kItemImageSize / 2 - kItemImageCountLabelAdjustY)));
             this->addChild(countLabel);
+
+            foundItemsIterator++;
+            index++;
         }
+
+        CCString *itemCountText = CCString::createWithFormat("%s:%d", MessageNumberOfFoundItemsText, sumFoundItems);
+        CCLabelTTF *itemCountLabel = CCLabelTTF::create(itemCountText->getCString(), DefaultFontName, FontSizeNormal);
+        itemCountLabel->setPosition(ccp(windowSize.width / 2, windowSize.height - kItemCountLabelMarginTop));
+        this->addChild(itemCountLabel);
 
         CCLayerColor *retryLayer = CCLayerColor::create((ccColor4B){0x00, 0x00, 0x00, 0x00}, kCommandButtonWidth, kCommandButtonHeight);
         CCLabelTTF *retryLabel = CCLabelTTF::create(MessageRetryButtonTitle, DefaultFontName, FontSizeNormal);

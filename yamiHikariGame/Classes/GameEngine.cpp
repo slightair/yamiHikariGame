@@ -44,6 +44,7 @@ void GameEngine::startNewGame()
 {
     _score = 0;
     _stamina = StaminaMax;
+    _foundItems.clear();
 
     CCDirector *director = CCDirector::sharedDirector();
     CCTransitionFade *transition = CCTransitionFade::create(kTransitionDuration, GameScene::scene());
@@ -154,7 +155,27 @@ void GameEngine::loadSaveData()
     }
 }
 
+void GameEngine::foundItem(hiberlite::sqlid_t itemID)
+{
+    Item item = _items.at(itemID - 1);
+
+    addScore(item->score);
+    addStamina(item->stamina);
+
+    if (_foundItems.find(itemID) == _foundItems.end()) {
+        _foundItems[itemID] = 1;
+    }
+    else {
+        _foundItems[itemID] += 1;
+    }
+}
+
 vector<Item> *GameEngine::getItems()
 {
     return &_items;
+}
+
+map<hiberlite::sqlid_t, int> *GameEngine::getFoundItems()
+{
+    return &_foundItems;
 }

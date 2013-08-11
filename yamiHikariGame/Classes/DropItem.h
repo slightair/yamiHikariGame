@@ -26,9 +26,7 @@ public:
     void drop();
 
     int getItemID();
-    const char *getImageFileName();
     int getStamina();
-    int getScore();
 };
 
 #endif /* defined(__yamiHikariGame__DropItem__) */

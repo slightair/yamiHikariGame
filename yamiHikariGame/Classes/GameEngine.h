@@ -20,6 +20,7 @@ class GameEngine : public CCObject
 protected:
     hiberlite::Database _db;
     vector<Item> _items;
+    map<hiberlite::sqlid_t, int> _foundItems;
     int _score;
     int _stamina;
 
@@ -29,6 +30,8 @@ protected:
     GameEngine& operator=(const GameEngine& rhs);
 
     void tick();
+    void addScore(int score);
+    void addStamina(int stamina);
 
 public:
     static GameEngine *sharedEngine();
@@ -40,10 +43,10 @@ public:
     void showTitle();
     int getScore();
     int getStamina();
-    void addScore(int score);
-    void addStamina(int stamina);
+    void foundItem(hiberlite::sqlid_t itemID);
 
     vector<Item> *getItems();
+    map<hiberlite::sqlid_t, int> *getFoundItems();
 };
 
 #endif /* defined(__yamiHikariGame__GameEngine__) */

@@ -35,6 +35,7 @@
 
 #define MessageStaminaText "スタミナ"
 #define MessageScoreText "スコア"
+#define MessageNumberOfFoundItemsText "ひろったかず"
 
 #define MessageBackButtonTitle "《もどる"
 #define MessagePrevButtonTitle "《まえ"
