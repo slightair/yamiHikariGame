@@ -15,7 +15,18 @@
 #define kBoxFillColor ((ccColor4F){0.0, 0.0, 0.0, 0.0})
 #define kBoxBorderColor ((ccColor4F){1.0, 1.0, 1.0, 1.0})
 #define kBoxMarginHorizontal 16
-#define kBoxMarginTop (TitleBarHeight + 140)
+#define kBoxMarginTop (TitleBarHeight + 160)
+
+#define kScoreLabelMarginTop (TitleBarHeight + 140)
+
+#define kItemCountLabelMarginTop (TitleBarHeight + 194)
+
+#define kItemImageAreaMarginTop (TitleBarHeight + 234)
+#define kNumberOfLineItems 8
+#define kItemImageSize 24
+#define kItemImageMarginHorizontal 8
+#define kItemImageMarginVertical 16
+#define kItemImageCountLabelAdjustY 6
 
 #define kCommandAreaHeight 40
 #define kCommandAreaMarginTop 4
@@ -57,6 +68,30 @@ bool ResultScene::init()
 
         boxNode->drawPolygon(contentBox, 4, kBoxFillColor, 1, kBoxBorderColor);
         this->addChild(boxNode);
+
+        CCLabelTTF *scoreLabel = CCLabelTTF::create("スコア:1000000", DefaultFontName, FontSizeNormal);
+        scoreLabel->setPosition(ccp(windowSize.width / 2, windowSize.height - kScoreLabelMarginTop));
+        this->addChild(scoreLabel);
+
+        CCLabelTTF *itemCountLabel = CCLabelTTF::create("ひろったかず:1234", DefaultFontName, FontSizeNormal);
+        itemCountLabel->setPosition(ccp(windowSize.width / 2, windowSize.height - kItemCountLabelMarginTop));
+        this->addChild(itemCountLabel);
+
+        float itemImageAreaMarginLeft = windowSize.width / 2 - ((kNumberOfLineItems / 2 - 1) * (kItemImageSize + kItemImageMarginHorizontal)) - kItemImageMarginHorizontal / 2 - kItemImageSize / 2;
+        for (int i=0; i < 24; i++) {
+            int posX = i % kNumberOfLineItems;
+            int posY = i / kNumberOfLineItems;
+
+            CCPoint imagePosition = ccp(itemImageAreaMarginLeft + (kItemImageSize + kItemImageMarginHorizontal) * posX,
+                                        windowSize.height - kItemImageAreaMarginTop - (kItemImageSize + kItemImageMarginVertical) * posY);
+            CCSprite *itemImage = CCSprite::createWithSpriteFrameName("bag01.png");
+            itemImage->setPosition(imagePosition);
+            this->addChild(itemImage);
+
+            CCLabelTTF *countLabel = CCLabelTTF::create("999", DefaultFontName, FontSizeSmall);
+            countLabel->setPosition(ccpAdd(imagePosition, ccp(0, -kItemImageSize / 2 - kItemImageCountLabelAdjustY)));
+            this->addChild(countLabel);
+        }
 
         CCLayerColor *retryLayer = CCLayerColor::create((ccColor4B){0x00, 0x00, 0x00, 0x00}, kCommandButtonWidth, kCommandButtonHeight);
         CCLabelTTF *retryLabel = CCLabelTTF::create(MessageRetryButtonTitle, DefaultFontName, FontSizeNormal);
