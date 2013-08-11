@@ -37,6 +37,7 @@
 #define MessageScoreText "スコア"
 #define MessageSelectionYes "はい"
 #define MessageSelectionNo "いいえ"
+#define MessageSelectionOK "はい"
 
 #define SaveDataChecksumSalt "tikuwa"
 

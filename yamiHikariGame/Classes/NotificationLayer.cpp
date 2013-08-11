@@ -12,37 +12,60 @@
 #define kSpeakerMarginTop (TitleBarHeight + 50)
 
 #define kMessageBoxMarginTop (TitleBarHeight + 140)
-#define kMessageBoxMarginHorizon 48
-
-#define kMessageBoxHeight 180
-
-#define kMessageTextPadding 4
+#define kMessageBoxMarginHorizontal 16
 
 #define kBoxFillColor ((ccColor4F){0.0, 0.0, 0.0, 0.0})
 #define kBoxBorderColor ((ccColor4F){1.0, 1.0, 1.0, 1.0})
 
-#define kSelectionButtonMarginTop (kMessageBoxMarginTop + kMessageBoxHeight + 12)
+#define kMessageLabelMarginHorizontal 22
+#define kMessageLabelMarginVertical 6
 
-#define kSelectionButtonWidth 90
-#define kSelectionButtonHeight 36
+#define kActionButtonFillColor (ccc4(0.0, 0.0, 0.0, 0.0))
 
-#define kSelectionItemPadding 24
-
-#define kSelectionButtonFillColor (ccc4(0.0, 0.0, 0.0, 0.0))
+#define kCommandAreaHeight 40
+#define kCommandAreaMarginTop 4
+#define kCommandAreaMarginBottom 24
+#define kCommandButtonWidth 88
+#define kCommandButtonHeight 44
+#define kCommandButtonPadding 32
 
 void NotificationLayer::setNoticeMessage(const char* message)
 {
     _messageLabel->setString(message);
 }
 
-void NotificationLayer::setYesNoButtonAnable(bool anable)
+void NotificationLayer::setNotificationType(NotificationType t)
 {
-    _useYesNoButton = anable;
+    _currentNotificationType = t;
+    updateMenuState();
+}
 
-    if (_useYesNoButton) {
-        _yesNoMenu->setVisible(true);
-    } else {
-        _yesNoMenu->setVisible(false);
+void NotificationLayer::updateMenuState()
+{
+    switch (_currentNotificationType) {
+        case NOTIFICATION_LAYER_OK_ONLY:
+            _okMenu->setVisible(true);
+            _yesNoMenu->setVisible(false);
+            break;
+        case NOTIFICATION_LAYER_YES_NO:
+            _okMenu->setVisible(false);
+            _yesNoMenu->setVisible(true);
+            break;
+    }
+}
+
+void NotificationLayer::setActionTarget(NotificationActionType actionType, CCObject *rec, SEL_MenuHandler selector)
+{
+    switch (actionType) {
+        case NOTIFICATION_LAYER_ACTION_OK:
+            _okMenuItem->setTarget(rec, selector);
+            break;
+        case NOTIFICATION_LAYER_ACTION_YES:
+            _yesMenuItem->setTarget(rec, selector);
+            break;
+        case NOTIFICATION_LAYER_ACTION_NO:
+            _noMenuItem->setTarget(rec, selector);
+            break;
     }
 }
 
@@ -53,18 +76,20 @@ bool NotificationLayer::init()
     if (result)
     {
         CCSize windowSize = CCDirector::sharedDirector()->getWinSize();
-        CCPoint messageBox[] = {ccp(kMessageBoxMarginHorizon, windowSize.height - kMessageBoxMarginTop),
-                ccp(windowSize.width - kMessageBoxMarginHorizon, windowSize.height - kMessageBoxMarginTop),
-                ccp(windowSize.width - kMessageBoxMarginHorizon, windowSize.height - kMessageBoxMarginTop - kMessageBoxHeight),
-                ccp(kMessageBoxMarginHorizon, windowSize.height - kMessageBoxMarginTop - kMessageBoxHeight)};
+
+        float messageBoxBottom = kCommandAreaHeight + kCommandAreaMarginTop + kCommandAreaMarginBottom;
 
         CCDrawNode *frameBorderNode = CCDrawNode::create();
+        CCPoint messageBox[] = {ccp(kMessageBoxMarginHorizontal, windowSize.height - kMessageBoxMarginTop),
+            ccp(windowSize.width - kMessageBoxMarginHorizontal, windowSize.height - kMessageBoxMarginTop),
+            ccp(windowSize.width - kMessageBoxMarginHorizontal, messageBoxBottom),
+            ccp(kMessageBoxMarginHorizontal, messageBoxBottom)};
         frameBorderNode->drawPolygon(messageBox, 4, kBoxFillColor, 1, kBoxBorderColor);
         this->addChild(frameBorderNode);
 
-        _messageLabel = CCLabelTTF::create("", DefaultFontName, FontSizeNormal, CCSize(windowSize.width - (kMessageBoxMarginHorizon + kMessageTextPadding) * 2, kMessageBoxHeight - kMessageTextPadding * 2), kCCTextAlignmentLeft);
+        _messageLabel = CCLabelTTF::create("", DefaultFontName, FontSizeNormal, CCSize(windowSize.width - kMessageBoxMarginHorizontal * 2, (windowSize.height - kMessageBoxMarginTop) - messageBoxBottom - kMessageLabelMarginVertical * 2), kCCTextAlignmentLeft);
         _messageLabel->setAnchorPoint(ccp(0, 1));
-        _messageLabel->setPosition(ccp(kMessageBoxMarginHorizon + kMessageTextPadding, windowSize.height - kMessageBoxMarginTop - kMessageTextPadding));
+        _messageLabel->setPosition(ccp(kMessageLabelMarginHorizontal, windowSize.height - kMessageBoxMarginTop - kMessageLabelMarginVertical));
         this->addChild(_messageLabel);
 
         if (_speakerImage)
@@ -72,60 +97,54 @@ bool NotificationLayer::init()
             _speakerImage->removeFromParentAndCleanup(true);
         }
         _speakerImage = CCSprite::createWithSpriteFrameName("brave.png");
-        _speakerImage->setAnchorPoint(ccp(0.5, 1));
+        _speakerImage->setAnchorPoint(ccp(0.5, 1.0));
         _speakerImage->setPosition(ccp(windowSize.width / 2, windowSize.height - kSpeakerMarginTop));
         this->addChild(_speakerImage);
 
-        CCDrawNode *yesButtonNode = CCDrawNode::create();
-        CCPoint buttonPoints[] = {
-            ccp(0, 0),
-            ccp(kSelectionButtonWidth, 0),
-            ccp(kSelectionButtonWidth, kSelectionButtonHeight),
-            ccp(0, kSelectionButtonHeight)
-        };
-        yesButtonNode->drawPolygon(buttonPoints, 4, kBoxFillColor, 1, kBoxBorderColor);
+        CCLabelTTF *okButtonLabel = CCLabelTTF::create(MessageSelectionOK, DefaultFontName, FontSizeNormal);
+        okButtonLabel->setAnchorPoint(ccp(0.5, 0.5));
+        okButtonLabel->setPosition(ccp(kCommandButtonWidth / 2, kCommandButtonHeight / 2));
+
+        CCLayerColor *okButtonLayer = CCLayerColor::create(kActionButtonFillColor, kCommandButtonWidth, kCommandButtonHeight);
+        okButtonLayer->addChild(okButtonLabel);
+
+        _okMenuItem = CCMenuItemLabel::create(okButtonLayer);
+        _okMenuItem->setAnchorPoint(ccp(0.5, 0.5));
+
+        _okMenu = CCMenu::create(_okMenuItem, NULL);
+        _okMenu->setAnchorPoint(ccp(0.5, 1.0));
+        _okMenu->setPosition(ccp(windowSize.width / 2, kCommandAreaMarginBottom + kCommandAreaHeight / 2));
+        _okMenu->alignItemsHorizontallyWithPadding(kCommandButtonPadding);
+        this->addChild(_okMenu);
 
         CCLabelTTF *yesButtonLabel = CCLabelTTF::create(MessageSelectionYes, DefaultFontName, FontSizeNormal);
         yesButtonLabel->setAnchorPoint(ccp(0.5, 0.5));
-        yesButtonLabel->setPosition(ccp(kSelectionButtonWidth / 2, kSelectionButtonHeight / 2));
-        yesButtonNode->addChild(yesButtonLabel);
+        yesButtonLabel->setPosition(ccp(kCommandButtonWidth / 2, kCommandButtonHeight / 2));
 
-        CCLayerColor *yesButtonLayer = CCLayerColor::create(kSelectionButtonFillColor, kSelectionButtonWidth, kSelectionButtonHeight);
-        yesButtonLayer->addChild(yesButtonNode);
+        CCLayerColor *yesButtonLayer = CCLayerColor::create(kActionButtonFillColor, kCommandButtonWidth, kCommandButtonHeight);
+        yesButtonLayer->addChild(yesButtonLabel);
 
-        CCMenuItem *yesItem = CCMenuItemLabel::create(yesButtonLayer, this, menu_selector(NotificationLayer::yesButtonSelected));
-        yesItem->setAnchorPoint(ccp(0.5, 1.0));
-
-        CCDrawNode *noButtonNode = CCDrawNode::create();
-        noButtonNode->drawPolygon(buttonPoints, 4, kBoxFillColor, 1, kBoxBorderColor);
+        _yesMenuItem = CCMenuItemLabel::create(yesButtonLayer);
+        _yesMenuItem->setAnchorPoint(ccp(0.5, 0.5));
 
         CCLabelTTF *noButtonLabel = CCLabelTTF::create(MessageSelectionNo, DefaultFontName, FontSizeNormal);
         noButtonLabel->setAnchorPoint(ccp(0.5, 0.5));
-        noButtonLabel->setPosition(ccp(kSelectionButtonWidth / 2, kSelectionButtonHeight / 2));
-        noButtonNode->addChild(noButtonLabel);
+        noButtonLabel->setPosition(ccp(kCommandButtonWidth / 2, kCommandButtonHeight / 2));
 
-        CCLayerColor *noButtonLayer = CCLayerColor::create(kSelectionButtonFillColor, kSelectionButtonWidth, kSelectionButtonHeight);
-        noButtonLayer->addChild(noButtonNode);
+        CCLayerColor *noButtonLayer = CCLayerColor::create(kActionButtonFillColor, kCommandButtonWidth, kCommandButtonHeight);
+        noButtonLayer->addChild(noButtonLabel);
 
-        CCMenuItem *noItem = CCMenuItemLabel::create(noButtonLayer, this, menu_selector(NotificationLayer::noButtonSelected));
-        noItem->setAnchorPoint(ccp(0.5, 1.0));
-        
-        _yesNoMenu = CCMenu::create(yesItem, noItem, NULL);
+        _noMenuItem = CCMenuItemLabel::create(noButtonLayer);
+        _noMenuItem->setAnchorPoint(ccp(0.5, 0.5));
+
+        _yesNoMenu = CCMenu::create(_yesMenuItem, _noMenuItem, NULL);
         _yesNoMenu->setAnchorPoint(ccp(0.5, 1.0));
-        _yesNoMenu->setPosition(ccp(windowSize.width / 2, windowSize.height - kSelectionButtonMarginTop));
-        _yesNoMenu->alignItemsHorizontallyWithPadding(kSelectionItemPadding);
+        _yesNoMenu->setPosition(ccp(windowSize.width / 2, kCommandAreaMarginBottom + kCommandAreaHeight / 2));
+        _yesNoMenu->alignItemsHorizontallyWithPadding(kCommandButtonPadding);
         this->addChild(_yesNoMenu);
+
+        updateMenuState();
     }
     
     return result;
-}
-
-void NotificationLayer::yesButtonSelected()
-{
-    CCDirector::sharedDirector()->popScene();
-}
-
-void NotificationLayer::noButtonSelected()
-{
-    CCDirector::sharedDirector()->popScene();
 }
