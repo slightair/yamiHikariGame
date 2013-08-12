@@ -88,7 +88,7 @@ bool NotificationLayer::init()
         this->addChild(frameBorderNode);
 
         _messageLabel = CCLabelTTF::create("", DefaultFontName, FontSizeNormal, CCSize(windowSize.width - kMessageBoxMarginHorizontal * 2, (windowSize.height - kMessageBoxMarginTop) - messageBoxBottom - kMessageLabelMarginVertical * 2), kCCTextAlignmentLeft);
-        _messageLabel->setAnchorPoint(ccp(0, 1));
+        _messageLabel->setAnchorPoint(ccp(0.0, 1.0));
         _messageLabel->setPosition(ccp(kMessageLabelMarginHorizontal, windowSize.height - kMessageBoxMarginTop - kMessageLabelMarginVertical));
         this->addChild(_messageLabel);
 
@@ -102,7 +102,6 @@ bool NotificationLayer::init()
         this->addChild(_speakerImage);
 
         CCLabelTTF *okButtonLabel = CCLabelTTF::create(MessageSelectionOK, DefaultFontName, FontSizeNormal);
-        okButtonLabel->setAnchorPoint(ccp(0.5, 0.5));
         okButtonLabel->setPosition(ccp(kCommandButtonWidth / 2, kCommandButtonHeight / 2));
 
         CCLayerColor *okButtonLayer = CCLayerColor::create(kActionButtonFillColor, kCommandButtonWidth, kCommandButtonHeight);
@@ -118,7 +117,6 @@ bool NotificationLayer::init()
         this->addChild(_okMenu);
 
         CCLabelTTF *yesButtonLabel = CCLabelTTF::create(MessageSelectionYes, DefaultFontName, FontSizeNormal);
-        yesButtonLabel->setAnchorPoint(ccp(0.5, 0.5));
         yesButtonLabel->setPosition(ccp(kCommandButtonWidth / 2, kCommandButtonHeight / 2));
 
         CCLayerColor *yesButtonLayer = CCLayerColor::create(kActionButtonFillColor, kCommandButtonWidth, kCommandButtonHeight);
@@ -128,7 +126,6 @@ bool NotificationLayer::init()
         _yesMenuItem->setAnchorPoint(ccp(0.5, 0.5));
 
         CCLabelTTF *noButtonLabel = CCLabelTTF::create(MessageSelectionNo, DefaultFontName, FontSizeNormal);
-        noButtonLabel->setAnchorPoint(ccp(0.5, 0.5));
         noButtonLabel->setPosition(ccp(kCommandButtonWidth / 2, kCommandButtonHeight / 2));
 
         CCLayerColor *noButtonLayer = CCLayerColor::create(kActionButtonFillColor, kCommandButtonWidth, kCommandButtonHeight);
@@ -143,6 +140,7 @@ bool NotificationLayer::init()
         _yesNoMenu->alignItemsHorizontallyWithPadding(kCommandButtonPadding);
         this->addChild(_yesNoMenu);
 
+        _currentNotificationType = NOTIFICATION_LAYER_OK_ONLY;
         updateMenuState();
     }
     
