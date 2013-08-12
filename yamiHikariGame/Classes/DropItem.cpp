@@ -57,17 +57,7 @@ int DropItem::getItemID()
     return _item.get_id();
 }
 
-const char *DropItem::getImageFileName()
-{
-    return _item->image.c_str();
-}
-
 int DropItem::getStamina()
 {
     return _item->stamina;
-}
-
-int DropItem::getScore()
-{
-    return _item->score;
 }
