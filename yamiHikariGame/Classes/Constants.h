@@ -16,10 +16,12 @@
 #define FontSizeSmall 8
 #define TitleBarHeight 44
 #define TitleBarTitleMarginTop 20
-#define TitleBarBackButtonMarginLeft 8
-#define TitleBarBackButtonMarginTop 20
 #define TitleBarSeparatorMarginHorizontal 8
 #define TitleBarSeparatorRadius 1
+#define TitleBarLeftButtonMarginLeft 0
+#define TitleBarLeftButtonMarginTop 7
+#define TitleBarButtonWidth 88
+#define TitleBarButtonHeight 44
 
 #define SEItemGet "SE001.mp3"
 #define SEGameOver "SE002.mp3"
