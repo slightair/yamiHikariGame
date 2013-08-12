@@ -4,21 +4,29 @@
   image: "tikuwa.png"
   stamina: 10
   score: 100
+  score_threshold: 0
+  drop_rate: 0.05
 -
   name: 'たからばこ'
   desc: 'なにかよいものがはいってそうなハコ。'
   image: "treasurebox01.png"
   stamina: 0
   score: 500
+  score_threshold: 0
+  drop_rate: 0.05
 -
   name: 'マホウセキ'
   desc: 'スタミナをかいふくしたりガチャをひけるふしぎなアイテム。コンティニューはできない。'
   image: "magicstone01.png"
   stamina: 30
   score: 300
+  score_threshold: 1000
+  drop_rate: 0.05
 -
   name: 'ヘビ'
   desc: 'ふだんはムガイだが、ふむとあぶない'
   image: "snake01.png"
   stamina: -50
   score: 100
+  score_threshold: 0
+  drop_rate: 0.05
