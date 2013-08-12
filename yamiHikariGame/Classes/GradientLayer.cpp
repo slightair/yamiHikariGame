@@ -9,8 +9,6 @@
 #include "GradientLayer.h"
 #include "Constants.h"
 
-#define kButtonLabelTag 100
-
 bool GradientLayer::init()
 {
     bool result = CCLayer::init();
@@ -31,10 +29,10 @@ bool GradientLayer::init()
         this->addChild(_titleLabel);
 
         CCLayerColor *leftButtonLayer = CCLayerColor::create((ccColor4B){0x00, 0x00, 0x00, 0x00}, TitleBarButtonWidth, TitleBarButtonHeight);
-        CCLabelTTF *leftButtonLabel = CCLabelTTF::create("", DefaultFontName, FontSizeNormal);
-        leftButtonLabel->setPosition(ccp(TitleBarButtonWidth / 2, TitleBarButtonHeight / 2));
+        _titleBarLeftButtonLabel = CCLabelTTF::create("", DefaultFontName, FontSizeNormal);
+        _titleBarLeftButtonLabel->setPosition(ccp(TitleBarButtonWidth / 2, TitleBarButtonHeight / 2));
+        leftButtonLayer->addChild(_titleBarLeftButtonLabel);
         _titleBarLeftButton = CCMenuItemLabel::create(leftButtonLayer);
-        _titleBarLeftButton->addChild(leftButtonLabel, 0, kButtonLabelTag);
 
         CCMenu *leftMenu = CCMenu::create(_titleBarLeftButton, NULL);
         leftMenu->setPosition(ccp(TitleBarLeftButtonMarginLeft + TitleBarButtonWidth / 2, windowSize.height - TitleBarLeftButtonMarginTop - TitleBarButtonHeight / 2));
@@ -53,8 +51,7 @@ void GradientLayer::setTitle(const char *title)
 
 void GradientLayer::setTitleBarLeftButton(const char *string, CCObject *target, SEL_MenuHandler selector)
 {
-    CCLabelTTF *label = (CCLabelTTF *)_titleBarLeftButton->getChildByTag(kButtonLabelTag);
-    label->setString(string);
+    _titleBarLeftButtonLabel->setString(string);
 
     _titleBarLeftButton->setTarget(target, selector);
     _titleBarLeftButton->getParent()->setVisible(true);

@@ -19,6 +19,7 @@ protected:
     CCLabelTTF *_titleLabel;
     CCLayerGradient *_underlayLayer;
     CCMenuItem *_titleBarLeftButton;
+    CCLabelTTF *_titleBarLeftButtonLabel;
 public:
     virtual bool init();
     void setTitle(const char *);
