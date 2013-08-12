@@ -207,6 +207,7 @@
 		579BBAB817AE25FD0064F28A /* init.db in Resources */ = {isa = PBXBuildFile; fileRef = 579BBAB717AE25FD0064F28A /* init.db */; };
 		579E94FC17AE77DC008B4276 /* sha1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 579E94F717AE77DC008B4276 /* sha1.cpp */; };
 		579E94FE17AEA8D0008B4276 /* Item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 579E94FD17AEA8D0008B4276 /* Item.cpp */; };
+		579E98ED17B5ED2E00477B9F /* ResultScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 579E98EB17B5ED2E00477B9F /* ResultScene.cpp */; };
 		579EDCBD17A6C2EC0039560A /* SE001.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 579EDCBA17A6C2EC0039560A /* SE001.mp3 */; };
 		579EDCBE17A6C2EC0039560A /* SE002.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 579EDCBB17A6C2EC0039560A /* SE002.mp3 */; };
 		579EDCBF17A6C2EC0039560A /* SE004.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 579EDCBC17A6C2EC0039560A /* SE004.mp3 */; };
@@ -681,6 +682,8 @@
 		579E94F717AE77DC008B4276 /* sha1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = sha1.cpp; path = libs/extensions/crypto/sha1/sha1.cpp; sourceTree = "<group>"; };
 		579E94F817AE77DC008B4276 /* sha1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sha1.h; path = libs/extensions/crypto/sha1/sha1.h; sourceTree = "<group>"; };
 		579E94FD17AEA8D0008B4276 /* Item.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Item.cpp; path = Classes/Item.cpp; sourceTree = "<group>"; };
+		579E98EB17B5ED2E00477B9F /* ResultScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ResultScene.cpp; path = Classes/ResultScene.cpp; sourceTree = "<group>"; };
+		579E98EC17B5ED2E00477B9F /* ResultScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResultScene.h; path = Classes/ResultScene.h; sourceTree = "<group>"; };
 		579EDCBA17A6C2EC0039560A /* SE001.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = SE001.mp3; path = Resources/SE001.mp3; sourceTree = "<group>"; };
 		579EDCBB17A6C2EC0039560A /* SE002.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = SE002.mp3; path = Resources/SE002.mp3; sourceTree = "<group>"; };
 		579EDCBC17A6C2EC0039560A /* SE004.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = SE004.mp3; path = Resources/SE004.mp3; sourceTree = "<group>"; };
@@ -1625,6 +1628,8 @@
 				578DD40717AAA9320066DECE /* GradientLayer.h */,
 				EC3F278817B1ECD10060DE3F /* NotificationLayer.cpp */,
 				EC3F278917B1ECD10060DE3F /* NotificationLayer.h */,
+				579E98EB17B5ED2E00477B9F /* ResultScene.cpp */,
+				579E98EC17B5ED2E00477B9F /* ResultScene.h */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -1965,6 +1970,7 @@
 				5784101D1795895C005732EC /* CCControlSwitch.cpp in Sources */,
 				579E94FC17AE77DC008B4276 /* sha1.cpp in Sources */,
 				578410201795895C005732EC /* CCControlUtils.cpp in Sources */,
+				579E98ED17B5ED2E00477B9F /* ResultScene.cpp in Sources */,
 				578410231795895C005732EC /* CCInvocation.cpp in Sources */,
 				578410261795895C005732EC /* CCScale9Sprite.cpp in Sources */,
 				5784102A1795895C005732EC /* CCEditBox.cpp in Sources */,

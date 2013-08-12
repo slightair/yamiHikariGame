@@ -18,9 +18,12 @@ class GradientLayer : public CCLayer
 protected:
     CCLabelTTF *_titleLabel;
     CCLayerGradient *_underlayLayer;
+    CCMenuItem *_titleBarLeftButton;
+    CCLabelTTF *_titleBarLeftButtonLabel;
 public:
     virtual bool init();
     void setTitle(const char *);
+    void setTitleBarLeftButton(const char *string, CCObject *target, SEL_MenuHandler selector);
 
     CREATE_FUNC(GradientLayer);
 };

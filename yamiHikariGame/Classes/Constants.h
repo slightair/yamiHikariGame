@@ -17,10 +17,12 @@
 #define FontSizeSmall 8
 #define TitleBarHeight 44
 #define TitleBarTitleMarginTop 20
-#define TitleBarBackButtonMarginLeft 8
-#define TitleBarBackButtonMarginTop 20
 #define TitleBarSeparatorMarginHorizontal 8
 #define TitleBarSeparatorRadius 1
+#define TitleBarLeftButtonMarginLeft 0
+#define TitleBarLeftButtonMarginTop 7
+#define TitleBarButtonWidth 88
+#define TitleBarButtonHeight 44
 
 #define SEItemGet "SE001.mp3"
 #define SEGameOver "SE002.mp3"
@@ -30,11 +32,18 @@
 #define StaminaMax 1000
 
 #define MessageItemBookTitle "アイテムずかん"
+#define MessageResultTitle "リザルト"
+
+#define MessageStaminaText "スタミナ"
+#define MessageScoreText "スコア"
+#define MessageNumberOfFoundItemsText "ひろったかず"
+
 #define MessageBackButtonTitle "《もどる"
 #define MessagePrevButtonTitle "《まえ"
 #define MessageNextButtonTitle "つぎ》"
-#define MessageStaminaText "スタミナ"
-#define MessageScoreText "スコア"
+#define MessageRetryButtonTitle "リトライ!"
+#define MessageBackTitleButtonTitle "タイトル"
+
 #define MessageSelectionYes "はい"
 #define MessageSelectionNo "いいえ"
 #define MessageSelectionOK "OK"

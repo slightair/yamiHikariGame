@@ -11,6 +11,7 @@
 #include "Constants.h"
 #include "TitleScene.h"
 #include "GameScene.h"
+#include "ResultScene.h"
 #include "ItemListScene.h"
 #include "Item.h"
 
@@ -43,6 +44,7 @@ void GameEngine::startNewGame()
 {
     _score = 0;
     _stamina = StaminaMax;
+    _foundItems.clear();
 
     CCDirector *director = CCDirector::sharedDirector();
     CCTransitionFade *transition = CCTransitionFade::create(kTransitionDuration, GameScene::scene());
@@ -62,6 +64,8 @@ void GameEngine::finishGame()
 
     CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(SEGameOver);
 
+    registerFoundItemCount();
+
     director->getScheduler()->scheduleSelector(schedule_selector(GameEngine::showResult), this, 0, 0, kWaitForResultDuration, false);
 }
 
@@ -75,9 +79,25 @@ void GameEngine::tick()
     }
 }
 
+void GameEngine::registerFoundItemCount()
+{
+    map<hiberlite::sqlid_t, int>::iterator iterator = _foundItems.begin();
+
+    while (iterator != _foundItems.end()) {
+        hiberlite::sqlid_t itemID = (*iterator).first;
+        Item item = _items.at(itemID - 1);
+        int count = (*iterator).second;
+
+        item->updateCount(item->count + count);
+        item.save();
+
+        iterator++;
+    }
+}
+
 void GameEngine::showResult()
 {
-    CCTransitionFade *transition = CCTransitionFade::create(kTransitionDuration, TitleScene::scene());
+    CCTransitionFade *transition = CCTransitionFade::create(kTransitionDuration, ResultScene::scene());
     CCDirector::sharedDirector()->replaceScene(transition);
 }
 
@@ -148,12 +168,33 @@ void GameEngine::loadSaveData()
     for (int i=0; i<_items.size(); i++) {
         if (!_items.at(i)->validate()) {
 #warning not implemented
+            CCLog("validation error!!");
             return;
         }
+    }
+}
+
+void GameEngine::foundItem(hiberlite::sqlid_t itemID)
+{
+    Item item = _items.at(itemID - 1);
+
+    addScore(item->score);
+    addStamina(item->stamina);
+
+    if (_foundItems.find(itemID) == _foundItems.end()) {
+        _foundItems[itemID] = 1;
+    }
+    else {
+        _foundItems[itemID] += 1;
     }
 }
 
 vector<Item> *GameEngine::getItems()
 {
     return &_items;
+}
+
+map<hiberlite::sqlid_t, int> *GameEngine::getFoundItems()
+{
+    return &_foundItems;
 }
