@@ -27,6 +27,8 @@ string _Item::generateChecksum()
        << this->image << ':'
        << this->stamina << ':'
        << this->score << ':'
+       << this->score_threshold << ':'
+       << this->drop_rate << ':'
        << count << ':'
        << SaveDataChecksumSalt;
     const char *input = os.str().c_str();
