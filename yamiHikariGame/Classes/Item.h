@@ -30,6 +30,8 @@ class _Item
         ar & HIBERLITE_NVP(image);
         ar & HIBERLITE_NVP(stamina);
         ar & HIBERLITE_NVP(score);
+        ar & HIBERLITE_NVP(score_threshold);
+        ar & HIBERLITE_NVP(drop_rate);
         ar & HIBERLITE_NVP(count);
         ar & HIBERLITE_NVP(checksum);
     }
@@ -40,6 +42,8 @@ public:
     string image;
     int stamina;
     int score;
+    int score_threshold;
+    float drop_rate;
     int count;
     string checksum;
 
