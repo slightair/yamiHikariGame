@@ -11,6 +11,7 @@
 
 #define SpriteSheetImageFileName "spriteSheet.pvr.ccz"
 #define DefaultFontName "mosamosa.ttf"
+
 #define FontSizeBig 24
 #define FontSizeNormal 16
 #define FontSizeSmall 8
@@ -42,6 +43,10 @@
 #define MessageNextButtonTitle "つぎ》"
 #define MessageRetryButtonTitle "リトライ!"
 #define MessageBackTitleButtonTitle "タイトル"
+
+#define MessageSelectionYes "はい"
+#define MessageSelectionNo "いいえ"
+#define MessageSelectionOK "OK"
 
 #define SaveDataChecksumSalt "tikuwa"
 

@@ -217,6 +217,7 @@
 		57FB9F9E179A5C2F005D882C /* ios-hd in Resources */ = {isa = PBXBuildFile; fileRef = 57FB9F9C179A5C2F005D882C /* ios-hd */; };
 		57FB9FA1179BE459005D882C /* Monster.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57FB9F9F179BE458005D882C /* Monster.cpp */; };
 		57FB9FA7179D720A005D882C /* Brave.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57FB9FA5179D720A005D882C /* Brave.cpp */; };
+		EC3F278A17B1ECD10060DE3F /* NotificationLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC3F278817B1ECD10060DE3F /* NotificationLayer.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -695,6 +696,8 @@
 		57FB9FA0179BE459005D882C /* Monster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Monster.h; path = Classes/Monster.h; sourceTree = "<group>"; };
 		57FB9FA5179D720A005D882C /* Brave.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Brave.cpp; path = Classes/Brave.cpp; sourceTree = "<group>"; };
 		57FB9FA6179D720A005D882C /* Brave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Brave.h; path = Classes/Brave.h; sourceTree = "<group>"; };
+		EC3F278817B1ECD10060DE3F /* NotificationLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NotificationLayer.cpp; path = Classes/NotificationLayer.cpp; sourceTree = "<group>"; };
+		EC3F278917B1ECD10060DE3F /* NotificationLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotificationLayer.h; path = Classes/NotificationLayer.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1623,6 +1626,8 @@
 				578DD40417AAA72B0066DECE /* ItemDetailScene.h */,
 				578DD40617AAA9320066DECE /* GradientLayer.cpp */,
 				578DD40717AAA9320066DECE /* GradientLayer.h */,
+				EC3F278817B1ECD10060DE3F /* NotificationLayer.cpp */,
+				EC3F278917B1ECD10060DE3F /* NotificationLayer.h */,
 				579E98EB17B5ED2E00477B9F /* ResultScene.cpp */,
 				579E98EC17B5ED2E00477B9F /* ResultScene.h */,
 			);
@@ -1988,6 +1993,7 @@
 				578DE66717A4D7F50050CDE4 /* TitleScene.cpp in Sources */,
 				578DE66C17A4D8E90050CDE4 /* GameEngine.cpp in Sources */,
 				578DE66F17A4DE040050CDE4 /* Ground.cpp in Sources */,
+				EC3F278A17B1ECD10060DE3F /* NotificationLayer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
