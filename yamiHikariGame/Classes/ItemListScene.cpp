@@ -114,7 +114,8 @@ CCTableViewCell* ItemListScene::tableCellAtIndex(CCTableView *table, unsigned in
     if (item->count > 0) {
         itemImage = CCSprite::createWithSpriteFrameName(item->image.c_str());
         itemNameLabel->setString(item->name.c_str());
-    } else {
+    }
+    else {
         itemImage = CCSprite::createWithSpriteFrameName(NotFoundItemImage);
         itemNameLabel->setString(MessageNotFoundItemNameText);
     }

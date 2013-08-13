@@ -63,7 +63,8 @@ void ItemDetailScene::setItem(Item item)
         itemScore = CCString::createWithFormat("%s:%d %s:%+d", MessageScoreText, _item->score, MessageStaminaText, _item->stamina);
         itemDesc = CCString::create(_item->desc);
         itemImage = CCString::create(_item->image);
-    } else {
+    }
+    else {
         itemName = CCString::createWithFormat(kItemNameLabelFormat, _item.get_id(), MessageNotFoundItemNameText);
         itemScore = CCString::createWithFormat("%s:%s %s:%s", MessageScoreText, MessageNotFoundItemScoreText, MessageStaminaText, MessageNotFoundItemStaminaText);
         itemDesc = CCString::create(MessageNotFoundItemDescText);
