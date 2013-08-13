@@ -32,6 +32,7 @@
 #define SoundEffectVolume 0.15
 
 #define StaminaMax 1000
+#define SameTimeDropItemKindMax 3
 
 #define MessageItemBookTitle "アイテムずかん"
 #define MessageResultTitle "リザルト"

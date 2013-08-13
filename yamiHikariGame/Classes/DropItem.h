@@ -19,10 +19,9 @@ class DropItem : public CCSprite
 protected:
     Item _item;
 
-    bool init();
-    Item selectItem();
+    bool init(Item item);
 public:
-    static DropItem *create();
+    static DropItem *create(Item item);
     void drop();
 
     int getItemID();

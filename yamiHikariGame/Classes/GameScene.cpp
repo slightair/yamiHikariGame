@@ -131,12 +131,33 @@ void GameScene::dropItem()
     CCSize windowSize = CCDirector::sharedDirector()->getWinSize();
     float horizontalMargin = windowSize.width * kEmergedAreaHorizontalMarginRate;
     int emergedAreaWidth = windowSize.width - horizontalMargin * 2;
-    float positionX = arc4random() % emergedAreaWidth + horizontalMargin;
 
-    DropItem *item = DropItem::create();
-    item->setPosition(ccp(positionX, -item->getContentSize().height / 2));
-    _itemsNode->addChild(item);
-    item->drop();
+    GameEngine *engine = GameEngine::sharedEngine();
+
+    vector<Item> *items = engine->getItems();
+    vector<Item>::reverse_iterator iterator = items->rbegin();
+
+    int itemCount = 0;
+    while (iterator != items->rend()) {
+        Item item = *iterator;
+        float needle = (float)arc4random() / UINT32_MAX;
+
+        if (engine->getScore() > item->score_threshold && item->drop_rate > needle) {
+            float positionX = arc4random() % emergedAreaWidth + horizontalMargin;
+
+            DropItem *dropItem = DropItem::create(item);
+            dropItem->setPosition(ccp(positionX, -dropItem->getContentSize().height / 2));
+            _itemsNode->addChild(dropItem);
+            dropItem->drop();
+
+            itemCount++;
+            if (itemCount >= SameTimeDropItemKindMax) {
+                break;
+            }
+        }
+
+        iterator++;
+    }
 }
 
 void GameScene::collisionCheck()
