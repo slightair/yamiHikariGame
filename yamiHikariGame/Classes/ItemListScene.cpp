@@ -108,14 +108,22 @@ CCTableViewCell* ItemListScene::tableCellAtIndex(CCTableView *table, unsigned in
     itemNumberLabel = (CCLabelTTF *)cell->getChildByTag(kItemCellTagNumberLabel);
     itemNumberLabel->setString(CCString::createWithFormat("%02lld", item.get_id())->getCString());
 
-    CCSprite *itemImage = CCSprite::createWithSpriteFrameName(item->image.c_str());
+    CCSprite *itemImage = NULL;
+    itemNameLabel = (CCLabelTTF *)cell->getChildByTag(kItemCellTagNameLabel);
+
+    if (item->count > 0) {
+        itemImage = CCSprite::createWithSpriteFrameName(item->image.c_str());
+        itemNameLabel->setString(item->name.c_str());
+    }
+    else {
+        itemImage = CCSprite::createWithSpriteFrameName(NotFoundItemImage);
+        itemNameLabel->setString(MessageNotFoundItemNameText);
+    }
+
     itemImage->setAnchorPoint(ccp(0.0, 0.5));
     itemImage->setPosition(ccp(kItemImageMarginLeft, kItemCellHeight / 2));
     itemImage->setTag(kItemCellTagImage);
     cell->addChild(itemImage);
-
-    itemNameLabel = (CCLabelTTF *)cell->getChildByTag(kItemCellTagNameLabel);
-    itemNameLabel->setString(item->name.c_str());
 
     return cell;
 }
