@@ -34,6 +34,8 @@
 #define kPageSelectorButtonWidth 88
 #define kPageSelectorButtonHeight 44
 
+#define kItemNameLabelFormat "%02lld %s"
+
 CCScene* ItemDetailScene::sceneWithItem(Item item)
 {
     CCScene *scene = CCScene::create();
@@ -51,13 +53,28 @@ void ItemDetailScene::setItem(Item item)
 
     CCSize windowSize = CCDirector::sharedDirector()->getWinSize();
 
-    CCString *itemName = CCString::createWithFormat("%02lld %s", _item.get_id(), _item->name.c_str());
-    CCString *itemScore = CCString::createWithFormat("%s:%d %s:%+d", MessageScoreText, _item->score, MessageStaminaText, _item->stamina);
+    CCString *itemName = NULL;
+    CCString *itemScore = NULL;
+    CCString *itemDesc = NULL;
+    CCString *itemImage = NULL;
+
+    if (_item->count > 0){
+        itemName = CCString::createWithFormat(kItemNameLabelFormat, _item.get_id(), _item->name.c_str());
+        itemScore = CCString::createWithFormat("%s:%d %s:%+d", MessageScoreText, _item->score, MessageStaminaText, _item->stamina);
+        itemDesc = CCString::create(_item->desc);
+        itemImage = CCString::create(_item->image);
+    }
+    else {
+        itemName = CCString::createWithFormat(kItemNameLabelFormat, _item.get_id(), MessageNotFoundItemNameText);
+        itemScore = CCString::createWithFormat("%s:%s %s:%s", MessageScoreText, MessageNotFoundItemScoreText, MessageStaminaText, MessageNotFoundItemStaminaText);
+        itemDesc = CCString::create(MessageNotFoundItemDescText);
+        itemImage = CCString::create(NotFoundItemImage);
+    }
 
     if (_itemImage) {
         _itemImage->removeFromParentAndCleanup(true);
     }
-    _itemImage = CCSprite::createWithSpriteFrameName(_item->image.c_str());
+    _itemImage = CCSprite::createWithSpriteFrameName(itemImage->getCString());
     _itemImage->setAnchorPoint(ccp(0.5, 1.0));
     _itemImage->setPosition(ccp(windowSize.width / 2, windowSize.height - kItemImageMarginTop));
     _itemImage->setScale(2.0);
@@ -65,7 +82,7 @@ void ItemDetailScene::setItem(Item item)
 
     _itemNameLabel->setString(itemName->getCString());
     _scoreLabel->setString(itemScore->getCString());
-    _descriptionLabel->setString(_item->desc.c_str());
+    _descriptionLabel->setString(itemDesc->getCString());
 
     updatePageSelector();
 }

@@ -12,6 +12,8 @@
 #define SpriteSheetImageFileName "spriteSheet.pvr.ccz"
 #define DefaultFontName "mosamosa.ttf"
 
+#define NotFoundItemImage "questionmark.png"
+
 #define FontSizeBig 24
 #define FontSizeNormal 16
 #define FontSizeSmall 8
@@ -37,6 +39,11 @@
 #define MessageStaminaText "スタミナ"
 #define MessageScoreText "スコア"
 #define MessageNumberOfFoundItemsText "ひろったかず"
+
+#define MessageNotFoundItemNameText "?????"
+#define MessageNotFoundItemDescText "?????"
+#define MessageNotFoundItemScoreText "???"
+#define MessageNotFoundItemStaminaText "???"
 
 #define MessageBackButtonTitle "《もどる"
 #define MessagePrevButtonTitle "《まえ"
