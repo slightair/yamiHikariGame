@@ -9,10 +9,10 @@
 #include "DropItem.h"
 #include "GameEngine.h"
 
-DropItem *DropItem::create()
+DropItem *DropItem::create(Item item)
 {
     DropItem *dropItem = new DropItem();
-    if (dropItem && dropItem->init())
+    if (dropItem && dropItem->init(item))
     {
         dropItem->autorelease();
         return dropItem;
@@ -21,20 +21,10 @@ DropItem *DropItem::create()
     return NULL;
 }
 
-bool DropItem::init()
+bool DropItem::init(Item item)
 {
-    _item = selectItem();
+    _item = item;
     return CCSprite::initWithSpriteFrameName(_item->image.c_str());
-}
-
-Item DropItem::selectItem()
-{
-    vector<Item> *items = GameEngine::sharedEngine()->getItems();
-
-    int index = arc4random() % items->size();
-    Item item = items->at(index);
-
-    return item;
 }
 
 void DropItem::drop()
