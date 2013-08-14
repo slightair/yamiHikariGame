@@ -14,7 +14,6 @@
 #include "ResultScene.h"
 #include "ItemListScene.h"
 #include "Item.h"
-#include "NotificationLayer.h"
 
 #define kTransitionDuration 1.0
 #define kGameTickInterval 0.1
