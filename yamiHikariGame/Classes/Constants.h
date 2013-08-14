@@ -34,6 +34,11 @@
 #define StaminaMax 1000
 #define SameTimeDropItemKindMax 3
 
+#define MessageGameTitleText "ヤミからのトウソウ"
+#define MessageGameStartText "▶スタート"
+#define MessageShowItemListText "ずかん"
+#define MessageShowRankingText "ランキング"
+
 #define MessageItemBookTitle "アイテムずかん"
 #define MessageResultTitle "リザルト"
 
