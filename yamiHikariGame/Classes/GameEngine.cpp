@@ -14,6 +14,7 @@
 #include "ResultScene.h"
 #include "ItemListScene.h"
 #include "Item.h"
+#include "NotificationLayer.h"
 
 #define kTransitionDuration 1.0
 #define kGameTickInterval 0.1
@@ -105,6 +106,11 @@ void GameEngine::showItemList()
 {
     CCTransitionFade *transition = CCTransitionFade::create(kTransitionDuration, ItemListScene::scene());
     CCDirector::sharedDirector()->replaceScene(transition);
+}
+
+void GameEngine::showRanking()
+{
+
 }
 
 void GameEngine::showTitle()

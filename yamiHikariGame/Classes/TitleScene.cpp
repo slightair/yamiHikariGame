@@ -10,12 +10,13 @@
 #include "Constants.h"
 #include "GameEngine.h"
 
-#define kMenuItemPadding 8
-#define kCharacterDistance 80
+#define kSubMenuItemPadding 72
+#define kSubMenuMarginBottom 32
 
+#define kCharacterDistance 80
 #define kMonsterDelay 0.2
 #define kEscapeDuration 4.0
-#define kMoveWidth 180
+#define kMoveWidth 100
 
 CCScene* TitleScene::scene()
 {
@@ -52,22 +53,30 @@ bool TitleScene::init()
         _darknessNode = Darkness::create(_brave->getPosition());
         this->addChild(_darknessNode);
 
-        CCLabelTTF *titleLabel = CCLabelTTF::create("ヤミからのトウソウ", DefaultFontName, FontSizeBig);
-        titleLabel->setPosition(ccp(windowSize.width / 2, windowSize.height * 0.8));
+        CCLabelTTF *titleLabel = CCLabelTTF::create(MessageGameTitleText, DefaultFontName, FontSizeBig);
+        titleLabel->setPosition(ccp(windowSize.width / 2, windowSize.height * 0.85));
         this->addChild(titleLabel);
 
-        CCMenuItem *startGameItem = CCMenuItemLabel::create(CCLabelTTF::create("スタート", DefaultFontName, FontSizeBig),
+        CCMenuItem *startGameItem = CCMenuItemLabel::create(CCLabelTTF::create(MessageGameStartText, DefaultFontName, FontSizeBig),
                                                             GameEngine::sharedEngine(),
                                                             menu_selector(GameEngine::startNewGame));
 
-        CCMenuItem *showItemListItem = CCMenuItemLabel::create(CCLabelTTF::create("アイテムずかん", DefaultFontName, FontSizeBig),
+        CCMenu *startMenu = CCMenu::create(startGameItem, NULL);
+        startMenu->setPosition(ccp(windowSize.width / 2, windowSize.height * 0.25));
+        this->addChild(startMenu);
+
+        CCMenuItem *showItemListItem = CCMenuItemLabel::create(CCLabelTTF::create(MessageShowItemListText, DefaultFontName, FontSizeBig),
                                                                GameEngine::sharedEngine(),
                                                                menu_selector(GameEngine::showItemList));
 
-        CCMenu *menu = CCMenu::create(startGameItem, showItemListItem, NULL);
-        menu->alignItemsVerticallyWithPadding(kMenuItemPadding);
-        menu->setPosition(ccp(windowSize.width / 2, windowSize.height * 0.2));
-        this->addChild(menu);
+        CCMenuItem *showRankingItem = CCMenuItemLabel::create(CCLabelTTF::create(MessageShowRankingText, DefaultFontName, FontSizeBig),
+                                                              GameEngine::sharedEngine(),
+                                                              menu_selector(GameEngine::showRanking));
+
+        CCMenu *subMenu = CCMenu::create(showRankingItem, showItemListItem, NULL);
+        subMenu->alignItemsHorizontallyWithPadding(kSubMenuItemPadding);
+        subMenu->setPosition(ccp(windowSize.width / 2, showItemListItem->getContentSize().height / 2 + kSubMenuMarginBottom));
+        this->addChild(subMenu);
     }
 
     return result;
