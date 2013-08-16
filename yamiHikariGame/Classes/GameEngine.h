@@ -38,6 +38,7 @@ protected:
 public:
     static GameEngine *sharedEngine();
     void loadSaveData();
+    void rebuildSaveData();
     void startNewGame();
     void finishGame();
     void showResult();

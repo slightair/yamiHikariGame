@@ -14,6 +14,7 @@
 #include "ResultScene.h"
 #include "ItemListScene.h"
 #include "Item.h"
+#include "NotificationLayer.h"
 
 #define kTransitionDuration 1.0
 #define kGameTickInterval 0.1
@@ -145,6 +146,7 @@ void GameEngine::loadSaveData()
 
     string saveFilePath = fileUtils->getWritablePath().append(kSavefileName);
     if (forceRebuildSaveData || !fileUtils->isFileExist(saveFilePath)) {
+        CCLog("initialize data");
         copyInitialData(saveFilePath);
     }
 
@@ -154,17 +156,40 @@ void GameEngine::loadSaveData()
     for (int i=0; i<_items.size(); i++) {
         if (!_items.at(i)->validate()) {
             CCLog("validation error!!");
-            copyInitialData(saveFilePath);
+
+            NotificationLayer *noticeLayer = NotificationLayer::create();
+            noticeLayer->setTitle(MessageInvalidDataTitle);
+            noticeLayer->setNoticeMessage(MessageInvalidDataText);
+            noticeLayer->setNotificationType(NOTIFICATION_LAYER_OK_ONLY);
+            noticeLayer->setActionTarget(NOTIFICATION_LAYER_ACTION_OK, GameEngine::sharedEngine(), menu_selector(GameEngine::rebuildSaveData));
+
+            CCScene *scene = CCScene::create();
+            scene->addChild(noticeLayer);
+            CCDirector::sharedDirector()->pushScene(scene);
+
             return;
         }
     }
+}
+
+void GameEngine::rebuildSaveData()
+{
+    CCFileUtils *fileUtils = CCFileUtils::sharedFileUtils();
+
+    _db.close();
+
+    string saveFilePath = fileUtils->getWritablePath().append(kSavefileName);
+    copyInitialData(saveFilePath);
+
+    _db.open(saveFilePath);
+
+    CCDirector::sharedDirector()->popScene();
 }
 
 void GameEngine::copyInitialData(string saveFilePath)
 {
     CCFileUtils *fileUtils = CCFileUtils::sharedFileUtils();
 
-    CCLog("rebuild save data!");
     string initDBFilePath = fileUtils->fullPathForFilename("init.db");
 
     FILE *src, *dest;
