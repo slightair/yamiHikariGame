@@ -108,6 +108,11 @@ void GameEngine::showItemList()
     CCDirector::sharedDirector()->replaceScene(transition);
 }
 
+void GameEngine::showRanking()
+{
+
+}
+
 void GameEngine::showTitle()
 {
     CCTransitionFade *transition = CCTransitionFade::create(kTransitionDuration, TitleScene::scene());

@@ -42,6 +42,7 @@ public:
     void startNewGame();
     void finishGame();
     void showResult();
+    void showRanking();
     void showItemList();
     void showTitle();
     int getScore();

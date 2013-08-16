@@ -24,10 +24,11 @@ protected:
     vector<Item> *_items;
 
     Item selectedItem(unsigned int index);
+    CCDrawNode *_scrollViewIndicator;
 public:
     virtual bool init();
 
-    virtual void scrollViewDidScroll(CCScrollView* view){};
+    virtual void scrollViewDidScroll(CCScrollView* view);
     virtual void scrollViewDidZoom(CCScrollView* view){};
 
     virtual void tableCellTouched(CCTableView* table, CCTableViewCell* cell);
