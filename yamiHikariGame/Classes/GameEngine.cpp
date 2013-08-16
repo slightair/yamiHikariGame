@@ -181,11 +181,13 @@ void GameEngine::rebuildSaveData()
     CCFileUtils *fileUtils = CCFileUtils::sharedFileUtils();
 
     _db.close();
+    _items.clear();
 
     string saveFilePath = fileUtils->getWritablePath().append(kSavefileName);
     copyInitialData(saveFilePath);
 
     _db.open(saveFilePath);
+    _items = _db.getAllBeans<_Item>();
 
     CCDirector::sharedDirector()->popScene();
 }
