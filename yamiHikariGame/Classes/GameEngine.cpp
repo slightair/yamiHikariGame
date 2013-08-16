@@ -146,7 +146,6 @@ void GameEngine::loadSaveData()
 
     string saveFilePath = fileUtils->getWritablePath().append(kSavefileName);
     if (forceRebuildSaveData || !fileUtils->isFileExist(saveFilePath)) {
-        CCLog("initialize data");
         copyInitialData(saveFilePath);
     }
 
