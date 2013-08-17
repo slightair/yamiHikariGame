@@ -37,12 +37,15 @@ protected:
 public:
     static GameEngine *sharedEngine();
     void loadSaveData();
+    void startTutorial();
+    void finishTutorial();
     void startNewGame();
     void finishGame();
     void showResult();
     void showRanking();
     void showItemList();
     void showTitle();
+    bool needsTutorial();
     int getScore();
     int getStamina();
     void foundItem(hiberlite::sqlid_t itemID);

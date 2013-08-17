@@ -58,8 +58,8 @@ bool TitleScene::init()
         this->addChild(titleLabel);
 
         CCMenuItem *startGameItem = CCMenuItemLabel::create(CCLabelTTF::create(MessageGameStartText, DefaultFontName, FontSizeBig),
-                                                            GameEngine::sharedEngine(),
-                                                            menu_selector(GameEngine::startNewGame));
+                                                            this,
+                                                            menu_selector(TitleScene::startGame));
 
         CCMenu *startMenu = CCMenu::create(startGameItem, NULL);
         startMenu->setPosition(ccp(windowSize.width / 2, windowSize.height * 0.25));
@@ -126,4 +126,15 @@ void TitleScene::runEscapeSequence(CCNode *object)
                                             callNextSequence,
                                             NULL);
     object->runAction(action);
+}
+
+void TitleScene::startGame()
+{
+    GameEngine *engine = GameEngine::sharedEngine();
+    if (engine->needsTutorial()) {
+        engine->startTutorial();
+    }
+    else {
+        engine->startNewGame();
+    }
 }

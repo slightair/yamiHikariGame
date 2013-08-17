@@ -41,6 +41,7 @@
 
 #define MessageItemBookTitle "アイテムずかん"
 #define MessageResultTitle "リザルト"
+#define MessageTutorialTitle "あらすじ"
 
 #define MessageStaminaText "スタミナ"
 #define MessageScoreText "スコア"
