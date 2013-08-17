@@ -62,6 +62,11 @@
 #define MessageSelectionNo "いいえ"
 #define MessageSelectionOK "OK"
 
+#define MessageTutorialHowToMoveText "がめんをゆびでなぞるとさゆうにうごく!"
+#define MessageTutorialItemEffectText "アイテムをひろうとスコアやスタミナがふえたりへったりする"
+#define MessageTutorialGameOverText "スタミナがなくなるとゲームオーバー"
+#define MessageTutorialItemListText "アイテムをひろうとずかんのせつめいがふえるよ"
+
 #define SaveDataChecksumSalt "tikuwa"
 
 #endif

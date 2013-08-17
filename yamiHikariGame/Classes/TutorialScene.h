@@ -17,7 +17,7 @@ using namespace cocos2d;
 class TutorialScene : public GradientLayer
 {
 protected:
-    static void (TutorialScene::*__pageBuilder[])();
+    static void (TutorialScene::*__pageBuilders[])();
 
     int _page;
     bool _isPageEnd;
@@ -26,10 +26,9 @@ protected:
     void nextPage();
     void finishTutorial();
 
+    void pageBuilderStory();
+    void pageBuilderHowToPlay();
 public:
-    void hoge();
-    void fuga();
-    void piyo();
 
     virtual bool init();
     virtual void onEnter();
