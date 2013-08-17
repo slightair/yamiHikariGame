@@ -161,7 +161,7 @@ void GameEngine::loadSaveData()
         if (!_items.at(i)->validate()) {
             CCLog("validation error!!");
 
-            GameEngine::sharedEngine()->rebuildSaveData();
+            rebuildSaveData();
 
             NotificationLayer *noticeLayer = NotificationLayer::create();
             noticeLayer->setTitle(MessageInvalidDataTitle);
