@@ -161,11 +161,13 @@ void GameEngine::loadSaveData()
         if (!_items.at(i)->validate()) {
             CCLog("validation error!!");
 
+            GameEngine::sharedEngine()->rebuildSaveData();
+
             NotificationLayer *noticeLayer = NotificationLayer::create();
             noticeLayer->setTitle(MessageInvalidDataTitle);
             noticeLayer->setNoticeMessage(MessageInvalidDataText);
             noticeLayer->setNotificationType(NOTIFICATION_LAYER_OK_ONLY);
-            noticeLayer->setActionTarget(NOTIFICATION_LAYER_ACTION_OK, GameEngine::sharedEngine(), menu_selector(GameEngine::rebuildSaveData));
+            noticeLayer->setActionTarget(NOTIFICATION_LAYER_ACTION_OK, CCDirector::sharedDirector(), menu_selector(CCDirector::popScene));
 
             CCScene *scene = CCScene::create();
             scene->addChild(noticeLayer);
@@ -188,8 +190,6 @@ void GameEngine::rebuildSaveData()
 
     _db.open(saveFilePath);
     _items = _db.getAllBeans<_Item>();
-
-    CCDirector::sharedDirector()->popScene();
 }
 
 void GameEngine::copyInitialData(string saveFilePath)
