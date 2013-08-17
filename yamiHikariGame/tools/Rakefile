@@ -3,6 +3,7 @@
 require 'yaml'
 require 'active_record'
 require 'digest/sha1'
+require 'plist'
 require 'pp'
 
 SALT = 'tikuwa'
@@ -13,12 +14,13 @@ task :default => "settings:initDatabase"
 
 namespace "settings" do
   INIT_DB_FILENAME = 'init.db'
+  ACHIEVEMENTS_FILENAME = 'achievements.plist'
 
   desc "generate #{INIT_DB_FILENAME}"
   task :initDatabase do
     path = File.join(RESOURCES_DIR, INIT_DB_FILENAME)
 
-    File.delete(path)
+    File.delete(path) if File.exist?(path)
     ActiveRecord::Base.establish_connection(adapter: 'sqlite3', database: path)
     CreateTable.new.up
 
@@ -29,6 +31,16 @@ namespace "settings" do
     end
 
     pp Item.all
+  end
+
+  desc "generate #{ACHIEVEMENTS_FILENAME}"
+  task :achievements do
+    path = File.join(RESOURCES_DIR, ACHIEVEMENTS_FILENAME)
+
+    File.delete(path) if File.exist?(path)
+    File.open(path, "w") do |file|
+      file << YAML.load_file('achievements.yml').to_plist
+    end
   end
 end
 
