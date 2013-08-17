@@ -19,6 +19,7 @@
 
 #define kMessageLabelMarginHorizontal 22
 #define kMessageLabelMarginVertical 6
+#define kMessageLabelPaddingHorizontal 4
 
 #define kActionButtonFillColor (ccc4(0.0, 0.0, 0.0, 0.0))
 
@@ -87,7 +88,7 @@ bool NotificationLayer::init()
         frameBorderNode->drawPolygon(messageBox, 4, kBoxFillColor, 1, kBoxBorderColor);
         this->addChild(frameBorderNode);
 
-        _messageLabel = CCLabelTTF::create("", DefaultFontName, FontSizeNormal, CCSize(windowSize.width - kMessageBoxMarginHorizontal * 2, (windowSize.height - kMessageBoxMarginTop) - messageBoxBottom - kMessageLabelMarginVertical * 2), kCCTextAlignmentLeft);
+        _messageLabel = CCLabelTTF::create("", DefaultFontName, FontSizeNormal, CCSize(windowSize.width - (kMessageBoxMarginHorizontal + kMessageLabelPaddingHorizontal) * 2, (windowSize.height - kMessageBoxMarginTop) - messageBoxBottom - kMessageLabelMarginVertical * 2), kCCTextAlignmentLeft);
         _messageLabel->setAnchorPoint(ccp(0.0, 1.0));
         _messageLabel->setPosition(ccp(kMessageLabelMarginHorizontal, windowSize.height - kMessageBoxMarginTop - kMessageLabelMarginVertical));
         this->addChild(_messageLabel);
