@@ -25,6 +25,9 @@
 #define TitleBarLeftButtonMarginTop 7
 #define TitleBarButtonWidth 88
 #define TitleBarButtonHeight 44
+#define StaminaGaugeWidth 100
+#define StaminaGaugeBackgroundAlpha 0x66
+#define StaminaGaugeAlpha 0xaa
 
 #define SEItemGet "SE001.mp3"
 #define SEGameOver "SE002.mp3"
@@ -42,6 +45,8 @@
 #define MessageItemBookTitle "アイテムずかん"
 #define MessageResultTitle "リザルト"
 #define MessageTutorialTitle "あらすじ"
+#define MessageTutorialStoryTitle "あらすじ (%d/%d)"
+#define MessageTutorialHowtoTitle "あそびかた (%d/%d)"
 
 #define MessageStaminaText "スタミナ"
 #define MessageScoreText "スコア"
@@ -62,6 +67,24 @@
 #define MessageSelectionNo "いいえ"
 #define MessageSelectionOK "OK"
 
+#define MessageTutorialStory10 "どうくつへ たんけんに きました"
+#define MessageTutorialStory10Speak "ちくわ たべたい"
+#define MessageTutorialStory20 "ところが、"
+#define MessageTutorialStory20Shout "しゃーっ"
+#define MessageTutorialStory21 "あぶない ヤツと であってしまった"
+#define MessageTutorialStory21Speak "こわい"
+#define MessageTutorialStory30 "まずい"
+#define MessageTutorialStory30Shout "がおー"
+#define MessageTutorialStory30Speak "にげよう"
+
+#define MessageTutorialHowToMoveText "がめんを ゆびで なぞると\nさゆうに うごく!"
+#define MessageTutorialItemEffectText "アイテムを ひろうと スコアや\nスタミナが ふえたり へったりする"
+#define MessageTutorialGameOverText "スタミナが なくなると\nゲームオーバー"
+#define MessageTutorialGameOverMonologueText "むねん"
+#define MessageTutorialItemListText "アイテムを ひろうと\nずかんの せつめいが ふえるよ"
+#define MessageTutorialLetsPlayText "さぁ、はじめよう"
+
 #define SaveDataChecksumSalt "tikuwa"
+#define TutorialStateKey "tutorialDone"
 
 #endif
