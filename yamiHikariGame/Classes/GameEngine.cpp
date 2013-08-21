@@ -41,16 +41,22 @@ bool GameEngine::init()
     return true;
 }
 
-void GameEngine::startTutorial()
+void GameEngine::startTutorial(bool startGame)
 {
+    _startWithTutorial = startGame;
     CCTransitionFade *transition = CCTransitionFade::create(kTransitionDuration, TutorialScene::scene());
     CCDirector::sharedDirector()->replaceScene(transition);
 }
 
 void GameEngine::finishTutorial()
 {
-    CCTransitionFade *transition = CCTransitionFade::create(kTransitionDuration, TitleScene::scene());
-    CCDirector::sharedDirector()->replaceScene(transition);
+    if (_startWithTutorial) {
+        startNewGame();
+    }
+    else {
+        CCTransitionFade *transition = CCTransitionFade::create(kTransitionDuration, TitleScene::scene());
+        CCDirector::sharedDirector()->replaceScene(transition);
+    }
 }
 
 void GameEngine::startNewGame()
@@ -133,7 +139,14 @@ void GameEngine::showTitle()
 
 bool GameEngine::needsTutorial()
 {
-    return true;
+    CCUserDefault *userDefault = CCUserDefault::sharedUserDefault();
+    bool tutorialDone = userDefault->getBoolForKey(TutorialStateKey, false);
+    if (!tutorialDone) {
+        userDefault->setBoolForKey(TutorialStateKey, true);
+        userDefault->flush();
+        return true;
+    }
+    return false;
 }
 
 int GameEngine::getScore()

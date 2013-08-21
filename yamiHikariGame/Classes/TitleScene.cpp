@@ -65,6 +65,12 @@ bool TitleScene::init()
         startMenu->setPosition(ccp(windowSize.width / 2, windowSize.height * 0.25));
         this->addChild(startMenu);
 
+        CCMenuItem *startTutorialItem = CCMenuItemLabel::create(CCLabelTTF::create(MessageTutorialTitle, DefaultFontName, FontSizeBig), GameEngine::sharedEngine(), menu_selector(GameEngine::startTutorial));
+
+        CCMenu *tutorialMenu = CCMenu::create(startTutorialItem, NULL);
+        tutorialMenu->setPosition(ccp(windowSize.width / 2, windowSize.height * 0.25 - 38));
+        this->addChild(tutorialMenu);
+
         CCMenuItem *showItemListItem = CCMenuItemLabel::create(CCLabelTTF::create(MessageShowItemListText, DefaultFontName, FontSizeBig),
                                                                GameEngine::sharedEngine(),
                                                                menu_selector(GameEngine::showItemList));
@@ -132,7 +138,7 @@ void TitleScene::startGame()
 {
     GameEngine *engine = GameEngine::sharedEngine();
     if (engine->needsTutorial()) {
-        engine->startTutorial();
+        engine->startTutorial(true);
     }
     else {
         engine->startNewGame();

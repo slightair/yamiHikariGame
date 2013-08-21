@@ -23,6 +23,7 @@ protected:
     map<hiberlite::sqlid_t, int> _foundItems;
     int _score;
     int _stamina;
+    bool _startWithTutorial;
 
     bool init();
     GameEngine(){};
@@ -37,7 +38,7 @@ protected:
 public:
     static GameEngine *sharedEngine();
     void loadSaveData();
-    void startTutorial();
+    void startTutorial(bool startGame = false);
     void finishTutorial();
     void startNewGame();
     void finishGame();
