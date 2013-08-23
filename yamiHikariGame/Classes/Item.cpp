@@ -7,6 +7,7 @@
 //
 
 #include "Item.h"
+#include "cocos2d.h"
 
 void _Item::updateCount(int count)
 {
@@ -21,17 +22,23 @@ bool _Item::validate()
 
 string _Item::generateChecksum()
 {
-    ostringstream os;
-    os << this->name << ':'
-       << this->desc << ':'
-       << this->image << ':'
-       << this->stamina << ':'
-       << this->score << ':'
-       << this->score_threshold << ':'
-       << this->drop_rate << ':'
-       << count << ':'
-       << SaveDataChecksumSalt;
-    const char *input = os.str().c_str();
+    char cpStamina[8], cpScore[8], cpScoreThreshold[8], cpDropRate[8], cpCount[8];
+    std::sprintf(cpStamina, "%d", this->stamina);
+    std::sprintf(cpScore, "%d", this->score);
+    std::sprintf(cpScoreThreshold, "%d", this->score_threshold);
+    std::sprintf(cpDropRate, "%.5f", this->drop_rate);
+    std::sprintf(cpCount, "%d", this->count);
+
+    string os = this->name + ':';
+    os += this->desc + ':';
+    os += this->image + ':';
+    os += string(cpStamina) + ':';
+    os += string(cpScore) + ':';
+    os += string(cpScoreThreshold) + ':';
+    os += string(cpDropRate) + ':';
+    os += string(cpCount) + ':';
+    os += string(SaveDataChecksumSalt);
+    const char *input = os.c_str();
 
     unsigned char digest[kSHA1DigestLength];
     char buf[kChecksumLength];
