@@ -10,7 +10,8 @@
 #include "Constants.h"
 #include "GameEngine.h"
 
-#define kSubMenuItemPadding 72
+#define kSubMenuItemPaddingVertical 8
+#define kSubMenuItemPaddingHorizontal 72
 #define kSubMenuMarginBottom 32
 
 #define kCharacterDistance 80
@@ -61,15 +62,12 @@ bool TitleScene::init()
                                                             this,
                                                             menu_selector(TitleScene::startGame));
 
-        CCMenu *startMenu = CCMenu::create(startGameItem, NULL);
-        startMenu->setPosition(ccp(windowSize.width / 2, windowSize.height * 0.25));
-        this->addChild(startMenu);
-
         CCMenuItem *startTutorialItem = CCMenuItemLabel::create(CCLabelTTF::create(MessageTutorialTitle, DefaultFontName, FontSizeBig), GameEngine::sharedEngine(), menu_selector(GameEngine::startTutorial));
 
-        CCMenu *tutorialMenu = CCMenu::create(startTutorialItem, NULL);
-        tutorialMenu->setPosition(ccp(windowSize.width / 2, windowSize.height * 0.25 - 38));
-        this->addChild(tutorialMenu);
+        CCMenu *startMenu = CCMenu::create(startGameItem, startTutorialItem, NULL);
+        startMenu->setPosition(ccp(windowSize.width / 2, windowSize.height * 0.25));
+        startMenu->alignItemsVerticallyWithPadding(kSubMenuItemPaddingVertical);
+        this->addChild(startMenu);
 
         CCMenuItem *showItemListItem = CCMenuItemLabel::create(CCLabelTTF::create(MessageShowItemListText, DefaultFontName, FontSizeBig),
                                                                GameEngine::sharedEngine(),
@@ -80,7 +78,7 @@ bool TitleScene::init()
                                                               menu_selector(GameEngine::showRanking));
 
         CCMenu *subMenu = CCMenu::create(showRankingItem, showItemListItem, NULL);
-        subMenu->alignItemsHorizontallyWithPadding(kSubMenuItemPadding);
+        subMenu->alignItemsHorizontallyWithPadding(kSubMenuItemPaddingHorizontal);
         subMenu->setPosition(ccp(windowSize.width / 2, showItemListItem->getContentSize().height / 2 + kSubMenuMarginBottom));
         this->addChild(subMenu);
     }
