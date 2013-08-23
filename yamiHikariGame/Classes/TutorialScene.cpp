@@ -11,7 +11,11 @@
 #include "GameEngine.h"
 
 
-#define kStoryLabelMarginTop (TitleBarHeight + 74)
+#define kContentBoxFillColor (ccc4(0x00, 0x00, 0x00, 0x00))
+#define kContentBoxWidth 320
+#define kContentBoxHeight (480 - TitleBarHeight)
+
+#define kStoryLabelMarginVertical 74
 
 #define kStoryLabelWidth 278
 #define kStoryLabelHeight 48
@@ -19,37 +23,18 @@
 #define kSpeakLabelMarginLeft 32
 
 #define kStoryPageMax 3
-
-#define kStory1DungionMarginTop (TitleBarHeight + 190)
-#define kStory1BraveMarginTop (kStory1DungionMarginTop + 120)
-
-#define kStory2MonsterMarginTop (TitleBarHeight + 130)
-#define kStory2StoryLabelMiddleMarginTop (TitleBarHeight + 190)
-#define kStory2MarkerMarginTop (TitleBarHeight + 228)
-#define kStory2BraveMarginTop (TitleBarHeight + 280)
-#define kStory2BraveHeightHalf 24
-
-#define kStory3MonsterMarginTop (TitleBarHeight + 190)
-#define kStory3BraveMarginTop (TitleBarHeight + 280)
-#define kStory3ObjectPaddingHorizontal 36
-
 #define kHowtoPageMax 3
 
-#define kHowto1DescriptionMarginTop kStoryLabelMarginTop
-#define kHowto1ObjectMarginTop (kHowto1DescriptionMarginTop + 90)
+#define kStoryDungionMarginLeftShift 8
+#define kStoryWalkingBraveMarginTop 96
+#define kStoryExclamationMarginTop 64
+#define kStoryFearedBraveMarginTop 48
+
 #define kHowto1ArrowPaddingHorizontal 42
 
-#define kHowto2DescriptionMarginTop kStoryLabelMarginTop
-#define kHowto2ObjectMarginTop (kHowto2DescriptionMarginTop + 90)
 #define kHowto2ItemPaddingHorizontal 42
-#define kHowto2Description2MarginTop (kHowto2DescriptionMarginTop + 152)
 
-#define kHowto3DescriptionMarginTop kStoryLabelMarginTop
-#define kHowto3ObjectMarginTop (kHowto3DescriptionMarginTop + 90)
-#define kHowto3StaminaPaddingHorizontal 24
-#define kHowto3BravePaddingHorizontal 64
 #define kHowto3StaminaGaugePaddingVertical 18
-#define kHowto3LetsPlayMarginTop (kHowto3DescriptionMarginTop + 240)
 
 void (TutorialScene::*TutorialScene::__pageBuilders[])() = {
     &TutorialScene::pageBuilderStory,
@@ -132,29 +117,33 @@ void TutorialScene::ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent)
 
 void TutorialScene::pageBuilderStory()
 {
-    CCSize windowSize = CCDirector::sharedDirector()->getWinSize();
+    CCSize windowSize = CCDirector::sharedDirector()->getWinSize(); 
 
     CCString *title = CCString::createWithFormat(MessageTutorialStoryTitle, 1, kStoryPageMax);
     setTitle(title->getCString());
 
+    CCLayerColor *contentBox = CCLayerColor::create(kContentBoxFillColor, kContentBoxWidth, kContentBoxHeight);
+    contentBox->setPosition(ccp(windowSize.width / 2 - kContentBoxWidth / 2, windowSize.height -  TitleBarHeight - kContentBoxHeight));
+    _contentLayer->addChild(contentBox);
+
     CCLabelTTF *beginingLabel = CCLabelTTF::create(MessageTutorialStory10, DefaultFontName, FontSizeNormal);
     beginingLabel->setAnchorPoint(ccp(0.5, 1.0));
-    beginingLabel->setPosition(ccp(windowSize.width / 2, windowSize.height - kStoryLabelMarginTop));
-    _contentLayer->addChild(beginingLabel);
+    beginingLabel->setPosition(ccp(kContentBoxWidth / 2, kContentBoxHeight - kStoryLabelMarginVertical));
+    contentBox->addChild(beginingLabel);
 
     CCSprite *dungion = CCSprite::createWithSpriteFrameName("dungion.png");
-    dungion->setAnchorPoint(ccp(0.5, 0.5));
-    dungion->setPosition(ccp(windowSize.width / 2, windowSize.height - kStory1DungionMarginTop));
-    _contentLayer->addChild(dungion);
+    dungion->setPosition(ccp(kContentBoxWidth / 2 - kStoryDungionMarginLeftShift, kContentBoxHeight / 2));
+    contentBox->addChild(dungion);
 
+    int braveTop = kContentBoxHeight / 2 - kStoryWalkingBraveMarginTop;
     CCSprite *brave = CCSprite::createWithSpriteFrameName("braveback.png");
-    brave->setPosition(ccp(windowSize.width / 2, windowSize.height - kStory1BraveMarginTop));
-    _contentLayer->addChild(brave);
+    brave->setPosition(ccp(kContentBoxWidth / 2, braveTop));
+    contentBox->addChild(brave);
 
-    CCLabelTTF *speakLabel = CCLabelTTF::create(MessageTutorialStory10Speak, DefaultFontName, FontSizeSmall);
-    speakLabel->setAnchorPoint(ccp(0.0, 0.0));
-    speakLabel->setPosition(ccp(windowSize.width / 2 + kSpeakLabelMarginLeft, windowSize.height - kStory1BraveMarginTop));
-    _contentLayer->addChild(speakLabel);
+    CCLabelTTF *braveSpeakLabel = CCLabelTTF::create(MessageTutorialStory10Speak, DefaultFontName, FontSizeSmall);
+    braveSpeakLabel->setAnchorPoint(ccp(0.0, 0.0));
+    braveSpeakLabel->setPosition(ccp(kContentBoxWidth / 2 + kSpeakLabelMarginLeft, braveTop));
+    contentBox->addChild(braveSpeakLabel);
 }
 
 void TutorialScene::pageBuilderStory2()
@@ -164,36 +153,43 @@ void TutorialScene::pageBuilderStory2()
     CCString *title = CCString::createWithFormat(MessageTutorialStoryTitle, 2, kStoryPageMax);
     setTitle(title->getCString());
 
+    CCLayerColor *contentBox = CCLayerColor::create(kContentBoxFillColor, kContentBoxWidth, kContentBoxHeight);
+    contentBox->setPosition(ccp(windowSize.width / 2 - kContentBoxWidth / 2, windowSize.height -  TitleBarHeight - kContentBoxHeight));
+    _contentLayer->addChild(contentBox);
+
     CCLabelTTF *butLabel = CCLabelTTF::create(MessageTutorialStory20, DefaultFontName, FontSizeNormal);
     butLabel->setAnchorPoint(ccp(0.5, 1.0));
-    butLabel->setPosition(ccp(windowSize.width / 2, windowSize.height - kStoryLabelMarginTop));
-    _contentLayer->addChild(butLabel);
+    butLabel->setPosition(ccp(kContentBoxWidth / 2, kContentBoxHeight - kStoryLabelMarginVertical));
+    contentBox->addChild(butLabel);
 
+    int monsterTop = kContentBoxHeight / 2 + 64;
     CCSprite *monster = CCSprite::createWithSpriteFrameName("monster.png");
-    monster->setPosition(ccp(windowSize.width / 2, windowSize.height - kStory2MonsterMarginTop));
-    _contentLayer->addChild(monster);
+    monster->setPosition(ccp(kContentBoxWidth / 2, monsterTop));
+    contentBox->addChild(monster);
 
-    CCLabelTTF *shoutLabel = CCLabelTTF::create(MessageTutorialStory20Shout, DefaultFontName, FontSizeSmall);
-    shoutLabel->setAnchorPoint(ccp(0.0, 0.0));
-    shoutLabel->setPosition(ccp(windowSize.width / 2 + kSpeakLabelMarginLeft, windowSize.height - kStory2MonsterMarginTop));
-    _contentLayer->addChild(shoutLabel);
+    CCLabelTTF *monsterSpeakLabel = CCLabelTTF::create(MessageTutorialStory20Shout, DefaultFontName, FontSizeSmall);
+    monsterSpeakLabel->setAnchorPoint(ccp(0.0, 0.0));
+    monsterSpeakLabel->setPosition(ccp(kContentBoxWidth / 2 + kSpeakLabelMarginLeft, monsterTop));
+    contentBox->addChild(monsterSpeakLabel);
 
     CCLabelTTF *thatisLabel = CCLabelTTF::create(MessageTutorialStory21, DefaultFontName, FontSizeNormal);
-    thatisLabel->setPosition(ccp(windowSize.width / 2, windowSize.height - kStory2StoryLabelMiddleMarginTop));
-    _contentLayer->addChild(thatisLabel);
+    thatisLabel->setPosition(ccp(kContentBoxWidth / 2, kContentBoxHeight / 2));
+    contentBox->addChild(thatisLabel);
 
+    int exmarkTop = kContentBoxHeight / 2 - kStoryExclamationMarginTop;
     CCSprite *exclamation = CCSprite::createWithSpriteFrameName("exclamation.png");
-    exclamation->setPosition(ccp(windowSize.width / 2, windowSize.height - kStory2MarkerMarginTop));
-    _contentLayer->addChild(exclamation);
+    exclamation->setPosition(ccp(kContentBoxWidth / 2, exmarkTop));
+    contentBox->addChild(exclamation);
 
+    int braveTop = exmarkTop - kStoryFearedBraveMarginTop;
     CCSprite *brave = CCSprite::createWithSpriteFrameName("braveback.png");
-    brave->setPosition(ccp(windowSize.width / 2, windowSize.height - kStory2BraveMarginTop));
-    _contentLayer->addChild(brave);
+    brave->setPosition(ccp(kContentBoxWidth / 2, braveTop));
+    contentBox->addChild(brave);
 
     CCLabelTTF *speakLabel = CCLabelTTF::create(MessageTutorialStory21Speak, DefaultFontName, FontSizeSmall);
     speakLabel->setAnchorPoint(ccp(0.0, 0.0));
-    speakLabel->setPosition(ccp(windowSize.width / 2 + kSpeakLabelMarginLeft, windowSize.height - kStory2BraveMarginTop));
-    _contentLayer->addChild(speakLabel);
+    speakLabel->setPosition(ccp(kContentBoxWidth / 2 + kSpeakLabelMarginLeft, braveTop));
+    contentBox->addChild(speakLabel);
 }
 
 void TutorialScene::pageBuilderStory3()
@@ -203,28 +199,34 @@ void TutorialScene::pageBuilderStory3()
     CCString *title = CCString::createWithFormat(MessageTutorialStoryTitle, 3, kStoryPageMax);
     setTitle(title->getCString());
 
+    CCLayerColor *contentBox = CCLayerColor::create(kContentBoxFillColor, kContentBoxWidth, kContentBoxHeight);
+    contentBox->setPosition(ccp(windowSize.width / 2 - kContentBoxWidth / 2, windowSize.height -  TitleBarHeight - kContentBoxHeight));
+    _contentLayer->addChild(contentBox);
+
     CCLabelTTF *storyLabel = CCLabelTTF::create(MessageTutorialStory30, DefaultFontName, FontSizeNormal);
     storyLabel->setAnchorPoint(ccp(0.5, 1.0));
-    storyLabel->setPosition(ccp(windowSize.width / 2, windowSize.height - kStoryLabelMarginTop));
-    _contentLayer->addChild(storyLabel);
+    storyLabel->setPosition(ccp(kContentBoxWidth / 2, kContentBoxHeight - kStoryLabelMarginVertical));
+    contentBox->addChild(storyLabel);
 
+    int monsterTop = kContentBoxHeight / 2;
     CCSprite *monster = CCSprite::createWithSpriteFrameName("monster.png");
-    monster->setPosition(ccp(windowSize.width / 2 - kStory3ObjectPaddingHorizontal, windowSize.height - kStory3MonsterMarginTop));
-    _contentLayer->addChild(monster);
+    monster->setPosition(ccp(kContentBoxWidth / 2, monsterTop));
+    contentBox->addChild(monster);
 
-    CCLabelTTF *shoutLabel = CCLabelTTF::create(MessageTutorialStory30Shout, DefaultFontName, FontSizeSmall);
-    shoutLabel->setAnchorPoint(ccp(0.0, 0.0));
-    shoutLabel->setPosition(ccp(windowSize.width / 2 - kStory3ObjectPaddingHorizontal + kSpeakLabelMarginLeft, windowSize.height - kStory3MonsterMarginTop));
-    _contentLayer->addChild(shoutLabel);
+    CCLabelTTF *monsterSpeakLabel = CCLabelTTF::create(MessageTutorialStory30Shout, DefaultFontName, FontSizeSmall);
+    monsterSpeakLabel->setAnchorPoint(ccp(0.0, 0.0));
+    monsterSpeakLabel->setPosition(ccp(kContentBoxWidth / 2 + kSpeakLabelMarginLeft, monsterTop));
+    contentBox->addChild(monsterSpeakLabel);
 
+    int braveTop = kContentBoxHeight / 2 - kStoryExclamationMarginTop - kStoryFearedBraveMarginTop;
     CCSprite *brave = CCSprite::createWithSpriteFrameName("brave.png");
-    brave->setPosition(ccp(windowSize.width / 2 + kStory3ObjectPaddingHorizontal, windowSize.height - kStory3BraveMarginTop));
-    _contentLayer->addChild(brave);
+    brave->setPosition(ccp(kContentBoxWidth / 2, braveTop));
+    contentBox->addChild(brave);
 
-    CCLabelTTF *speakLabel = CCLabelTTF::create(MessageTutorialStory30Speak, DefaultFontName, FontSizeSmall);
-    speakLabel->setAnchorPoint(ccp(0.0, 0.0));
-    speakLabel->setPosition(ccp(windowSize.width / 2 + kStory3ObjectPaddingHorizontal + kSpeakLabelMarginLeft, windowSize.height - kStory3BraveMarginTop));
-    _contentLayer->addChild(speakLabel);
+    CCLabelTTF *braveSpeakLabel = CCLabelTTF::create(MessageTutorialStory30Speak, DefaultFontName, FontSizeSmall);
+    braveSpeakLabel->setAnchorPoint(ccp(0.0, 0.0));
+    braveSpeakLabel->setPosition(ccp(kContentBoxWidth / 2 + kSpeakLabelMarginLeft, braveTop));
+    contentBox->addChild(braveSpeakLabel);
 }
 
 void TutorialScene::pageBuilderHowToPlay()
@@ -234,22 +236,26 @@ void TutorialScene::pageBuilderHowToPlay()
     CCString *title = CCString::createWithFormat(MessageTutorialHowtoTitle, 1, kHowtoPageMax);
     setTitle(title->getCString());
 
-    CCLabelTTF *howtoLabel1 = CCLabelTTF::create(MessageTutorialHowToMoveText, DefaultFontName, FontSizeNormal, CCSize(kStoryLabelWidth, kStoryLabelHeight), kCCTextAlignmentLeft);
+    CCLayerColor *contentBox = CCLayerColor::create(kContentBoxFillColor, kContentBoxWidth, kContentBoxHeight);
+    contentBox->setPosition(ccp(windowSize.width / 2 - kContentBoxWidth / 2, windowSize.height -  TitleBarHeight - kContentBoxHeight));
+    _contentLayer->addChild(contentBox);
+
+    CCLabelTTF *howtoLabel1 = CCLabelTTF::create(MessageTutorialHowToMoveText, DefaultFontName, FontSizeNormal, CCSize(kStoryLabelWidth, kStoryLabelHeight), kCCTextAlignmentCenter);
     howtoLabel1->setAnchorPoint(ccp(0.5, 1.0));
-    howtoLabel1->setPosition(ccp(windowSize.width / 2, windowSize.height - kHowto1DescriptionMarginTop));
-    _contentLayer->addChild(howtoLabel1);
+    howtoLabel1->setPosition(ccp(kContentBoxWidth / 2, kContentBoxHeight - kStoryLabelMarginVertical));
+    contentBox->addChild(howtoLabel1);
 
     CCSprite *brave = CCSprite::createWithSpriteFrameName("brave.png");
-    brave->setPosition(ccp(windowSize.width / 2, windowSize.height - kHowto1ObjectMarginTop));
-    _contentLayer->addChild(brave);
+    brave->setPosition(ccp(kContentBoxWidth / 2, kContentBoxHeight / 2));
+    contentBox->addChild(brave);
 
     CCSprite *left = CCSprite::createWithSpriteFrameName("arrowleft.png");
-    left->setPosition(ccp(windowSize.width / 2 - kHowto1ArrowPaddingHorizontal, windowSize.height - kHowto1ObjectMarginTop));
-    _contentLayer->addChild(left);
+    left->setPosition(ccp(kContentBoxWidth / 2 - kHowto1ArrowPaddingHorizontal, kContentBoxHeight / 2));
+    contentBox->addChild(left);
 
     CCSprite *right = CCSprite::createWithSpriteFrameName("arrowright.png");
-    right->setPosition(ccp(windowSize.width / 2 + kHowto1ArrowPaddingHorizontal, windowSize.height - kHowto1ObjectMarginTop));
-    _contentLayer->addChild(right);
+    right->setPosition(ccp(kContentBoxWidth / 2 + kHowto1ArrowPaddingHorizontal, kContentBoxHeight / 2));
+    contentBox->addChild(right);
 }
 
 void TutorialScene::pageBuilderHowToPlay2()
@@ -259,27 +265,31 @@ void TutorialScene::pageBuilderHowToPlay2()
     CCString *title = CCString::createWithFormat(MessageTutorialHowtoTitle, 2, kHowtoPageMax);
     setTitle(title->getCString());
 
-    CCLabelTTF *howtoLabel1 = CCLabelTTF::create(MessageTutorialItemEffectText, DefaultFontName, FontSizeNormal, CCSize(kStoryLabelWidth, kStoryLabelHeight), kCCTextAlignmentLeft);
+    CCLayerColor *contentBox = CCLayerColor::create(kContentBoxFillColor, kContentBoxWidth, kContentBoxHeight);
+    contentBox->setPosition(ccp(windowSize.width / 2 - kContentBoxWidth / 2, windowSize.height -  TitleBarHeight - kContentBoxHeight));
+    _contentLayer->addChild(contentBox);
+
+    CCLabelTTF *howtoLabel1 = CCLabelTTF::create(MessageTutorialItemEffectText, DefaultFontName, FontSizeNormal, CCSize(kStoryLabelWidth, kStoryLabelHeight), kCCTextAlignmentCenter);
     howtoLabel1->setAnchorPoint(ccp(0.5, 1.0));
-    howtoLabel1->setPosition(ccp(windowSize.width / 2, windowSize.height - kHowto2DescriptionMarginTop));
-    _contentLayer->addChild(howtoLabel1);
+    howtoLabel1->setPosition(ccp(kContentBoxWidth / 2, kContentBoxHeight - kStoryLabelMarginVertical));
+    contentBox->addChild(howtoLabel1);
 
     CCSprite *item1 = CCSprite::createWithSpriteFrameName("mushroom01.png");
-    item1->setPosition(ccp(windowSize.width / 2 - kHowto2ItemPaddingHorizontal, windowSize.height - kHowto2ObjectMarginTop));
-    _contentLayer->addChild(item1);
+    item1->setPosition(ccp(kContentBoxWidth / 2 - kHowto2ItemPaddingHorizontal, kContentBoxHeight / 2));
+    contentBox->addChild(item1);
 
     CCSprite *item2 = CCSprite::createWithSpriteFrameName("treasurebox01.png");
-    item2->setPosition(ccp(windowSize.width / 2 + kHowto2ItemPaddingHorizontal, windowSize.height - kHowto2ObjectMarginTop));
-    _contentLayer->addChild(item2);
+    item2->setPosition(ccp(kContentBoxWidth / 2 + kHowto2ItemPaddingHorizontal, kContentBoxHeight / 2));
+    contentBox->addChild(item2);
 
     CCSprite *item3 = CCSprite::createWithSpriteFrameName("snake01.png");
-    item3->setPosition(ccp(windowSize.width / 2, windowSize.height - kHowto2ObjectMarginTop));
-    _contentLayer->addChild(item3);
+    item3->setPosition(ccp(kContentBoxWidth / 2, kContentBoxHeight / 2));
+    contentBox->addChild(item3);
 
-    CCLabelTTF *howtoLabel2 = CCLabelTTF::create(MessageTutorialItemListText, DefaultFontName, FontSizeNormal, CCSize(kStoryLabelWidth, kStoryLabelHeight), kCCTextAlignmentLeft);
+    CCLabelTTF *howtoLabel2 = CCLabelTTF::create(MessageTutorialItemListText, DefaultFontName, FontSizeNormal, CCSize(kStoryLabelWidth, kStoryLabelHeight), kCCTextAlignmentCenter);
     howtoLabel2->setAnchorPoint(ccp(0.5, 1.0));
-    howtoLabel2->setPosition(ccp(windowSize.width / 2, windowSize.height - kHowto2Description2MarginTop));
-    _contentLayer->addChild(howtoLabel2);
+    howtoLabel2->setPosition(ccp(kContentBoxWidth / 2, kStoryLabelMarginVertical + kStoryLabelHeight));
+    contentBox->addChild(howtoLabel2);
 }
 
 void TutorialScene::pageBuilderHowToPlay3()
@@ -289,53 +299,61 @@ void TutorialScene::pageBuilderHowToPlay3()
     CCString *title = CCString::createWithFormat(MessageTutorialHowtoTitle, 3, kHowtoPageMax);
     setTitle(title->getCString());
 
-    CCLabelTTF *howtoLabel3 = CCLabelTTF::create(MessageTutorialGameOverText, DefaultFontName, FontSizeNormal, CCSize(kStoryLabelWidth, kStoryLabelHeight), kCCTextAlignmentLeft);
+    CCLayerColor *contentBox = CCLayerColor::create(kContentBoxFillColor, kContentBoxWidth, kContentBoxHeight);
+    contentBox->setPosition(ccp(windowSize.width / 2 - kContentBoxWidth / 2, windowSize.height -  TitleBarHeight - kContentBoxHeight));
+    _contentLayer->addChild(contentBox);
+
+    CCLabelTTF *howtoLabel3 = CCLabelTTF::create(MessageTutorialGameOverText, DefaultFontName, FontSizeNormal, CCSize(kStoryLabelWidth, kStoryLabelHeight), kCCTextAlignmentCenter);
     howtoLabel3->setAnchorPoint(ccp(0.5, 1.0));
-    howtoLabel3->setPosition(ccp(windowSize.width / 2, windowSize.height - kHowto3DescriptionMarginTop));
-    _contentLayer->addChild(howtoLabel3);
+    howtoLabel3->setPosition(ccp(kContentBoxWidth / 2, kContentBoxHeight - kStoryLabelMarginVertical));
+    contentBox->addChild(howtoLabel3);
+
+    int staminaLeft = kContentBoxWidth * 0.75;
 
     CCSprite *staminaGaugeBackground1 = CCSprite::createWithSpriteFrameName("staminaGaugeBackground.png");
     staminaGaugeBackground1->setAnchorPoint(ccp(0.0, 0.5));
-    staminaGaugeBackground1->setPosition(ccp(windowSize.width / 2 + kHowto3StaminaPaddingHorizontal, windowSize.height - (kHowto3ObjectMarginTop - kHowto3StaminaGaugePaddingVertical)));
+    staminaGaugeBackground1->setPosition(ccp(staminaLeft - StaminaGaugeWidth / 2, kContentBoxHeight / 2 + kHowto3StaminaGaugePaddingVertical));
     staminaGaugeBackground1->setOpacity(StaminaGaugeBackgroundAlpha);
-    _contentLayer->addChild(staminaGaugeBackground1);
+    contentBox->addChild(staminaGaugeBackground1);
 
     CCSprite *staminaGauge = CCSprite::createWithSpriteFrameName("staminaGauge.png");
     staminaGauge->setAnchorPoint(ccp(0.0, 0.5));
-    staminaGauge->setPosition(ccp(windowSize.width / 2 + kHowto3StaminaPaddingHorizontal, windowSize.height - (kHowto3ObjectMarginTop - kHowto3StaminaGaugePaddingVertical)));
+    staminaGauge->setPosition(ccp(staminaLeft - StaminaGaugeWidth / 2, kContentBoxHeight / 2 + kHowto3StaminaGaugePaddingVertical));
     staminaGauge->setOpacity(StaminaGaugeAlpha);
     staminaGauge->setScaleX(0.8);
-    _contentLayer->addChild(staminaGauge);
+    contentBox->addChild(staminaGauge);
 
     CCLabelTTF *staminaLabel1 = CCLabelTTF::create(MessageStaminaText, DefaultFontName, FontSizeSmall);
-    staminaLabel1->setPosition(ccp(windowSize.width / 2 + kHowto3StaminaPaddingHorizontal + StaminaGaugeWidth / 2, windowSize.height - (kHowto3ObjectMarginTop - kHowto3StaminaGaugePaddingVertical)));
-    _contentLayer->addChild(staminaLabel1);
+    staminaLabel1->setPosition(ccp(staminaLeft, kContentBoxHeight / 2 + kHowto3StaminaGaugePaddingVertical));
+    contentBox->addChild(staminaLabel1);
 
     CCSprite *downArrow = CCSprite::createWithSpriteFrameName("arrowdown.png");
-    downArrow->setPosition(ccp(windowSize.width / 2 + kHowto3StaminaPaddingHorizontal + StaminaGaugeWidth / 2, windowSize.height - kHowto3ObjectMarginTop));
-    _contentLayer->addChild(downArrow);
+    downArrow->setPosition(ccp(staminaLeft, kContentBoxHeight / 2));
+    contentBox->addChild(downArrow);
 
     CCSprite *staminaGaugeBackground2 = CCSprite::createWithSpriteFrameName("staminaGaugeBackground.png");
     staminaGaugeBackground2->setAnchorPoint(ccp(0.0, 0.5));
-    staminaGaugeBackground2->setPosition(ccp(windowSize.width / 2 + kHowto3StaminaPaddingHorizontal, windowSize.height - (kHowto3ObjectMarginTop + kHowto3StaminaGaugePaddingVertical)));
+    staminaGaugeBackground2->setPosition(ccp(staminaLeft - StaminaGaugeWidth / 2, kContentBoxHeight / 2 - kHowto3StaminaGaugePaddingVertical));
     staminaGaugeBackground2->setOpacity(StaminaGaugeBackgroundAlpha);
-    _contentLayer->addChild(staminaGaugeBackground2);
+    contentBox->addChild(staminaGaugeBackground2);
 
     CCLabelTTF *staminaLabel2 = CCLabelTTF::create(MessageStaminaText, DefaultFontName, FontSizeSmall);
-    staminaLabel2->setPosition(ccp(windowSize.width / 2 + kHowto3StaminaPaddingHorizontal + StaminaGaugeWidth / 2, windowSize.height - (kHowto3ObjectMarginTop + kHowto3StaminaGaugePaddingVertical)));
-    _contentLayer->addChild(staminaLabel2);
+    staminaLabel2->setPosition(ccp(staminaLeft, kContentBoxHeight / 2 + kHowto3StaminaGaugePaddingVertical));
+    contentBox->addChild(staminaLabel2);
 
+    int braveLeft = kContentBoxWidth / 4;
     CCSprite *brave = CCSprite::createWithSpriteFrameName("brave.png");
     brave->setRotation(90);
-    brave->setPosition(ccp(windowSize.width / 2 - kHowto3BravePaddingHorizontal, windowSize.height - kHowto3ObjectMarginTop));
-    _contentLayer->addChild(brave);
+    brave->setPosition(ccp(braveLeft, kContentBoxHeight / 2));
+    contentBox->addChild(brave);
 
     CCLabelTTF *speakLabel = CCLabelTTF::create(MessageTutorialGameOverMonologueText, DefaultFontName, FontSizeSmall);
     speakLabel->setAnchorPoint(ccp(0.0, 0.0));
-    speakLabel->setPosition(ccp(windowSize.width / 2 - kHowto3BravePaddingHorizontal + kSpeakLabelMarginLeft, windowSize.height - kHowto3ObjectMarginTop));
-    _contentLayer->addChild(speakLabel);
+    speakLabel->setPosition(ccp(braveLeft + kSpeakLabelMarginLeft, kContentBoxHeight / 2));
+    contentBox->addChild(speakLabel);
 
     CCLabelTTF *letsPlayLabel = CCLabelTTF::create(MessageTutorialLetsPlayText, DefaultFontName, FontSizeNormal);
-    letsPlayLabel->setPosition(ccp(windowSize.width / 2, windowSize.height - kHowto3LetsPlayMarginTop));
-    _contentLayer->addChild(letsPlayLabel);
+    letsPlayLabel->setAnchorPoint(ccp(0.5, 0.0));
+    letsPlayLabel->setPosition(ccp(kContentBoxWidth / 2, kStoryLabelMarginVertical));
+    contentBox->addChild(letsPlayLabel);
 }
