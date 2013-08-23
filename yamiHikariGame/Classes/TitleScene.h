@@ -26,6 +26,7 @@ protected:
     Brave *_brave;
 
     void runEscapeSequence(CCNode *object);
+    void startGame();
 
 public:
     virtual bool init();

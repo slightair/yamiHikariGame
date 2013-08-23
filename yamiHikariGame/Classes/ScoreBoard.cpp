@@ -15,9 +15,6 @@
 
 #define kStaminaGaugeMarginRight 6
 #define kStaminaGaugeMarginTop 24
-#define kStaminaGaugeWidth 100
-#define kStaminaGaugeBackgroundAlpha 0x66
-#define kStaminaGaugeAlpha 0xaa
 
 ScoreBoard *ScoreBoard::create()
 {
@@ -48,17 +45,17 @@ void ScoreBoard::onEnter()
     _staminaGaugeBackground = CCSprite::createWithSpriteFrameName("staminaGaugeBackground.png");
     _staminaGaugeBackground->setAnchorPoint(ccp(1.0, 0.5));
     _staminaGaugeBackground->setPosition(ccp(windowSize.width - kStaminaGaugeMarginRight, windowSize.height - kStaminaGaugeMarginTop));
-    _staminaGaugeBackground->setOpacity(kStaminaGaugeBackgroundAlpha);
+    _staminaGaugeBackground->setOpacity(StaminaGaugeBackgroundAlpha);
     this->addChild(_staminaGaugeBackground);
 
     _staminaGauge = CCSprite::createWithSpriteFrameName("staminaGauge.png");
     _staminaGauge->setAnchorPoint(ccp(0.0, 0.5));
-    _staminaGauge->setPosition(ccp(windowSize.width - kStaminaGaugeMarginRight - kStaminaGaugeWidth, windowSize.height - kStaminaGaugeMarginTop));
-    _staminaGauge->setOpacity(kStaminaGaugeAlpha);
+    _staminaGauge->setPosition(ccp(windowSize.width - kStaminaGaugeMarginRight - StaminaGaugeWidth, windowSize.height - kStaminaGaugeMarginTop));
+    _staminaGauge->setOpacity(StaminaGaugeAlpha);
     this->addChild(_staminaGauge);
 
     _staminaLabel = CCLabelTTF::create(MessageStaminaText, DefaultFontName, FontSizeSmall);
-    _staminaLabel->setPosition(ccp(windowSize.width - kStaminaGaugeMarginRight - kStaminaGaugeWidth / 2, windowSize.height - kScoreLabelMarginTop));
+    _staminaLabel->setPosition(ccp(windowSize.width - kStaminaGaugeMarginRight - StaminaGaugeWidth / 2, windowSize.height - kScoreLabelMarginTop));
     this->addChild(_staminaLabel);
 
     _scoreLabel = CCLabelTTF::create(MessageScoreText, DefaultFontName, FontSizeSmall);
