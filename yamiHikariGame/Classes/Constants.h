@@ -34,6 +34,11 @@
 #define StaminaMax 1000
 #define SameTimeDropItemKindMax 3
 
+#define MessageGameTitleText "ヤミからのトウソウ"
+#define MessageGameStartText "▶スタート"
+#define MessageShowItemListText "ずかん"
+#define MessageShowRankingText "ランキング"
+
 #define MessageItemBookTitle "アイテムずかん"
 #define MessageResultTitle "リザルト"
 
@@ -51,6 +56,9 @@
 #define MessageNextButtonTitle "つぎ》"
 #define MessageRetryButtonTitle "リトライ!"
 #define MessageBackTitleButtonTitle "タイトル"
+
+#define MessageInvalidDataTitle "エラー!"
+#define MessageInvalidDataText "セーブデータが おかしく なっているので、しょきか します。"
 
 #define MessageSelectionYes "はい"
 #define MessageSelectionNo "いいえ"

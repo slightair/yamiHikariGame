@@ -33,13 +33,16 @@ protected:
     void addScore(int score);
     void addStamina(int stamina);
     void registerFoundItemCount();
+    void copyInitialData(string saveFilePath);
 
 public:
     static GameEngine *sharedEngine();
     void loadSaveData();
+    void rebuildSaveData();
     void startNewGame();
     void finishGame();
     void showResult();
+    void showRanking();
     void showItemList();
     void showTitle();
     int getScore();
