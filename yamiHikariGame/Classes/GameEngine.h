@@ -34,12 +34,14 @@ protected:
     void addScore(int score);
     void addStamina(int stamina);
     void registerFoundItemCount();
+    void copyInitialData(string saveFilePath);
 
 public:
     static GameEngine *sharedEngine();
     void loadSaveData();
     void startTutorial(bool startGame = false);
     void finishTutorial();
+    void rebuildSaveData();
     void startNewGame();
     void finishGame();
     void showResult();

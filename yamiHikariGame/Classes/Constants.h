@@ -63,6 +63,9 @@
 #define MessageRetryButtonTitle "リトライ!"
 #define MessageBackTitleButtonTitle "タイトル"
 
+#define MessageInvalidDataTitle "エラー!"
+#define MessageInvalidDataText "セーブデータが おかしく なっているので、しょきか します。"
+
 #define MessageSelectionYes "はい"
 #define MessageSelectionNo "いいえ"
 #define MessageSelectionOK "OK"

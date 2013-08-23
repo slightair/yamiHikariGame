@@ -19,6 +19,11 @@
 #define kItemCellSeparatorMarginHorizontal 16
 #define kItemCellSeparatorRadius 0.5
 
+#define kScrollViewIndicatorMarginRight 8
+#define kScrollViewIndicatorMarginVertical 8
+#define kScrollViewIndicatorRadius 3
+#define kScrollViewIndicatorHeight 20
+
 enum ItemCellTag {
     kItemCellTagNumberLabel = 100,
     kItemCellTagImage,
@@ -52,6 +57,13 @@ bool ItemListScene::init()
         tableView->setBounceable(false);
         tableView->reloadData();
         this->addChild(tableView);
+
+        _scrollViewIndicator = CCDrawNode::create();
+        _scrollViewIndicator->drawSegment(ccp(windowSize.width - kScrollViewIndicatorMarginRight, windowSize.height),
+                                          ccp(windowSize.width - kScrollViewIndicatorMarginRight, windowSize.height - kScrollViewIndicatorHeight),
+                                          kScrollViewIndicatorRadius, ccc4f(1.0, 1.0, 1.0, 0.3));
+        _scrollViewIndicator->setPosition(ccp(0, -TitleBarHeight - kScrollViewIndicatorMarginVertical));
+        this->addChild(_scrollViewIndicator);
 
         setTitleBarLeftButton(MessageBackButtonTitle, GameEngine::sharedEngine(), menu_selector(GameEngine::showTitle));
     }
@@ -131,4 +143,20 @@ CCTableViewCell* ItemListScene::tableCellAtIndex(CCTableView *table, unsigned in
 unsigned int ItemListScene::numberOfCellsInTableView(CCTableView *table)
 {
     return _items->size();
+}
+
+void ItemListScene::scrollViewDidScroll(CCScrollView *scrollView)
+{
+    if (!_scrollViewIndicator) {
+        return;
+    }
+
+    CCSize windowSize = CCDirector::sharedDirector()->getWinSize();
+
+    float indicatorPosition = -scrollView->getContentOffset().y;
+    float indicatorPositionMax = scrollView->getContentSize().height - windowSize.height + TitleBarHeight;
+    float indicatorMoveHeight = windowSize.height - TitleBarHeight - kScrollViewIndicatorHeight - kScrollViewIndicatorMarginVertical * 2;
+
+    CCPoint indicatorOffset = ccp(0, -TitleBarHeight - indicatorMoveHeight * (1.0 - indicatorPosition / indicatorPositionMax) - kScrollViewIndicatorMarginVertical);
+    _scrollViewIndicator->setPosition(indicatorOffset);
 }

@@ -15,6 +15,7 @@
 #include "ResultScene.h"
 #include "ItemListScene.h"
 #include "Item.h"
+#include "NotificationLayer.h"
 
 #define kTransitionDuration 1.0
 #define kGameTickInterval 0.1
@@ -181,21 +182,7 @@ void GameEngine::loadSaveData()
 
     string saveFilePath = fileUtils->getWritablePath().append(kSavefileName);
     if (forceRebuildSaveData || !fileUtils->isFileExist(saveFilePath)) {
-        CCLog("rebuild save data!");
-        string initDBFilePath = fileUtils->fullPathForFilename("init.db");
-
-        FILE *src, *dest;
-        char buffer[128];
-        src = fopen(initDBFilePath.c_str(), "rb");
-        dest = fopen(saveFilePath.c_str(), "wb");
-
-        while (feof(src) == 0) {
-            int read = fread(buffer, sizeof(char), 128, src);
-            fwrite(buffer, sizeof(char), read, dest);
-        }
-
-        fclose(src);
-        fclose(dest);
+        copyInitialData(saveFilePath);
     }
 
     _db.open(saveFilePath);
@@ -203,11 +190,57 @@ void GameEngine::loadSaveData()
     _items = _db.getAllBeans<_Item>();
     for (int i=0; i<_items.size(); i++) {
         if (!_items.at(i)->validate()) {
-#warning not implemented
             CCLog("validation error!!");
+
+            rebuildSaveData();
+
+            NotificationLayer *noticeLayer = NotificationLayer::create();
+            noticeLayer->setTitle(MessageInvalidDataTitle);
+            noticeLayer->setNoticeMessage(MessageInvalidDataText);
+            noticeLayer->setNotificationType(NOTIFICATION_LAYER_OK_ONLY);
+            noticeLayer->setActionTarget(NOTIFICATION_LAYER_ACTION_OK, CCDirector::sharedDirector(), menu_selector(CCDirector::popScene));
+
+            CCScene *scene = CCScene::create();
+            scene->addChild(noticeLayer);
+            CCDirector::sharedDirector()->pushScene(scene);
+
             return;
         }
     }
+}
+
+void GameEngine::rebuildSaveData()
+{
+    CCFileUtils *fileUtils = CCFileUtils::sharedFileUtils();
+
+    _db.close();
+    _items.clear();
+
+    string saveFilePath = fileUtils->getWritablePath().append(kSavefileName);
+    copyInitialData(saveFilePath);
+
+    _db.open(saveFilePath);
+    _items = _db.getAllBeans<_Item>();
+}
+
+void GameEngine::copyInitialData(string saveFilePath)
+{
+    CCFileUtils *fileUtils = CCFileUtils::sharedFileUtils();
+
+    string initDBFilePath = fileUtils->fullPathForFilename("init.db");
+
+    FILE *src, *dest;
+    char buffer[128];
+    src = fopen(initDBFilePath.c_str(), "rb");
+    dest = fopen(saveFilePath.c_str(), "wb");
+
+    while (feof(src) == 0) {
+        int read = fread(buffer, sizeof(char), 128, src);
+        fwrite(buffer, sizeof(char), read, dest);
+    }
+
+    fclose(src);
+    fclose(dest);
 }
 
 void GameEngine::foundItem(hiberlite::sqlid_t itemID)
