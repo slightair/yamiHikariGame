@@ -39,12 +39,12 @@
 
 #define MessageGameTitleText "ヤミからのトウソウ"
 #define MessageGameStartText "▶スタート"
+#define MessageShowTutorialText "あらすじ"
 #define MessageShowItemListText "ずかん"
 #define MessageShowRankingText "ランキング"
 
 #define MessageItemBookTitle "アイテムずかん"
 #define MessageResultTitle "リザルト"
-#define MessageTutorialTitle "あらすじ"
 #define MessageTutorialStoryTitle "あらすじ (%d/%d)"
 #define MessageTutorialHowtoTitle "あそびかた (%d/%d)"
 

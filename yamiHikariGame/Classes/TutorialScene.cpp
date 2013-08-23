@@ -60,8 +60,6 @@ bool TutorialScene::init()
     bool result = GradientLayer::init();
 
     if (result) {
-        setTitle(MessageTutorialTitle);
-
         _page = -1;
         _isPageEnd = false;
 
