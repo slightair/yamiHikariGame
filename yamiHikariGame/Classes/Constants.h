@@ -78,7 +78,7 @@
 #define MessageTutorialStory21Speak "こわい"
 #define MessageTutorialStory30 "まずい"
 #define MessageTutorialStory30Shout "がおー"
-#define MessageTutorialStory30Speak "にげよう"
+#define MessageTutorialStory30Speak "にげよ"
 
 #define MessageTutorialHowToMoveText "がめんを ゆびで なぞると\nさゆうに うごく!"
 #define MessageTutorialItemEffectText "アイテムを ひろうと スコアや\nスタミナが ふえたり へったりする"
