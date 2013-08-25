@@ -37,6 +37,8 @@ protected:
 
     void collisionCheck();
     void dropItem();
+    void showObtainedScore(int score);
+    void showObtainedStamina(int stamina);
 public:
     virtual void update(float delta);
     virtual void onEnter();
