@@ -8,6 +8,9 @@
 
 #include "Item.h"
 
+#define kFiguresOfInteger 10
+#define kFiguresOfFloat 10
+
 void _Item::updateCount(int count)
 {
     this->count = count;
@@ -21,17 +24,23 @@ bool _Item::validate()
 
 string _Item::generateChecksum()
 {
-    ostringstream os;
-    os << this->name << ':'
-       << this->desc << ':'
-       << this->image << ':'
-       << this->stamina << ':'
-       << this->score << ':'
-       << this->score_threshold << ':'
-       << this->drop_rate << ':'
-       << count << ':'
-       << SaveDataChecksumSalt;
-    const char *input = os.str().c_str();
+    char cpStamina[kFiguresOfInteger + 1], cpScore[kFiguresOfInteger + 1], cpScoreThreshold[kFiguresOfInteger + 1], cpDropRate[kFiguresOfFloat + 1], cpCount[kFiguresOfInteger + 1];
+    sprintf(cpStamina, "%d", this->stamina);
+    sprintf(cpScore, "%d", this->score);
+    sprintf(cpScoreThreshold, "%d", this->score_threshold);
+    sprintf(cpDropRate, "%.5f", this->drop_rate);
+    sprintf(cpCount, "%d", this->count);
+
+    string os = this->name + ':';
+    os += this->desc + ':';
+    os += this->image + ':';
+    os += string(cpStamina) + ':';
+    os += string(cpScore) + ':';
+    os += string(cpScoreThreshold) + ':';
+    os += string(cpDropRate) + ':';
+    os += string(cpCount) + ':';
+    os += string(SaveDataChecksumSalt);
+    const char *input = os.c_str();
 
     unsigned char digest[kSHA1DigestLength];
     char buf[kChecksumLength];

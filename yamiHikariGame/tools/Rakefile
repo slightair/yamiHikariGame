@@ -23,7 +23,9 @@ namespace "settings" do
     CreateTable.new.up
 
     YAML.load_file('dropItems.yml').each do |item|
-      Item.create(item.merge(count: 0, checksum: Digest::SHA1.hexdigest(%w(name desc image stamina score score_threshold drop_rate).map{|k|item[k]}.join(':') + ":0:#{SALT}")[0...8]))
+      str_drop_rate = "%.5f" % item["drop_rate"]
+      byte_data = %w(name desc image stamina score score_threshold).map{|k|item[k]}.join(':') + ":#{str_drop_rate}" + ":0:#{SALT}"
+      Item.create(item.merge(count: 0, checksum: Digest::SHA1.hexdigest(byte_data)[0...8]))
     end
 
     pp Item.all

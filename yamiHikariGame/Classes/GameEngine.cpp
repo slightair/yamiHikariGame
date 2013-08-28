@@ -229,18 +229,18 @@ void GameEngine::copyInitialData(string saveFilePath)
 
     string initDBFilePath = fileUtils->fullPathForFilename("init.db");
 
-    FILE *src, *dest;
-    char buffer[128];
-    src = fopen(initDBFilePath.c_str(), "rb");
-    dest = fopen(saveFilePath.c_str(), "wb");
+    unsigned long nSize = 0;
+    unsigned char* buffer = fileUtils->getFileData(initDBFilePath.c_str(), "rb", &nSize);
 
-    while (feof(src) == 0) {
-        int read = fread(buffer, sizeof(char), 128, src);
-        fwrite(buffer, sizeof(char), read, dest);
+    if (buffer != NULL && nSize > 0) {
+        FILE *dest = fopen(saveFilePath.c_str(), "wb");
+        unsigned long result = fwrite(buffer, sizeof(char), nSize, dest);
+        if (result < nSize) {
+            CCLog("copy savedata failed. %ld", result);
+        }
+        fclose(dest);
     }
-
-    fclose(src);
-    fclose(dest);
+    CC_SAFE_DELETE_ARRAY(buffer);
 }
 
 void GameEngine::foundItem(hiberlite::sqlid_t itemID)
