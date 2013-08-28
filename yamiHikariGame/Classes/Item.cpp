@@ -7,7 +7,9 @@
 //
 
 #include "Item.h"
-#include "cocos2d.h"
+
+#define kFiguresOfInteger 10
+#define kFiguresOfFloat 10
 
 void _Item::updateCount(int count)
 {
@@ -22,12 +24,12 @@ bool _Item::validate()
 
 string _Item::generateChecksum()
 {
-    char cpStamina[8], cpScore[8], cpScoreThreshold[8], cpDropRate[8], cpCount[8];
-    std::sprintf(cpStamina, "%d", this->stamina);
-    std::sprintf(cpScore, "%d", this->score);
-    std::sprintf(cpScoreThreshold, "%d", this->score_threshold);
-    std::sprintf(cpDropRate, "%.5f", this->drop_rate);
-    std::sprintf(cpCount, "%d", this->count);
+    char cpStamina[kFiguresOfInteger + 1], cpScore[kFiguresOfInteger + 1], cpScoreThreshold[kFiguresOfInteger + 1], cpDropRate[kFiguresOfFloat + 1], cpCount[kFiguresOfInteger + 1];
+    sprintf(cpStamina, "%d", this->stamina);
+    sprintf(cpScore, "%d", this->score);
+    sprintf(cpScoreThreshold, "%d", this->score_threshold);
+    sprintf(cpDropRate, "%.5f", this->drop_rate);
+    sprintf(cpCount, "%d", this->count);
 
     string os = this->name + ':';
     os += this->desc + ':';

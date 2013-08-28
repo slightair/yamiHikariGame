@@ -88,6 +88,6 @@ if [[ "$buildexternalsfromsource" ]]; then
         "NDK_MODULE_PATH=${COCOS2DX_ROOT}:${COCOS2DX_ROOT}/cocos2dx/platform/third_party/android/source:${COMMON_LIB_PATH}:${ANDROID_LIB_PATH}"
 else
     echo "Using prebuilt externals"
-    "$NDK_ROOT"/ndk-build -C "$APP_ANDROID_ROOT" $* NDK_DEBUG=1 \
+    "$NDK_ROOT"/ndk-build -C "$APP_ANDROID_ROOT" $* \
         "NDK_MODULE_PATH=${COCOS2DX_ROOT}:${COCOS2DX_ROOT}/cocos2dx/platform/third_party/android/prebuilt:${COMMON_LIB_PATH}:${ANDROID_LIB_PATH}"
 fi
