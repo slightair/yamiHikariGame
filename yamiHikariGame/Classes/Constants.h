@@ -38,7 +38,7 @@
 #define SameTimeDropItemKindMax 3
 
 #define MessageGameTitleText "ヤミからのトウソウ"
-#define MessageGameStartText "▶スタート"
+#define MessageGameStartText "スタート"
 #define MessageShowTutorialText "あらすじ"
 #define MessageShowItemListText "ずかん"
 #define MessageShowRankingText "ランキング"
