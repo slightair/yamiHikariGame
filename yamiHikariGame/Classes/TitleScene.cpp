@@ -62,7 +62,7 @@ bool TitleScene::init()
                                                             this,
                                                             menu_selector(TitleScene::startGame));
 
-        CCMenuItem *startTutorialItem = CCMenuItemLabel::create(CCLabelTTF::create(MessageShowTutorialText, DefaultFontName, FontSizeBig), GameEngine::sharedEngine(), menu_selector(GameEngine::startTutorial));
+        CCMenuItem *startTutorialItem = CCMenuItemLabel::create(CCLabelTTF::create(MessageShowTutorialText, DefaultFontName, FontSizeBig), this, menu_selector(TitleScene::startTutorial));
 
         CCMenu *startMenu = CCMenu::create(startGameItem, startTutorialItem, NULL);
         startMenu->setPosition(ccp(windowSize.width / 2, windowSize.height * 0.25));
@@ -141,4 +141,9 @@ void TitleScene::startGame()
     else {
         engine->startNewGame();
     }
+}
+
+void TitleScene::startTutorial()
+{
+    GameEngine::sharedEngine()->startTutorial(false);
 }
