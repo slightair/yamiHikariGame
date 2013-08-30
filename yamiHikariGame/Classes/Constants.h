@@ -90,4 +90,8 @@
 #define SaveDataChecksumSalt "tikuwa"
 #define TutorialStateKey "tutorialDone"
 
+#define AchievementFirstPlayName "first play"
+#define AchievementFirstPlayAchievementIDIOS ""
+#define AchievementFirstPlayAchievementIDAndroid ""
+
 #endif
