@@ -24,8 +24,9 @@ protected:
 
 public:
     static GameCenter *sharedCenter();
-    bool configure();
 
+    void configure();
+    bool getAuthenticated();
     void showRanking();
     void showAchievements();
     void registerHighScore(int score);

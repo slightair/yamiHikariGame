@@ -215,6 +215,8 @@
 		57D1529C17CC357500CB0D5E /* GameCenter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57D1529A17CC357500CB0D5E /* GameCenter.cpp */; };
 		57D1529F17CF7A9400CB0D5E /* Achievement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57D1529D17CF7A9400CB0D5E /* Achievement.cpp */; };
 		57E2870017D05FE800481F36 /* achievements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 57E286FF17D05FE800481F36 /* achievements.plist */; };
+		57E2870317D0E14600481F36 /* GameCenterIOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = 57E2870117D0E14600481F36 /* GameCenterIOS.mm */; };
+		57E2870517D0E42400481F36 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57E2870417D0E42400481F36 /* GameKit.framework */; };
 		57FB9F8C17959390005D882C /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57FB9F8A17959390005D882C /* GameScene.cpp */; };
 		57FB9F9D179A5C2F005D882C /* default in Resources */ = {isa = PBXBuildFile; fileRef = 57FB9F9B179A5C2F005D882C /* default */; };
 		57FB9F9E179A5C2F005D882C /* ios-hd in Resources */ = {isa = PBXBuildFile; fileRef = 57FB9F9C179A5C2F005D882C /* ios-hd */; };
@@ -697,6 +699,8 @@
 		57D1529D17CF7A9400CB0D5E /* Achievement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Achievement.cpp; path = Classes/Achievement.cpp; sourceTree = "<group>"; };
 		57D1529E17CF7A9400CB0D5E /* Achievement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Achievement.h; path = Classes/Achievement.h; sourceTree = "<group>"; };
 		57E286FF17D05FE800481F36 /* achievements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = achievements.plist; path = Resources/achievements.plist; sourceTree = "<group>"; };
+		57E2870117D0E14600481F36 /* GameCenterIOS.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = GameCenterIOS.mm; path = Classes/GameCenterIOS.mm; sourceTree = "<group>"; };
+		57E2870417D0E42400481F36 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		57FB9F8A17959390005D882C /* GameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameScene.cpp; path = Classes/GameScene.cpp; sourceTree = "<group>"; };
 		57FB9F8B17959390005D882C /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameScene.h; path = Classes/GameScene.h; sourceTree = "<group>"; };
 		57FB9F9B179A5C2F005D882C /* default */ = {isa = PBXFileReference; lastKnownFileType = folder; name = default; path = Resources/default; sourceTree = "<group>"; };
@@ -716,6 +720,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57E2870517D0E42400481F36 /* GameKit.framework in Frameworks */,
 				57840D6617958956005732EC /* QuartzCore.framework in Frameworks */,
 				57840D6817958956005732EC /* OpenGLES.framework in Frameworks */,
 				57840D6A17958956005732EC /* OpenAL.framework in Frameworks */,
@@ -752,6 +757,7 @@
 		57840D6417958956005732EC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				57E2870417D0E42400481F36 /* GameKit.framework */,
 				57840D6517958956005732EC /* QuartzCore.framework */,
 				57840D6717958956005732EC /* OpenGLES.framework */,
 				57840D6917958956005732EC /* OpenAL.framework */,
@@ -1620,6 +1626,7 @@
 				578DE66B17A4D8E90050CDE4 /* GameEngine.h */,
 				57D1529A17CC357500CB0D5E /* GameCenter.cpp */,
 				57D1529B17CC357500CB0D5E /* GameCenter.h */,
+				57E2870117D0E14600481F36 /* GameCenterIOS.mm */,
 				578DE66917A4D81C0050CDE4 /* Objects */,
 				578DE66817A4D8040050CDE4 /* Scenes */,
 			);
@@ -1857,6 +1864,7 @@
 				57840DB917958957005732EC /* CCActionProgressTimer.cpp in Sources */,
 				57840DBC17958957005732EC /* CCActionTiledGrid.cpp in Sources */,
 				57D1529C17CC357500CB0D5E /* GameCenter.cpp in Sources */,
+				57E2870317D0E14600481F36 /* GameCenterIOS.mm in Sources */,
 				57840DBF17958957005732EC /* CCActionTween.cpp in Sources */,
 				57840DC317958957005732EC /* CCAtlasNode.cpp in Sources */,
 				57840DC617958957005732EC /* CCNode.cpp in Sources */,

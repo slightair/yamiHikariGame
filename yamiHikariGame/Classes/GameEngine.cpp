@@ -133,6 +133,8 @@ void GameEngine::registerActivities()
     Achievement firstPlayAchievement;
     firstPlayAchievement.setName(AchievementFirstPlayName);
     firstPlayAchievement.setIOSAchievementID(AchievementFirstPlayAchievementIDIOS);
+    firstPlayAchievement.setProcess(1);
+    firstPlayAchievement.setGoal(1);
     completedAchievements.push_back(firstPlayAchievement);
 
     CCObject *object = NULL;
@@ -150,12 +152,12 @@ void GameEngine::registerActivities()
             sum += item->count;
         }
 
-        if (sum > count) {
-            Achievement achievement;
-            achievement.setName(((CCString *)achievementInfo->objectForKey("name"))->getCString());
-            achievement.setIOSAchievementID(((CCString *)achievementInfo->objectForKey("ios_achievement_id"))->getCString());
-            completedAchievements.push_back(achievement);
-        }
+        Achievement achievement;
+        achievement.setName(((CCString *)achievementInfo->objectForKey("name"))->getCString());
+        achievement.setIOSAchievementID(((CCString *)achievementInfo->objectForKey("ios_achievement_id"))->getCString());
+        achievement.setProcess(sum);
+        achievement.setGoal(count);
+        completedAchievements.push_back(achievement);
     }
 
     gameCenter->registerAchievements(&completedAchievements);
@@ -175,7 +177,7 @@ void GameEngine::showItemList()
 
 void GameEngine::showRanking()
 {
-
+    GameCenter::sharedCenter()->showRanking();
 }
 
 void GameEngine::showTitle()

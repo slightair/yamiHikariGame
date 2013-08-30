@@ -24,28 +24,3 @@ bool GameCenter::init()
 {
     return true;
 }
-
-bool GameCenter::configure()
-{
-    return false;
-}
-
-void GameCenter::showRanking()
-{
-
-}
-
-void GameCenter::showAchievements()
-{
-
-}
-
-void GameCenter::registerHighScore(int score)
-{
-
-}
-
-void GameCenter::registerAchievements(vector<Achievement> *achievements)
-{
-
-}
