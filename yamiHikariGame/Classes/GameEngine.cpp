@@ -9,6 +9,7 @@
 #include "GameEngine.h"
 #include "SimpleAudioEngine.h"
 #include "Constants.h"
+#include "GameCenter.h"
 #include "TitleScene.h"
 #include "TutorialScene.h"
 #include "GameScene.h"
@@ -24,6 +25,7 @@
 #define kWaitForResultDuration 3
 
 #define kSavefileName "savedata.db"
+#define kAchievementsFileName "achievements.plist"
 
 static GameEngine *__sharedEngine = NULL;
 
@@ -39,6 +41,9 @@ GameEngine *GameEngine::sharedEngine()
 
 bool GameEngine::init()
 {
+    _achievements = CCArray::createWithContentsOfFile(kAchievementsFileName);
+    _achievements->retain();
+
     return true;
 }
 
@@ -87,6 +92,8 @@ void GameEngine::finishGame()
     registerFoundItemCount();
 
     director->getScheduler()->scheduleSelector(schedule_selector(GameEngine::showResult), this, 0, 0, kWaitForResultDuration, false);
+
+    registerActivities();
 }
 
 void GameEngine::tick()
@@ -113,6 +120,45 @@ void GameEngine::registerFoundItemCount()
 
         iterator++;
     }
+}
+
+void GameEngine::registerActivities()
+{
+    GameCenter *gameCenter = GameCenter::sharedCenter();
+
+    gameCenter->registerHighScore(_score);
+
+    vector<Achievement> completedAchievements;
+
+    Achievement firstPlayAchievement;
+    firstPlayAchievement.setName(AchievementFirstPlayName);
+    firstPlayAchievement.setIOSAchievementID(AchievementFirstPlayAchievementIDIOS);
+    completedAchievements.push_back(firstPlayAchievement);
+
+    CCObject *object = NULL;
+    CCARRAY_FOREACH(_achievements, object) {
+        CCDictionary *achievementInfo = (CCDictionary *)object;
+
+        int count = ((CCString *)achievementInfo->objectForKey("count"))->intValue();
+        CCArray *itemIDs = (CCArray *)achievementInfo->objectForKey("item_ids");
+
+        int sum = 0;
+        CCObject *itemID = NULL;
+        CCARRAY_FOREACH(itemIDs, itemID) {
+            int id = ((CCString *)itemID)->intValue();
+            Item item = _items.at(id - 1);
+            sum += item->count;
+        }
+
+        if (sum > count) {
+            Achievement achievement;
+            achievement.setName(((CCString *)achievementInfo->objectForKey("name"))->getCString());
+            achievement.setIOSAchievementID(((CCString *)achievementInfo->objectForKey("ios_achievement_id"))->getCString());
+            completedAchievements.push_back(achievement);
+        }
+    }
+
+    gameCenter->registerAchievements(&completedAchievements);
 }
 
 void GameEngine::showResult()
