@@ -10,9 +10,11 @@
 #include "Constants.h"
 #include "GameEngine.h"
 
-#define kSubMenuItemPaddingVertical 8
+#define kMainMenuItemPaddingVertical 12
 #define kSubMenuItemPaddingHorizontal 72
 #define kSubMenuMarginBottom 32
+#define kResetMenuMarginTop 16
+#define kResetMenuPaddingHorizontal 144
 
 #define kCharacterDistance 80
 #define kMonsterDelay 0.2
@@ -54,9 +56,18 @@ bool TitleScene::init()
         _darknessNode = Darkness::create(_brave->getPosition());
         this->addChild(_darknessNode);
 
-        CCLabelTTF *titleLabel = CCLabelTTF::create(MessageGameTitleText, DefaultFontName, FontSizeBig);
-        titleLabel->setPosition(ccp(windowSize.width / 2, windowSize.height * 0.85));
-        this->addChild(titleLabel);
+        CCSprite *titleLogo = CCSprite::createWithSpriteFrameName("titlelogo.png");
+        titleLogo->setPosition(ccp(windowSize.width / 2, windowSize.height * 0.83));
+        this->addChild(titleLogo);
+
+        CCSprite *bomb = CCSprite::createWithSpriteFrameName("bomb.png");
+        CCSprite *bombPressed = CCSprite::createWithSpriteFrameName("bombfire.png");
+        CCMenuItemSprite *resetSaveDataItem = CCMenuItemSprite::create(bomb, bombPressed,
+                                                                     this, menu_selector(TitleScene::resetSaveData));
+
+        CCMenu *resetMenu = CCMenu::create(resetSaveDataItem, NULL);
+        resetMenu->setPosition(ccp(windowSize.width / 2 - kResetMenuPaddingHorizontal , windowSize.height - kResetMenuMarginTop));
+        this->addChild(resetMenu);
 
         CCMenuItem *startGameItem = CCMenuItemLabel::create(CCLabelTTF::create(MessageGameStartText, DefaultFontName, FontSizeBig),
                                                             this,
@@ -66,7 +77,7 @@ bool TitleScene::init()
 
         CCMenu *startMenu = CCMenu::create(startGameItem, startTutorialItem, NULL);
         startMenu->setPosition(ccp(windowSize.width / 2, windowSize.height * 0.25));
-        startMenu->alignItemsVerticallyWithPadding(kSubMenuItemPaddingVertical);
+        startMenu->alignItemsVerticallyWithPadding(kMainMenuItemPaddingVertical);
         this->addChild(startMenu);
 
         CCMenuItem *showItemListItem = CCMenuItemLabel::create(CCLabelTTF::create(MessageShowItemListText, DefaultFontName, FontSizeBig),
@@ -146,4 +157,10 @@ void TitleScene::startGame()
 void TitleScene::startTutorial()
 {
     GameEngine::sharedEngine()->startTutorial(false);
+}
+
+void TitleScene::resetSaveData()
+{
+    CCLog("reset!");
+#warning not implemented
 }

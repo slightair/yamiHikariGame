@@ -28,6 +28,7 @@ protected:
     void runEscapeSequence(CCNode *object);
     void startGame();
     void startTutorial();
+    void resetSaveData();
 
 public:
     virtual bool init();
