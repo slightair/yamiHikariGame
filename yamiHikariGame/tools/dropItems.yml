@@ -30,3 +30,11 @@
   score: 100
   score_threshold: 0
   drop_rate: 0.05
+-
+  name: 'クレジット'
+  desc: "つくったひと\n @slightair\n @ichiko_revjune\nつかったフォント\n もさもさフォント"
+  image: 'scroll.png'
+  stamina: 0
+  score: 0
+  score_threshold: 0
+  drop_rate: 0.0
