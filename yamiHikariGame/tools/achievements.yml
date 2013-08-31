@@ -1,0 +1,6 @@
+-
+  name: 'tikuwa1000'
+  item_ids:
+    - 1
+  count: 1000
+  ios_achievement_id: 'yamiHikariGame.achievements.tikuwa1000'
