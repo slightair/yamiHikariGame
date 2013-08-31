@@ -8,6 +8,7 @@
 
 #include "GameCenter.h"
 #include <GameKit/GameKit.h>
+#include "Constants.h"
 #include "AppController.h"
 #include "RootViewController.h"
 
@@ -52,7 +53,12 @@ void GameCenter::showAchievements()
 
 void GameCenter::registerHighScore(int score)
 {
-
+    GKLocalPlayer *localPlayer = [GKLocalPlayer localPlayer];
+    if (localPlayer.authenticated) {
+        GKScore *highScore = [[GKScore alloc] initWithCategory:[NSString stringWithUTF8String:LeaderboardIDHighScoreIOS]];
+        highScore.value = score;
+        [highScore reportScoreWithCompletionHandler:NULL];
+    }
 }
 
 void GameCenter::registerAchievements(vector<Achievement> *achievements)
