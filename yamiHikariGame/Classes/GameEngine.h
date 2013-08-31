@@ -35,19 +35,21 @@ protected:
     void addStamina(int stamina);
     void registerFoundItemCount();
     void copyInitialData(string saveFilePath);
+    void rebuildSaveData();
+    void resetSaveData();
 
 public:
     static GameEngine *sharedEngine();
     void loadSaveData();
     void startTutorial(bool startGame);
     void finishTutorial();
-    void rebuildSaveData();
     void startNewGame();
     void finishGame();
     void showResult();
     void showRanking();
     void showItemList();
     void showTitle();
+    void confirmResetSaveData();
     bool needsTutorial();
     int getScore();
     int getStamina();
