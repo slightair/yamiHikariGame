@@ -39,7 +39,7 @@ protected:
 public:
     static GameEngine *sharedEngine();
     void loadSaveData();
-    void startTutorial(bool startGame = false);
+    void startTutorial(bool startGame);
     void finishTutorial();
     void rebuildSaveData();
     void startNewGame();
