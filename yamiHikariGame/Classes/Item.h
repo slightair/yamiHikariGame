@@ -14,9 +14,6 @@
 #include "sha1.h"
 #include <sstream>
 
-#define kChecksumLength 8
-#define kSHA1DigestLength 20
-
 using namespace std;
 
 class _Item

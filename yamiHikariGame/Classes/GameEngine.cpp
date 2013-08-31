@@ -8,6 +8,7 @@
 
 #include "GameEngine.h"
 #include "SimpleAudioEngine.h"
+#include "sha1.h"
 #include "Constants.h"
 #include "GameCenter.h"
 #include "TitleScene.h"
@@ -126,7 +127,24 @@ void GameEngine::registerActivities()
 {
     GameCenter *gameCenter = GameCenter::sharedCenter();
 
-    gameCenter->registerHighScore(_score);
+    CCUserDefault *userDefault = CCUserDefault::sharedUserDefault();
+    int currentHighScore = userDefault->getIntegerForKey(HighScoreKey, 0);
+    string currentHighScoreChecksum = userDefault->getStringForKey(HighScoreChecksumKey, "");
+
+    if (currentHighScoreChecksum != generateScoreChecksum(currentHighScore)) {
+        currentHighScore = 0;
+    }
+
+    int highScore = _score;
+    if (_score > currentHighScore) {
+        userDefault->setIntegerForKey(HighScoreKey, _score);
+        userDefault->setStringForKey(HighScoreChecksumKey, generateScoreChecksum(_score));
+        userDefault->flush();
+    }
+    else {
+        highScore = currentHighScore;
+    }
+    gameCenter->registerHighScore(highScore);
 
     vector<Achievement> completedAchievements;
 
@@ -304,6 +322,22 @@ void GameEngine::foundItem(hiberlite::sqlid_t itemID)
     else {
         _foundItems[itemID] += 1;
     }
+}
+
+string GameEngine::generateScoreChecksum(int score)
+{
+    char input[64];
+    unsigned char digest[SHA1DigestLength];
+    char buf[ChecksumLength];
+
+    sprintf(input, "%d:%s", score, ScoreChecksumSalt);
+
+    SHA1 sha1;
+    sha1.addBytes((unsigned char *)input, strlen(input));
+    sha1.getDigest(digest, SHA1DigestLength);
+    sprintf(buf, "%02x%02x%02x%02x", digest[0], digest[1], digest[2], digest[3]);
+
+    return string(buf);
 }
 
 vector<Item> *GameEngine::getItems()

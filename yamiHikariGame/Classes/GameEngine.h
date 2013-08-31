@@ -37,6 +37,7 @@ protected:
     void registerFoundItemCount();
     void registerActivities();
     void copyInitialData(string saveFilePath);
+    string generateScoreChecksum(int score);
 
 public:
     static GameEngine *sharedEngine();
