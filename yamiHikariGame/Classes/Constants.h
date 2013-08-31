@@ -101,7 +101,7 @@
 #define LeaderboardIDHighScoreAndroid ""
 
 #define AchievementFirstPlayName "first play"
-#define AchievementFirstPlayAchievementIDIOS ""
+#define AchievementFirstPlayAchievementIDIOS "yamiHikariGame.achievements.firstPlay"
 #define AchievementFirstPlayAchievementIDAndroid ""
 
 #endif

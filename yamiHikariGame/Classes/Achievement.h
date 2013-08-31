@@ -15,12 +15,13 @@ using namespace std;
 
 class Achievement
 {
-public:
+protected:
     string _name;
     string _iOSAchievementID;
     int _process;
     int _goal;
 
+public:
     string getName(){ return _name; }
     string getIOSAchievementID(){ return _iOSAchievementID; }
     int getProcess(){ return _process; }

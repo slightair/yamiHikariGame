@@ -17,6 +17,8 @@ using namespace std;
 class GameCenter
 {
 protected:
+    vector<string> _completedAchievementIDs;
+
     bool init();
     GameCenter(){};
     GameCenter(const GameCenter& rhs);
