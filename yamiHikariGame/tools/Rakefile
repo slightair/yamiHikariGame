@@ -24,8 +24,9 @@ namespace "settings" do
 
     YAML.load_file('dropItems.yml').each do |item|
       str_drop_rate = "%.5f" % item["drop_rate"]
-      byte_data = %w(name desc image stamina score score_threshold).map{|k|item[k]}.join(':') + ":#{str_drop_rate}" + ":0:#{SALT}"
-      Item.create(item.merge(count: 0, checksum: Digest::SHA1.hexdigest(byte_data)[0...8]))
+      count = (item["name"] == "スタッフロール" ? 1 : 0)
+      byte_data = %w(name desc image stamina score score_threshold).map{|k|item[k]}.join(':') + ":#{str_drop_rate}" + ":#{count}:#{SALT}"
+      Item.create(item.merge(count: count, checksum: Digest::SHA1.hexdigest(byte_data)[0...8]))
     end
 
     pp Item.all
