@@ -13,6 +13,7 @@
 #include "Constants.h"
 #include "TitleScene.h"
 #include "GameEngine.h"
+#include "GameCenter.h"
 
 #define kDefaultDesignResolutionWidth 320
 #define kDefaultDesignResolutionHeight 480
@@ -105,6 +106,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     pDirector->runWithScene(pScene);
 
     GameEngine::sharedEngine()->loadSaveData();
+    GameCenter::sharedCenter()->configure();
 
     return true;
 }

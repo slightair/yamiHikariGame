@@ -24,6 +24,7 @@ protected:
     int _score;
     int _stamina;
     bool _startWithTutorial;
+    CCArray *_achievements;
 
     bool init();
     GameEngine(){};
@@ -34,9 +35,11 @@ protected:
     void addScore(int score);
     void addStamina(int stamina);
     void registerFoundItemCount();
+    void registerActivities();
     void copyInitialData(string saveFilePath);
     void rebuildSaveData();
     void resetSaveData();
+    string generateScoreChecksum(int score);
 
 public:
     static GameEngine *sharedEngine();
