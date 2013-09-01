@@ -224,6 +224,8 @@ void GameEngine::resetSaveData()
 
     CCUserDefault *userDefault = CCUserDefault::sharedUserDefault();
     userDefault->setBoolForKey(TutorialStateKey, false);
+    userDefault->setIntegerForKey(HighScoreKey, 0);
+    userDefault->setStringForKey(HighScoreChecksumKey, "");
     userDefault->flush();
 
     NotificationLayer *noticeLayer = NotificationLayer::create();
