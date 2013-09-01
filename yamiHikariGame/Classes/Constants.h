@@ -39,6 +39,7 @@
 
 #define StaminaMax 1000
 #define SameTimeDropItemKindMax 3
+#define ScrollSpeed 240
 
 #define MessageGameTitleText "ヤミからのトウソウ"
 #define MessageGameStartText "スタート"

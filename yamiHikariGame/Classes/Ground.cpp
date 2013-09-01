@@ -34,7 +34,7 @@ bool Ground::init()
 void Ground::update(float delta)
 {
     CCSize windowSize = CCDirector::sharedDirector()->getWinSize();
-    CCPoint backgroundScrollVert = ccp(0, windowSize.height / 2);
+    CCPoint backgroundScrollVert = ccp(0, ScrollSpeed);
     float yPosition;
 
     _backgroundNode1->setPosition(ccpAdd(_backgroundNode1->getPosition(), ccpMult(backgroundScrollVert, delta)));
