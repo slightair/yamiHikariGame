@@ -37,6 +37,8 @@ protected:
     void registerFoundItemCount();
     void registerActivities();
     void copyInitialData(string saveFilePath);
+    void rebuildSaveData();
+    void resetSaveData();
     string generateScoreChecksum(int score);
 
 public:
@@ -44,13 +46,13 @@ public:
     void loadSaveData();
     void startTutorial(bool startGame);
     void finishTutorial();
-    void rebuildSaveData();
     void startNewGame();
     void finishGame();
     void showResult();
     void showRanking();
     void showItemList();
     void showTitle();
+    void confirmResetSaveData();
     bool needsTutorial();
     int getScore();
     int getStamina();

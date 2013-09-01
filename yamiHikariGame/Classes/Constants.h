@@ -69,6 +69,10 @@
 #define MessageInvalidDataTitle "エラー!"
 #define MessageInvalidDataText "セーブデータが おかしく なっているので、しょきか します。"
 
+#define MessageConfirmResetSaveDataTitle "セーブデータしょきか"
+#define MessageConfirmResetSaveDataText "セーブデータを しょきか します。よろしいですか?"
+#define MessageCompleteResetSaveDataText "セーブデータを しょきか しました。"
+
 #define MessageSelectionYes "はい"
 #define MessageSelectionNo "いいえ"
 #define MessageSelectionOK "OK"

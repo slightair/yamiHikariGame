@@ -63,7 +63,8 @@ bool TitleScene::init()
         CCSprite *bomb = CCSprite::createWithSpriteFrameName("bomb.png");
         CCSprite *bombPressed = CCSprite::createWithSpriteFrameName("bombfire.png");
         CCMenuItemSprite *resetSaveDataItem = CCMenuItemSprite::create(bomb, bombPressed,
-                                                                     this, menu_selector(TitleScene::resetSaveData));
+                                                                       GameEngine::sharedEngine(),
+                                                                       menu_selector(GameEngine::confirmResetSaveData));
 
         CCMenu *resetMenu = CCMenu::create(resetSaveDataItem, NULL);
         resetMenu->setPosition(ccp(windowSize.width / 2 - kResetMenuPaddingHorizontal , windowSize.height - kResetMenuMarginTop));
@@ -157,10 +158,4 @@ void TitleScene::startGame()
 void TitleScene::startTutorial()
 {
     GameEngine::sharedEngine()->startTutorial(false);
-}
-
-void TitleScene::resetSaveData()
-{
-    CCLog("reset!");
-#warning not implemented
 }

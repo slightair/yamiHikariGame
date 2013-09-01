@@ -204,6 +204,41 @@ void GameEngine::showTitle()
     CCDirector::sharedDirector()->replaceScene(transition);
 }
 
+void GameEngine::confirmResetSaveData()
+{
+    NotificationLayer *confirmLayer = NotificationLayer::create();
+    confirmLayer->setTitle(MessageConfirmResetSaveDataTitle);
+    confirmLayer->setNoticeMessage(MessageConfirmResetSaveDataText);
+    confirmLayer->setNotificationType(NOTIFICATION_LAYER_YES_NO);
+    confirmLayer->setActionTarget(NOTIFICATION_LAYER_ACTION_NO, CCDirector::sharedDirector(), menu_selector(CCDirector::popScene));
+    confirmLayer->setActionTarget(NOTIFICATION_LAYER_ACTION_YES, this, menu_selector(GameEngine::resetSaveData));
+
+    CCScene *scene = CCScene::create();
+    scene->addChild(confirmLayer);
+    CCDirector::sharedDirector()->pushScene(scene);
+}
+
+void GameEngine::resetSaveData()
+{
+    rebuildSaveData();
+
+    CCUserDefault *userDefault = CCUserDefault::sharedUserDefault();
+    userDefault->setBoolForKey(TutorialStateKey, false);
+    userDefault->setIntegerForKey(HighScoreKey, 0);
+    userDefault->setStringForKey(HighScoreChecksumKey, "");
+    userDefault->flush();
+
+    NotificationLayer *noticeLayer = NotificationLayer::create();
+    noticeLayer->setTitle(MessageConfirmResetSaveDataTitle);
+    noticeLayer->setNoticeMessage(MessageCompleteResetSaveDataText);
+    noticeLayer->setNotificationType(NOTIFICATION_LAYER_OK_ONLY);
+    noticeLayer->setActionTarget(NOTIFICATION_LAYER_ACTION_OK, CCDirector::sharedDirector(), menu_selector(CCDirector::popScene));
+
+    CCScene *scene = CCScene::create();
+    scene->addChild(noticeLayer);
+    CCDirector::sharedDirector()->replaceScene(scene);
+}
+
 bool GameEngine::needsTutorial()
 {
     CCUserDefault *userDefault = CCUserDefault::sharedUserDefault();
