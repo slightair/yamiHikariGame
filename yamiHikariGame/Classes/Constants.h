@@ -9,6 +9,9 @@
 #ifndef yamiHikariGame_Constants_h
 #define yamiHikariGame_Constants_h
 
+#define ChecksumLength 8
+#define SHA1DigestLength 20
+
 #define SpriteSheetImageFileName "spriteSheet.pvr.ccz"
 #define DefaultFontName "mosamosa.ttf"
 
@@ -67,6 +70,10 @@
 #define MessageInvalidDataTitle "エラー!"
 #define MessageInvalidDataText "セーブデータが おかしく なっているので、しょきか します。"
 
+#define MessageConfirmResetSaveDataTitle "セーブデータしょきか"
+#define MessageConfirmResetSaveDataText "セーブデータを しょきか します。よろしいですか?"
+#define MessageCompleteResetSaveDataText "セーブデータを しょきか しました。"
+
 #define MessageSelectionYes "はい"
 #define MessageSelectionNo "いいえ"
 #define MessageSelectionOK "OK"
@@ -89,6 +96,17 @@
 #define MessageTutorialLetsPlayText "さぁ、はじめよう"
 
 #define SaveDataChecksumSalt "tikuwa"
+#define ScoreChecksumSalt "gannmo"
+
 #define TutorialStateKey "tutorialDone"
+#define HighScoreKey "highScore"
+#define HighScoreChecksumKey "highScoreChecksum"
+
+#define LeaderboardIDHighScoreIOS "yamiHikariGame.highScore"
+#define LeaderboardIDHighScoreAndroid ""
+
+#define AchievementFirstPlayName "first play"
+#define AchievementFirstPlayAchievementIDIOS "yamiHikariGame.achievements.firstPlay"
+#define AchievementFirstPlayAchievementIDAndroid ""
 
 #endif

@@ -212,6 +212,11 @@
 		579EDCBE17A6C2EC0039560A /* SE002.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 579EDCBB17A6C2EC0039560A /* SE002.mp3 */; };
 		579EDCBF17A6C2EC0039560A /* SE004.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 579EDCBC17A6C2EC0039560A /* SE004.mp3 */; };
 		57A4241C17A72E530035B5F2 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 57A4241B17A72E530035B5F2 /* Default-568h@2x.png */; };
+		57D1529C17CC357500CB0D5E /* GameCenter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57D1529A17CC357500CB0D5E /* GameCenter.cpp */; };
+		57D1529F17CF7A9400CB0D5E /* Achievement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57D1529D17CF7A9400CB0D5E /* Achievement.cpp */; };
+		57E2870017D05FE800481F36 /* achievements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 57E286FF17D05FE800481F36 /* achievements.plist */; };
+		57E2870317D0E14600481F36 /* GameCenterIOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = 57E2870117D0E14600481F36 /* GameCenterIOS.mm */; };
+		57E2870517D0E42400481F36 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57E2870417D0E42400481F36 /* GameKit.framework */; };
 		57FB9F8C17959390005D882C /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57FB9F8A17959390005D882C /* GameScene.cpp */; };
 		57FB9F9D179A5C2F005D882C /* default in Resources */ = {isa = PBXBuildFile; fileRef = 57FB9F9B179A5C2F005D882C /* default */; };
 		57FB9F9E179A5C2F005D882C /* ios-hd in Resources */ = {isa = PBXBuildFile; fileRef = 57FB9F9C179A5C2F005D882C /* ios-hd */; };
@@ -689,6 +694,13 @@
 		579EDCBB17A6C2EC0039560A /* SE002.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = SE002.mp3; path = Resources/SE002.mp3; sourceTree = "<group>"; };
 		579EDCBC17A6C2EC0039560A /* SE004.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = SE004.mp3; path = Resources/SE004.mp3; sourceTree = "<group>"; };
 		57A4241B17A72E530035B5F2 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "Resources/Default-568h@2x.png"; sourceTree = "<group>"; };
+		57D1529A17CC357500CB0D5E /* GameCenter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; name = GameCenter.cpp; path = Classes/GameCenter.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
+		57D1529B17CC357500CB0D5E /* GameCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = GameCenter.h; path = Classes/GameCenter.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		57D1529D17CF7A9400CB0D5E /* Achievement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Achievement.cpp; path = Classes/Achievement.cpp; sourceTree = "<group>"; };
+		57D1529E17CF7A9400CB0D5E /* Achievement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Achievement.h; path = Classes/Achievement.h; sourceTree = "<group>"; };
+		57E286FF17D05FE800481F36 /* achievements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = achievements.plist; path = Resources/achievements.plist; sourceTree = "<group>"; };
+		57E2870117D0E14600481F36 /* GameCenterIOS.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = GameCenterIOS.mm; path = Classes/GameCenterIOS.mm; sourceTree = "<group>"; };
+		57E2870417D0E42400481F36 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		57FB9F8A17959390005D882C /* GameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameScene.cpp; path = Classes/GameScene.cpp; sourceTree = "<group>"; };
 		57FB9F8B17959390005D882C /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameScene.h; path = Classes/GameScene.h; sourceTree = "<group>"; };
 		57FB9F9B179A5C2F005D882C /* default */ = {isa = PBXFileReference; lastKnownFileType = folder; name = default; path = Resources/default; sourceTree = "<group>"; };
@@ -708,6 +720,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57E2870517D0E42400481F36 /* GameKit.framework in Frameworks */,
 				57840D6617958956005732EC /* QuartzCore.framework in Frameworks */,
 				57840D6817958956005732EC /* OpenGLES.framework in Frameworks */,
 				57840D6A17958956005732EC /* OpenAL.framework in Frameworks */,
@@ -744,6 +757,7 @@
 		57840D6417958956005732EC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				57E2870417D0E42400481F36 /* GameKit.framework */,
 				57840D6517958956005732EC /* QuartzCore.framework */,
 				57840D6717958956005732EC /* OpenGLES.framework */,
 				57840D6917958956005732EC /* OpenAL.framework */,
@@ -777,6 +791,7 @@
 				57A4241B17A72E530035B5F2 /* Default-568h@2x.png */,
 				57840D8D17958956005732EC /* Info.plist */,
 				579BBAB717AE25FD0064F28A /* init.db */,
+				57E286FF17D05FE800481F36 /* achievements.plist */,
 				57FB9F9B179A5C2F005D882C /* default */,
 				57FB9F9C179A5C2F005D882C /* ios-hd */,
 			);
@@ -1609,6 +1624,9 @@
 				578DE67017A4E0A40050CDE4 /* Constants.h */,
 				578DE66A17A4D8E90050CDE4 /* GameEngine.cpp */,
 				578DE66B17A4D8E90050CDE4 /* GameEngine.h */,
+				57D1529A17CC357500CB0D5E /* GameCenter.cpp */,
+				57D1529B17CC357500CB0D5E /* GameCenter.h */,
+				57E2870117D0E14600481F36 /* GameCenterIOS.mm */,
 				578DE66917A4D81C0050CDE4 /* Objects */,
 				578DE66817A4D8040050CDE4 /* Scenes */,
 			);
@@ -1723,6 +1741,8 @@
 			children = (
 				579BBABB17AE34C20064F28A /* Item.h */,
 				579E94FD17AEA8D0008B4276 /* Item.cpp */,
+				57D1529D17CF7A9400CB0D5E /* Achievement.cpp */,
+				57D1529E17CF7A9400CB0D5E /* Achievement.h */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1814,6 +1834,7 @@
 				57A4241C17A72E530035B5F2 /* Default-568h@2x.png in Resources */,
 				579EDCBE17A6C2EC0039560A /* SE002.mp3 in Resources */,
 				57FB9F9D179A5C2F005D882C /* default in Resources */,
+				57E2870017D05FE800481F36 /* achievements.plist in Resources */,
 				57FB9F9E179A5C2F005D882C /* ios-hd in Resources */,
 				5793861117A50CDB008A5BBE /* dust.plist in Resources */,
 				5793861217A50CDB008A5BBE /* stars.plist in Resources */,
@@ -1842,6 +1863,8 @@
 				57840DB617958957005732EC /* CCActionPageTurn3D.cpp in Sources */,
 				57840DB917958957005732EC /* CCActionProgressTimer.cpp in Sources */,
 				57840DBC17958957005732EC /* CCActionTiledGrid.cpp in Sources */,
+				57D1529C17CC357500CB0D5E /* GameCenter.cpp in Sources */,
+				57E2870317D0E14600481F36 /* GameCenterIOS.mm in Sources */,
 				57840DBF17958957005732EC /* CCActionTween.cpp in Sources */,
 				57840DC317958957005732EC /* CCAtlasNode.cpp in Sources */,
 				57840DC617958957005732EC /* CCNode.cpp in Sources */,
@@ -1867,6 +1890,7 @@
 				57840DFE17958957005732EC /* cocos2d.cpp in Sources */,
 				57840E0117958957005732EC /* CCDrawingPrimitives.cpp in Sources */,
 				57840E0417958957005732EC /* CCDrawNode.cpp in Sources */,
+				57D1529F17CF7A9400CB0D5E /* Achievement.cpp in Sources */,
 				57840E0817958957005732EC /* CCGrabber.cpp in Sources */,
 				57840E0B17958957005732EC /* CCGrid.cpp in Sources */,
 				57840E2917958958005732EC /* aabb.c in Sources */,

@@ -74,4 +74,14 @@
     return YES;
 }
 
+- (void)leaderboardViewControllerDidFinish:(GKLeaderboardViewController *)viewController
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)achievementViewControllerDidFinish:(GKAchievementViewController *)viewController
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 @end

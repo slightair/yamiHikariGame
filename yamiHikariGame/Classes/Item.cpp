@@ -42,12 +42,12 @@ string _Item::generateChecksum()
     os += string(SaveDataChecksumSalt);
     const char *input = os.c_str();
 
-    unsigned char digest[kSHA1DigestLength];
-    char buf[kChecksumLength];
+    unsigned char digest[SHA1DigestLength];
+    char buf[ChecksumLength];
 
     SHA1 sha1;
     sha1.addBytes((unsigned char *)input, strlen(input));
-    sha1.getDigest(digest, kSHA1DigestLength);
+    sha1.getDigest(digest, SHA1DigestLength);
     sprintf(buf, "%02x%02x%02x%02x", digest[0], digest[1], digest[2], digest[3]);
 
     return string(buf);
