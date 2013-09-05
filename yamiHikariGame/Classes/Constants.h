@@ -103,7 +103,7 @@
 #define HighScoreChecksumKey "highScoreChecksum"
 
 #define LeaderboardIDHighScoreIOS "yamiHikariGame.highScore"
-#define LeaderboardIDHighScoreAndroid ""
+#define LeaderboardIDHighScoreAndroid "yamiHikariGame.highScore"
 
 #define AchievementFirstPlayName "first play"
 #define AchievementFirstPlayAchievementIDIOS "yamiHikariGame.achievements.firstPlay"

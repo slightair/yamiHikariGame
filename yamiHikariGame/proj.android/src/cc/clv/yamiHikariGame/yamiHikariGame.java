@@ -20,20 +20,34 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
-****************************************************************************/
+ ****************************************************************************/
 package cc.clv.yamiHikariGame;
 
 import org.cocos2dx.lib.Cocos2dxActivity;
 
+import cc.clv.yamiHikariGame.gamecenter.GameCenter;
+
 import android.os.Bundle;
 
-public class yamiHikariGame extends Cocos2dxActivity{
+public class yamiHikariGame extends Cocos2dxActivity {
 
-	protected void onCreate(Bundle savedInstanceState){
+	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 	}
-	
-    static {
-         System.loadLibrary("game");
-    }
+
+	@Override
+	protected void onStart() {
+		super.onStart();
+		GameCenter.onStart();
+	}
+
+	@Override
+	protected void onStop() {
+		super.onStop();
+		GameCenter.onStop();
+	}
+
+	static {
+		System.loadLibrary("game");
+	}
 }
