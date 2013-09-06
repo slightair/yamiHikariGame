@@ -58,6 +58,9 @@ public:
     int getStamina();
     void foundItem(hiberlite::sqlid_t itemID);
 
+    void signInGoogle();
+    void signOutGoogle();
+
     vector<Item> *getItems();
     map<hiberlite::sqlid_t, int> *getFoundItems();
 };

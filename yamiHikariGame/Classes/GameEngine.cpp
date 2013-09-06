@@ -384,3 +384,19 @@ map<hiberlite::sqlid_t, int> *GameEngine::getFoundItems()
 {
     return &_foundItems;
 }
+
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+
+void GameEngine::signInGoogle()
+{
+    GameCenter::sharedCenter()->signIn();
+    CCLog("サインインしました。%d", GameCenter::sharedCenter()->getAuthenticated());
+}
+
+void GameEngine::signOutGoogle()
+{
+    GameCenter::sharedCenter()->signOut();
+    CCLog("サインアウトしました。%d", GameCenter::sharedCenter()->getAuthenticated());
+}
+
+#endif
