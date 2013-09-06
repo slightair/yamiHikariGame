@@ -151,6 +151,7 @@ void GameEngine::registerActivities()
     Achievement firstPlayAchievement;
     firstPlayAchievement.setName(AchievementFirstPlayName);
     firstPlayAchievement.setIOSAchievementID(AchievementFirstPlayAchievementIDIOS);
+    firstPlayAchievement.setAndroidAchievementID(AchievementFirstPlayAchievementIDAndroid);
     firstPlayAchievement.setProcess(1);
     firstPlayAchievement.setGoal(1);
     completedAchievements.push_back(firstPlayAchievement);
@@ -173,6 +174,7 @@ void GameEngine::registerActivities()
         Achievement achievement;
         achievement.setName(((CCString *)achievementInfo->objectForKey("name"))->getCString());
         achievement.setIOSAchievementID(((CCString *)achievementInfo->objectForKey("ios_achievement_id"))->getCString());
+        achievement.setAndroidAchievementID(((CCString *)achievementInfo->objectForKey("android_achievement_id"))->getCString());
         achievement.setProcess(sum);
         achievement.setGoal(count);
         completedAchievements.push_back(achievement);
