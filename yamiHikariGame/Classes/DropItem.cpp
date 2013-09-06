@@ -31,8 +31,7 @@ void DropItem::drop()
 {
     CCSize windowSize = CCDirector::sharedDirector()->getWinSize();
 
-    float scrollSpeed = windowSize.height / 2;
-    float duration = windowSize.height / scrollSpeed;
+    float duration = windowSize.height / ScrollSpeed;
 
     CCSequence *action = CCSequence::create(
                                             CCMoveBy::create(duration, ccp(0, windowSize.height + this->getContentSize().height)),

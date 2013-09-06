@@ -3,6 +3,7 @@
 require 'yaml'
 require 'active_record'
 require 'digest/sha1'
+require 'plist'
 require 'pp'
 
 SALT = 'tikuwa'
@@ -13,20 +14,34 @@ task :default => "settings:initDatabase"
 
 namespace "settings" do
   INIT_DB_FILENAME = 'init.db'
+  ACHIEVEMENTS_FILENAME = 'achievements.plist'
 
   desc "generate #{INIT_DB_FILENAME}"
   task :initDatabase do
     path = File.join(RESOURCES_DIR, INIT_DB_FILENAME)
 
-    File.delete(path)
+    File.delete(path) if File.exist?(path)
     ActiveRecord::Base.establish_connection(adapter: 'sqlite3', database: path)
     CreateTable.new.up
 
     YAML.load_file('dropItems.yml').each do |item|
-      Item.create(item.merge(count: 0, checksum: Digest::SHA1.hexdigest(%w(name desc image stamina score score_threshold drop_rate).map{|k|item[k]}.join(':') + ":0:#{SALT}")[0...8]))
+      str_drop_rate = "%.5f" % item["drop_rate"]
+      count = (item["name"] == "クレジット" ? 1 : 0)
+      byte_data = %w(name desc image stamina score score_threshold).map{|k|item[k]}.join(':') + ":#{str_drop_rate}" + ":#{count}:#{SALT}"
+      Item.create(item.merge(count: count, checksum: Digest::SHA1.hexdigest(byte_data)[0...8]))
     end
 
     pp Item.all
+  end
+
+  desc "generate #{ACHIEVEMENTS_FILENAME}"
+  task :achievements do
+    path = File.join(RESOURCES_DIR, ACHIEVEMENTS_FILENAME)
+
+    File.delete(path) if File.exist?(path)
+    File.open(path, "w") do |file|
+      file << YAML.load_file('achievements.yml').to_plist
+    end
   end
 end
 

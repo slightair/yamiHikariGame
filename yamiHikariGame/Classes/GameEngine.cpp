@@ -8,7 +8,9 @@
 
 #include "GameEngine.h"
 #include "SimpleAudioEngine.h"
+#include "sha1.h"
 #include "Constants.h"
+#include "GameCenter.h"
 #include "TitleScene.h"
 #include "TutorialScene.h"
 #include "GameScene.h"
@@ -24,6 +26,7 @@
 #define kWaitForResultDuration 3
 
 #define kSavefileName "savedata.db"
+#define kAchievementsFileName "achievements.plist"
 
 static GameEngine *__sharedEngine = NULL;
 
@@ -39,6 +42,9 @@ GameEngine *GameEngine::sharedEngine()
 
 bool GameEngine::init()
 {
+    _achievements = CCArray::createWithContentsOfFile(kAchievementsFileName);
+    _achievements->retain();
+
     return true;
 }
 
@@ -87,6 +93,8 @@ void GameEngine::finishGame()
     registerFoundItemCount();
 
     director->getScheduler()->scheduleSelector(schedule_selector(GameEngine::showResult), this, 0, 0, kWaitForResultDuration, false);
+
+    registerActivities();
 }
 
 void GameEngine::tick()
@@ -115,6 +123,64 @@ void GameEngine::registerFoundItemCount()
     }
 }
 
+void GameEngine::registerActivities()
+{
+    GameCenter *gameCenter = GameCenter::sharedCenter();
+
+    CCUserDefault *userDefault = CCUserDefault::sharedUserDefault();
+    int currentHighScore = userDefault->getIntegerForKey(HighScoreKey, 0);
+    string currentHighScoreChecksum = userDefault->getStringForKey(HighScoreChecksumKey, "");
+
+    if (currentHighScoreChecksum != generateScoreChecksum(currentHighScore)) {
+        currentHighScore = 0;
+    }
+
+    int highScore = _score;
+    if (_score > currentHighScore) {
+        userDefault->setIntegerForKey(HighScoreKey, _score);
+        userDefault->setStringForKey(HighScoreChecksumKey, generateScoreChecksum(_score));
+        userDefault->flush();
+    }
+    else {
+        highScore = currentHighScore;
+    }
+    gameCenter->registerHighScore(highScore);
+
+    vector<Achievement> completedAchievements;
+
+    Achievement firstPlayAchievement;
+    firstPlayAchievement.setName(AchievementFirstPlayName);
+    firstPlayAchievement.setIOSAchievementID(AchievementFirstPlayAchievementIDIOS);
+    firstPlayAchievement.setProcess(1);
+    firstPlayAchievement.setGoal(1);
+    completedAchievements.push_back(firstPlayAchievement);
+
+    CCObject *object = NULL;
+    CCARRAY_FOREACH(_achievements, object) {
+        CCDictionary *achievementInfo = (CCDictionary *)object;
+
+        int count = ((CCString *)achievementInfo->objectForKey("count"))->intValue();
+        CCArray *itemIDs = (CCArray *)achievementInfo->objectForKey("item_ids");
+
+        int sum = 0;
+        CCObject *itemID = NULL;
+        CCARRAY_FOREACH(itemIDs, itemID) {
+            int id = ((CCString *)itemID)->intValue();
+            Item item = _items.at(id - 1);
+            sum += item->count;
+        }
+
+        Achievement achievement;
+        achievement.setName(((CCString *)achievementInfo->objectForKey("name"))->getCString());
+        achievement.setIOSAchievementID(((CCString *)achievementInfo->objectForKey("ios_achievement_id"))->getCString());
+        achievement.setProcess(sum);
+        achievement.setGoal(count);
+        completedAchievements.push_back(achievement);
+    }
+
+    gameCenter->registerAchievements(&completedAchievements);
+}
+
 void GameEngine::showResult()
 {
     CCTransitionFade *transition = CCTransitionFade::create(kTransitionDuration, ResultScene::scene());
@@ -129,13 +195,48 @@ void GameEngine::showItemList()
 
 void GameEngine::showRanking()
 {
-
+    GameCenter::sharedCenter()->showRanking();
 }
 
 void GameEngine::showTitle()
 {
     CCTransitionFade *transition = CCTransitionFade::create(kTransitionDuration, TitleScene::scene());
     CCDirector::sharedDirector()->replaceScene(transition);
+}
+
+void GameEngine::confirmResetSaveData()
+{
+    NotificationLayer *confirmLayer = NotificationLayer::create();
+    confirmLayer->setTitle(MessageConfirmResetSaveDataTitle);
+    confirmLayer->setNoticeMessage(MessageConfirmResetSaveDataText);
+    confirmLayer->setNotificationType(NOTIFICATION_LAYER_YES_NO);
+    confirmLayer->setActionTarget(NOTIFICATION_LAYER_ACTION_NO, CCDirector::sharedDirector(), menu_selector(CCDirector::popScene));
+    confirmLayer->setActionTarget(NOTIFICATION_LAYER_ACTION_YES, this, menu_selector(GameEngine::resetSaveData));
+
+    CCScene *scene = CCScene::create();
+    scene->addChild(confirmLayer);
+    CCDirector::sharedDirector()->pushScene(scene);
+}
+
+void GameEngine::resetSaveData()
+{
+    rebuildSaveData();
+
+    CCUserDefault *userDefault = CCUserDefault::sharedUserDefault();
+    userDefault->setBoolForKey(TutorialStateKey, false);
+    userDefault->setIntegerForKey(HighScoreKey, 0);
+    userDefault->setStringForKey(HighScoreChecksumKey, "");
+    userDefault->flush();
+
+    NotificationLayer *noticeLayer = NotificationLayer::create();
+    noticeLayer->setTitle(MessageConfirmResetSaveDataTitle);
+    noticeLayer->setNoticeMessage(MessageCompleteResetSaveDataText);
+    noticeLayer->setNotificationType(NOTIFICATION_LAYER_OK_ONLY);
+    noticeLayer->setActionTarget(NOTIFICATION_LAYER_ACTION_OK, CCDirector::sharedDirector(), menu_selector(CCDirector::popScene));
+
+    CCScene *scene = CCScene::create();
+    scene->addChild(noticeLayer);
+    CCDirector::sharedDirector()->replaceScene(scene);
 }
 
 bool GameEngine::needsTutorial()
@@ -229,18 +330,18 @@ void GameEngine::copyInitialData(string saveFilePath)
 
     string initDBFilePath = fileUtils->fullPathForFilename("init.db");
 
-    FILE *src, *dest;
-    char buffer[128];
-    src = fopen(initDBFilePath.c_str(), "rb");
-    dest = fopen(saveFilePath.c_str(), "wb");
+    unsigned long nSize = 0;
+    unsigned char* buffer = fileUtils->getFileData(initDBFilePath.c_str(), "rb", &nSize);
 
-    while (feof(src) == 0) {
-        int read = fread(buffer, sizeof(char), 128, src);
-        fwrite(buffer, sizeof(char), read, dest);
+    if (buffer != NULL && nSize > 0) {
+        FILE *dest = fopen(saveFilePath.c_str(), "wb");
+        unsigned long result = fwrite(buffer, sizeof(char), nSize, dest);
+        if (result < nSize) {
+            CCLog("copy savedata failed. %ld", result);
+        }
+        fclose(dest);
     }
-
-    fclose(src);
-    fclose(dest);
+    CC_SAFE_DELETE_ARRAY(buffer);
 }
 
 void GameEngine::foundItem(hiberlite::sqlid_t itemID)
@@ -256,6 +357,22 @@ void GameEngine::foundItem(hiberlite::sqlid_t itemID)
     else {
         _foundItems[itemID] += 1;
     }
+}
+
+string GameEngine::generateScoreChecksum(int score)
+{
+    char input[64];
+    unsigned char digest[SHA1DigestLength];
+    char buf[ChecksumLength];
+
+    sprintf(input, "%d:%s", score, ScoreChecksumSalt);
+
+    SHA1 sha1;
+    sha1.addBytes((unsigned char *)input, strlen(input));
+    sha1.getDigest(digest, SHA1DigestLength);
+    sprintf(buf, "%02x%02x%02x%02x", digest[0], digest[1], digest[2], digest[3]);
+
+    return string(buf);
 }
 
 vector<Item> *GameEngine::getItems()
