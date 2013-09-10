@@ -10,7 +10,7 @@ SALT = 'tikuwa'
 
 RESOURCES_DIR = '../Resources'
 
-task :default => "settings:initDatabase"
+task :default => "settings:all"
 
 namespace "settings" do
   INIT_DB_FILENAME = 'init.db'
@@ -42,6 +42,12 @@ namespace "settings" do
     File.open(path, "w") do |file|
       file << YAML.load_file('achievements.yml').to_plist
     end
+  end
+
+  desc "generate all setting files"
+  task :all do
+    Rake::Task['settings:initDatabase'].invoke
+    Rake::Task['settings:achievements'].invoke
   end
 end
 
