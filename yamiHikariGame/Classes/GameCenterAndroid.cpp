@@ -104,13 +104,13 @@ void GameCenter::registerAchievements(vector<Achievement> *achievements)
 
             // _completedAchievementIDsを更新する必要があるのか?
 
-            const char* achievementId = achievementInfo.getAndroidAchievementID().c_str();
             int goal = achievementInfo.getGoal();
             int process = achievementInfo.getProcess();
+
             if (process >= goal) {
-                helper::callStaticBoolMethodWithString("unlockAchievement", achievementId);
+                helper::callStaticBoolMethodWithString("unlockAchievement", achievementInfo.getAndroidAchievementID().c_str());
             } else {
-                helper::callStaticBoolMethodWithStringAndInt("incrementAchievementDiffWithServerData", achievementId, process);
+                helper::callStaticBoolMethodWithStringAndInt("incrementAchievementDiffWithServerData", achievementInfo.getAndroidAchievementID().c_str(), process);
             }
 
             achievementsIterator++;

@@ -174,9 +174,11 @@ void GameEngine::registerActivities()
         Achievement achievement;
         achievement.setName(((CCString *)achievementInfo->objectForKey("name"))->getCString());
         achievement.setIOSAchievementID(((CCString *)achievementInfo->objectForKey("ios_achievement_id"))->getCString());
-        achievement.setAndroidAchievementID(((CCString *)achievementInfo->objectForKey("android_achievement_id"))->getCString());
+        const char* androidId = ((CCString *)achievementInfo->objectForKey("android_achievement_id"))->getCString();
+        achievement.setAndroidAchievementID(string(androidId));
         achievement.setProcess(sum);
         achievement.setGoal(count);
+
         completedAchievements.push_back(achievement);
     }
 
@@ -198,6 +200,11 @@ void GameEngine::showItemList()
 void GameEngine::showRanking()
 {
     GameCenter::sharedCenter()->showRanking();
+}
+
+void GameEngine::showAchievements()
+{
+    GameCenter::sharedCenter()->showAchievements();
 }
 
 void GameEngine::showTitle()
