@@ -59,8 +59,10 @@ public:
     int getStamina();
     void foundItem(hiberlite::sqlid_t itemID);
 
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     void signInGoogle();
     void signOutGoogle();
+#endif
 
     vector<Item> *getItems();
     map<hiberlite::sqlid_t, int> *getFoundItems();
