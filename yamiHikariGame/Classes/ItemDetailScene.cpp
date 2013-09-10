@@ -28,7 +28,7 @@
 #define kDescriptionLabelMarginHorizontal 22
 #define kDescriptionLabelMarginTop (TitleBarHeight + 206)
 
-#define kPageSelectorHeight 64
+#define kPageSelectorHeight 48
 #define kPageSelectorMarginHorizontal 0
 #define kPageSelectorMarginVertical 8
 #define kPageSelectorButtonWidth 88
