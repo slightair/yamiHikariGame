@@ -11,7 +11,7 @@
 
 #define kSpeakerMarginTop (TitleBarHeight + 50)
 
-#define kMessageBoxMarginTop (TitleBarHeight + 140)
+#define kMessageBoxMarginTop (TitleBarHeight + 160)
 #define kMessageBoxMarginHorizontal 16
 
 #define kBoxFillColor ((ccColor4F){0.0, 0.0, 0.0, 0.0})
@@ -23,9 +23,9 @@
 
 #define kActionButtonFillColor (ccc4(0.0, 0.0, 0.0, 0.0))
 
-#define kCommandAreaHeight 40
-#define kCommandAreaMarginTop 4
-#define kCommandAreaMarginBottom 24
+#define kCommandAreaHeight 32
+#define kCommandAreaMarginTop 14
+#define kCommandAreaMarginBottom 18
 #define kCommandButtonWidth 88
 #define kCommandButtonHeight 44
 #define kCommandButtonPadding 32

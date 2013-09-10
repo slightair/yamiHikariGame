@@ -50,7 +50,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     pDirector->setOpenGLView(openGLView);
 
     // turn on display FPS
-    pDirector->setDisplayStats(true);
+    pDirector->setDisplayStats(false);
 
     CCSize screenSize = openGLView->getFrameSize();
     
