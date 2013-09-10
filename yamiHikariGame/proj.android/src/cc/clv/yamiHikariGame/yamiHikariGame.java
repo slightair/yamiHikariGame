@@ -27,12 +27,14 @@ import org.cocos2dx.lib.Cocos2dxActivity;
 
 import cc.clv.yamiHikariGame.gamecenter.GameCenter;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 public class yamiHikariGame extends Cocos2dxActivity {
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		GameCenter.onCreate();
 	}
 
 	@Override
@@ -45,6 +47,12 @@ public class yamiHikariGame extends Cocos2dxActivity {
 	protected void onStop() {
 		super.onStop();
 		GameCenter.onStop();
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		GameCenter.onActivityResult(requestCode, resultCode, data);
 	}
 
 	static {

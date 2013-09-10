@@ -22,6 +22,7 @@ public class GameCenter {
 	private static final String TAG = "yamiHikariGame.GameCenter";
 	private static final int REQUEST_CODE_ACHIEVEMENT = 9010;
 	private static final int REQUEST_CODE_LEADERBOARD = 9011;
+	private static final boolean enableDebug = true;
 
 	static class AchievementLoadedListenerForUpdate implements
 			OnAchievementsLoadedListener {
@@ -52,6 +53,12 @@ public class GameCenter {
 							&& achievement.getAchievementId().equals(
 									mAchievementId)) {
 						int steps = mProcess - achievement.getCurrentSteps();
+						Log.v(TAG,
+								String.format(
+										"Achievement Update: %s (current: %d, process: %d, steps: %d)",
+										mAchievementId,
+										achievement.getCurrentSteps(),
+										mProcess, steps));
 						if (steps > 0) {
 							mGamesClient.incrementAchievement(mAchievementId,
 									steps);
@@ -61,6 +68,12 @@ public class GameCenter {
 			}
 		}
 
+	}
+
+	public static void onCreate() {
+		if (mGameHelper == null) {
+			setup();
+		}
 	}
 
 	public static void onStart() {
@@ -103,6 +116,7 @@ public class GameCenter {
 	public static boolean registerScore(final String leaderboardId,
 			final int score) {
 		if (!isSignedIn()) {
+			Log.w(TAG, "Not Signed In : showLeaderBorad");
 			return false;
 		}
 
@@ -118,19 +132,19 @@ public class GameCenter {
 	/**
 	 * 
 	 * @param achievementId
-	 * @param process	進捗工数ではなく、これまでに獲得した全数
+	 * @param process
+	 *            進捗工数ではなく、これまでに獲得した全数
 	 * @return
 	 */
-	public static boolean incrementAchievementDiffWithServerData(final String achievementId,
-			final int process) {
+	public static boolean incrementAchievementDiffWithServerData(
+			final String achievementId, final int process) {
 		if (!isSignedIn()) {
+			Log.w(TAG, "Not Signed In : showLeaderBorad");
 			return false;
 		}
 
 		activity.runOnUiThread(new Runnable() {
 			public void run() {
-				// getGameHelper().getGamesClient().incrementAchievement(
-				// achievementId, steps);
 				getGameHelper().getGamesClient().loadAchievements(
 						new AchievementLoadedListenerForUpdate(getGameHelper()
 								.getGamesClient(), achievementId, process));
@@ -138,15 +152,17 @@ public class GameCenter {
 		});
 		return true;
 	}
-	
+
 	public static boolean unlockAchievement(final String achievementId) {
 		if (!isSignedIn()) {
+			Log.w(TAG, "Not Signed In : showLeaderBorad");
 			return false;
 		}
-		
+
 		activity.runOnUiThread(new Runnable() {
 			public void run() {
-				getGameHelper().getGamesClient().unlockAchievement(achievementId);
+				getGameHelper().getGamesClient().unlockAchievement(
+						achievementId);
 			}
 		});
 		return true;
@@ -154,6 +170,7 @@ public class GameCenter {
 
 	public static boolean showLeaderboard() {
 		if (!isSignedIn()) {
+			Log.w(TAG, "Not Signed In : showLeaderBorad");
 			return false;
 		}
 
@@ -169,6 +186,7 @@ public class GameCenter {
 
 	public static boolean showAchievements() {
 		if (!isSignedIn()) {
+			Log.w(TAG, "Not Signed In : showLeaderBorad");
 			return false;
 		}
 
@@ -182,29 +200,34 @@ public class GameCenter {
 		return true;
 	}
 
-	private static GameHelper getGameHelper() {
+	private static void setup() {
 		if (mGameHelper == null) {
 			mGameHelper = new GameHelper(activity);
-			mGameHelper.enableDebugLog(true, TAG);
+			if (enableDebug) {
+				mGameHelper.enableDebugLog(true, TAG);
+			}
 
-			activity.runOnUiThread(new Runnable() {
-				public void run() {
-					mGameHelper.setup(new GameHelper.GameHelperListener() {
-
-						@Override
-						public void onSignInSucceeded() {
-							Log.v(TAG, "onSignInSucceeded");
-						}
-
-						@Override
-						public void onSignInFailed() {
-							Log.v(TAG, "onSignInFailed");
-						}
-					}, GameHelper.CLIENT_GAMES);
+			mGameHelper.setup(new GameHelper.GameHelperListener() {
+				@Override
+				public void onSignInSucceeded() {
+					Log.v(TAG, "onSignInSucceeded");
 				}
-			});
+
+				@Override
+				public void onSignInFailed() {
+					Log.v(TAG, "onSignInFailed");
+				}
+			}, GameHelper.CLIENT_GAMES);
 		}
-		return mGameHelper;
 	}
 
+	private static GameHelper getGameHelper() {
+		if (mGameHelper == null) {
+			String msg = "Utility is not configured. Please call onCreate.";
+			Log.e(TAG, msg);
+			throw new IllegalStateException(msg);
+		}
+
+		return mGameHelper;
+	}
 }
