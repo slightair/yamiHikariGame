@@ -22,7 +22,7 @@
 
 #define kScoreLabelMarginTop (TitleBarHeight + 140)
 
-#define kItemCountLabelMarginTop (TitleBarHeight + 194)
+#define kItemCountLabelMarginTop (TitleBarHeight + 184)
 
 #define kItemImageAreaMarginTop (TitleBarHeight + 234)
 #define kNumberOfLineItems 8
@@ -31,11 +31,11 @@
 #define kItemImageMarginVertical 16
 #define kItemImageCountLabelAdjustY 6
 
-#define kCommandAreaHeight 40
-#define kCommandAreaMarginTop 4
-#define kCommandAreaMarginBottom 24
+#define kCommandAreaHeight 32
+#define kCommandAreaMarginTop 14
+#define kCommandAreaMarginBottom 18
 #define kCommandButtonWidth 88
-#define kCommandButtonHeight 44
+#define kCommandButtonHeight 64
 #define kCommandButtonPadding 32
 
 CCScene* ResultScene::scene()
