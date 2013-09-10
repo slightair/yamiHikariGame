@@ -16,6 +16,19 @@
 #define kEmergedAreaHorizontalMarginRate 0.1
 #define kCollisionAreaPadding 8
 
+#define kObtainedEffectDuration 0.5
+
+#define kObtainedScoreMoveY 48
+#define kObtainedScoreAdjustX 0
+#define kObtainedScoreAdjustY 12
+
+#define kObtainedStaminaMoveY 32
+#define kObtainedStaminaAdjustX 32
+#define kObtainedStaminaAdjustY -12
+
+#define kStaminaLabelColorIncrease (ccc3(0x66, 0xff, 0x66))
+#define kStaminaLabelColorDecrease (ccc3(0xff, 0x66, 0x66))
+
 CCScene* GameScene::scene()
 {
     CCScene *scene = CCScene::create();
@@ -174,6 +187,12 @@ void GameScene::collisionCheck()
             this->addChild(starParticle);
 
             int obtainedStamina = dropItem->getStamina();
+
+            showObtainedScore(dropItem->getScore());
+            if (obtainedStamina != 0) {
+                showObtainedStamina(obtainedStamina);
+            }
+
             if (obtainedStamina < 0) {
                 _brave->damageEffect();
                 CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(SEBadItemGet);
@@ -191,6 +210,36 @@ void GameScene::collisionCheck()
             dropItem->removeFromParentAndCleanup(true);
         }
     }
+}
+
+void GameScene::showObtainedScore(int score)
+{
+    CCLabelTTF *scoreLabel = CCLabelTTF::create(CCString::createWithFormat("%d", score)->getCString(), DefaultFontName, FontSizeSmall);
+    scoreLabel->setPosition(ccpAdd(_brave->getPosition(), ccp(kObtainedScoreAdjustX, kObtainedScoreAdjustY)));
+    _scoreBoardNode->addChild(scoreLabel);
+
+    CCSequence *action = CCSequence::create(CCSpawn::create(CCFadeOut::create(kObtainedEffectDuration),
+                                                            CCMoveBy::create(kObtainedEffectDuration, ccp(0, kObtainedScoreMoveY)),
+                                                            NULL),
+                                            CCCallFuncND::create(scoreLabel, callfuncND_selector(CCNode::removeFromParentAndCleanup), (void *)true),
+                                            NULL);
+    scoreLabel->runAction(action);
+}
+
+void GameScene::showObtainedStamina(int stamina)
+{
+    CCLabelTTF *staminaLabel = CCLabelTTF::create(CCString::createWithFormat("%+d", stamina)->getCString(), DefaultFontName, FontSizeSmall);
+    staminaLabel->setPosition(ccpAdd(_brave->getPosition(), ccp(kObtainedStaminaAdjustX, 0)));
+    staminaLabel->setColor(stamina > 0 ? kStaminaLabelColorIncrease : kStaminaLabelColorDecrease);
+    _scoreBoardNode->addChild(staminaLabel);
+
+    float moveY = stamina > 0 ? kObtainedStaminaMoveY : -kObtainedStaminaMoveY;
+    CCSequence *action = CCSequence::create(CCSpawn::create(CCFadeOut::create(kObtainedEffectDuration),
+                                                            CCMoveBy::create(kObtainedEffectDuration, ccp(0, moveY)),
+                                                            NULL),
+                                            CCCallFuncND::create(staminaLabel, callfuncND_selector(CCNode::removeFromParentAndCleanup), (void *)true),
+                                            NULL);
+    staminaLabel->runAction(action);
 }
 
 void GameScene::finishAnimations()

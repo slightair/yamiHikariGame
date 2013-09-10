@@ -50,3 +50,8 @@ int DropItem::getStamina()
 {
     return _item->stamina;
 }
+
+int DropItem::getScore()
+{
+    return _item->score;
+}

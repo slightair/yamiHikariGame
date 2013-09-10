@@ -26,6 +26,7 @@ public:
 
     int getItemID();
     int getStamina();
+    int getScore();
 };
 
 #endif /* defined(__yamiHikariGame__DropItem__) */
