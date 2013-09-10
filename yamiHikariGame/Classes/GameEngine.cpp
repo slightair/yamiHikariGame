@@ -167,8 +167,10 @@ void GameEngine::registerActivities()
         CCObject *itemID = NULL;
         CCARRAY_FOREACH(itemIDs, itemID) {
             int id = ((CCString *)itemID)->intValue();
-            Item item = _items.at(id - 1);
-            sum += item->count;
+            if (id <= _items.size()) {
+                Item item = _items.at(id - 1);
+                sum += item->count;
+            }
         }
 
         Achievement achievement;

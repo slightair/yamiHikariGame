@@ -4,4 +4,78 @@
     - 1
   count: 1000
   ios_achievement_id: 'yamiHikariGame.achievements.tikuwa1000'
-  android_achievement_id: 'CgkIo-n7kbUCEAIQDw'
+  android_achievement_id: ''
+-
+  name: 'magicstone1000'
+  item_ids:
+    - 4
+  count: 1000
+  ios_achievement_id: 'yamiHikariGame.achievements.magicstone1000'
+  android_achievement_id: ''
+-
+  name: 'treasurebox1000'
+  item_ids:
+    - 2
+  count: 1000
+  ios_achievement_id: 'yamiHikariGame.achievements.treasurebox1000'
+  android_achievement_id: ''
+-
+  name: 'bag1000'
+  item_ids:
+    - 8
+  count: 1000
+  ios_achievement_id: 'yamiHikariGame.achievements.bag1000'
+  android_achievement_id: ''
+-
+  name: 'bottle1000'
+  item_ids:
+    - 13
+  count: 1000
+  ios_achievement_id: 'yamiHikariGame.achievements.bottle1000'
+  android_achievement_id: ''
+-
+  name: 'raretreasurebox300'
+  item_ids:
+    - 3
+  count: 300
+  ios_achievement_id: 'yamiHikariGame.achievements.raretreasurebox300'
+  android_achievement_id: ''
+-
+  name: 'bird300'
+  item_ids:
+    - 10
+  count: 300
+  ios_achievement_id: 'yamiHikariGame.achievements.bird300'
+  android_achievement_id: ''
+-
+  name: 'flowers10000'
+  item_ids:
+    - 14
+    - 15
+    - 16
+    - 17
+  count: 10000
+  ios_achievement_id: 'yamiHikariGame.achievements.flowers10000'
+  android_achievement_id: ''
+-
+  name: 'mushrooms10000'
+  item_ids:
+    - 18
+    - 19
+    - 20
+    - 21
+    - 22
+    - 23
+  count: 10000
+  ios_achievement_id: 'yamiHikariGame.achievements.mushrooms10000'
+  android_achievement_id: ''
+-
+  name: 'monsters10000'
+  item_ids:
+    - 6
+    - 7
+    - 24
+    - 25
+  count: 10000
+  ios_achievement_id: 'yamiHikariGame.achievements.monsters10000'
+  android_achievement_id: ''
