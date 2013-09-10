@@ -17,8 +17,15 @@
 #define kCollisionAreaPadding 8
 
 #define kObtainedEffectDuration 0.5
-#define kObtainedEffectMoveY 60
+
+#define kObtainedScoreMoveY 48
+#define kObtainedScoreAdjustX 0
+#define kObtainedScoreAdjustY 12
+
+#define kObtainedStaminaMoveY 32
+#define kObtainedStaminaAdjustX 32
 #define kObtainedStaminaAdjustY -12
+
 #define kStaminaLabelColorIncrease (ccc3(0x66, 0xff, 0x66))
 #define kStaminaLabelColorDecrease (ccc3(0xff, 0x66, 0x66))
 
@@ -208,11 +215,11 @@ void GameScene::collisionCheck()
 void GameScene::showObtainedScore(int score)
 {
     CCLabelTTF *scoreLabel = CCLabelTTF::create(CCString::createWithFormat("%d", score)->getCString(), DefaultFontName, FontSizeSmall);
-    scoreLabel->setPosition(_brave->getPosition());
+    scoreLabel->setPosition(ccpAdd(_brave->getPosition(), ccp(kObtainedScoreAdjustX, kObtainedScoreAdjustY)));
     _scoreBoardNode->addChild(scoreLabel);
 
     CCSequence *action = CCSequence::create(CCSpawn::create(CCFadeOut::create(kObtainedEffectDuration),
-                                                            CCMoveBy::create(kObtainedEffectDuration, ccp(0, kObtainedEffectMoveY)),
+                                                            CCMoveBy::create(kObtainedEffectDuration, ccp(0, kObtainedScoreMoveY)),
                                                             NULL),
                                             CCCallFuncND::create(scoreLabel, callfuncND_selector(CCNode::removeFromParentAndCleanup), (void *)true),
                                             NULL);
@@ -222,11 +229,14 @@ void GameScene::showObtainedScore(int score)
 void GameScene::showObtainedStamina(int stamina)
 {
     CCLabelTTF *staminaLabel = CCLabelTTF::create(CCString::createWithFormat("%+d", stamina)->getCString(), DefaultFontName, FontSizeSmall);
-    staminaLabel->setPosition(ccpAdd(_brave->getPosition(), ccp(0, kObtainedStaminaAdjustY)));
+    staminaLabel->setPosition(ccpAdd(_brave->getPosition(), ccp(kObtainedStaminaAdjustX, 0)));
     staminaLabel->setColor(stamina > 0 ? kStaminaLabelColorIncrease : kStaminaLabelColorDecrease);
     _scoreBoardNode->addChild(staminaLabel);
 
-    CCSequence *action = CCSequence::create(CCFadeOut::create(kObtainedEffectDuration),
+    float moveY = stamina > 0 ? kObtainedStaminaMoveY : -kObtainedStaminaMoveY;
+    CCSequence *action = CCSequence::create(CCSpawn::create(CCFadeOut::create(kObtainedEffectDuration),
+                                                            CCMoveBy::create(kObtainedEffectDuration, ccp(0, moveY)),
+                                                            NULL),
                                             CCCallFuncND::create(staminaLabel, callfuncND_selector(CCNode::removeFromParentAndCleanup), (void *)true),
                                             NULL);
     staminaLabel->runAction(action);
