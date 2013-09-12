@@ -10,6 +10,7 @@
 		5706B3FF17A0AC3C00BD1015 /* Darkness.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5706B3FD17A0AC3C00BD1015 /* Darkness.cpp */; };
 		57206AD917A547F100DB1365 /* ScoreBoard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57206AD717A547F100DB1365 /* ScoreBoard.cpp */; };
 		575B9BCE17BBC8A600DC107B /* TutorialScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 575B9BCC17BBC8A600DC107B /* TutorialScene.cpp */; };
+		575C7C3717E0D352007A701D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 575C7C3617E0D352007A701D /* Images.xcassets */; };
 		57668FA317A8CF9E00A9498C /* ItemListScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57668FA117A8CF9E00A9498C /* ItemListScene.cpp */; };
 		57840D6617958956005732EC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57840D6517958956005732EC /* QuartzCore.framework */; };
 		57840D6817958956005732EC /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57840D6717958956005732EC /* OpenGLES.framework */; };
@@ -233,6 +234,7 @@
 		57206AD817A547F100DB1365 /* ScoreBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScoreBoard.h; path = Classes/ScoreBoard.h; sourceTree = "<group>"; };
 		575B9BCC17BBC8A600DC107B /* TutorialScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TutorialScene.cpp; path = Classes/TutorialScene.cpp; sourceTree = "<group>"; };
 		575B9BCD17BBC8A600DC107B /* TutorialScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TutorialScene.h; path = Classes/TutorialScene.h; sourceTree = "<group>"; };
+		575C7C3617E0D352007A701D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		57668FA117A8CF9E00A9498C /* ItemListScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ItemListScene.cpp; path = Classes/ItemListScene.cpp; sourceTree = "<group>"; };
 		57668FA217A8CF9E00A9498C /* ItemListScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ItemListScene.h; path = Classes/ItemListScene.h; sourceTree = "<group>"; };
 		57840D6217958956005732EC /* yamiHikariGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = yamiHikariGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -777,6 +779,7 @@
 				57840D8E17958956005732EC /* ios */,
 				57840D9717958956005732EC /* libs */,
 				578411061795895E005732EC /* Classes */,
+				575C7C3617E0D352007A701D /* Images.xcassets */,
 				578411041795895E005732EC /* Supporting Files */,
 			);
 			path = yamiHikariGame;
@@ -1802,6 +1805,16 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0460;
+				TargetAttributes = {
+					57840D6117958956005732EC = {
+						DevelopmentTeam = 29NW573QV3;
+						SystemCapabilities = {
+							com.apple.DataProtection = {
+								enabled = 1;
+							};
+						};
+					};
+				};
 			};
 			buildConfigurationList = 57840D5D17958956005732EC /* Build configuration list for PBXProject "yamiHikariGame" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1831,6 +1844,7 @@
 				579BBAB817AE25FD0064F28A /* init.db in Resources */,
 				579EDCBF17A6C2EC0039560A /* SE004.mp3 in Resources */,
 				579EDCBD17A6C2EC0039560A /* SE001.mp3 in Resources */,
+				575C7C3717E0D352007A701D /* Images.xcassets in Resources */,
 				57A4241C17A72E530035B5F2 /* Default-568h@2x.png in Resources */,
 				579EDCBE17A6C2EC0039560A /* SE002.mp3 in Resources */,
 				57FB9F9D179A5C2F005D882C /* default in Resources */,
@@ -2113,6 +2127,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2125,6 +2143,7 @@
 				);
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				INFOPLIST_FILE = yamiHikariGame/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/yamiHikariGame/libs/cocos2dx/platform/third_party/ios/libraries\"",
@@ -2135,6 +2154,7 @@
 					"-lsqlite3",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -2144,6 +2164,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = yamiHikariGame/Prefix.pch;
@@ -2154,6 +2178,7 @@
 				);
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				INFOPLIST_FILE = yamiHikariGame/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/yamiHikariGame/libs/cocos2dx/platform/third_party/ios/libraries\"",
@@ -2164,6 +2189,7 @@
 					"-lsqlite3",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
