@@ -17,8 +17,6 @@
 
 #define kDefaultDesignResolutionWidth 320
 #define kDefaultDesignResolutionHeight 480
-#define kIPadDesignResolutionWidth 768
-#define kIPadDesignResolutionHeight 1024
 
 #define kIPhone4inchHeight 568
 #define kIPhone3_5inchHeight 480
@@ -56,16 +54,11 @@ bool AppDelegate::applicationDidFinishLaunching()
     
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     TargetPlatform platform = CCApplication::sharedApplication()->getTargetPlatform();
-    if (platform == kTargetIphone) {
-        if (screenSize.height == kIPhone4inchScreenHeight) {
-            openGLView->setDesignResolutionSize(kDefaultDesignResolutionWidth, kIPhone4inchHeight, kResolutionExactFit);
-        }
-        else {
-            openGLView->setDesignResolutionSize(kDefaultDesignResolutionWidth, kDefaultDesignResolutionHeight, kResolutionExactFit);
-        }
+    if (screenSize.height == kIPhone4inchScreenHeight) {
+        openGLView->setDesignResolutionSize(kDefaultDesignResolutionWidth, kIPhone4inchHeight, kResolutionExactFit);
     }
     else {
-        openGLView->setDesignResolutionSize(kIPadDesignResolutionWidth, kIPadDesignResolutionHeight, kResolutionExactFit);
+        openGLView->setDesignResolutionSize(kDefaultDesignResolutionWidth, kDefaultDesignResolutionHeight, kResolutionShowAll);
     }
 
     float retinaThreshold = platform == kTargetIphone ? kIPhone3_5inchHeight : kIPadHeight;
@@ -78,12 +71,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     }
 #else
     // Android, etc...
-    if (screenSize.height < kIPadHeight) {
-        openGLView->setDesignResolutionSize(kDefaultDesignResolutionWidth, kDefaultDesignResolutionHeight, kResolutionShowAll);
-    }
-    else {
-        openGLView->setDesignResolutionSize(kIPadDesignResolutionWidth, kIPadDesignResolutionHeight, kResolutionShowAll);
-    }
+    openGLView->setDesignResolutionSize(kDefaultDesignResolutionWidth, kDefaultDesignResolutionHeight, kResolutionShowAll);
     searchResolutionsOrder.push_back("default");
 #endif
 
