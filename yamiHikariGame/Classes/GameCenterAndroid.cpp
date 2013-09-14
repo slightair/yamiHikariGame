@@ -13,7 +13,7 @@
 #include "platform/android/jni/JniHelper.h"
 #include <jni.h>
 
-const char* _CLASS_NAME = "cc/clv/yamiHikariGame/gamecenter/GameCenter";
+static const char* _CLASS_NAME = "cc/clv/yamiHikariGame/gamecenter/GameCenter";
 
 namespace helper {
     void callStaticVoidMethod(const char* methodName) {
@@ -81,7 +81,7 @@ bool GameCenter::getAuthenticated()
 
 void GameCenter::showRanking()
 {
-    helper::callStaticBoolMethod("showLeaderboard");
+    helper::callStaticBoolMethodWithString("showLeaderboard", LeaderboardIDHighScoreAndroid);
 }
 
 void GameCenter::showAchievements()
@@ -101,17 +101,9 @@ void GameCenter::registerAchievements(vector<Achievement> *achievements)
 
         while (achievementsIterator != achievements->end()) {
             Achievement achievementInfo = *achievementsIterator;
-
-            // _completedAchievementIDsを更新する必要があるのか?
-
-            int goal = achievementInfo.getGoal();
-            int process = achievementInfo.getProcess();
-
-            if (process >= goal) {
-                helper::callStaticBoolMethodWithString("unlockAchievement", achievementInfo.getAndroidAchievementID().c_str());
-            } else {
-                helper::callStaticBoolMethodWithStringAndInt("incrementAchievementDiffWithServerData", achievementInfo.getAndroidAchievementID().c_str(), process);
-            }
+            helper::callStaticBoolMethodWithStringAndInt("registerAchievement",
+                                                         achievementInfo.getAndroidAchievementID().c_str(),
+                                                         achievementInfo.getProcess());
 
             achievementsIterator++;
         }

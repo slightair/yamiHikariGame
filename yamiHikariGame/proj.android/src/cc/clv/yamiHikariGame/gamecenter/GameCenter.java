@@ -4,10 +4,14 @@
 
 package cc.clv.yamiHikariGame.gamecenter;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.util.Log;
 import cc.clv.yamiHikariGame.yamiHikariGame;
+import cc.clv.yamiHikariGame.gamecenter.GameHelper.GameHelperListener;
 
 import com.google.android.gms.games.GamesClient;
 import com.google.android.gms.games.achievement.Achievement;
@@ -17,6 +21,7 @@ import com.google.android.gms.games.achievement.OnAchievementsLoadedListener;
 public class GameCenter {
 
 	private static GameHelper mGameHelper = null;
+	private static Map<String, Achievement> serverAchievementStates = null;
 	private static final Activity activity = (Activity) yamiHikariGame
 			.getContext();
 	private static final String TAG = "yamiHikariGame.GameCenter";
@@ -24,48 +29,17 @@ public class GameCenter {
 	private static final int REQUEST_CODE_LEADERBOARD = 9011;
 	private static final boolean enableDebug = true;
 
-	static class AchievementLoadedListenerForUpdate implements
-			OnAchievementsLoadedListener {
-		private GamesClient mGamesClient;
-		private String mAchievementId;
-		private int mProcess;
+	static class GameCenterListener implements GameHelperListener {
 
-		/**
-		 * 
-		 * @param process
-		 *            端末に保存された獲得済みカウント
-		 */
-		public AchievementLoadedListenerForUpdate(GamesClient client,
-				String achievementId, int process) {
-			mGamesClient = client;
-			mAchievementId = achievementId;
-			mProcess = process;
+		@Override
+		public void onSignInFailed() {
+			debugLog("onSignInFailed");
 		}
 
 		@Override
-		public void onAchievementsLoaded(int statusCode,
-				AchievementBuffer buffer) {
-			if (statusCode == GamesClient.STATUS_OK) {
-				int bufSize = buffer.getCount();
-				for (int i = 0; i < bufSize; i++) {
-					Achievement achievement = buffer.get(i);
-					if (achievement != null
-							&& achievement.getAchievementId().equals(
-									mAchievementId)) {
-						int steps = mProcess - achievement.getCurrentSteps();
-						Log.v(TAG,
-								String.format(
-										"Achievement Update: %s (current: %d, process: %d, steps: %d)",
-										mAchievementId,
-										achievement.getCurrentSteps(),
-										mProcess, steps));
-						if (steps > 0) {
-							mGamesClient.incrementAchievement(mAchievementId,
-									steps);
-						}
-					}
-				}
-			}
+		public void onSignInSucceeded() {
+			debugLog("onSignInSucceeded");
+			GameCenter.loadInitialAchievementState();
 		}
 
 	}
@@ -104,6 +78,7 @@ public class GameCenter {
 	public static void signOut() {
 		activity.runOnUiThread(new Runnable() {
 			public void run() {
+				serverAchievementStates = null;
 				getGameHelper().signOut();
 			}
 		});
@@ -113,10 +88,43 @@ public class GameCenter {
 		return mGameHelper != null && getGameHelper().isSignedIn();
 	}
 
+	/**
+	 * ある時点の実績状態をすべて取得し、実績計算に使用する準備する
+	 */
+	private static void loadInitialAchievementState() {
+		if (!isSignedIn()) {
+			debugLog("Not Signed In : loadInitialAchievementState");
+			return;
+		}
+
+		activity.runOnUiThread(new Runnable() {
+			public void run() {
+				getGameHelper().getGamesClient().loadAchievements(
+						new OnAchievementsLoadedListener() {
+							@Override
+							public void onAchievementsLoaded(int statusCode,
+									AchievementBuffer buffer) {
+								if (serverAchievementStates == null
+										&& statusCode == GamesClient.STATUS_OK) {
+									serverAchievementStates = new HashMap<String, Achievement>();
+									for (int i = 0; i < buffer.getCount(); i++) {
+										Achievement achievement = buffer.get(i);
+										serverAchievementStates.put(
+												achievement.getAchievementId(),
+												achievement);
+									}
+								}
+							}
+
+						});
+			}
+		});
+	}
+
 	public static boolean registerScore(final String leaderboardId,
 			final int score) {
 		if (!isSignedIn()) {
-			Log.w(TAG, "Not Signed In : showLeaderBorad");
+			debugLog("Not Signed In : registerScore");
 			return false;
 		}
 
@@ -132,52 +140,66 @@ public class GameCenter {
 	/**
 	 * 
 	 * @param achievementId
+	 *            実績ID
 	 * @param process
 	 *            進捗工数ではなく、これまでに獲得した全数
 	 * @return
 	 */
-	public static boolean incrementAchievementDiffWithServerData(
-			final String achievementId, final int process) {
+	public static boolean registerAchievement(final String achievementId,
+			int process) {
 		if (!isSignedIn()) {
-			Log.w(TAG, "Not Signed In : showLeaderBorad");
+			debugLog("Not Signed In : incrementAchievementDiffWithServerData");
 			return false;
 		}
 
-		activity.runOnUiThread(new Runnable() {
-			public void run() {
-				getGameHelper().getGamesClient().loadAchievements(
-						new AchievementLoadedListenerForUpdate(getGameHelper()
-								.getGamesClient(), achievementId, process));
-			}
-		});
-		return true;
-	}
-
-	public static boolean unlockAchievement(final String achievementId) {
-		if (!isSignedIn()) {
-			Log.w(TAG, "Not Signed In : showLeaderBorad");
-			return false;
+		if (serverAchievementStates == null) {
+			Log.w(TAG, "achievement status is not availabled. : increment");
 		}
 
-		activity.runOnUiThread(new Runnable() {
-			public void run() {
-				getGameHelper().getGamesClient().unlockAchievement(
-						achievementId);
+		if (serverAchievementStates.containsKey(achievementId)) {
+			Achievement achievementInfo = serverAchievementStates
+					.get(achievementId);
+
+			if (achievementInfo.getState() == Achievement.STATE_UNLOCKED) {
+				return false;
 			}
-		});
+
+			if (achievementInfo.getType() == Achievement.TYPE_INCREMENTAL) {
+				int curretSteps = achievementInfo.getCurrentSteps();
+				final int increment = process - curretSteps;
+
+				if (increment > 0) {
+					activity.runOnUiThread(new Runnable() {
+						public void run() {
+							getGameHelper().getGamesClient()
+									.incrementAchievement(achievementId,
+											increment);
+						}
+					});
+				}
+			}
+			else {
+				activity.runOnUiThread(new Runnable() {
+					public void run() {
+						getGameHelper().getGamesClient().unlockAchievement(achievementId);
+					}
+				});
+			}
+		}
+
 		return true;
 	}
 
-	public static boolean showLeaderboard() {
+	public static boolean showLeaderboard(final String leaderboardId) {
 		if (!isSignedIn()) {
-			Log.w(TAG, "Not Signed In : showLeaderBorad");
+			debugLog("Not Signed In : showLeaderboard");
 			return false;
 		}
 
 		activity.runOnUiThread(new Runnable() {
 			public void run() {
 				activity.startActivityForResult(getGameHelper()
-						.getGamesClient().getAllLeaderboardsIntent(),
+						.getGamesClient().getLeaderboardIntent(leaderboardId),
 						REQUEST_CODE_LEADERBOARD);
 			}
 		});
@@ -186,7 +208,7 @@ public class GameCenter {
 
 	public static boolean showAchievements() {
 		if (!isSignedIn()) {
-			Log.w(TAG, "Not Signed In : showLeaderBorad");
+			debugLog("Not Signed In : showAchievements");
 			return false;
 		}
 
@@ -207,17 +229,8 @@ public class GameCenter {
 				mGameHelper.enableDebugLog(true, TAG);
 			}
 
-			mGameHelper.setup(new GameHelper.GameHelperListener() {
-				@Override
-				public void onSignInSucceeded() {
-					Log.v(TAG, "onSignInSucceeded");
-				}
-
-				@Override
-				public void onSignInFailed() {
-					Log.v(TAG, "onSignInFailed");
-				}
-			}, GameHelper.CLIENT_GAMES);
+			mGameHelper
+					.setup(new GameCenterListener(), GameHelper.CLIENT_GAMES);
 		}
 	}
 
@@ -229,5 +242,11 @@ public class GameCenter {
 		}
 
 		return mGameHelper;
+	}
+
+	private static void debugLog(String msg) {
+		if (enableDebug) {
+			Log.v(TAG, msg);
+		}
 	}
 }

@@ -401,13 +401,11 @@ map<hiberlite::sqlid_t, int> *GameEngine::getFoundItems()
 void GameEngine::signInGoogle()
 {
     GameCenter::sharedCenter()->signIn();
-    CCLog("サインインしました。%d", GameCenter::sharedCenter()->getAuthenticated());
 }
 
 void GameEngine::signOutGoogle()
 {
     GameCenter::sharedCenter()->signOut();
-    CCLog("サインアウトしました。%d", GameCenter::sharedCenter()->getAuthenticated());
 }
 
 #endif
