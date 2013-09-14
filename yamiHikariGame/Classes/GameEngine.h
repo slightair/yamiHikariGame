@@ -25,6 +25,7 @@ protected:
     int _stamina;
     bool _startWithTutorial;
     CCArray *_achievements;
+    CCArray *_resultMessages;
 
     bool init();
     GameEngine(){};
@@ -57,6 +58,7 @@ public:
     int getScore();
     int getStamina();
     void foundItem(hiberlite::sqlid_t itemID);
+    const char *getResultMessage();
 
     vector<Item> *getItems();
     map<hiberlite::sqlid_t, int> *getFoundItems();

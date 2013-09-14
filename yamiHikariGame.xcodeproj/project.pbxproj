@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5706B3FF17A0AC3C00BD1015 /* Darkness.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5706B3FD17A0AC3C00BD1015 /* Darkness.cpp */; };
 		57206AD917A547F100DB1365 /* ScoreBoard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57206AD717A547F100DB1365 /* ScoreBoard.cpp */; };
+		5729EC3C17E4BE72000AB700 /* resultMessages.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5729EC3B17E4BE72000AB700 /* resultMessages.plist */; };
 		575B9BCE17BBC8A600DC107B /* TutorialScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 575B9BCC17BBC8A600DC107B /* TutorialScene.cpp */; };
 		575C7C3717E0D352007A701D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 575C7C3617E0D352007A701D /* Images.xcassets */; };
 		57668FA317A8CF9E00A9498C /* ItemListScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57668FA117A8CF9E00A9498C /* ItemListScene.cpp */; };
@@ -232,6 +233,7 @@
 		5706B3FE17A0AC3C00BD1015 /* Darkness.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Darkness.h; path = Classes/Darkness.h; sourceTree = "<group>"; };
 		57206AD717A547F100DB1365 /* ScoreBoard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ScoreBoard.cpp; path = Classes/ScoreBoard.cpp; sourceTree = "<group>"; };
 		57206AD817A547F100DB1365 /* ScoreBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScoreBoard.h; path = Classes/ScoreBoard.h; sourceTree = "<group>"; };
+		5729EC3B17E4BE72000AB700 /* resultMessages.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = resultMessages.plist; path = Resources/resultMessages.plist; sourceTree = "<group>"; };
 		575B9BCC17BBC8A600DC107B /* TutorialScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TutorialScene.cpp; path = Classes/TutorialScene.cpp; sourceTree = "<group>"; };
 		575B9BCD17BBC8A600DC107B /* TutorialScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TutorialScene.h; path = Classes/TutorialScene.h; sourceTree = "<group>"; };
 		575C7C3617E0D352007A701D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -795,6 +797,7 @@
 				57840D8D17958956005732EC /* Info.plist */,
 				579BBAB717AE25FD0064F28A /* init.db */,
 				57E286FF17D05FE800481F36 /* achievements.plist */,
+				5729EC3B17E4BE72000AB700 /* resultMessages.plist */,
 				57FB9F9B179A5C2F005D882C /* default */,
 				57FB9F9C179A5C2F005D882C /* ios-hd */,
 			);
@@ -1849,6 +1852,7 @@
 				579EDCBE17A6C2EC0039560A /* SE002.mp3 in Resources */,
 				57FB9F9D179A5C2F005D882C /* default in Resources */,
 				57E2870017D05FE800481F36 /* achievements.plist in Resources */,
+				5729EC3C17E4BE72000AB700 /* resultMessages.plist in Resources */,
 				57FB9F9E179A5C2F005D882C /* ios-hd in Resources */,
 				5793861117A50CDB008A5BBE /* dust.plist in Resources */,
 				5793861217A50CDB008A5BBE /* stars.plist in Resources */,
