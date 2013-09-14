@@ -27,7 +27,7 @@ public class GameCenter {
 	private static final String TAG = "yamiHikariGame.GameCenter";
 	private static final int REQUEST_CODE_ACHIEVEMENT = 9010;
 	private static final int REQUEST_CODE_LEADERBOARD = 9011;
-	private static final boolean enableDebug = true;
+	private static final boolean enableDebug = false;
 
 	static class GameCenterListener implements GameHelperListener {
 
