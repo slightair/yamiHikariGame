@@ -3,6 +3,8 @@
 <plist version="1.0">
 <array>
 	<dict>
+		<key>android_achievement_id</key>
+		<string>CgkIo-n7kbUCEAIQAA</string>
 		<key>count</key>
 		<integer>1000</integer>
 		<key>ios_achievement_id</key>
@@ -15,6 +17,8 @@
 		<string>tikuwa1000</string>
 	</dict>
 	<dict>
+		<key>android_achievement_id</key>
+		<string>CgkIo-n7kbUCEAIQAQ</string>
 		<key>count</key>
 		<integer>1000</integer>
 		<key>ios_achievement_id</key>
@@ -27,6 +31,8 @@
 		<string>magicstone1000</string>
 	</dict>
 	<dict>
+		<key>android_achievement_id</key>
+		<string>CgkIo-n7kbUCEAIQAg</string>
 		<key>count</key>
 		<integer>1000</integer>
 		<key>ios_achievement_id</key>
@@ -39,6 +45,8 @@
 		<string>treasurebox1000</string>
 	</dict>
 	<dict>
+		<key>android_achievement_id</key>
+		<string>CgkIo-n7kbUCEAIQAw</string>
 		<key>count</key>
 		<integer>1000</integer>
 		<key>ios_achievement_id</key>
@@ -51,6 +59,8 @@
 		<string>bag1000</string>
 	</dict>
 	<dict>
+		<key>android_achievement_id</key>
+		<string>CgkIo-n7kbUCEAIQBA</string>
 		<key>count</key>
 		<integer>1000</integer>
 		<key>ios_achievement_id</key>
@@ -63,6 +73,8 @@
 		<string>bottle1000</string>
 	</dict>
 	<dict>
+		<key>android_achievement_id</key>
+		<string>CgkIo-n7kbUCEAIQBQ</string>
 		<key>count</key>
 		<integer>300</integer>
 		<key>ios_achievement_id</key>
@@ -75,6 +87,8 @@
 		<string>raretreasurebox300</string>
 	</dict>
 	<dict>
+		<key>android_achievement_id</key>
+		<string>CgkIo-n7kbUCEAIQBg</string>
 		<key>count</key>
 		<integer>300</integer>
 		<key>ios_achievement_id</key>
@@ -87,6 +101,8 @@
 		<string>bird300</string>
 	</dict>
 	<dict>
+		<key>android_achievement_id</key>
+		<string>CgkIo-n7kbUCEAIQBw</string>
 		<key>count</key>
 		<integer>10000</integer>
 		<key>ios_achievement_id</key>
@@ -102,6 +118,8 @@
 		<string>flowers10000</string>
 	</dict>
 	<dict>
+		<key>android_achievement_id</key>
+		<string>CgkIo-n7kbUCEAIQCA</string>
 		<key>count</key>
 		<integer>10000</integer>
 		<key>ios_achievement_id</key>
@@ -119,6 +137,8 @@
 		<string>mushrooms10000</string>
 	</dict>
 	<dict>
+		<key>android_achievement_id</key>
+		<string>CgkIo-n7kbUCEAIQCQ</string>
 		<key>count</key>
 		<integer>10000</integer>
 		<key>ios_achievement_id</key>

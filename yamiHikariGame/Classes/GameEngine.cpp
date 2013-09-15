@@ -45,9 +45,11 @@ bool GameEngine::init()
 {
     _achievements = CCArray::createWithContentsOfFile(kAchievementsFileName);
     _achievements->retain();
-
     _resultMessages = CCArray::createWithContentsOfFile(kResultMessagesFileName);
     _resultMessages->retain();
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    _authenticated = false;
+#endif
 
     return true;
 }
@@ -155,6 +157,7 @@ void GameEngine::registerActivities()
     Achievement firstPlayAchievement;
     firstPlayAchievement.setName(AchievementFirstPlayName);
     firstPlayAchievement.setIOSAchievementID(AchievementFirstPlayAchievementIDIOS);
+    firstPlayAchievement.setAndroidAchievementID(AchievementFirstPlayAchievementIDAndroid);
     firstPlayAchievement.setProcess(1);
     firstPlayAchievement.setGoal(1);
     completedAchievements.push_back(firstPlayAchievement);
@@ -179,8 +182,11 @@ void GameEngine::registerActivities()
         Achievement achievement;
         achievement.setName(((CCString *)achievementInfo->objectForKey("name"))->getCString());
         achievement.setIOSAchievementID(((CCString *)achievementInfo->objectForKey("ios_achievement_id"))->getCString());
+        const char* androidId = ((CCString *)achievementInfo->objectForKey("android_achievement_id"))->getCString();
+        achievement.setAndroidAchievementID(string(androidId));
         achievement.setProcess(sum);
         achievement.setGoal(count);
+
         completedAchievements.push_back(achievement);
     }
 
@@ -201,11 +207,21 @@ void GameEngine::showItemList()
 
 void GameEngine::showRanking()
 {
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    if (!getAuthenticatedIndirectly()) {
+        CCMessageBox(MessageAlertShowRankingAchievementsAndroid, MessageAlertTitleAndroid);
+    }
+#endif
     GameCenter::sharedCenter()->showRanking();
 }
 
 void GameEngine::showAchievements()
 {
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    if (!getAuthenticatedIndirectly()) {
+        CCMessageBox(MessageAlertShowRankingAchievementsAndroid, MessageAlertTitleAndroid);
+    }
+#endif
     GameCenter::sharedCenter()->showAchievements();
 }
 
@@ -400,3 +416,25 @@ map<hiberlite::sqlid_t, int> *GameEngine::getFoundItems()
 {
     return &_foundItems;
 }
+
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+
+void GameEngine::signInGoogle()
+{
+    GameCenter::sharedCenter()->signIn();
+}
+
+void GameEngine::signOutGoogle()
+{
+    GameCenter::sharedCenter()->signOut();
+}
+
+void GameEngine::singInStateChanged(bool isSignedIn) {
+    _authenticated = isSignedIn;
+}
+
+bool GameEngine::getAuthenticatedIndirectly() {
+    return _authenticated;
+}
+
+#endif

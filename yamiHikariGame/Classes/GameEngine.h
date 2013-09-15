@@ -26,6 +26,9 @@ protected:
     bool _startWithTutorial;
     CCArray *_achievements;
     CCArray *_resultMessages;
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    bool _authenticated;
+#endif
 
     bool init();
     GameEngine(){};
@@ -60,6 +63,13 @@ public:
     int getStamina();
     void foundItem(hiberlite::sqlid_t itemID);
     const char *getResultMessage();
+
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    void signInGoogle();
+    void signOutGoogle();
+    void singInStateChanged(bool isSignedIn);
+    bool getAuthenticatedIndirectly();
+#endif
 
     vector<Item> *getItems();
     map<hiberlite::sqlid_t, int> *getFoundItems();
