@@ -10,11 +10,27 @@
 #include "Constants.h"
 #include "GameEngine.h"
 
-#define kMainMenuItemPaddingVertical 12
-#define kSubMenuItemPaddingHorizontal 72
-#define kSubMenuMarginBottom 32
-#define kResetMenuMarginTop 16
-#define kResetMenuPaddingHorizontal 144
+#define kImageButtonSize 48
+
+#define kSubImageButtonSize 32
+#define kSubImageButtonOpacity 96
+
+#define kResetMenuMarginTop 4
+#define kResetMenuMarginLeft 4
+
+#define kShowTutorialMenuMarginTop 4
+#define kShowTutorialMenuMarginRight 4
+
+#define kTitleLogoMarginTop 32
+
+#define kStartGameMenuMarginBottom 96
+
+#define kShowItemListMenuMarginBottom 16
+#define kShowItemListMenuMarginRight 16
+
+#define kGameCenterMenuItemPaddingVertical 8
+#define kGameCenterMenuItemMarginBottom 16
+#define kGameCenterMenuItemMarginLeft 16
 
 #define kCharacterDistance 80
 #define kMonsterDelay 0.2
@@ -57,42 +73,74 @@ bool TitleScene::init()
         this->addChild(_darknessNode);
 
         CCSprite *titleLogo = CCSprite::createWithSpriteFrameName("titlelogo.png");
-        titleLogo->setPosition(ccp(windowSize.width / 2, windowSize.height * 0.83));
+        titleLogo->setAnchorPoint(ccp(0.5, 1.0));
+        titleLogo->setPosition(ccp(windowSize.width / 2, windowSize.height - kTitleLogoMarginTop));
         this->addChild(titleLogo);
 
-        CCSprite *bomb = CCSprite::createWithSpriteFrameName("bomb.png");
+        CCSprite *bombNormal = CCSprite::createWithSpriteFrameName("bomb.png");
         CCSprite *bombPressed = CCSprite::createWithSpriteFrameName("bombfire.png");
-        CCMenuItemSprite *resetSaveDataItem = CCMenuItemSprite::create(bomb, bombPressed,
-                                                                       GameEngine::sharedEngine(),
-                                                                       menu_selector(GameEngine::confirmResetSaveData));
+
+        CCMenuItemSprite *resetSaveDataItem = this->createSubImageMenuItem(bombNormal, bombPressed,
+                                                                        GameEngine::sharedEngine(),
+                                                                        menu_selector(GameEngine::confirmResetSaveData));
 
         CCMenu *resetMenu = CCMenu::create(resetSaveDataItem, NULL);
-        resetMenu->setPosition(ccp(windowSize.width / 2 - kResetMenuPaddingHorizontal , windowSize.height - kResetMenuMarginTop));
+        resetMenu->setPosition(ccp(kSubImageButtonSize / 2 + kResetMenuMarginLeft,
+                                   windowSize.height - kSubImageButtonSize / 2 - kResetMenuMarginTop));
         this->addChild(resetMenu);
+
+        CCSprite *scrollNormal = CCSprite::createWithSpriteFrameName("scroll.png");
+        CCSprite *scrollPressed = CCSprite::createWithSpriteFrameName("scroll.png");
+
+        CCMenuItemSprite *showTutorialItem = this->createSubImageMenuItem(scrollNormal, scrollPressed,
+                                                                       this,
+                                                                       menu_selector(TitleScene::startTutorial));
+
+        CCMenu *showTutorialMenu = CCMenu::create(showTutorialItem, NULL);
+        showTutorialMenu->setPosition(ccp(windowSize.width - kSubImageButtonSize / 2 - kShowTutorialMenuMarginRight,
+                                          windowSize.height - kSubImageButtonSize / 2 - kShowTutorialMenuMarginTop));
+        this->addChild(showTutorialMenu);
 
         CCMenuItem *startGameItem = CCMenuItemLabel::create(CCLabelTTF::create(MessageGameStartText, DefaultFontName, FontSizeBig),
                                                             this,
                                                             menu_selector(TitleScene::startGame));
 
-        CCMenuItem *startTutorialItem = CCMenuItemLabel::create(CCLabelTTF::create(MessageShowTutorialText, DefaultFontName, FontSizeBig), this, menu_selector(TitleScene::startTutorial));
-
-        CCMenu *startMenu = CCMenu::create(startGameItem, startTutorialItem, NULL);
-        startMenu->setPosition(ccp(windowSize.width / 2, windowSize.height * 0.25));
-        startMenu->alignItemsVerticallyWithPadding(kMainMenuItemPaddingVertical);
+        CCMenu *startMenu = CCMenu::create(startGameItem, NULL);
+        startMenu->setPosition(ccp(windowSize.width / 2, startGameItem->getContentSize().height / 2 + kStartGameMenuMarginBottom));
         this->addChild(startMenu);
 
-        CCMenuItem *showItemListItem = CCMenuItemLabel::create(CCLabelTTF::create(MessageShowItemListText, DefaultFontName, FontSizeBig),
+        CCSprite *referenceNormal = CCSprite::createWithSpriteFrameName("referenceButtonNormal.png");
+        CCSprite *referencePressed = CCSprite::createWithSpriteFrameName("referenceButtonPressed.png");
+
+        CCMenuItemSprite *showItemListItem = CCMenuItemSprite::create(referenceNormal, referencePressed,
                                                                GameEngine::sharedEngine(),
                                                                menu_selector(GameEngine::showItemList));
 
-        CCMenuItem *showRankingItem = CCMenuItemLabel::create(CCLabelTTF::create(MessageShowRankingText, DefaultFontName, FontSizeBig),
+        CCMenu *showItemListMenu = CCMenu::create(showItemListItem, NULL);
+        showItemListMenu->setPosition(ccp(windowSize.width - kImageButtonSize / 2 - kShowItemListMenuMarginRight,
+                                          kImageButtonSize / 2 + kShowItemListMenuMarginBottom));
+        this->addChild(showItemListMenu);
+
+        CCSprite *rankingNormal = CCSprite::createWithSpriteFrameName("rankingButtonNormal.png");
+        CCSprite *rankingPressed = CCSprite::createWithSpriteFrameName("rankingButtonPressed.png");
+
+        CCMenuItemSprite *showRankingItem = CCMenuItemSprite::create(rankingNormal, rankingPressed,
                                                               GameEngine::sharedEngine(),
                                                               menu_selector(GameEngine::showRanking));
 
-        CCMenu *subMenu = CCMenu::create(showRankingItem, showItemListItem, NULL);
-        subMenu->alignItemsHorizontallyWithPadding(kSubMenuItemPaddingHorizontal);
-        subMenu->setPosition(ccp(windowSize.width / 2, showItemListItem->getContentSize().height / 2 + kSubMenuMarginBottom));
-        this->addChild(subMenu);
+        CCSprite *achievementNormal = CCSprite::createWithSpriteFrameName("achievementButtonNormal.png");
+        CCSprite *achievementPressed = CCSprite::createWithSpriteFrameName("achievementButtonPressed.png");
+
+        CCMenuItemSprite *showAchievementItem = CCMenuItemSprite::create(achievementNormal, achievementPressed,
+                                                              GameEngine::sharedEngine(),
+                                                              menu_selector(GameEngine::showAchievements));
+
+        CCMenu *gameCenterMenu = CCMenu::create(showRankingItem, showAchievementItem, NULL);
+        gameCenterMenu->alignItemsVerticallyWithPadding(kGameCenterMenuItemPaddingVertical);
+        gameCenterMenu->setPosition(ccp(kImageButtonSize / 2 + kGameCenterMenuItemMarginLeft,
+                                         (kImageButtonSize + kGameCenterMenuItemPaddingVertical + kImageButtonSize ) / 2 + kGameCenterMenuItemMarginBottom));
+
+        this->addChild(gameCenterMenu);
     }
 
     return result;
@@ -158,4 +206,19 @@ void TitleScene::startGame()
 void TitleScene::startTutorial()
 {
     GameEngine::sharedEngine()->startTutorial(false);
+}
+
+CCMenuItemSprite *TitleScene::createSubImageMenuItem(CCSprite *normalImage, CCSprite *pressedImage, CCObject *target, SEL_MenuHandler selector)
+{
+    normalImage->setPosition(ccp(kSubImageButtonSize / 2, kSubImageButtonSize / 2));
+    normalImage->setOpacity(kSubImageButtonOpacity);
+    pressedImage->setPosition(ccp(kSubImageButtonSize / 2, kSubImageButtonSize / 2));
+
+    CCLayerColor *normalImageLayer = CCLayerColor::create(ccc4(0, 0, 0, 0), kSubImageButtonSize, kSubImageButtonSize);
+    normalImageLayer->addChild(normalImage);
+
+    CCLayerColor *pressedImageLayer = CCLayerColor::create(ccc4(0, 0, 0, 0), kSubImageButtonSize, kSubImageButtonSize);
+    pressedImageLayer->addChild(pressedImage);
+
+    return CCMenuItemSprite::create(normalImageLayer, pressedImageLayer, target, selector);
 }

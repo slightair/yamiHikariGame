@@ -204,6 +204,11 @@ void GameEngine::showRanking()
     GameCenter::sharedCenter()->showRanking();
 }
 
+void GameEngine::showAchievements()
+{
+    GameCenter::sharedCenter()->showAchievements();
+}
+
 void GameEngine::showTitle()
 {
     CCTransitionFade *transition = CCTransitionFade::create(kTransitionDuration, TitleScene::scene());
