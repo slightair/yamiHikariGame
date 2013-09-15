@@ -205,11 +205,21 @@ void GameEngine::showItemList()
 
 void GameEngine::showRanking()
 {
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    if (!getAuthenticatedIndirectly()) {
+        CCMessageBox(MessageAlertShowRankingAchievementsAndroid, MessageAlertTitleAndroid);
+    }
+#endif
     GameCenter::sharedCenter()->showRanking();
 }
 
 void GameEngine::showAchievements()
 {
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    if (!getAuthenticatedIndirectly()) {
+        CCMessageBox(MessageAlertShowRankingAchievementsAndroid, MessageAlertTitleAndroid);
+    }
+#endif
     GameCenter::sharedCenter()->showAchievements();
 }
 

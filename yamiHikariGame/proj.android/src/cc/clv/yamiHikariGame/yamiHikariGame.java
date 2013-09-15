@@ -25,10 +25,12 @@ package cc.clv.yamiHikariGame;
 
 import org.cocos2dx.lib.Cocos2dxActivity;
 
-import cc.clv.yamiHikariGame.gamecenter.GameCenter;
-
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import cc.clv.yamiHikariGame.gamecenter.GameCenter;
 
 public class yamiHikariGame extends Cocos2dxActivity {
 
@@ -53,6 +55,22 @@ public class yamiHikariGame extends Cocos2dxActivity {
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 		GameCenter.onActivityResult(requestCode, resultCode, data);
+	}
+
+	@Override
+	public void showDialog(final String pTitle, final String pMessage) {
+		this.runOnUiThread(new Runnable() {
+			public void run() {
+				Log.v("yamiHikariGame", "showDialog");
+				AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(
+						yamiHikariGame.getContext());
+				dialogBuilder.setTitle(pTitle);
+				dialogBuilder.setMessage(pMessage);
+				dialogBuilder.setPositiveButton("OK",null);
+				dialogBuilder.setCancelable(false);
+				dialogBuilder.create().show();
+			}
+		});
 	}
 
 	static {

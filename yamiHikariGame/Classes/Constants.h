@@ -95,6 +95,9 @@
 #define MessageTutorialItemListText "アイテムを ひろうと\nずかんの せつめいが ふえるよ"
 #define MessageTutorialLetsPlayText "さぁ、はじめよう"
 
+#define MessageAlertTitleAndroid "おしらせ"
+#define MessageAlertShowRankingAchievementsAndroid "ランキングや取得済みの実績一覧を見るには、Google+へサインインしてください。"
+
 #define SaveDataChecksumSalt "tikuwa"
 #define ScoreChecksumSalt "gannmo"
 
