@@ -27,6 +27,7 @@
 
 #define kSavefileName "savedata.db"
 #define kAchievementsFileName "achievements.plist"
+#define kResultMessagesFileName "resultMessages.plist"
 
 static GameEngine *__sharedEngine = NULL;
 
@@ -44,7 +45,8 @@ bool GameEngine::init()
 {
     _achievements = CCArray::createWithContentsOfFile(kAchievementsFileName);
     _achievements->retain();
-
+    _resultMessages = CCArray::createWithContentsOfFile(kResultMessagesFileName);
+    _resultMessages->retain();
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     _authenticated = false;
 #endif
@@ -382,6 +384,11 @@ void GameEngine::foundItem(hiberlite::sqlid_t itemID)
     else {
         _foundItems[itemID] += 1;
     }
+}
+
+const char *GameEngine::getResultMessage()
+{
+    return ((CCString *)_resultMessages->randomObject())->getCString();
 }
 
 string GameEngine::generateScoreChecksum(int score)

@@ -15,6 +15,7 @@ task :default => "settings:all"
 namespace "settings" do
   INIT_DB_FILENAME = 'init.db'
   ACHIEVEMENTS_FILENAME = 'achievements.plist'
+  RESULT_MESSAGES_FILENAME = 'resultMessages.plist'
 
   desc "generate #{INIT_DB_FILENAME}"
   task :initDatabase do
@@ -44,10 +45,21 @@ namespace "settings" do
     end
   end
 
+  desc "generate #{RESULT_MESSAGES_FILENAME}"
+  task :resultMessages do
+    path = File.join(RESOURCES_DIR, RESULT_MESSAGES_FILENAME)
+
+    File.delete(path) if File.exist?(path)
+    File.open(path, "w") do |file|
+      file << YAML.load_file('resultMessages.yml').to_plist
+    end
+  end
+
   desc "generate all setting files"
   task :all do
     Rake::Task['settings:initDatabase'].invoke
     Rake::Task['settings:achievements'].invoke
+    Rake::Task['settings:resultMessages'].invoke
   end
 end
 

@@ -11,10 +11,10 @@
 #include "GameEngine.h"
 
 #define kScoreLabelMarginLeft 6
-#define kScoreLabelMarginTop 24
+#define kScoreLabelMarginTop 12
 
 #define kStaminaGaugeMarginRight 6
-#define kStaminaGaugeMarginTop 24
+#define kStaminaGaugeMarginTop 12
 
 ScoreBoard *ScoreBoard::create()
 {

@@ -25,6 +25,7 @@ protected:
     int _stamina;
     bool _startWithTutorial;
     CCArray *_achievements;
+    CCArray *_resultMessages;
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     bool _authenticated;
 #endif
@@ -61,6 +62,7 @@ public:
     int getScore();
     int getStamina();
     void foundItem(hiberlite::sqlid_t itemID);
+    const char *getResultMessage();
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     void signInGoogle();

@@ -15,6 +15,9 @@
 
 #define kBraveImageMarginTop (TitleBarHeight + 48)
 
+#define kBraveMessageMarginTop (TitleBarHeight + 72)
+#define kBraveMessageAdjustX 32
+
 #define kBoxFillColor ((ccColor4F){0.0, 0.0, 0.0, 0.0})
 #define kBoxBorderColor ((ccColor4F){1.0, 1.0, 1.0, 1.0})
 #define kBoxMarginHorizontal 16
@@ -22,7 +25,7 @@
 
 #define kScoreLabelMarginTop (TitleBarHeight + 140)
 
-#define kItemCountLabelMarginTop (TitleBarHeight + 194)
+#define kItemCountLabelMarginTop (TitleBarHeight + 184)
 
 #define kItemImageAreaMarginTop (TitleBarHeight + 234)
 #define kNumberOfLineItems 8
@@ -31,11 +34,11 @@
 #define kItemImageMarginVertical 16
 #define kItemImageCountLabelAdjustY 6
 
-#define kCommandAreaHeight 40
-#define kCommandAreaMarginTop 4
-#define kCommandAreaMarginBottom 24
+#define kCommandAreaHeight 32
+#define kCommandAreaMarginTop 14
+#define kCommandAreaMarginBottom 18
 #define kCommandButtonWidth 88
-#define kCommandButtonHeight 44
+#define kCommandButtonHeight 64
 #define kCommandButtonPadding 32
 
 CCScene* ResultScene::scene()
@@ -62,6 +65,11 @@ bool ResultScene::init()
         braveImage->setRotation(90);
         braveImage->setPosition(ccp(windowSize.width / 2, windowSize.height - kBraveImageMarginTop - braveImage->getContentSize().height / 2));
         this->addChild(braveImage);
+
+        CCLabelTTF *messageLabel = CCLabelTTF::create(engine->getResultMessage(), DefaultFontName, FontSizeSmall);
+        messageLabel->setPosition(ccp(windowSize.width / 2 + kBraveMessageAdjustX, windowSize.height - kBraveMessageMarginTop));
+        messageLabel->setAnchorPoint(ccp(0.0, 0.0));
+        this->addChild(messageLabel);
 
         float boxBottom = kCommandAreaHeight + kCommandAreaMarginTop + kCommandAreaMarginBottom;
         CCDrawNode *boxNode = CCDrawNode::create();
