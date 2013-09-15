@@ -25,6 +25,9 @@ protected:
     int _stamina;
     bool _startWithTutorial;
     CCArray *_achievements;
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    bool _authenticated;
+#endif
 
     bool init();
     GameEngine(){};
@@ -62,6 +65,8 @@ public:
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     void signInGoogle();
     void signOutGoogle();
+    void singInStateChanged(bool isSignedIn);
+    bool getAuthenticatedIndirectly();
 #endif
 
     vector<Item> *getItems();

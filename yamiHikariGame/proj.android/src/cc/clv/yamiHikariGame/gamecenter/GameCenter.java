@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.util.Log;
 import cc.clv.yamiHikariGame.yamiHikariGame;
 import cc.clv.yamiHikariGame.gamecenter.GameHelper.GameHelperListener;
+import cc.clv.yamiHikariGame.gamecenter.model.AchievementVO;
 
 import com.google.android.gms.games.GamesClient;
 import com.google.android.gms.games.achievement.Achievement;
@@ -21,7 +22,7 @@ import com.google.android.gms.games.achievement.OnAchievementsLoadedListener;
 public class GameCenter {
 
 	private static GameHelper mGameHelper = null;
-	private static Map<String, Achievement> serverAchievementStates = null;
+	private static Map<String, AchievementVO> serverAchievementStates = null;
 	private static final Activity activity = (Activity) yamiHikariGame
 			.getContext();
 	private static final String TAG = "yamiHikariGame.GameCenter";
@@ -34,11 +35,13 @@ public class GameCenter {
 		@Override
 		public void onSignInFailed() {
 			debugLog("onSignInFailed");
+			GameCenter.onSignInProcessCompleted(false);
 		}
 
 		@Override
 		public void onSignInSucceeded() {
 			debugLog("onSignInSucceeded");
+			GameCenter.onSignInProcessCompleted(true);
 			GameCenter.loadInitialAchievementState();
 		}
 
@@ -80,6 +83,7 @@ public class GameCenter {
 			public void run() {
 				serverAchievementStates = null;
 				getGameHelper().signOut();
+				onSignOutProcessCompleted();
 			}
 		});
 	}
@@ -106,12 +110,12 @@ public class GameCenter {
 									AchievementBuffer buffer) {
 								if (serverAchievementStates == null
 										&& statusCode == GamesClient.STATUS_OK) {
-									serverAchievementStates = new HashMap<String, Achievement>();
+									serverAchievementStates = new HashMap<String, AchievementVO>();
 									for (int i = 0; i < buffer.getCount(); i++) {
 										Achievement achievement = buffer.get(i);
 										serverAchievementStates.put(
 												achievement.getAchievementId(),
-												achievement);
+												new AchievementVO(achievement));
 									}
 								}
 							}
@@ -157,18 +161,22 @@ public class GameCenter {
 		}
 
 		if (serverAchievementStates.containsKey(achievementId)) {
-			Achievement achievementInfo = serverAchievementStates
+			AchievementVO achievementInfo = serverAchievementStates
 					.get(achievementId);
 
-			if (achievementInfo.getState() == Achievement.STATE_UNLOCKED) {
+			if (achievementInfo.getState() == AchievementVO.STATE_UNLOCKED) {
 				return false;
 			}
 
-			if (achievementInfo.getType() == Achievement.TYPE_INCREMENTAL) {
+			if (achievementInfo.getType() == AchievementVO.TYPE_INCREMENTAL) {
 				int curretSteps = achievementInfo.getCurrentSteps();
 				final int increment = process - curretSteps;
 
 				if (increment > 0) {
+					achievementInfo.setCurrentSteps(process);
+					if (process >= achievementInfo.getGoal()) {
+						achievementInfo.setState(AchievementVO.STATE_UNLOCKED);
+					}
 					activity.runOnUiThread(new Runnable() {
 						public void run() {
 							getGameHelper().getGamesClient()
@@ -179,6 +187,7 @@ public class GameCenter {
 				}
 			}
 			else {
+				achievementInfo.setState(AchievementVO.STATE_UNLOCKED);
 				activity.runOnUiThread(new Runnable() {
 					public void run() {
 						getGameHelper().getGamesClient().unlockAchievement(achievementId);
@@ -249,4 +258,15 @@ public class GameCenter {
 			Log.v(TAG, msg);
 		}
 	}
+
+	/**
+	 * ログインプロセスが完了した際に呼び出す処理
+	 * @param signedIn	ログインの成否(true:成功、false:失敗)
+	 */
+	public static native void onSignInProcessCompleted(boolean signedIn);
+
+	/**
+	 * ログアウトプロセスが完了した際に呼び出す処理
+	 */
+	public static native void onSignOutProcessCompleted();
 }

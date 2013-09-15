@@ -45,6 +45,10 @@ bool GameEngine::init()
     _achievements = CCArray::createWithContentsOfFile(kAchievementsFileName);
     _achievements->retain();
 
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    _authenticated = false;
+#endif
+
     return true;
 }
 
@@ -406,6 +410,14 @@ void GameEngine::signInGoogle()
 void GameEngine::signOutGoogle()
 {
     GameCenter::sharedCenter()->signOut();
+}
+
+void GameEngine::singInStateChanged(bool isSignedIn) {
+    _authenticated = isSignedIn;
+}
+
+bool GameEngine::getAuthenticatedIndirectly() {
+    return _authenticated;
 }
 
 #endif
