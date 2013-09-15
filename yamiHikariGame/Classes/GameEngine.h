@@ -51,6 +51,7 @@ public:
     void finishGame();
     void showResult();
     void showRanking();
+    void showAchievements();
     void showItemList();
     void showTitle();
     void confirmResetSaveData();
