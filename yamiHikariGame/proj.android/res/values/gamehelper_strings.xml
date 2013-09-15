@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="gamehelper_sign_in_failed">サインインに失敗しました。ネットワーク接続を確認して、再度おこなってください。</string>
+    <string name="gamehelper_app_misconfigured">アプリケーションが正しく設定されていません。</string>
+    <string name="gamehelper_license_failed">ライセンスの確認に失敗しました。</string>
+    <string name="gamehelper_unknown_error">不明なエラーです。</string>
+</resources>

@@ -10,3 +10,6 @@
 sdk.dir=
 ndk.dir=
 cocos2dx.dir=
+
+# reference(必ず 相対パス)
+android.library.reference.1=

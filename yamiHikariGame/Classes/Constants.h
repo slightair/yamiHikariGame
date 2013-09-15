@@ -95,6 +95,9 @@
 #define MessageTutorialItemListText "アイテムを ひろうと\nずかんの せつめいが ふえるよ"
 #define MessageTutorialLetsPlayText "さぁ、はじめよう"
 
+#define MessageAlertTitleAndroid "おしらせ"
+#define MessageAlertShowRankingAchievementsAndroid "ランキングや実績一覧を見るには、Google+へサインインしてください。"
+
 #define SaveDataChecksumSalt "tikuwa"
 #define ScoreChecksumSalt "gannmo"
 
@@ -103,10 +106,10 @@
 #define HighScoreChecksumKey "highScoreChecksum"
 
 #define LeaderboardIDHighScoreIOS "yamiHikariGame.highScore"
-#define LeaderboardIDHighScoreAndroid ""
+#define LeaderboardIDHighScoreAndroid "CgkIo-n7kbUCEAIQCw"
 
 #define AchievementFirstPlayName "first play"
 #define AchievementFirstPlayAchievementIDIOS "yamiHikariGame.achievements.firstPlay"
-#define AchievementFirstPlayAchievementIDAndroid ""
+#define AchievementFirstPlayAchievementIDAndroid "CgkIo-n7kbUCEAIQCg"
 
 #endif

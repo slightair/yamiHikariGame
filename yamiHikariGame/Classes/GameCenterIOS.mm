@@ -96,3 +96,13 @@ void GameCenter::registerAchievements(vector<Achievement> *achievements)
         }
     }
 }
+
+void GameCenter::signIn()
+{
+    // nop
+}
+
+void GameCenter::signOut()
+{
+    // nop
+}

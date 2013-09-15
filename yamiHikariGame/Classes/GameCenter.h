@@ -28,6 +28,8 @@ public:
     static GameCenter *sharedCenter();
 
     void configure();
+    void signIn();
+    void signOut();
     bool getAuthenticated();
     void showRanking();
     void showAchievements();
