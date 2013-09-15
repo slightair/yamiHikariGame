@@ -24,6 +24,10 @@ protected:
     Darkness *_darknessNode;
     Monster *_monster;
     Brave *_brave;
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    CCMenu *_signInMenu;
+    CCMenu *_signOutMenu;
+#endif
 
     void runEscapeSequence(CCNode *object);
     void startGame();

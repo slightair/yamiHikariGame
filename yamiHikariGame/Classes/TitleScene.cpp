@@ -32,6 +32,8 @@
 #define kGameCenterMenuItemMarginBottom 16
 #define kGameCenterMenuItemMarginLeft 16
 
+#define kGoogleMenuItemMarginBottom 16
+
 #define kCharacterDistance 80
 #define kMonsterDelay 0.2
 #define kEscapeDuration 4.0
@@ -141,6 +143,33 @@ bool TitleScene::init()
                                          (kImageButtonSize + kGameCenterMenuItemPaddingVertical + kImageButtonSize ) / 2 + kGameCenterMenuItemMarginBottom));
 
         this->addChild(gameCenterMenu);
+
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+        CCSprite *signInNormal = CCSprite::createWithSpriteFrameName("btn_g+signin_normal.png");
+        CCSprite *signInPressed = CCSprite::createWithSpriteFrameName("btn_g+signin_pressed.png");
+
+        CCMenuItemSprite *signInItem = CCMenuItemSprite::create(signInNormal, signInPressed,
+                                                                GameEngine::sharedEngine(),
+                                                                menu_selector(GameEngine::signInGoogle));
+
+        _signInMenu = CCMenu::create(signInItem, NULL);
+        _signInMenu->setPosition(ccp(windowSize.width / 2, signInNormal->getContentSize().height / 2 + kGoogleMenuItemMarginBottom));
+
+        this->addChild(_signInMenu);
+
+        CCSprite *signOutNormal = CCSprite::createWithSpriteFrameName("btn_g+signout_normal.png");
+        CCSprite *signOutPressed = CCSprite::createWithSpriteFrameName("btn_g+signout_pressed.png");
+
+        CCMenuItemSprite *signOutItem = CCMenuItemSprite::create(signOutNormal, signOutPressed,
+                                                                 GameEngine::sharedEngine(),
+                                                                 menu_selector(GameEngine::signOutGoogle));
+
+        _signOutMenu = CCMenu::create(signOutItem, NULL);
+        _signOutMenu->setPosition(ccp(windowSize.width / 2, signOutNormal->getContentSize().height / 2 + kGoogleMenuItemMarginBottom));
+        _signOutMenu->setVisible(false);
+
+        this->addChild(_signOutMenu);
+#endif
     }
 
     return result;
@@ -149,6 +178,16 @@ bool TitleScene::init()
 void TitleScene::update(float delta)
 {
     _darknessNode->setLightPosition(_brave->getPosition());
+
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    if (GameEngine::sharedEngine()->getAuthenticatedIndirectly()) {
+        _signInMenu->setVisible(false);
+        _signOutMenu->setVisible(true);
+    } else {
+        _signInMenu->setVisible(true);
+        _signOutMenu->setVisible(false);
+    }
+#endif
 }
 
 void TitleScene::onEnter()
