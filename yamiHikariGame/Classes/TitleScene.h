@@ -28,7 +28,7 @@ protected:
     void runEscapeSequence(CCNode *object);
     void startGame();
     void startTutorial();
-
+    CCMenuItemSprite *createSubImageMenuItem(CCSprite *normalImage, CCSprite *pressedImage, CCObject *target, SEL_MenuHandler selector);
 public:
     virtual bool init();
     virtual void update(float delta);
