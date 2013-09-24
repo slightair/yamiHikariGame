@@ -157,7 +157,8 @@ public class GameCenter {
 		}
 
 		if (serverAchievementStates == null) {
-			Log.w(TAG, "achievement status is not availabled. : increment");
+			Log.w(TAG, "achievement status is not available.");
+			return false;
 		}
 
 		if (serverAchievementStates.containsKey(achievementId)) {
