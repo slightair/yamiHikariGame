@@ -219,6 +219,18 @@
 		57E2870017D05FE800481F36 /* achievements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 57E286FF17D05FE800481F36 /* achievements.plist */; };
 		57E2870317D0E14600481F36 /* GameCenterIOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = 57E2870117D0E14600481F36 /* GameCenterIOS.mm */; };
 		57E2870517D0E42400481F36 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57E2870417D0E42400481F36 /* GameKit.framework */; };
+		57E5E0F218E9807400C36D88 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57E5E0F118E9807400C36D88 /* CoreImage.framework */; };
+		57F4DE5E18E8029600C2A173 /* Everyplay.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 57F4DE5C18E8029600C2A173 /* Everyplay.bundle */; };
+		57F4DE5F18E8029600C2A173 /* Everyplay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57F4DE5D18E8029600C2A173 /* Everyplay.framework */; };
+		57F4DE6118E802DF00C2A173 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57F4DE6018E802DF00C2A173 /* AssetsLibrary.framework */; };
+		57F4DE6318E8030700C2A173 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57F4DE6218E8030700C2A173 /* CoreMedia.framework */; };
+		57F4DE6518E8031000C2A173 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57F4DE6418E8031000C2A173 /* CoreVideo.framework */; };
+		57F4DE6718E8031D00C2A173 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57F4DE6618E8031D00C2A173 /* MessageUI.framework */; };
+		57F4DE6918E8032700C2A173 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57F4DE6818E8032700C2A173 /* MobileCoreServices.framework */; };
+		57F4DE6B18E8033F00C2A173 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57F4DE6A18E8033F00C2A173 /* Security.framework */; };
+		57F4DE6D18E8034C00C2A173 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57F4DE6C18E8034C00C2A173 /* Social.framework */; };
+		57F4DE6F18E8035300C2A173 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57F4DE6E18E8035300C2A173 /* StoreKit.framework */; };
+		57F4DE7118E8036300C2A173 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57F4DE7018E8036300C2A173 /* SystemConfiguration.framework */; };
 		57FB9F8C17959390005D882C /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57FB9F8A17959390005D882C /* GameScene.cpp */; };
 		57FB9F9D179A5C2F005D882C /* default in Resources */ = {isa = PBXBuildFile; fileRef = 57FB9F9B179A5C2F005D882C /* default */; };
 		57FB9F9E179A5C2F005D882C /* ios-hd in Resources */ = {isa = PBXBuildFile; fileRef = 57FB9F9C179A5C2F005D882C /* ios-hd */; };
@@ -705,6 +717,18 @@
 		57E286FF17D05FE800481F36 /* achievements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = achievements.plist; path = Resources/achievements.plist; sourceTree = "<group>"; };
 		57E2870117D0E14600481F36 /* GameCenterIOS.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = GameCenterIOS.mm; path = Classes/GameCenterIOS.mm; sourceTree = "<group>"; };
 		57E2870417D0E42400481F36 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		57E5E0F118E9807400C36D88 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		57F4DE5C18E8029600C2A173 /* Everyplay.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Everyplay.bundle; sourceTree = "<group>"; };
+		57F4DE5D18E8029600C2A173 /* Everyplay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Everyplay.framework; sourceTree = "<group>"; };
+		57F4DE6018E802DF00C2A173 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		57F4DE6218E8030700C2A173 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		57F4DE6418E8031000C2A173 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		57F4DE6618E8031D00C2A173 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		57F4DE6818E8032700C2A173 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		57F4DE6A18E8033F00C2A173 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		57F4DE6C18E8034C00C2A173 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		57F4DE6E18E8035300C2A173 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		57F4DE7018E8036300C2A173 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		57FB9F8A17959390005D882C /* GameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameScene.cpp; path = Classes/GameScene.cpp; sourceTree = "<group>"; };
 		57FB9F8B17959390005D882C /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameScene.h; path = Classes/GameScene.h; sourceTree = "<group>"; };
 		57FB9F9B179A5C2F005D882C /* default */ = {isa = PBXFileReference; lastKnownFileType = folder; name = default; path = Resources/default; sourceTree = "<group>"; };
@@ -724,8 +748,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				57E2870517D0E42400481F36 /* GameKit.framework in Frameworks */,
+				57E5E0F218E9807400C36D88 /* CoreImage.framework in Frameworks */,
+				57F4DE7118E8036300C2A173 /* SystemConfiguration.framework in Frameworks */,
+				57F4DE6F18E8035300C2A173 /* StoreKit.framework in Frameworks */,
+				57F4DE6D18E8034C00C2A173 /* Social.framework in Frameworks */,
+				57F4DE6B18E8033F00C2A173 /* Security.framework in Frameworks */,
 				57840D6617958956005732EC /* QuartzCore.framework in Frameworks */,
+				57F4DE6918E8032700C2A173 /* MobileCoreServices.framework in Frameworks */,
+				57F4DE6718E8031D00C2A173 /* MessageUI.framework in Frameworks */,
+				57F4DE6518E8031000C2A173 /* CoreVideo.framework in Frameworks */,
+				57F4DE6318E8030700C2A173 /* CoreMedia.framework in Frameworks */,
+				57F4DE6118E802DF00C2A173 /* AssetsLibrary.framework in Frameworks */,
+				57F4DE5F18E8029600C2A173 /* Everyplay.framework in Frameworks */,
+				57E2870517D0E42400481F36 /* GameKit.framework in Frameworks */,
 				57840D6817958956005732EC /* OpenGLES.framework in Frameworks */,
 				57840D6A17958956005732EC /* OpenAL.framework in Frameworks */,
 				57840D6C17958956005732EC /* AudioToolbox.framework in Frameworks */,
@@ -761,6 +796,16 @@
 		57840D6417958956005732EC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				57E5E0F118E9807400C36D88 /* CoreImage.framework */,
+				57F4DE7018E8036300C2A173 /* SystemConfiguration.framework */,
+				57F4DE6E18E8035300C2A173 /* StoreKit.framework */,
+				57F4DE6C18E8034C00C2A173 /* Social.framework */,
+				57F4DE6A18E8033F00C2A173 /* Security.framework */,
+				57F4DE6818E8032700C2A173 /* MobileCoreServices.framework */,
+				57F4DE6618E8031D00C2A173 /* MessageUI.framework */,
+				57F4DE6418E8031000C2A173 /* CoreVideo.framework */,
+				57F4DE6218E8030700C2A173 /* CoreMedia.framework */,
+				57F4DE6018E802DF00C2A173 /* AssetsLibrary.framework */,
 				57E2870417D0E42400481F36 /* GameKit.framework */,
 				57840D6517958956005732EC /* QuartzCore.framework */,
 				57840D6717958956005732EC /* OpenGLES.framework */,
@@ -819,6 +864,7 @@
 		57840D9717958956005732EC /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				57F4DE5B18E8029600C2A173 /* Everyplay */,
 				ECA25F7F17BBD6E3001A0B5D /* crypto */,
 				579BBA8817AE14B90064F28A /* hiberlite */,
 				57840D9817958956005732EC /* cocos2dx */,
@@ -1763,6 +1809,16 @@
 			name = Sounds;
 			sourceTree = "<group>";
 		};
+		57F4DE5B18E8029600C2A173 /* Everyplay */ = {
+			isa = PBXGroup;
+			children = (
+				57F4DE5C18E8029600C2A173 /* Everyplay.bundle */,
+				57F4DE5D18E8029600C2A173 /* Everyplay.framework */,
+			);
+			name = Everyplay;
+			path = libs/everyplay;
+			sourceTree = "<group>";
+		};
 		ECA25F7F17BBD6E3001A0B5D /* crypto */ = {
 			isa = PBXGroup;
 			children = (
@@ -1850,6 +1906,7 @@
 				575C7C3717E0D352007A701D /* Images.xcassets in Resources */,
 				57A4241C17A72E530035B5F2 /* Default-568h@2x.png in Resources */,
 				579EDCBE17A6C2EC0039560A /* SE002.mp3 in Resources */,
+				57F4DE5E18E8029600C2A173 /* Everyplay.bundle in Resources */,
 				57FB9F9D179A5C2F005D882C /* default in Resources */,
 				57E2870017D05FE800481F36 /* achievements.plist in Resources */,
 				5729EC3C17E4BE72000AB700 /* resultMessages.plist in Resources */,
@@ -2136,6 +2193,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/yamiHikariGame/libs/everyplay",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = yamiHikariGame/Prefix.pch;
@@ -2173,6 +2234,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/yamiHikariGame/libs/everyplay",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = yamiHikariGame/Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2239,6 +2304,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/yamiHikariGame/libs/everyplay",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = yamiHikariGame/Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
