@@ -236,6 +236,8 @@
 		57FB9F9E179A5C2F005D882C /* ios-hd in Resources */ = {isa = PBXBuildFile; fileRef = 57FB9F9C179A5C2F005D882C /* ios-hd */; };
 		57FB9FA1179BE459005D882C /* Monster.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57FB9F9F179BE458005D882C /* Monster.cpp */; };
 		57FB9FA7179D720A005D882C /* Brave.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57FB9FA5179D720A005D882C /* Brave.cpp */; };
+		57FEACB718E9B51000C3B742 /* EveryplayManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57FEACB518E9B51000C3B742 /* EveryplayManager.cpp */; };
+		57FEACB918E9B54500C3B742 /* EveryplayManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 57FEACB818E9B54500C3B742 /* EveryplayManager.mm */; };
 		EC3F278A17B1ECD10060DE3F /* NotificationLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC3F278817B1ECD10060DE3F /* NotificationLayer.cpp */; };
 		ECA25F8317BBD6E3001A0B5D /* sha1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECA25F8117BBD6E3001A0B5D /* sha1.cpp */; };
 /* End PBXBuildFile section */
@@ -737,6 +739,9 @@
 		57FB9FA0179BE459005D882C /* Monster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Monster.h; path = Classes/Monster.h; sourceTree = "<group>"; };
 		57FB9FA5179D720A005D882C /* Brave.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Brave.cpp; path = Classes/Brave.cpp; sourceTree = "<group>"; };
 		57FB9FA6179D720A005D882C /* Brave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Brave.h; path = Classes/Brave.h; sourceTree = "<group>"; };
+		57FEACB518E9B51000C3B742 /* EveryplayManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EveryplayManager.cpp; sourceTree = "<group>"; };
+		57FEACB618E9B51000C3B742 /* EveryplayManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EveryplayManager.h; sourceTree = "<group>"; };
+		57FEACB818E9B54500C3B742 /* EveryplayManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = EveryplayManager.mm; sourceTree = "<group>"; };
 		EC3F278817B1ECD10060DE3F /* NotificationLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NotificationLayer.cpp; path = Classes/NotificationLayer.cpp; sourceTree = "<group>"; };
 		EC3F278917B1ECD10060DE3F /* NotificationLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotificationLayer.h; path = Classes/NotificationLayer.h; sourceTree = "<group>"; };
 		ECA25F8117BBD6E3001A0B5D /* sha1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sha1.cpp; sourceTree = "<group>"; };
@@ -1681,6 +1686,9 @@
 				57E2870117D0E14600481F36 /* GameCenterIOS.mm */,
 				578DE66917A4D81C0050CDE4 /* Objects */,
 				578DE66817A4D8040050CDE4 /* Scenes */,
+				57FEACB518E9B51000C3B742 /* EveryplayManager.cpp */,
+				57FEACB618E9B51000C3B742 /* EveryplayManager.h */,
+				57FEACB818E9B54500C3B742 /* EveryplayManager.mm */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1948,6 +1956,7 @@
 				57840DCF17958957005732EC /* CCDirector.cpp in Sources */,
 				57840DD217958957005732EC /* ccFPSImages.c in Sources */,
 				57840DD517958957005732EC /* CCScheduler.cpp in Sources */,
+				57FEACB718E9B51000C3B742 /* EveryplayManager.cpp in Sources */,
 				57840DD917958957005732EC /* CCAffineTransform.cpp in Sources */,
 				57840DDC17958957005732EC /* CCArray.cpp in Sources */,
 				57840DDF17958957005732EC /* CCAutoreleasePool.cpp in Sources */,
@@ -2069,6 +2078,7 @@
 				57840F721795895B005732EC /* CCTMXLayer.cpp in Sources */,
 				57840F751795895B005732EC /* CCTMXObjectGroup.cpp in Sources */,
 				57840F781795895B005732EC /* CCTMXTiledMap.cpp in Sources */,
+				57FEACB918E9B54500C3B742 /* EveryplayManager.mm in Sources */,
 				57840F7B1795895B005732EC /* CCTMXXMLParser.cpp in Sources */,
 				57840F7F1795895B005732EC /* CCTouch.cpp in Sources */,
 				57840F831795895B005732EC /* CCTouchDispatcher.cpp in Sources */,
