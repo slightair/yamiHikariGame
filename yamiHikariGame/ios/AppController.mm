@@ -8,10 +8,11 @@
 #import <UIKit/UIKit.h>
 #import "AppController.h"
 #import "cocos2d.h"
+#import <SimpleAudioEngine.h>
 #import "EAGLView.h"
 #import "AppDelegate.h"
-
 #import "RootViewController.h"
+#import "Constants.h"
 
 @implementation AppController
 
@@ -58,6 +59,14 @@ static AppDelegate s_sharedApplication;
     [window makeKeyAndVisible];
 
     [[UIApplication sharedApplication] setStatusBarHidden: YES];
+
+    [Everyplay setClientId:[NSString stringWithUTF8String:EveryplayClientID]
+              clientSecret:[NSString stringWithUTF8String:EveryplayClientSecret]
+               redirectURI:[NSString stringWithUTF8String:EveryplayRedirectURI]];
+
+    [Everyplay initWithDelegate:self andParentViewController:viewController];
+
+    [[[Everyplay sharedInstance] capture] autoRecordForSeconds:10 withDelay:2];
 
     cocos2d::CCApplication::sharedApplication()->run();
     return YES;
@@ -117,6 +126,31 @@ static AppDelegate s_sharedApplication;
     [super dealloc];
 }
 
+#pragma mark -
+#pragma mark EveryplayDelegate
+
+- (void)everyplayShown {
+    NSLog(@"everyplayShown");
+    cocos2d::CCDirector::sharedDirector()->pause();
+    CocosDenshion::SimpleAudioEngine::sharedEngine()->pauseAllEffects();
+    CocosDenshion::SimpleAudioEngine::sharedEngine()->pauseBackgroundMusic();
+}
+
+- (void)everyplayHidden {
+    NSLog(@"everyplayHidden");
+    CocosDenshion::SimpleAudioEngine::sharedEngine()->resumeBackgroundMusic();
+    CocosDenshion::SimpleAudioEngine::sharedEngine()->resumeAllEffects();
+    cocos2d::CCDirector::sharedDirector()->resume();
+}
+
+- (void)everyplayRecordingStopped {
+    NSLog(@"everyplayRecordingStopped");
+
+    // Set metadata for the ongoing or last active recording
+    [[Everyplay sharedInstance] mergeSessionDeveloperData:@{@"score" : @42, @"level_name" : @"cocos2d-x"}];
+    // Bring up Everyplay video player
+    [[Everyplay sharedInstance] playLastRecording];
+}
 
 @end
 

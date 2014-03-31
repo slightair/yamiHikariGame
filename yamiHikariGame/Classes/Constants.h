@@ -112,4 +112,8 @@
 #define AchievementFirstPlayAchievementIDIOS "yamiHikariGame.achievements.firstPlay"
 #define AchievementFirstPlayAchievementIDAndroid "CgkIo-n7kbUCEAIQCg"
 
+#define EveryplayClientID ""
+#define EveryplayClientSecret ""
+#define EveryplayRedirectURI ""
+
 #endif

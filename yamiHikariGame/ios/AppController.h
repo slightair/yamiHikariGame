@@ -6,9 +6,13 @@
 //  Copyright __MyCompanyName__ 2013年. All rights reserved.
 //
 
+#import <Everyplay/Everyplay.h>
+
 @class RootViewController;
 
-@interface AppController : NSObject <UIAccelerometerDelegate, UIAlertViewDelegate, UITextFieldDelegate,UIApplicationDelegate> {
+@interface AppController : NSObject
+<UIAccelerometerDelegate, UIAlertViewDelegate, UITextFieldDelegate,UIApplicationDelegate, EveryplayDelegate>
+{
     UIWindow *window;
     RootViewController    *viewController;
 }
