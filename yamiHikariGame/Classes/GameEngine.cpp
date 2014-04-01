@@ -18,6 +18,7 @@
 #include "ItemListScene.h"
 #include "Item.h"
 #include "NotificationLayer.h"
+#include "EveryplayManager.h"
 
 #define kTransitionDuration 1.0
 #define kGameTickInterval 0.1
@@ -82,6 +83,11 @@ void GameEngine::startNewGame()
     CCTransitionFade *transition = CCTransitionFade::create(kTransitionDuration, GameScene::scene());
     director->replaceScene(transition);
 
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    EveryplayManager *everyplayManager = EveryplayManager::sharedManager();
+    everyplayManager->startRecording();
+#endif
+
     director->getScheduler()->scheduleSelector(schedule_selector(GameEngine::tick), this, kGameTickInterval, false);
 }
 
@@ -101,6 +107,12 @@ void GameEngine::finishGame()
     director->getScheduler()->scheduleSelector(schedule_selector(GameEngine::showResult), this, 0, 0, kWaitForResultDuration, false);
 
     registerActivities();
+
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    EveryplayManager *everyplayManager = EveryplayManager::sharedManager();
+    everyplayManager->stopRecording();
+#endif
+
 }
 
 void GameEngine::tick()
@@ -229,6 +241,14 @@ void GameEngine::showTitle()
 {
     CCTransitionFade *transition = CCTransitionFade::create(kTransitionDuration, TitleScene::scene());
     CCDirector::sharedDirector()->replaceScene(transition);
+}
+
+void GameEngine::shareReplay()
+{
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    EveryplayManager *manager = EveryplayManager::sharedManager();
+    manager->playLastRecording();
+#endif
 }
 
 void GameEngine::confirmResetSaveData()

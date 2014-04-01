@@ -66,8 +66,6 @@ static AppDelegate s_sharedApplication;
 
     [Everyplay initWithDelegate:self andParentViewController:viewController];
 
-    [[[Everyplay sharedInstance] capture] autoRecordForSeconds:10 withDelay:2];
-
     cocos2d::CCApplication::sharedApplication()->run();
     return YES;
 }
@@ -141,15 +139,6 @@ static AppDelegate s_sharedApplication;
     CocosDenshion::SimpleAudioEngine::sharedEngine()->resumeBackgroundMusic();
     CocosDenshion::SimpleAudioEngine::sharedEngine()->resumeAllEffects();
     cocos2d::CCDirector::sharedDirector()->resume();
-}
-
-- (void)everyplayRecordingStopped {
-    NSLog(@"everyplayRecordingStopped");
-
-    // Set metadata for the ongoing or last active recording
-    [[Everyplay sharedInstance] mergeSessionDeveloperData:@{@"score" : @42, @"level_name" : @"cocos2d-x"}];
-    // Bring up Everyplay video player
-    [[Everyplay sharedInstance] playLastRecording];
 }
 
 @end

@@ -57,6 +57,7 @@ public:
     void showAchievements();
     void showItemList();
     void showTitle();
+    void shareReplay();
     void confirmResetSaveData();
     bool needsTutorial();
     int getScore();

@@ -6,7 +6,7 @@
 //
 //
 
-#include "EveryplayManager.h"g
+#include "EveryplayManager.h"
 
 static EveryplayManager *__sharedManager = NULL;
 

@@ -66,6 +66,7 @@
 #define MessageNextButtonTitle "つぎ》"
 #define MessageRetryButtonTitle "リトライ!"
 #define MessageBackTitleButtonTitle "タイトル"
+#define MessageShareButtonTitle "シェア!"
 
 #define MessageInvalidDataTitle "エラー!"
 #define MessageInvalidDataText "セーブデータが おかしく なっているので、しょきか します。"

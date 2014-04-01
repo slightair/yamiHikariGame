@@ -37,7 +37,7 @@
 #define kCommandAreaHeight 32
 #define kCommandAreaMarginTop 14
 #define kCommandAreaMarginBottom 18
-#define kCommandButtonWidth 88
+#define kCommandButtonWidth 80
 #define kCommandButtonHeight 64
 #define kCommandButtonPadding 32
 
@@ -145,7 +145,18 @@ bool ResultScene::init()
                                                             GameEngine::sharedEngine(),
                                                             menu_selector(GameEngine::showTitle));
 
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+        CCLayerColor *shareLayer = CCLayerColor::create((ccColor4B){0x00, 0x00, 0x00, 0x00}, kCommandButtonWidth, kCommandButtonHeight);
+        CCLabelTTF *shareLabel = CCLabelTTF::create(MessageShareButtonTitle, DefaultFontName, FontSizeNormal);
+        shareLabel->setPosition(ccp(kCommandButtonWidth / 2, kCommandButtonHeight / 2));
+        shareLayer->addChild(shareLabel);
+        CCMenuItem *shareItem = CCMenuItemLabel::create(shareLayer,
+                                                            GameEngine::sharedEngine(),
+                                                            menu_selector(GameEngine::shareReplay));
+        CCMenu *menu = CCMenu::create(retryItem, shareItem, backTitleItem, NULL);
+#else
         CCMenu *menu = CCMenu::create(retryItem, backTitleItem, NULL);
+#endif
         menu->alignItemsHorizontallyWithPadding(kCommandButtonPadding);
         menu->setPosition(ccp(windowSize.width / 2, kCommandAreaMarginBottom + kCommandAreaHeight / 2));
         this->addChild(menu);

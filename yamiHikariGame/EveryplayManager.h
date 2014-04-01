@@ -23,6 +23,11 @@ protected:
 
 public:
     static EveryplayManager *sharedManager();
+
+    void startRecording();
+    void stopRecording();
+    void mergeScore(int score);
+    void playLastRecording();
 };
 
 #endif /* defined(__yamiHikariGame__EveryplayManager__) */
