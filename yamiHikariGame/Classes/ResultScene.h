@@ -19,6 +19,7 @@ class ResultScene : public GradientLayer
 {
 public:
     virtual bool init();
+    virtual void onEnterTransitionDidFinish();
 
     static CCScene* scene();
     CREATE_FUNC(ResultScene);

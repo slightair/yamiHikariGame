@@ -164,3 +164,10 @@ bool ResultScene::init()
 
     return result;
 }
+
+void ResultScene::onEnterTransitionDidFinish()
+{
+    CCLayer::onEnterTransitionDidFinish();
+
+    GameEngine::sharedEngine()->onResultTransitionDidFinish();
+}

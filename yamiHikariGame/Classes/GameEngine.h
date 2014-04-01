@@ -64,6 +64,7 @@ public:
     int getStamina();
     void foundItem(hiberlite::sqlid_t itemID);
     const char *getResultMessage();
+    void onResultTransitionDidFinish();
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     void signInGoogle();

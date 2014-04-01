@@ -107,12 +107,6 @@ void GameEngine::finishGame()
     director->getScheduler()->scheduleSelector(schedule_selector(GameEngine::showResult), this, 0, 0, kWaitForResultDuration, false);
 
     registerActivities();
-
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    EveryplayManager *everyplayManager = EveryplayManager::sharedManager();
-    everyplayManager->stopRecording();
-#endif
-
 }
 
 void GameEngine::tick()
@@ -409,6 +403,15 @@ void GameEngine::foundItem(hiberlite::sqlid_t itemID)
 const char *GameEngine::getResultMessage()
 {
     return ((CCString *)_resultMessages->randomObject())->getCString();
+}
+
+void GameEngine::onResultTransitionDidFinish()
+{
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    EveryplayManager *everyplayManager = EveryplayManager::sharedManager();
+    everyplayManager->stopRecording();
+    everyplayManager->mergeScore(_score);
+#endif
 }
 
 string GameEngine::generateScoreChecksum(int score)
