@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5706B3FF17A0AC3C00BD1015 /* Darkness.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5706B3FD17A0AC3C00BD1015 /* Darkness.cpp */; };
+		5715306718EAF73C00EB72B4 /* EveryplayManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5715306418EAF73C00EB72B4 /* EveryplayManager.cpp */; };
+		5715306818EAF73C00EB72B4 /* EveryplayManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5715306618EAF73C00EB72B4 /* EveryplayManager.mm */; };
 		57206AD917A547F100DB1365 /* ScoreBoard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57206AD717A547F100DB1365 /* ScoreBoard.cpp */; };
 		5729EC3C17E4BE72000AB700 /* resultMessages.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5729EC3B17E4BE72000AB700 /* resultMessages.plist */; };
 		575B9BCE17BBC8A600DC107B /* TutorialScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 575B9BCC17BBC8A600DC107B /* TutorialScene.cpp */; };
@@ -236,8 +238,6 @@
 		57FB9F9E179A5C2F005D882C /* ios-hd in Resources */ = {isa = PBXBuildFile; fileRef = 57FB9F9C179A5C2F005D882C /* ios-hd */; };
 		57FB9FA1179BE459005D882C /* Monster.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57FB9F9F179BE458005D882C /* Monster.cpp */; };
 		57FB9FA7179D720A005D882C /* Brave.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57FB9FA5179D720A005D882C /* Brave.cpp */; };
-		57FEACB718E9B51000C3B742 /* EveryplayManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57FEACB518E9B51000C3B742 /* EveryplayManager.cpp */; };
-		57FEACB918E9B54500C3B742 /* EveryplayManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 57FEACB818E9B54500C3B742 /* EveryplayManager.mm */; };
 		EC3F278A17B1ECD10060DE3F /* NotificationLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC3F278817B1ECD10060DE3F /* NotificationLayer.cpp */; };
 		ECA25F8317BBD6E3001A0B5D /* sha1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECA25F8117BBD6E3001A0B5D /* sha1.cpp */; };
 /* End PBXBuildFile section */
@@ -245,6 +245,9 @@
 /* Begin PBXFileReference section */
 		5706B3FD17A0AC3C00BD1015 /* Darkness.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Darkness.cpp; path = Classes/Darkness.cpp; sourceTree = "<group>"; };
 		5706B3FE17A0AC3C00BD1015 /* Darkness.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Darkness.h; path = Classes/Darkness.h; sourceTree = "<group>"; };
+		5715306418EAF73C00EB72B4 /* EveryplayManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EveryplayManager.cpp; path = Classes/EveryplayManager.cpp; sourceTree = "<group>"; };
+		5715306518EAF73C00EB72B4 /* EveryplayManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EveryplayManager.h; path = Classes/EveryplayManager.h; sourceTree = "<group>"; };
+		5715306618EAF73C00EB72B4 /* EveryplayManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = EveryplayManager.mm; path = Classes/EveryplayManager.mm; sourceTree = "<group>"; };
 		57206AD717A547F100DB1365 /* ScoreBoard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ScoreBoard.cpp; path = Classes/ScoreBoard.cpp; sourceTree = "<group>"; };
 		57206AD817A547F100DB1365 /* ScoreBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScoreBoard.h; path = Classes/ScoreBoard.h; sourceTree = "<group>"; };
 		5729EC3B17E4BE72000AB700 /* resultMessages.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = resultMessages.plist; path = Resources/resultMessages.plist; sourceTree = "<group>"; };
@@ -739,9 +742,6 @@
 		57FB9FA0179BE459005D882C /* Monster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Monster.h; path = Classes/Monster.h; sourceTree = "<group>"; };
 		57FB9FA5179D720A005D882C /* Brave.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Brave.cpp; path = Classes/Brave.cpp; sourceTree = "<group>"; };
 		57FB9FA6179D720A005D882C /* Brave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Brave.h; path = Classes/Brave.h; sourceTree = "<group>"; };
-		57FEACB518E9B51000C3B742 /* EveryplayManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EveryplayManager.cpp; sourceTree = "<group>"; };
-		57FEACB618E9B51000C3B742 /* EveryplayManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EveryplayManager.h; sourceTree = "<group>"; };
-		57FEACB818E9B54500C3B742 /* EveryplayManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = EveryplayManager.mm; sourceTree = "<group>"; };
 		EC3F278817B1ECD10060DE3F /* NotificationLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NotificationLayer.cpp; path = Classes/NotificationLayer.cpp; sourceTree = "<group>"; };
 		EC3F278917B1ECD10060DE3F /* NotificationLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotificationLayer.h; path = Classes/NotificationLayer.h; sourceTree = "<group>"; };
 		ECA25F8117BBD6E3001A0B5D /* sha1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sha1.cpp; sourceTree = "<group>"; };
@@ -1684,11 +1684,11 @@
 				57D1529A17CC357500CB0D5E /* GameCenter.cpp */,
 				57D1529B17CC357500CB0D5E /* GameCenter.h */,
 				57E2870117D0E14600481F36 /* GameCenterIOS.mm */,
+				5715306418EAF73C00EB72B4 /* EveryplayManager.cpp */,
+				5715306518EAF73C00EB72B4 /* EveryplayManager.h */,
+				5715306618EAF73C00EB72B4 /* EveryplayManager.mm */,
 				578DE66917A4D81C0050CDE4 /* Objects */,
 				578DE66817A4D8040050CDE4 /* Scenes */,
-				57FEACB518E9B51000C3B742 /* EveryplayManager.cpp */,
-				57FEACB618E9B51000C3B742 /* EveryplayManager.h */,
-				57FEACB818E9B54500C3B742 /* EveryplayManager.mm */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1956,7 +1956,6 @@
 				57840DCF17958957005732EC /* CCDirector.cpp in Sources */,
 				57840DD217958957005732EC /* ccFPSImages.c in Sources */,
 				57840DD517958957005732EC /* CCScheduler.cpp in Sources */,
-				57FEACB718E9B51000C3B742 /* EveryplayManager.cpp in Sources */,
 				57840DD917958957005732EC /* CCAffineTransform.cpp in Sources */,
 				57840DDC17958957005732EC /* CCArray.cpp in Sources */,
 				57840DDF17958957005732EC /* CCAutoreleasePool.cpp in Sources */,
@@ -1997,6 +1996,7 @@
 				579BBAB317AE14B90064F28A /* Registry.cpp in Sources */,
 				579BBAB117AE14B90064F28A /* Database.cpp in Sources */,
 				57840E5217958958005732EC /* CCLabelBMFont.cpp in Sources */,
+				5715306818EAF73C00EB72B4 /* EveryplayManager.mm in Sources */,
 				57840E5517958958005732EC /* CCLabelTTF.cpp in Sources */,
 				57840E5917958958005732EC /* CCLayer.cpp in Sources */,
 				579BBAAD17AE14B90064F28A /* BeanLoader.cpp in Sources */,
@@ -2055,6 +2055,7 @@
 				57840F211795895A005732EC /* CCProfiling.cpp in Sources */,
 				57840F241795895A005732EC /* ccUTF8.cpp in Sources */,
 				57840F271795895A005732EC /* ccUtils.cpp in Sources */,
+				5715306718EAF73C00EB72B4 /* EveryplayManager.cpp in Sources */,
 				57840F2A1795895A005732EC /* CCVertex.cpp in Sources */,
 				57840F2E1795895A005732EC /* CCComponent.cpp in Sources */,
 				57840F311795895A005732EC /* CCComponentContainer.cpp in Sources */,
@@ -2078,7 +2079,6 @@
 				57840F721795895B005732EC /* CCTMXLayer.cpp in Sources */,
 				57840F751795895B005732EC /* CCTMXObjectGroup.cpp in Sources */,
 				57840F781795895B005732EC /* CCTMXTiledMap.cpp in Sources */,
-				57FEACB918E9B54500C3B742 /* EveryplayManager.mm in Sources */,
 				57840F7B1795895B005732EC /* CCTMXXMLParser.cpp in Sources */,
 				57840F7F1795895B005732EC /* CCTouch.cpp in Sources */,
 				57840F831795895B005732EC /* CCTouchDispatcher.cpp in Sources */,
