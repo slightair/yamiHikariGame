@@ -1,0 +1,3 @@
+[submodule "yamiHikariGame/libs/Everyplay"]
+	path = yamiHikariGame/libs/Everyplay
+	url = https://github.com/Everyplay/everyplay-ios-sdk.git
