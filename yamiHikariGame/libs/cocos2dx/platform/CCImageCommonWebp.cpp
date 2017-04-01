@@ -29,7 +29,7 @@
 // webph headers in this way.
 #include "webp/decode.h"
 #else
-#include "decode.h"
+#include <webp/decode.h>
 #endif
 #include "ccMacros.h"
 #include <stdlib.h>

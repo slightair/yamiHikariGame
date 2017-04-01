@@ -113,8 +113,6 @@
 		57840EC417958959005732EC /* EAGLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 57840EC317958959005732EC /* EAGLView.mm */; };
 		57840EC917958959005732EC /* AccelerometerSimulation.m in Sources */ = {isa = PBXBuildFile; fileRef = 57840EC817958959005732EC /* AccelerometerSimulation.m */; };
 		57840ECB17958959005732EC /* platform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57840ECA17958959005732EC /* platform.cpp */; };
-		57840EDB17958959005732EC /* libcurl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 57840EDA17958959005732EC /* libcurl.a */; };
-		57840EDD17958959005732EC /* libwebp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 57840EDC17958959005732EC /* libwebp.a */; };
 		57840EE417958959005732EC /* CCScriptSupport.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57840EE317958959005732EC /* CCScriptSupport.cpp */; };
 		57840EE817958959005732EC /* CCGLProgram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57840EE717958959005732EC /* CCGLProgram.cpp */; };
 		57840EEB17958959005732EC /* ccGLStateCache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57840EEA17958959005732EC /* ccGLStateCache.cpp */; };
@@ -197,6 +195,7 @@
 		5793860E17A4F51A008A5BBE /* mosamosa.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5793860D17A4F32F008A5BBE /* mosamosa.ttf */; };
 		5793861117A50CDB008A5BBE /* dust.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5793860F17A50CDB008A5BBE /* dust.plist */; };
 		5793861217A50CDB008A5BBE /* stars.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5793861017A50CDB008A5BBE /* stars.plist */; };
+		579AD9CA1E8F6E5200F424D7 /* WebP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 579AD9C91E8F6E5200F424D7 /* WebP.framework */; };
 		579BBAAD17AE14B90064F28A /* BeanLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 579BBA8B17AE14B90064F28A /* BeanLoader.cpp */; };
 		579BBAAE17AE14B90064F28A /* BeanUpdater.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 579BBA8E17AE14B90064F28A /* BeanUpdater.cpp */; };
 		579BBAAF17AE14B90064F28A /* ChildKiller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 579BBA9117AE14B90064F28A /* ChildKiller.cpp */; };
@@ -452,20 +451,6 @@
 		57840EC817958959005732EC /* AccelerometerSimulation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AccelerometerSimulation.m; path = libs/cocos2dx/platform/ios/Simulation/AccelerometerSimulation.m; sourceTree = "<group>"; };
 		57840ECA17958959005732EC /* platform.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = platform.cpp; path = libs/cocos2dx/platform/platform.cpp; sourceTree = "<group>"; };
 		57840ECC17958959005732EC /* platform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = platform.h; path = libs/cocos2dx/platform/platform.h; sourceTree = "<group>"; };
-		57840ED017958959005732EC /* curl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = curl.h; path = libs/cocos2dx/platform/third_party/ios/curl/curl.h; sourceTree = "<group>"; };
-		57840ED117958959005732EC /* curlbuild.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = curlbuild.h; path = libs/cocos2dx/platform/third_party/ios/curl/curlbuild.h; sourceTree = "<group>"; };
-		57840ED217958959005732EC /* curlrules.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = curlrules.h; path = libs/cocos2dx/platform/third_party/ios/curl/curlrules.h; sourceTree = "<group>"; };
-		57840ED317958959005732EC /* curlver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = curlver.h; path = libs/cocos2dx/platform/third_party/ios/curl/curlver.h; sourceTree = "<group>"; };
-		57840ED417958959005732EC /* easy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = easy.h; path = libs/cocos2dx/platform/third_party/ios/curl/easy.h; sourceTree = "<group>"; };
-		57840ED517958959005732EC /* mprintf.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = mprintf.h; path = libs/cocos2dx/platform/third_party/ios/curl/mprintf.h; sourceTree = "<group>"; };
-		57840ED617958959005732EC /* multi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = multi.h; path = libs/cocos2dx/platform/third_party/ios/curl/multi.h; sourceTree = "<group>"; };
-		57840ED717958959005732EC /* stdcheaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = stdcheaders.h; path = libs/cocos2dx/platform/third_party/ios/curl/stdcheaders.h; sourceTree = "<group>"; };
-		57840ED817958959005732EC /* typecheck-gcc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "typecheck-gcc.h"; path = "libs/cocos2dx/platform/third_party/ios/curl/typecheck-gcc.h"; sourceTree = "<group>"; };
-		57840EDA17958959005732EC /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = libs/cocos2dx/platform/third_party/ios/libraries/libcurl.a; sourceTree = "<group>"; };
-		57840EDC17958959005732EC /* libwebp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libwebp.a; path = libs/cocos2dx/platform/third_party/ios/libraries/libwebp.a; sourceTree = "<group>"; };
-		57840EDF17958959005732EC /* decode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = decode.h; path = libs/cocos2dx/platform/third_party/ios/webp/decode.h; sourceTree = "<group>"; };
-		57840EE017958959005732EC /* encode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = encode.h; path = libs/cocos2dx/platform/third_party/ios/webp/encode.h; sourceTree = "<group>"; };
-		57840EE117958959005732EC /* types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = types.h; path = libs/cocos2dx/platform/third_party/ios/webp/types.h; sourceTree = "<group>"; };
 		57840EE317958959005732EC /* CCScriptSupport.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CCScriptSupport.cpp; path = libs/cocos2dx/script_support/CCScriptSupport.cpp; sourceTree = "<group>"; };
 		57840EE517958959005732EC /* CCScriptSupport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CCScriptSupport.h; path = libs/cocos2dx/script_support/CCScriptSupport.h; sourceTree = "<group>"; };
 		57840EE717958959005732EC /* CCGLProgram.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CCGLProgram.cpp; path = libs/cocos2dx/shaders/CCGLProgram.cpp; sourceTree = "<group>"; };
@@ -653,6 +638,7 @@
 		5793860D17A4F32F008A5BBE /* mosamosa.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = mosamosa.ttf; path = Resources/mosamosa.ttf; sourceTree = "<group>"; };
 		5793860F17A50CDB008A5BBE /* dust.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = dust.plist; path = Resources/dust.plist; sourceTree = "<group>"; };
 		5793861017A50CDB008A5BBE /* stars.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = stars.plist; path = Resources/stars.plist; sourceTree = "<group>"; };
+		579AD9C91E8F6E5200F424D7 /* WebP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebP.framework; path = yamiHikariGame/libs/WebP.framework; sourceTree = "<group>"; };
 		579BBA8917AE14B90064F28A /* bean_ptr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bean_ptr.h; sourceTree = "<group>"; };
 		579BBA8A17AE14B90064F28A /* bean_ptr_impl.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = bean_ptr_impl.hpp; sourceTree = "<group>"; };
 		579BBA8B17AE14B90064F28A /* BeanLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BeanLoader.cpp; sourceTree = "<group>"; };
@@ -724,6 +710,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				579AD9CA1E8F6E5200F424D7 /* WebP.framework in Frameworks */,
 				57E2870517D0E42400481F36 /* GameKit.framework in Frameworks */,
 				57840D6617958956005732EC /* QuartzCore.framework in Frameworks */,
 				57840D6817958956005732EC /* OpenGLES.framework in Frameworks */,
@@ -733,8 +720,6 @@
 				57840D7017958956005732EC /* UIKit.framework in Frameworks */,
 				57840D7217958956005732EC /* Foundation.framework in Frameworks */,
 				57840D7417958956005732EC /* CoreGraphics.framework in Frameworks */,
-				57840EDB17958959005732EC /* libcurl.a in Frameworks */,
-				57840EDD17958959005732EC /* libwebp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -761,6 +746,7 @@
 		57840D6417958956005732EC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				579AD9C91E8F6E5200F424D7 /* WebP.framework */,
 				57E2870417D0E42400481F36 /* GameKit.framework */,
 				57840D6517958956005732EC /* QuartzCore.framework */,
 				57840D6717958956005732EC /* OpenGLES.framework */,
@@ -1213,54 +1199,8 @@
 		57840ECD17958959005732EC /* third_party */ = {
 			isa = PBXGroup;
 			children = (
-				57840ECE17958959005732EC /* ios */,
 			);
 			name = third_party;
-			sourceTree = "<group>";
-		};
-		57840ECE17958959005732EC /* ios */ = {
-			isa = PBXGroup;
-			children = (
-				57840ECF17958959005732EC /* curl */,
-				57840ED917958959005732EC /* libraries */,
-				57840EDE17958959005732EC /* webp */,
-			);
-			name = ios;
-			sourceTree = "<group>";
-		};
-		57840ECF17958959005732EC /* curl */ = {
-			isa = PBXGroup;
-			children = (
-				57840ED017958959005732EC /* curl.h */,
-				57840ED117958959005732EC /* curlbuild.h */,
-				57840ED217958959005732EC /* curlrules.h */,
-				57840ED317958959005732EC /* curlver.h */,
-				57840ED417958959005732EC /* easy.h */,
-				57840ED517958959005732EC /* mprintf.h */,
-				57840ED617958959005732EC /* multi.h */,
-				57840ED717958959005732EC /* stdcheaders.h */,
-				57840ED817958959005732EC /* typecheck-gcc.h */,
-			);
-			name = curl;
-			sourceTree = "<group>";
-		};
-		57840ED917958959005732EC /* libraries */ = {
-			isa = PBXGroup;
-			children = (
-				57840EDA17958959005732EC /* libcurl.a */,
-				57840EDC17958959005732EC /* libwebp.a */,
-			);
-			name = libraries;
-			sourceTree = "<group>";
-		};
-		57840EDE17958959005732EC /* webp */ = {
-			isa = PBXGroup;
-			children = (
-				57840EDF17958959005732EC /* decode.h */,
-				57840EE017958959005732EC /* encode.h */,
-				57840EE117958959005732EC /* types.h */,
-			);
-			name = webp;
 			sourceTree = "<group>";
 		};
 		57840EE217958959005732EC /* script_support */ = {
@@ -1807,7 +1747,7 @@
 		57840D5A17958956005732EC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0830;
 				TargetAttributes = {
 					57840D6117958956005732EC = {
 						DevelopmentTeam = 29NW573QV3;
@@ -2068,9 +2008,20 @@
 		5784110D1795895E005732EC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					DEBUG,
@@ -2080,7 +2031,11 @@
 					"CC_ENABLE_CHIPMUNK_INTEGRATION=1",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					"\"$(PROJECT_NAME)/libs/cocos2dx/kazmath/include\"",
@@ -2091,7 +2046,8 @@
 					"\"$(PROJECT_NAME)/libs/cocos2dx/platform/third_party/ios\"",
 					"\"$(PROJECT_NAME)/libs/cocos2dx/platform/ios\"",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -2100,16 +2056,30 @@
 		5784110E1795895E005732EC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					NDEBUG,
 					USE_FILE32API,
 					CC_TARGET_OS_IPHONE,
 					"CC_ENABLE_CHIPMUNK_INTEGRATION=1",
 				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					"\"$(PROJECT_NAME)/libs/cocos2dx/kazmath/include\"",
@@ -2120,7 +2090,7 @@
 					"\"$(PROJECT_NAME)/libs/cocos2dx/platform/third_party/ios\"",
 					"\"$(PROJECT_NAME)/libs/cocos2dx/platform/ios\"",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2136,6 +2106,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/yamiHikariGame/libs",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = yamiHikariGame/Prefix.pch;
@@ -2147,7 +2121,7 @@
 				);
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				INFOPLIST_FILE = yamiHikariGame/Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/yamiHikariGame/libs/cocos2dx/platform/third_party/ios/libraries\"",
@@ -2157,6 +2131,7 @@
 					"-lz",
 					"-lsqlite3",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "cc.clv.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "";
@@ -2173,6 +2148,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/yamiHikariGame/libs",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = yamiHikariGame/Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2182,7 +2161,7 @@
 				);
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				INFOPLIST_FILE = yamiHikariGame/Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/yamiHikariGame/libs/cocos2dx/platform/third_party/ios/libraries\"",
@@ -2192,6 +2171,7 @@
 					"-lz",
 					"-lsqlite3",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "cc.clv.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "";
@@ -2203,16 +2183,30 @@
 		57EDFF3F17E5C2C000906BE6 /* Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					NDEBUG,
 					USE_FILE32API,
 					CC_TARGET_OS_IPHONE,
 					"CC_ENABLE_CHIPMUNK_INTEGRATION=1",
 				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					"\"$(PROJECT_NAME)/libs/cocos2dx/kazmath/include\"",
@@ -2223,7 +2217,7 @@
 					"\"$(PROJECT_NAME)/libs/cocos2dx/platform/third_party/ios\"",
 					"\"$(PROJECT_NAME)/libs/cocos2dx/platform/ios\"",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2239,6 +2233,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/yamiHikariGame/libs",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = yamiHikariGame/Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2248,7 +2246,7 @@
 				);
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				INFOPLIST_FILE = yamiHikariGame/Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/yamiHikariGame/libs/cocos2dx/platform/third_party/ios/libraries\"",
@@ -2258,6 +2256,7 @@
 					"-lz",
 					"-lsqlite3",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "cc.clv.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "";

@@ -6,7 +6,7 @@ require 'digest/sha1'
 require 'plist'
 require 'pp'
 
-SALT = 'tikuwa'
+SALT = 'd48dda6463d5f9b2'
 
 RESOURCES_DIR = '../Resources'
 
