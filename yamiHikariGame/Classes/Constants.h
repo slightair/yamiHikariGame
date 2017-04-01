@@ -98,8 +98,8 @@
 #define MessageAlertTitleAndroid "おしらせ"
 #define MessageAlertShowRankingAchievementsAndroid "ランキングや実績一覧を見るには、Google+へサインインしてください。"
 
-#define SaveDataChecksumSalt "tikuwa"
-#define ScoreChecksumSalt "gannmo"
+#define SaveDataChecksumSalt "d48dda6463d5f9b2"
+#define ScoreChecksumSalt "b18498c7e245f134"
 
 #define TutorialStateKey "tutorialDone"
 #define HighScoreKey "highScore"
