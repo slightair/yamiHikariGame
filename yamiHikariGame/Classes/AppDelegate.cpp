@@ -54,7 +54,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     TargetPlatform platform = CCApplication::sharedApplication()->getTargetPlatform();
-    if (screenSize.height == kIPhone4inchScreenHeight) {
+    if (screenSize.height >= kIPhone4inchScreenHeight && platform == kTargetIphone) {
         openGLView->setDesignResolutionSize(kDefaultDesignResolutionWidth, kIPhone4inchHeight, kResolutionExactFit);
     }
     else {

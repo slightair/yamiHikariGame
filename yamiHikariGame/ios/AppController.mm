@@ -40,7 +40,6 @@ static AppDelegate s_sharedApplication;
 
     // Use RootViewController manage EAGLView
     viewController = [[RootViewController alloc] initWithNibName:nil bundle:nil];
-    viewController.wantsFullScreenLayout = YES;
     viewController.view = __glView;
 
     // Set RootViewController to window

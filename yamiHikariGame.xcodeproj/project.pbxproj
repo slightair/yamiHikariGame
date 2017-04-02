@@ -196,6 +196,7 @@
 		5793861117A50CDB008A5BBE /* dust.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5793860F17A50CDB008A5BBE /* dust.plist */; };
 		5793861217A50CDB008A5BBE /* stars.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5793861017A50CDB008A5BBE /* stars.plist */; };
 		579AD9CA1E8F6E5200F424D7 /* WebP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 579AD9C91E8F6E5200F424D7 /* WebP.framework */; };
+		579AD9CC1E90C45A00F424D7 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 579AD9CB1E90C45A00F424D7 /* Launch Screen.storyboard */; };
 		579BBAAD17AE14B90064F28A /* BeanLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 579BBA8B17AE14B90064F28A /* BeanLoader.cpp */; };
 		579BBAAE17AE14B90064F28A /* BeanUpdater.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 579BBA8E17AE14B90064F28A /* BeanUpdater.cpp */; };
 		579BBAAF17AE14B90064F28A /* ChildKiller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 579BBA9117AE14B90064F28A /* ChildKiller.cpp */; };
@@ -212,7 +213,6 @@
 		579EDCBD17A6C2EC0039560A /* SE001.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 579EDCBA17A6C2EC0039560A /* SE001.mp3 */; };
 		579EDCBE17A6C2EC0039560A /* SE002.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 579EDCBB17A6C2EC0039560A /* SE002.mp3 */; };
 		579EDCBF17A6C2EC0039560A /* SE004.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 579EDCBC17A6C2EC0039560A /* SE004.mp3 */; };
-		57A4241C17A72E530035B5F2 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 57A4241B17A72E530035B5F2 /* Default-568h@2x.png */; };
 		57D1529C17CC357500CB0D5E /* GameCenter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57D1529A17CC357500CB0D5E /* GameCenter.cpp */; };
 		57D1529F17CF7A9400CB0D5E /* Achievement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57D1529D17CF7A9400CB0D5E /* Achievement.cpp */; };
 		57E2870017D05FE800481F36 /* achievements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 57E286FF17D05FE800481F36 /* achievements.plist */; };
@@ -639,6 +639,7 @@
 		5793860F17A50CDB008A5BBE /* dust.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = dust.plist; path = Resources/dust.plist; sourceTree = "<group>"; };
 		5793861017A50CDB008A5BBE /* stars.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = stars.plist; path = Resources/stars.plist; sourceTree = "<group>"; };
 		579AD9C91E8F6E5200F424D7 /* WebP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebP.framework; path = yamiHikariGame/libs/WebP.framework; sourceTree = "<group>"; };
+		579AD9CB1E90C45A00F424D7 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "Resources/Launch Screen.storyboard"; sourceTree = "<group>"; };
 		579BBA8917AE14B90064F28A /* bean_ptr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bean_ptr.h; sourceTree = "<group>"; };
 		579BBA8A17AE14B90064F28A /* bean_ptr_impl.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = bean_ptr_impl.hpp; sourceTree = "<group>"; };
 		579BBA8B17AE14B90064F28A /* BeanLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BeanLoader.cpp; sourceTree = "<group>"; };
@@ -683,7 +684,6 @@
 		579EDCBA17A6C2EC0039560A /* SE001.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = SE001.mp3; path = Resources/SE001.mp3; sourceTree = "<group>"; };
 		579EDCBB17A6C2EC0039560A /* SE002.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = SE002.mp3; path = Resources/SE002.mp3; sourceTree = "<group>"; };
 		579EDCBC17A6C2EC0039560A /* SE004.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = SE004.mp3; path = Resources/SE004.mp3; sourceTree = "<group>"; };
-		57A4241B17A72E530035B5F2 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "Resources/Default-568h@2x.png"; sourceTree = "<group>"; };
 		57D1529A17CC357500CB0D5E /* GameCenter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; name = GameCenter.cpp; path = Classes/GameCenter.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		57D1529B17CC357500CB0D5E /* GameCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = GameCenter.h; path = Classes/GameCenter.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		57D1529D17CF7A9400CB0D5E /* Achievement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Achievement.cpp; path = Classes/Achievement.cpp; sourceTree = "<group>"; };
@@ -779,13 +779,13 @@
 				579EDCC017A6C2EF0039560A /* Sounds */,
 				5793861417A50E9C008A5BBE /* Fonts */,
 				5793861317A50E94008A5BBE /* Particles */,
-				57A4241B17A72E530035B5F2 /* Default-568h@2x.png */,
 				57840D8D17958956005732EC /* Info.plist */,
 				579BBAB717AE25FD0064F28A /* init.db */,
 				57E286FF17D05FE800481F36 /* achievements.plist */,
 				5729EC3B17E4BE72000AB700 /* resultMessages.plist */,
 				57FB9F9B179A5C2F005D882C /* default */,
 				57FB9F9C179A5C2F005D882C /* ios-hd */,
+				579AD9CB1E90C45A00F424D7 /* Launch Screen.storyboard */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1788,9 +1788,9 @@
 				579EDCBF17A6C2EC0039560A /* SE004.mp3 in Resources */,
 				579EDCBD17A6C2EC0039560A /* SE001.mp3 in Resources */,
 				575C7C3717E0D352007A701D /* Images.xcassets in Resources */,
-				57A4241C17A72E530035B5F2 /* Default-568h@2x.png in Resources */,
 				579EDCBE17A6C2EC0039560A /* SE002.mp3 in Resources */,
 				57FB9F9D179A5C2F005D882C /* default in Resources */,
+				579AD9CC1E90C45A00F424D7 /* Launch Screen.storyboard in Resources */,
 				57E2870017D05FE800481F36 /* achievements.plist in Resources */,
 				5729EC3C17E4BE72000AB700 /* resultMessages.plist in Resources */,
 				57FB9F9E179A5C2F005D882C /* ios-hd in Resources */,
@@ -2102,7 +2102,6 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
@@ -2144,7 +2143,6 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
@@ -2229,7 +2227,6 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
